@@ -1,4 +1,4 @@
-package com.fitwizard.fitwizard_v1;
+package com.fitwizard.fitwizard;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -10,6 +10,11 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import androidx.annotation.Nullable;
+
+
+
+//This is for the graphics component on the home screen
+//User views and adds/subtracts from the amount of water they have drank that day
 
 public class WaterLevelView extends View {
     private Paint backgroundPaint;
@@ -54,6 +59,7 @@ public class WaterLevelView extends View {
         int width = getWidth();
         int height = getHeight();
 
+        //this needs to be fixed for the bottom part
         // Draw container background with rounded corners
         containerRect.set(0, 0, width, height);
         canvas.drawRoundRect(containerRect, 40, 40, backgroundPaint);
@@ -62,15 +68,10 @@ public class WaterLevelView extends View {
         int waterHeight = (int) (height * waterLevel);
         int waterY = height - waterHeight;
 
-        // Draw water
+        // Draw water /blue and update water height
         wavePath.reset();
         wavePath.moveTo(0, waterY);
 
-        // Add simple wave effect
-        /*
-         * This is simplified. For a real wave animation,
-         * you would use ValueAnimator to animate the wave
-         */
         wavePath.lineTo(0, height);
         wavePath.lineTo(width, height);
         wavePath.lineTo(width, waterY);

@@ -3,11 +3,11 @@ plugins {
 }
 
 android {
-    namespace 'com.fitwizard.fitwizard_v1'
+    namespace 'com.fitwizard.fitwizard'
     compileSdk 35
 
     defaultConfig {
-        applicationId "com.fitwizard.fitwizard_v1"
+        applicationId "com.fitwizard.fitwizard"
         minSdk 24
         targetSdk 35
         versionCode 1
@@ -30,6 +30,7 @@ android {
 
 dependencies {
     implementation ("androidx.constraintlayout:constraintlayout:2.2.1")
+
     implementation libs.appcompat
     implementation libs.material
     testImplementation libs.junit

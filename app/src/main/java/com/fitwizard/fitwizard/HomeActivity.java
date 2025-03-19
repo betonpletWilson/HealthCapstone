@@ -1,18 +1,31 @@
-package com.fitwizard.fitwizard_v1;
+package com.fitwizard.fitwizard;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.fitwizard.fitwizard_v1.WaterLevelView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+
+//      TO-DO/ THINGS THAT NEED TO BE FIXED
+// - Structure of the popout nav drawer at the bottom, the "Add Meal" button is in the wrong location
+// - Popout nav drawer fix 2: when the user selects the screen outside of the drawer, the drawer should minimize again
+// - Add water tracking that logs the users water intake to their background
+// - Fix water tracker shape (the blue pill shaped object)
+// - Update 'Nutrients Indicator' section to get the real values
+
+
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -21,6 +34,8 @@ public class HomeActivity extends AppCompatActivity {
     private TextView waterAmount;
     private float currentWater = 1.9f;
     private final float waterGoal = 2.5f;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +47,12 @@ public class HomeActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        ImageView profileImage = findViewById(R.id.profile_image);
+        profileImage.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
+            startActivity(intent);
+        });
+
         // Initialize views
         proteinsProgress = findViewById(R.id.proteins_progress);
         fatsProgress = findViewById(R.id.fats_progress);
@@ -40,11 +61,12 @@ public class HomeActivity extends AppCompatActivity {
         waterLevelView = findViewById(R.id.water_level);
         waterAmount = findViewById(R.id.water_amount);
 
+        //Nutrients Indicator
         // Set progress values
-        proteinsProgress.setProgress(67); // 150/225 ≈ 67%
-        fatsProgress.setProgress(25);     // 30/118 ≈ 25%
-        carbsProgress.setProgress(94);    // 319/340 ≈ 94%
-        caloriesProgress.setProgress(72); // 2456/3400 ≈ 72%
+        proteinsProgress.setProgress(67); // change to ( goalProtein() - getCurrProtein() ) / 100
+        fatsProgress.setProgress(25);
+        carbsProgress.setProgress(94);
+        caloriesProgress.setProgress(72);
 
         // Set water level
         updateWaterDisplay();
@@ -55,30 +77,25 @@ public class HomeActivity extends AppCompatActivity {
         dateText.setText(sdf.format(new Date()));
 
         // Set up water control buttons
-        FloatingActionButton addWater = findViewById(R.id.water_add);
-        FloatingActionButton subtractWater = findViewById(R.id.water_subtract);
+        FloatingActionButton addWater = findViewById(R.id.water_add);     // Plus button
+        FloatingActionButton subtractWater = findViewById(R.id.water_subtract); //Minus button
 
-        addWater.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addWater(0.1f);
-            }
-        });
+        // Pressing the plus button
+        addWater.setOnClickListener(v -> addWater(0.1f));
 
-        subtractWater.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                addWater(-0.1f);
-            }
-        });
+        // Pressing the minus button
+        subtractWater.setOnClickListener(v -> addWater(-0.1f));
+
 
         // Set up bottom navigation
-        View homeNav = findViewById(R.id.nav_home);
-        View reportsNav = findViewById(R.id.nav_reports);
-        FloatingActionButton addFab = findViewById(R.id.fab_add);
+        View homeNav = findViewById(R.id.nav_home);         //nav left button
+        View reportsNav = findViewById(R.id.nav_reports);       //nav right button
+        FloatingActionButton addFab = findViewById(R.id.fab_add);   // nav middle button
+
 
         homeNav.setOnClickListener(v -> {
             // Already on home screen
+            //change the Home button to something else
         });
 
         reportsNav.setOnClickListener(v -> {
@@ -90,6 +107,28 @@ public class HomeActivity extends AppCompatActivity {
         addFab.setOnClickListener(v -> {
             // Open add food/water dialog
             // showAddItemDialog();
+        });
+
+        // Popup nav drawer
+        LinearLayout addMenu = findViewById(R.id.add_menu);
+        Button addMealButton = findViewById(R.id.btn_add_meal);
+
+        addFab.setOnClickListener(v -> {
+            if (addMenu.getVisibility() == View.GONE) {
+                addMenu.setVisibility(View.VISIBLE);
+                addMenu.setAlpha(0f);
+                addMenu.animate().alpha(1f).setDuration(200).start();
+            } else {
+                addMenu.animate().alpha(0f).setDuration(200).withEndAction(() -> {
+                    addMenu.setVisibility(View.GONE);
+                }).start();
+            }
+        });
+
+        addMealButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, FoodLogActivity.class);
+            startActivity(intent);
+            addMenu.setVisibility(View.GONE); //  hide the menu
         });
     }
 
@@ -113,4 +152,5 @@ public class HomeActivity extends AppCompatActivity {
         float percentage = Math.min(currentWater / waterGoal, 1.0f);
         waterLevelView.setWaterLevel(percentage);
     }
+
 }

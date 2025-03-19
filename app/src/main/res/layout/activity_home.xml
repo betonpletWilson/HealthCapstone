@@ -23,7 +23,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"
-            android:src="@drawable/profile_placeholder" />
+            android:src="@drawable/profile_placehold_cat"
+            android:clickable="true"
+            android:focusable="true" />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -295,7 +297,7 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
-            <com.fitwizard.fitwizard_v1.WaterLevelView
+            <com.fitwizard.fitwizard.WaterLevelView
                 android:id="@+id/water_level"
                 android:layout_width="60dp"
                 android:layout_height="120dp"
@@ -384,6 +386,32 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/fab_add"
                 app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/add_menu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:background="@drawable/popup_background"
+                android:padding="8dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginBottom="80dp"
+                app:layout_constraintBottom_toTopOf="@id/fab_add"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <Button
+                    android:id="@+id/btn_add_meal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Add Meal"
+                    android:backgroundTint="@color/green"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

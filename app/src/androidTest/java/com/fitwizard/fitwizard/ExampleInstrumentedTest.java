@@ -1,4 +1,4 @@
-package com.fitwizard.fitwizard_v1;
+package com.fitwizard.fitwizard;
 
 import android.content.Context;
 
