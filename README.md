@@ -1,5 +1,17 @@
 # Health Capstone
 
+
+## Steps to Clone in Android Studio
+- On the 'Welcome' page, select the ... on the far right
+- Repository URL > Enter URL in the URL sections > Choose directory > Clone
+- In upper right screen, after the project has loaded in, the [Directory name | main ] is at the top
+- Select main dropdown > Remote folder > Origin folder > Shelby > Checkout
+- You now see the 'Git Checkout Problem' Popup, select 'Force Checkout' button
+- Once project opens, close Android Studio then open the project again
+- Start the Android phone emulator
+- Press the play button on the top nav bar
+
+
 ## Steps to Open~~
 
 - Download the GitHub as a zip file or use git
