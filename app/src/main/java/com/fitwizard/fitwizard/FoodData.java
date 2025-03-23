@@ -3,15 +3,15 @@ package com.fitwizard.fitwizard;
 
 // Formating and information to be pulled
 //Used by FoodSearchActivity
-//Used by FoodApapter for getView()
+//Used by FoodAdapter for getView()
 public class FoodData {
 
-    private String name;
-    private int calories;
-    private int protein;
-    private int fats;
-    private int carbs;
-    private String servingSize;
+    private final String name;
+    private final int calories;
+    private final int protein;
+    private final int fats;
+    private final int carbs;
+    private final String servingSize;
 
     //Food info to get
     public FoodData(String name, int calories, int protein, int fats, int carbs, String servingSize) {
