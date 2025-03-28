@@ -3023,6 +3023,11 @@ drawable design_ic_visibility
 drawable design_ic_visibility_off
 drawable design_password_eye
 drawable design_snackbar_background
+drawable face_amazing
+drawable face_awful
+drawable face_good
+drawable face_meh
+drawable face_sad
 drawable green_border_background
 drawable ic_add
 drawable ic_arrow_back_black_24
@@ -3235,6 +3240,7 @@ id bounceStart
 id breakfastAddButton
 id breakfastContainer
 id btn_add_meal
+id btn_log_mood
 id buttonPanel
 id cache_measures
 id calendar_icon
@@ -3279,6 +3285,7 @@ id currentState
 id custom
 id customPanel
 id cut
+id dateTimeTextView
 id date_picker_actions
 id date_text
 id decelerate
@@ -3330,6 +3337,11 @@ id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
 id fab_add
+id face_amazing
+id face_awful
+id face_good
+id face_meh
+id face_sad
 id fade
 id fats_progress
 id fill
@@ -3796,6 +3808,7 @@ layout abc_tooltip
 layout activity_food_log
 layout activity_food_search
 layout activity_home
+layout activity_mood
 layout activity_profile
 layout custom_dialog
 layout design_bottom_navigation_item
@@ -3879,6 +3892,7 @@ layout select_dialog_item_material
 layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
+menu navigation_menu
 mipmap ic_launcher
 mipmap ic_launcher_round
 plurals mtrl_badge_content_description

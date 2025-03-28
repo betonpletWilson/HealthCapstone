@@ -18,6 +18,7 @@
     <activity android:name=".FoodLogActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".FoodSearchActivity" />
+        <activity android:name=".MoodActivity" />
     <activity android:name=".HomeActivity"
         android:exported="true">
         <intent-filter>

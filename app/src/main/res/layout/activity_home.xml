@@ -7,7 +7,6 @@
     android:background="@color/white"
     tools:context=".HomeActivity">
 
-    <!-- Profile and Date Header -->
     <androidx.cardview.widget.CardView
         android:id="@+id/profile_card"
         android:layout_width="40dp"
@@ -361,7 +360,6 @@
                 app:layout_constraintEnd_toStartOf="@id/fab_add"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_add"
                 android:layout_width="wrap_content"
@@ -394,9 +392,8 @@
                 android:orientation="vertical"
                 android:visibility="gone"
                 android:background="@drawable/popup_background"
-                android:padding="8dp"
-                android:layout_gravity="center_horizontal"
-                android:layout_marginBottom="80dp"
+                android:padding="20dp"
+                android:layout_marginBottom="0dp"
                 app:layout_constraintBottom_toTopOf="@id/fab_add"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent">
@@ -407,10 +404,17 @@
                     android:layout_height="wrap_content"
                     android:text="Add Meal"
                     android:backgroundTint="@color/green"
-                    android:textColor="@color/white" />
+                    android:textColor="@color/white"
+                    android:layout_marginBottom="8dp"/>
+
+                <Button
+                    android:id="@+id/btn_log_mood"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Log Mood"
+                    android:backgroundTint="@color/green"
+                    android:textColor="@color/white"/>
             </LinearLayout>
-
-
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>

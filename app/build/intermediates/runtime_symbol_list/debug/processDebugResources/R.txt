@@ -3022,6 +3022,11 @@ int drawable design_ic_visibility 0x7f070083
 int drawable design_ic_visibility_off 0x7f070084
 int drawable design_password_eye 0x7f070085
 int drawable design_snackbar_background 0x7f070086
+int drawable face_amazing 0x7f0700f0
+int drawable face_awful 0x7f0700f1
+int drawable face_good 0x7f0700f2
+int drawable face_meh 0x7f0700f3
+int drawable face_sad 0x7f0700f4
 int drawable green_border_background 0x7f070087
 int drawable ic_add 0x7f070088
 int drawable ic_arrow_back_black_24 0x7f070089
@@ -3234,6 +3239,7 @@ int id bounceStart 0x7f080066
 int id breakfastAddButton 0x7f080067
 int id breakfastContainer 0x7f080068
 int id btn_add_meal 0x7f080069
+int id btn_log_mood 0x7f080228
 int id buttonPanel 0x7f08006a
 int id cache_measures 0x7f08006b
 int id calendar_icon 0x7f08006c
@@ -3278,6 +3284,7 @@ int id currentState 0x7f080090
 int id custom 0x7f080091
 int id customPanel 0x7f080092
 int id cut 0x7f080093
+int id dateTimeTextView 0x7f080229
 int id date_picker_actions 0x7f080094
 int id date_text 0x7f080095
 int id decelerate 0x7f080096
@@ -3329,6 +3336,11 @@ int id exitUntilCollapsed 0x7f0800c2
 int id expand_activities_button 0x7f0800c3
 int id expanded_menu 0x7f0800c4
 int id fab_add 0x7f0800c5
+int id face_amazing 0x7f08022a
+int id face_awful 0x7f08022b
+int id face_good 0x7f08022c
+int id face_meh 0x7f08022d
+int id face_sad 0x7f08022e
 int id fade 0x7f0800c6
 int id fats_progress 0x7f0800c7
 int id fill 0x7f0800c8
@@ -3795,6 +3807,7 @@ int layout abc_tooltip 0x7f0b001b
 int layout activity_food_log 0x7f0b001c
 int layout activity_food_search 0x7f0b001d
 int layout activity_home 0x7f0b001e
+int layout activity_mood 0x7f0b0072
 int layout activity_profile 0x7f0b001f
 int layout custom_dialog 0x7f0b0020
 int layout design_bottom_navigation_item 0x7f0b0021
@@ -3878,6 +3891,7 @@ int layout select_dialog_item_material 0x7f0b006c
 int layout select_dialog_multichoice_material 0x7f0b006d
 int layout select_dialog_singlechoice_material 0x7f0b006e
 int layout support_simple_spinner_dropdown_item 0x7f0b006f
+int menu navigation_menu 0x7f130000
 int mipmap ic_launcher 0x7f0d0000
 int mipmap ic_launcher_round 0x7f0d0001
 int plurals mtrl_badge_content_description 0x7f0e0000

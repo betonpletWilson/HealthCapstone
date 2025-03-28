@@ -10,6 +10,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -46,6 +47,7 @@ public class HomeActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
 
         ImageView profileImage = findViewById(R.id.profile_image);
         profileImage.setOnClickListener(v -> {
@@ -87,49 +89,50 @@ public class HomeActivity extends AppCompatActivity {
         subtractWater.setOnClickListener(v -> addWater(-0.1f));
 
 
-        // Set up bottom navigation
-        View homeNav = findViewById(R.id.nav_home);         //nav left button
-        View reportsNav = findViewById(R.id.nav_reports);       //nav right button
-        FloatingActionButton addFab = findViewById(R.id.fab_add);   // nav middle button
-
-
-        homeNav.setOnClickListener(v -> {
-            // Already on home screen
-            //change the Home button to something else
-        });
-
-        reportsNav.setOnClickListener(v -> {
-            // Navigate to reports screen
-            // Intent intent = new Intent(HomeActivity.this, ReportsActivity.class);
-            // startActivity(intent);
-        });
-
-        addFab.setOnClickListener(v -> {
-            // Open add food/water dialog
-            // showAddItemDialog();
-        });
-
         // Popup nav drawer
+        FloatingActionButton addFab = findViewById(R.id.fab_add);
         LinearLayout addMenu = findViewById(R.id.add_menu);
         Button addMealButton = findViewById(R.id.btn_add_meal);
+        Button logMoodButton = findViewById(R.id.btn_log_mood);
+
+        // Modify the layout parameters for the add_menu
+        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) addMenu.getLayoutParams();
+        layoutParams.bottomToTop = R.id.fab_add; // Position above the fab button
+        layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
+        layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
+        addMenu.setLayoutParams(layoutParams);
 
         addFab.setOnClickListener(v -> {
             if (addMenu.getVisibility() == View.GONE) {
                 addMenu.setVisibility(View.VISIBLE);
                 addMenu.setAlpha(0f);
-                addMenu.animate().alpha(1f).setDuration(200).start();
+                addMenu.animate()
+                        .alpha(1f)
+                        .setDuration(200)
+                        .start();
             } else {
-                addMenu.animate().alpha(0f).setDuration(200).withEndAction(() -> {
-                    addMenu.setVisibility(View.GONE);
-                }).start();
+                addMenu.animate()
+                        .alpha(0f)
+                        .setDuration(200)
+                        .withEndAction(() -> {
+                            addMenu.setVisibility(View.GONE);
+                        })
+                        .start();
             }
         });
 
         addMealButton.setOnClickListener(v -> {
             Intent intent = new Intent(HomeActivity.this, FoodLogActivity.class);
             startActivity(intent);
-            addMenu.setVisibility(View.GONE); //  hide the menu
+            addMenu.setVisibility(View.GONE); // hide the menu
         });
+
+        logMoodButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, MoodActivity.class);
+            startActivity(intent);
+            addMenu.setVisibility(View.GONE); // hide the menu
+        });
+
     }
 
     private void addWater(float amount) {

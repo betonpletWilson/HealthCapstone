@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-34:12
-INJECTED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-34:12
+ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-35:12
+INJECTED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-35:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\93fd0d7beb0f2878ced76c63f62ef1b7\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\999c243b4c8177f84ec0c328128657cd\transformed\constraintlayout-2.2.1\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\0fc7738744b17a4bf213555a224daae9\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
@@ -56,8 +56,8 @@ MERGED from [androidx.annotation:annotation-experimental:1.4.0] C:\Users\sbwea\.
 	xmlns:android
 		ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:11-69
 application
-ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:5:5-32:19
-INJECTED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:5:5-32:19
+ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:5:5-33:19
+INJECTED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:5:5-33:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\93fd0d7beb0f2878ced76c63f62ef1b7\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\93fd0d7beb0f2878ced76c63f62ef1b7\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\999c243b4c8177f84ec0c328128657cd\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -108,22 +108,26 @@ activity#com.fitwizard.fitwizard.FoodSearchActivity
 ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:20:9-56
 	android:name
 		ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:20:19-53
+activity#com.fitwizard.fitwizard.MoodActivity
+ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:21:9-50
+	android:name
+		ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:21:19-47
 activity#com.fitwizard.fitwizard.HomeActivity
-ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:21:5-27:16
+ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:22:5-28:16
 	android:exported
-		ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:22:9-32
+		ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:23:9-32
 	android:name
-		ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:21:15-43
+		ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:22:15-43
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:23:9-26:25
+ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:24:9-27:25
 action#android.intent.action.MAIN
-ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:24:13-65
+ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:25:13-65
 	android:name
-		ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:24:21-62
+		ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:25:21-62
 category#android.intent.category.LAUNCHER
-ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:25:13-73
+ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:26:13-73
 	android:name
-		ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:25:23-70
+		ADDED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:26:23-70
 uses-sdk
 INJECTED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml
