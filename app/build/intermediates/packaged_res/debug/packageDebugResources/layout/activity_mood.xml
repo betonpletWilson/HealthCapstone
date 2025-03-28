@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="24dp"
+    android:background="@android:color/white">
+
+    <!-- Header Row with Back Button and Text -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@android:color/white">
+
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back"
+            android:padding="12dp"
+            android:src="@drawable/ic_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="Mood Log"
+            android:textColor="@android:color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <!-- Question TextView -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="How are you today?"
+        android:textSize="24sp"
+        android:layout_marginTop="32dp"
+        android:textColor="@android:color/black"/>
+
+    <!-- Date and Time TextView -->
+    <TextView
+        android:id="@+id/dateTimeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Today's Date at Time"
+        android:textSize="16sp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/green"/>
+
+    <!-- Mood Buttons Layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/face_amazing"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@null"
+            android:contentDescription="Amazing"
+            android:scaleType="fitCenter"
+            android:src="@drawable/face_amazing" />
+
+        <ImageButton
+            android:id="@+id/face_good"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@null"
+            android:contentDescription="Good"
+            android:scaleType="fitCenter"
+            android:src="@drawable/face_good" />
+
+        <ImageButton
+            android:id="@+id/face_meh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@null"
+            android:contentDescription="Meh"
+            android:scaleType="fitCenter"
+            android:src="@drawable/face_meh" />
+
+        <ImageButton
+            android:id="@+id/face_sad"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@null"
+            android:contentDescription="Sad"
+            android:scaleType="fitCenter"
+            android:src="@drawable/face_sad" />
+
+        <ImageButton
+            android:id="@+id/face_awful"
+            android:layout_width="63dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:background="@null"
+            android:contentDescription="Awful"
+            android:scaleType="fitCenter"
+            android:src="@drawable/face_awful" />
+    </LinearLayout>
+</LinearLayout>
