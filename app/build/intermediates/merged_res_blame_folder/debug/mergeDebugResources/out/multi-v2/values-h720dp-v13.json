@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.fitwizard.fitwizard.app-mergeDebugResources-29:/values-h720dp-v13/values-h720dp-v13.xml",
+            "outputFile": "com.fitwizard.fitwizard.app-mergeDebugResources-30:/values-h720dp-v13/values-h720dp-v13.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\sbwea\\.gradle\\caches\\8.10.2\\transforms\\43f73b5103be510aee23d1b5e11c1164\\transformed\\appcompat-1.7.0\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
+                    "source": "C:\\Users\\Miles Wilson\\.gradle\\caches\\8.10.2\\transforms\\d286216eaa1f260b19f80ac0f350d0d6\\transformed\\appcompat-1.7.0\\res\\values-h720dp-v13\\values-h720dp-v13.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
