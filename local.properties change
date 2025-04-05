@@ -5,4 +5,7 @@
 # For customization when using a Version Control System, please read the
 # header note.
 #Wed Mar 19 19:28:55 CDT 2025
-sdk.dir=C\:\\Users\\sbwea\\AppData\\Local\\Android\\Sdk
+
+# Change UsernameHere to user's directory name; this is the name seen when opening the computer's command prompt after
+  # C:\Users\
+sdk.dir=C\:\\Users\\UsernameHere\\AppData\\Local\\Android\\Sdk
