@@ -1,6 +1,8 @@
 # Health Capstone
 
-##Steps to clone
+NOTE: the local-properties file has been removed and will be created and need to be configured
+
+## Steps to clone
 1. Clone the repo
 2. Restart PC
 3. Delete the .gradle in the user folder (this is found in This PC > Load Disk > Users > [userName] > .gradle
