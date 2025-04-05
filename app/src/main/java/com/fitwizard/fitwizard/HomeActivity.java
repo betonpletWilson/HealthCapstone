@@ -2,13 +2,17 @@ package com.fitwizard.fitwizard;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -20,140 +24,166 @@ import java.util.Locale;
 
 
 //      TO-DO/ THINGS THAT NEED TO BE FIXED
-// - Structure of the popout nav drawer at the bottom, the "Add Meal" button is in the wrong location
-// - Popout nav drawer fix 2: when the user selects the screen outside of the drawer, the drawer should minimize again
-// - Add water tracking that logs the users water intake to their background
-// - Fix water tracker shape (the blue pill shaped object)
-// - Update 'Nutrients Indicator' section to get the real values
-
+// TODO: Structure of the popout nav drawer at the bottom, the buttons are in the wrong location
+// TODO: Popout nav drawer fix 2: when the user selects the screen outside of the drawer, the drawer should minimize again
+// TODO: Add water tracking backend
+// TODO: Fix water tracker shape (the blue pill shaped object)
+// TODO: Update 'Nutrients Indicator' section to get the real values
 
 
 public class HomeActivity extends AppCompatActivity {
 
-    private ProgressBar proteinsProgress, fatsProgress, carbsProgress, caloriesProgress;
     private WaterLevelView waterLevelView;
-    private TextView waterAmount;
+    private TextView waterAmount, waterTime, dateText;
     private float currentWater = 1.9f;
-    private final float waterGoal = 2.5f;
+    final float waterGoal = 2.5f;
 
-
+    private ProgressBar proteinsProgress, fatsProgress, carbsProgress, caloriesProgress;
+    private FloatingActionButton addWaterBtn, subtractWaterBtn, addFab;
+    private LinearLayout addMenu;
+    private Button addMealButton, logMoodButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        //removal of top bar with "fit_wizard" name on top of screen
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
 
+        initializeViews();
+        setupProfileImage();
+        setupNutrientIndicators();
+        setupWaterControls();
+        setupPopupNavMenu();
+    }
 
-        ImageView profileImage = findViewById(R.id.profile_image);
-        profileImage.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, ProfileActivity.class);
-            startActivity(intent);
-        });
+    private void initializeViews() {
+        // UI components
+        waterAmount = findViewById(R.id.water_amount);
+        waterTime = findViewById(R.id.water_time);
+        waterLevelView = findViewById(R.id.water_level);
+        dateText = findViewById(R.id.date_text);
 
-        // Initialize views
+        // Progress Bars
         proteinsProgress = findViewById(R.id.proteins_progress);
         fatsProgress = findViewById(R.id.fats_progress);
         carbsProgress = findViewById(R.id.carbs_progress);
         caloriesProgress = findViewById(R.id.calories_progress);
-        waterLevelView = findViewById(R.id.water_level);
-        waterAmount = findViewById(R.id.water_amount);
 
-        //Nutrients Indicator
-        // Set progress values
-        proteinsProgress.setProgress(67); // change to ( goalProtein() - getCurrProtein() ) / 100
+        // Water buttons
+        addWaterBtn = findViewById(R.id.water_add);
+        subtractWaterBtn = findViewById(R.id.water_subtract);
+
+        // Popup menu components
+        addFab = findViewById(R.id.fab_add);
+        addMenu = findViewById(R.id.add_menu);
+        addMealButton = findViewById(R.id.btn_add_meal);
+        logMoodButton = findViewById(R.id.btn_log_mood);
+
+        // Set Date Text
+        dateText.setText(new SimpleDateFormat("MMM dd", Locale.getDefault()).format(new Date()));
+
+        // Click listener for setting custom water amount
+        waterAmount.setOnClickListener(v -> showWaterInputDialog());
+    }
+
+    private void setupProfileImage() {
+        ImageView profileImage = findViewById(R.id.profile_image);
+        profileImage.setOnClickListener(v -> {
+            startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
+        });
+    }
+
+    private void setupNutrientIndicators() {
+        // Set initial progress values
+        proteinsProgress.setProgress(67);  // TODO: Change to dynamic calculation
         fatsProgress.setProgress(25);
         carbsProgress.setProgress(94);
         caloriesProgress.setProgress(72);
+    }
 
-        // Set water level
+    private void setupWaterControls() {
+        addWaterBtn.setOnClickListener(v -> modifyWaterAmount(0.1f));
+        subtractWaterBtn.setOnClickListener(v -> modifyWaterAmount(-0.1f));
+
+        // Initial display update
         updateWaterDisplay();
+    }
 
-        // Set date text
-        TextView dateText = findViewById(R.id.date_text);
-        SimpleDateFormat sdf = new SimpleDateFormat("MMM dd", Locale.getDefault());
-        dateText.setText(sdf.format(new Date()));
-
-        // Set up water control buttons
-        FloatingActionButton addWater = findViewById(R.id.water_add);     // Plus button
-        FloatingActionButton subtractWater = findViewById(R.id.water_subtract); //Minus button
-
-        // Pressing the plus button
-        addWater.setOnClickListener(v -> addWater(0.1f));
-
-        // Pressing the minus button
-        subtractWater.setOnClickListener(v -> addWater(-0.1f));
-
-
-        // Popup nav drawer
-        FloatingActionButton addFab = findViewById(R.id.fab_add);
-        LinearLayout addMenu = findViewById(R.id.add_menu);
-        Button addMealButton = findViewById(R.id.btn_add_meal);
-        Button logMoodButton = findViewById(R.id.btn_log_mood);
-
-        // Modify the layout parameters for the add_menu
+    private void setupPopupNavMenu() {
+        // Adjusting layout
         ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) addMenu.getLayoutParams();
-        layoutParams.bottomToTop = R.id.fab_add; // Position above the fab button
+        layoutParams.bottomToTop = R.id.fab_add;
         layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
         layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
         addMenu.setLayoutParams(layoutParams);
 
-        addFab.setOnClickListener(v -> {
-            if (addMenu.getVisibility() == View.GONE) {
-                addMenu.setVisibility(View.VISIBLE);
-                addMenu.setAlpha(0f);
-                addMenu.animate()
-                        .alpha(1f)
-                        .setDuration(200)
-                        .start();
-            } else {
-                addMenu.animate()
-                        .alpha(0f)
-                        .setDuration(200)
-                        .withEndAction(() -> {
-                            addMenu.setVisibility(View.GONE);
-                        })
-                        .start();
-            }
-        });
-
-        addMealButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, FoodLogActivity.class);
-            startActivity(intent);
-            addMenu.setVisibility(View.GONE); // hide the menu
-        });
-
-        logMoodButton.setOnClickListener(v -> {
-            Intent intent = new Intent(HomeActivity.this, MoodActivity.class);
-            startActivity(intent);
-            addMenu.setVisibility(View.GONE); // hide the menu
-        });
-
+        addFab.setOnClickListener(v -> togglePopupMenu());
+        addMealButton.setOnClickListener(v -> openActivity(FoodLogActivity.class));
+        logMoodButton.setOnClickListener(v -> openActivity(MoodActivity.class));
     }
 
-    private void addWater(float amount) {
-        currentWater += amount;
-        // Ensure water doesn't go below 0
-        currentWater = Math.max(0, currentWater);
+    private void modifyWaterAmount(float amount) {
+        currentWater = Math.max(0, currentWater + amount);
         updateWaterDisplay();
-
-        // Update last time text
-        TextView waterTime = findViewById(R.id.water_time);
-        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.getDefault());
-        waterTime.setText("Last time " + sdf.format(new Date()));
+        updateWaterTime();
     }
 
     private void updateWaterDisplay() {
-        // Update water amount text
         waterAmount.setText(String.format(Locale.getDefault(), "%.1f / %.1fL", currentWater, waterGoal));
-
-        // Update water level view
-        float percentage = Math.min(currentWater / waterGoal, 1.0f);
-        waterLevelView.setWaterLevel(percentage);
+        waterLevelView.setWaterLevel(Math.min(currentWater / waterGoal, 1.0f));
     }
 
+    private void updateWaterTime() {
+        String formattedTime = new SimpleDateFormat("h:mm a", Locale.getDefault()).format(new Date());
+        waterTime.setText(getString(R.string.last_time_text, formattedTime));
+    }
+
+    private void showWaterInputDialog() {
+        final EditText input = new EditText(this);
+        input.setInputType(InputType.TYPE_CLASS_NUMBER | InputType.TYPE_NUMBER_FLAG_DECIMAL);
+        input.setHint("Enter water amount (L)");
+        input.setText(String.valueOf(currentWater));
+
+        new AlertDialog.Builder(this)
+                .setTitle("Set Water Amount")
+                .setView(input)
+                .setPositiveButton("Set", (dialog, which) -> {
+                    try {
+                        float newAmount = Float.parseFloat(input.getText().toString());
+                        if (newAmount >= 0) {
+                            currentWater = newAmount;
+                            updateWaterDisplay();
+                            updateWaterTime();
+                        } else {
+                            showToast("Please enter a positive value");
+                        }
+                    } catch (NumberFormatException e) {
+                        showToast("Please enter a valid number");
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .show();
+    }
+
+    private void togglePopupMenu() {
+        if (addMenu.getVisibility() == View.GONE) {
+            addMenu.setVisibility(View.VISIBLE);
+            addMenu.setAlpha(0f);
+            addMenu.animate().alpha(1f).setDuration(200).start();
+        } else {
+            addMenu.animate().alpha(0f).setDuration(200).withEndAction(() -> addMenu.setVisibility(View.GONE)).start();
+        }
+    }
+
+    private void openActivity(Class<?> activityClass) {
+        startActivity(new Intent(HomeActivity.this, activityClass));
+        addMenu.setVisibility(View.GONE);
+    }
+
+    private void showToast(String message) {
+        Toast.makeText(HomeActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
 }

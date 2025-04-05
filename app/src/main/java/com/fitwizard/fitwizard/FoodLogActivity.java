@@ -13,7 +13,17 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
 
+
+
+
+//TODO: food_item_layout.xml update, remove hard coded values/ warnings
+//TODO: Fix meal logging screen so that the user can scroll when there are multiple food inputs
+
+
+
 public class FoodLogActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -134,7 +144,7 @@ public class FoodLogActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     finalContainer.removeView(foodItemView);
-                    // TODO: Remove from database if you're storing the data
+                    // TODO: Update database when deleting the food item
                 }
             });
 

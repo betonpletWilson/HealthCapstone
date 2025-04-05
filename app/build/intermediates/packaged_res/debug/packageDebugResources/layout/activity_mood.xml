@@ -8,7 +8,7 @@
     android:padding="24dp"
     android:background="@android:color/white">
 
-    <!-- Header Row with Back Button and Text -->
+    <!-- Header Row with Back Button and Text (Unchanged) -->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
@@ -35,7 +35,7 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <!-- Question TextView -->
+    <!-- Question TextView (Unchanged) -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,17 +44,17 @@
         android:layout_marginTop="32dp"
         android:textColor="@android:color/black"/>
 
-    <!-- Date and Time TextView -->
+    <!-- Date and Time TextView (Unchanged) -->
     <TextView
         android:id="@+id/dateTimeTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Today's Date at Time"
+        android:text="@string/today_s_date_at_time"
         android:textSize="16sp"
         android:layout_marginTop="16dp"
         android:textColor="@color/green"/>
 
-    <!-- Mood Buttons Layout -->
+    <!-- Mood Buttons Layout with Added LinearLayouts for Text -->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -62,54 +62,119 @@
         android:gravity="center"
         android:orientation="horizontal">
 
-        <ImageButton
-            android:id="@+id/face_amazing"
+        <!-- Amazing Mood -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@null"
-            android:contentDescription="Amazing"
-            android:scaleType="fitCenter"
-            android:src="@drawable/face_amazing" />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="8dp">
+            <ImageButton
+                android:id="@+id/face_amazing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:contentDescription="Amazing"
+                android:scaleType="fitCenter"
+                android:src="@drawable/face_amazing" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Amazing"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/face_good"
+        <!-- Good Mood -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@null"
-            android:contentDescription="Good"
-            android:scaleType="fitCenter"
-            android:src="@drawable/face_good" />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="8dp">
+            <ImageButton
+                android:id="@+id/face_good"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:contentDescription="Good"
+                android:scaleType="fitCenter"
+                android:src="@drawable/face_good" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Good"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/face_meh"
+        <!-- Meh Mood -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@null"
-            android:contentDescription="Meh"
-            android:scaleType="fitCenter"
-            android:src="@drawable/face_meh" />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="8dp">
+            <ImageButton
+                android:id="@+id/face_meh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:contentDescription="Meh"
+                android:scaleType="fitCenter"
+                android:src="@drawable/face_meh" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Meh"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/face_sad"
+        <!-- Sad Mood -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@null"
-            android:contentDescription="Sad"
-            android:scaleType="fitCenter"
-            android:src="@drawable/face_sad" />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="8dp">
+            <ImageButton
+                android:id="@+id/face_sad"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:contentDescription="Sad"
+                android:scaleType="fitCenter"
+                android:src="@drawable/face_sad" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sad"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
 
-        <ImageButton
-            android:id="@+id/face_awful"
-            android:layout_width="63dp"
+        <!-- Awful Mood -->
+        <LinearLayout
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:background="@null"
-            android:contentDescription="Awful"
-            android:scaleType="fitCenter"
-            android:src="@drawable/face_awful" />
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_margin="8dp">
+            <ImageButton
+                android:id="@+id/face_awful"
+                android:layout_width="63dp"
+                android:layout_height="wrap_content"
+                android:background="@null"
+                android:contentDescription="Awful"
+                android:scaleType="fitCenter"
+                android:src="@drawable/face_awful" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Awful"
+                android:textSize="12sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
     </LinearLayout>
 </LinearLayout>

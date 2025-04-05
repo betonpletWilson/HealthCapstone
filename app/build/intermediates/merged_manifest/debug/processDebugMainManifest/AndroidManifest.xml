@@ -33,6 +33,7 @@
         <activity android:name="com.fitwizard.fitwizard.ProfileActivity" />
         <activity android:name="com.fitwizard.fitwizard.FoodSearchActivity" />
         <activity android:name="com.fitwizard.fitwizard.MoodActivity" />
+        <activity android:name="com.fitwizard.fitwizard.MoodJournalActivity" />
         <activity
             android:name="com.fitwizard.fitwizard.HomeActivity"
             android:exported="true" >

@@ -38,13 +38,38 @@ public class MoodActivity extends AppCompatActivity {
         setupMoodButton(R.id.face_awful);
     }
 
+
     private void setupMoodButton(int buttonId) {
         ImageButton button = findViewById(buttonId);
         button.setOnClickListener(v -> {
-            // Here you would typically log the mood and navigate to the next screen
-            // For now, we'll just print the mood
+            // Get the resource name for the selected mood
             String mood = getResources().getResourceEntryName(buttonId);
-            System.out.println("Selected mood: " + mood);
+
+            // Get the drawable resource ID from the ImageButton
+            // This emoji will be carried to the next screen
+            int drawableResourceId = 0;
+            if (buttonId == R.id.face_amazing) {
+                drawableResourceId = R.drawable.face_amazing;
+            } else if (buttonId == R.id.face_good) {
+                drawableResourceId = R.drawable.face_good;
+            } else if (buttonId == R.id.face_meh) {
+                drawableResourceId = R.drawable.face_meh;
+            } else if (buttonId == R.id.face_sad) {
+                drawableResourceId = R.drawable.face_sad;
+            } else if (buttonId == R.id.face_awful) {
+                drawableResourceId = R.drawable.face_awful;
+            }
+
+            // Create an intent to navigate to MoodJournalActivity
+            Intent intent = new Intent(MoodActivity.this, MoodJournalActivity.class);
+
+            // Pass the drawable resource ID to the next activity
+            intent.putExtra("SELECTED_MOOD_RESOURCE_ID", drawableResourceId);
+
+
+
+            // Start the activity
+            startActivity(intent);
         });
     }
 }

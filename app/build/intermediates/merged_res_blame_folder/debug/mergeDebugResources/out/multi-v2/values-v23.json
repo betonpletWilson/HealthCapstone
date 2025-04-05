@@ -4,7 +4,7 @@
             "outputFile": "com.fitwizard.fitwizard.app-mergeDebugResources-29:/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\sbwea\\.gradle\\caches\\8.10.2\\transforms\\6720e48dbee2a22da5e48ab058ba12ae\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\sbwea\\.gradle\\caches\\8.10.2\\transforms\\08a505f183d1f0a9fc2d7d23a10744a2\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\sbwea\\.gradle\\caches\\8.10.2\\transforms\\93fd0d7beb0f2878ced76c63f62ef1b7\\transformed\\material-1.12.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\sbwea\\.gradle\\caches\\8.10.2\\transforms\\ca00c0f84d8fe804219c377362d666dc\\transformed\\material-1.12.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,5,9,13,16,19,22,25,28,32",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -42,7 +42,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\sbwea\\.gradle\\caches\\8.10.2\\transforms\\43f73b5103be510aee23d1b5e11c1164\\transformed\\appcompat-1.7.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\sbwea\\.gradle\\caches\\8.10.2\\transforms\\9e0f7750f0d1aa41822a2968eea2c998\\transformed\\appcompat-1.7.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",

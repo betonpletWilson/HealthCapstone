@@ -20,7 +20,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Back"
+            android:contentDescription="@string/back"
             android:padding="12dp"
             android:src="@drawable/ic_back" />
 
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Meal Logging"
+            android:text="@string/meal_logging_text"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -52,9 +52,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:text="Breakfast"
+                android:text="@string/breakfast_text"
                 android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:ignore="RelativeOverlap" />
 
             <ImageButton
                 android:id="@+id/breakfastAddButton"
@@ -63,7 +64,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Add breakfast"
+                android:contentDescription="@string/add_breakfast_text"
                 android:src="@drawable/ic_add" />
         </RelativeLayout>
 
@@ -109,9 +110,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:text="Lunch"
+                android:text="@string/lunch_text"
                 android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:ignore="RelativeOverlap" />
 
             <ImageButton
                 android:id="@+id/lunchAddButton"
@@ -120,7 +122,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Add lunch"
+                android:contentDescription="@string/add_lunch_text"
                 android:src="@drawable/ic_add" />
         </RelativeLayout>
 
@@ -166,9 +168,10 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:text="Dinner"
+                android:text="@string/dinner_text"
                 android:textColor="@android:color/black"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:ignore="RelativeOverlap" />
 
             <ImageButton
                 android:id="@+id/dinnerAddButton"
@@ -177,7 +180,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="Add dinner"
+                android:contentDescription="@string/add_dinner_text"
                 android:src="@drawable/ic_add" />
         </RelativeLayout>
 

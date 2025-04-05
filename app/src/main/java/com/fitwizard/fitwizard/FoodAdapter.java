@@ -25,8 +25,10 @@ public class FoodAdapter extends ArrayAdapter<FoodData> {
         TextView nameText = convertView.findViewById(R.id.foodName);
         TextView detailsText = convertView.findViewById(R.id.foodDetails);
 
+        assert food != null;
         nameText.setText(food.getName());
-        detailsText.setText("Calories: " + food.getCalories() + ", Protein: " + food.getProtein() + "g");
+        String details = getContext().getString(R.string.food_details, food.getCalories(), food.getProtein());
+        detailsText.setText(details);
 
         return convertView;
     }
