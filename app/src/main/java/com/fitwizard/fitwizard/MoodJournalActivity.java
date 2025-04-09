@@ -2,6 +2,7 @@ package com.fitwizard.fitwizard;
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -28,7 +30,6 @@ import java.util.UUID;
 
 //TODO: All functions related to sample data that need to be removed are at the bottom
 //TODO: Remove/Change functions with backend connections, VIEW TODOS BELOW / ABOVE FUNCTIONS THAT REQUIRE CHANGES
-
 
 
 public class MoodJournalActivity extends AppCompatActivity {
@@ -47,6 +48,9 @@ public class MoodJournalActivity extends AppCompatActivity {
     // Set to track selected tag IDs
     private Set<String> selectedTagIds;
 
+    // Selected mood resource ID
+    private int selectedMoodResourceId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,9 +65,9 @@ public class MoodJournalActivity extends AppCompatActivity {
         selectedTagIds = new HashSet<>();
         initializeUI();
         initializeTagColors();
-        loadMoodData(); //loads all mood tags information
+        loadMoodData(); // loads all mood tags information
 
-        //back button
+        // back button
         ImageButton backButton = findViewById(R.id.journalBackButton);
         backButton.setOnClickListener(v -> onBackPressed());
 
@@ -74,14 +78,14 @@ public class MoodJournalActivity extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent != null) {
             // Get resource ID of the selected mood
-            int moodResourceId = intent.getIntExtra("SELECTED_MOOD_RESOURCE_ID", -1);
+            selectedMoodResourceId = intent.getIntExtra("SELECTED_MOOD_RESOURCE_ID", -1);
 
-            //This is the upper left emoji that popups next to the back button
-            if (moodResourceId != -1) {
+            // This is the upper left emoji that popups next to the back button
+            if (selectedMoodResourceId != -1) {
                 ImageView moodImageView = findViewById(R.id.selectedMoodImageView);
 
                 if (moodImageView != null) {
-                    moodImageView.setImageResource(moodResourceId);
+                    moodImageView.setImageResource(selectedMoodResourceId);
                 }
             }
         }
@@ -96,10 +100,6 @@ public class MoodJournalActivity extends AppCompatActivity {
         // Set up save button
         findViewById(R.id.saveJournalButton).setOnClickListener(v -> saveJournalEntry()); // call saveJournalEntry function
     }
-
-
-
-
 
     /*
         This is the popup to add and create a new mood tag
@@ -134,9 +134,6 @@ public class MoodJournalActivity extends AppCompatActivity {
         dialog.show();
     }
 
-
-
-
     /**
      * Create a chip from MoodData
      * Stores the ID in the tag
@@ -154,23 +151,67 @@ public class MoodJournalActivity extends AppCompatActivity {
             chip.setChipBackgroundColor(ColorStateList.valueOf(colorResId));
         }
 
-        // Add click listener
-        chip.setOnClickListener(v -> {
-            chip.setChecked(!chip.isChecked());
+        chip.setOnCheckedChangeListener((buttonView, isChecked) -> {
             String tagId = (String) chip.getTag();
 
-            if (chip.isChecked()) {
+            if (isChecked) {
                 selectedTagIds.add(tagId);
             } else {
                 selectedTagIds.remove(tagId);
             }
+
+            // Show the selected tags status
+            showSelectedTagsToast();
         });
+
+        // Check if this tag is already selected (for UI restoration)
+        if (selectedTagIds.contains(moodData.getId())) {
+            chip.setChecked(true);
+        }
 
         return chip;
     }
 
+    /**
+     * Shows a toast message with all currently selected tags
+     */
+    private void showSelectedTagsToast() {
+        // Get names of all selected tags
+        List<String> selectedTagNames = new ArrayList<>();
+        for (String tagId : selectedTagIds) {
+            for (MoodData moodData : moodDataList) {
+                if (moodData.getId().equals(tagId)) {
+                    selectedTagNames.add(moodData.getTagName());
+                    break;
+                }
+            }
+        }
 
-    //TODO: change the function to add tags to the backend
+        StringBuilder message = new StringBuilder();
+
+        if (selectedTagNames.isEmpty()) {
+            message.append("No tags selected");
+        } else if (selectedTagNames.size() == 1) {
+            message.append("Selected tag: '").append(selectedTagNames.get(0)).append("'");
+        } else if (selectedTagNames.size() == 2) {
+            message.append("Selected tags: '").append(selectedTagNames.get(0))
+                    .append("' and '").append(selectedTagNames.get(1)).append("'");
+        } else {
+            message.append("Selected tags: ");
+            for (int i = 0; i < selectedTagNames.size(); i++) {
+                message.append("'").append(selectedTagNames.get(i)).append("'");
+                if (i < selectedTagNames.size() - 2) {
+                    message.append(", ");
+                } else if (i == selectedTagNames.size() - 2) {
+                    message.append(", and ");
+                }
+            }
+        }
+
+        // Show the toast
+        Toast.makeText(this, message.toString(), Toast.LENGTH_SHORT).show();
+    }
+
     private void addNewTag(String tagName, String category) {
         // Generate a unique ID
         String newId = UUID.randomUUID().toString();
@@ -201,27 +242,55 @@ public class MoodJournalActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Added " + tagName + " to " + category, Toast.LENGTH_SHORT).show();
 
-        // save this new tag to your backend/database here
+        // save this new tag to backend/database here
         saveMoodDataToBackend(newMoodData);
     }
 
-
-    //TODO: Push data to the backend when the tag is saved
     /**
-     * Example method to save mood data to backend
-     * MoodData: tag id's, name's, type's
+     * Save the new tag to backend database
      */
     private void saveMoodDataToBackend(MoodData moodData) {
+        // TODO: Implement database logic here to save a new tag
 
     }
 
-    //TODO: change functionality to save the journal entry
-    //TODO: change journalContent and remove finish() to functions that will save the journal data
+    /**
+     * Save journal entry to backend database
+     */
+    private void saveJournalEntryToDatabase(MoodData journalEntry) {
+        // TODO: Implement database logic here to save journal entry
+
+    }
+
+    private int darkenColor(int color, float factor) {
+        int a = Color.alpha(color);
+        int r = Math.round(Color.red(color) * factor);
+        int g = Math.round(Color.green(color) * factor);
+        int b = Math.round(Color.blue(color) * factor);
+        return Color.argb(a, r, g, b);
+    }
+
+    /**
+     * Save the journal entry and selected tags to the database
+     */
     private void saveJournalEntry() {
         EditText journalEditText = findViewById(R.id.journalEntryEditText);
         String journalContent = journalEditText.getText().toString().trim();
 
-        // Get all selected tags data (not just the strings)
+        // Check if journal content is empty
+        if (journalContent.isEmpty()) {
+            Toast.makeText(this, "Please write something in your journal", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Create journal entry model
+        MoodData journalEntry = new MoodData();
+        journalEntry.setId(UUID.randomUUID().toString());
+        journalEntry.setContent(journalContent);
+        journalEntry.setDate(new Date());
+        journalEntry.setMoodResourceId(selectedMoodResourceId);
+
+        // Get all selected tags data
         List<MoodData> selectedTags = new ArrayList<>();
         for (String tagId : selectedTagIds) {
             for (MoodData moodData : moodDataList) {
@@ -232,18 +301,25 @@ public class MoodJournalActivity extends AppCompatActivity {
             }
         }
 
+        // Set the selected tags to the journal entry
+        journalEntry.setSelectedTags(selectedTags);
 
-        // For now, just show a confirmation message
+        // Save journal entry to database
+        saveJournalEntryToDatabase(journalEntry);
+
+        // Show success message with the number of selected tags
         Toast.makeText(this, "Journal entry saved with " + selectedTags.size() + " tags", Toast.LENGTH_SHORT).show();
-        finish();
+
+        // Navigate to HomeActivity after saving
+        Intent intent = new Intent(MoodJournalActivity.this, HomeActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intent);
+        finish(); // Optional: remove it from the stack
     }
 
-
-
-
-
-    //TODO: change color loading when working with backend
-    //Loads the tag with their corresponding color
+    /**
+     * Initialize tag colors for different categories
+     */
     private void initializeTagColors() {
         tagColorMap = new HashMap<>();
         tagColorMap.put("emotion", ContextCompat.getColor(this, R.color.green));
@@ -252,11 +328,9 @@ public class MoodJournalActivity extends AppCompatActivity {
         tagColorMap.put("social", ContextCompat.getColor(this, R.color.dark_pink));
     }
 
-
-    //TODO: Populate tags from backend
     /**
      * Populate the UI with tags from moodDataList
-     * Reset and  repopulates the page currently
+     * Reset and repopulates the page currently
      */
     private void populateTagsUI() {
         // Clear existing chips
@@ -286,17 +360,16 @@ public class MoodJournalActivity extends AppCompatActivity {
         }
     }
 
-
-    //TODO: remove this function contents to load the moodDataList from backend
     /**
      * Load mood data from backend data source
-     * BELOW IS THE EXAMPLE DATA SOURCE / CURRENT TAG ITEMS
+     * Currently contains sample data
      */
     private void loadMoodData() {
+        // TODO: Replace with database call to load tags
+
         // Initialize the list
         moodDataList = new ArrayList<>();
 
-        // Add sample data - in a real app, you would get this from your database
         // Emotion tags
         moodDataList.add(new MoodData("e1", "happy", "emotion"));
         moodDataList.add(new MoodData("e2", "sad", "emotion"));
@@ -325,10 +398,4 @@ public class MoodJournalActivity extends AppCompatActivity {
         // Populate the UI with the loaded tags
         populateTagsUI();
     }
-
-
-
-
-
-
 }
