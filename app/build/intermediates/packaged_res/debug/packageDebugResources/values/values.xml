@@ -23,7 +23,9 @@
     <string name="add_tag">Add Tag</string>
     <string name="add_text">Add</string>
     <string name="add_todays_tags">Add Todays Tags</string>
+    <string name="amazing">Amazing</string>
     <string name="app_name">FitWizard</string>
+    <string name="awful">Awful</string>
     <string name="back">Back</string>
     <string name="breakfast_text">Breakfast</string>
     <string name="calories_text">Calories</string>
@@ -37,7 +39,9 @@
     <string name="fats_text">Fats</string>
     <string name="food_details">Calories: %1$d, Protein: %2$dg</string>
     <string name="food_name">Food Name</string>
+    <string name="good">Good</string>
     <string name="hobbies_text">Hobbies</string>
+    <string name="how_are_you_today">How are you today?</string>
     <string name="journal_log">Journal Log</string>
     <string name="journal_text">Journal</string>
     <string name="last_time_text">Last time %s</string>
@@ -46,11 +50,14 @@
     <string name="lunch_text">Lunch</string>
     <string name="meal_logging_text">Meal Logging</string>
     <string name="meal_type">Meal Type</string>
+    <string name="meh">Meh</string>
+    <string name="mood_log_text">Mood Log</string>
     <string name="number_of_servings">Number of servings:</string>
     <string name="nutrients_indicator">Nutrients Indicator</string>
     <string name="one">1</string>
     <string name="profile_image_desc">Profile Image</string>
     <string name="proteins_text">Proteins</string>
+    <string name="sad">Sad</string>
     <string name="save">Save</string>
     <string name="search">Search</string>
     <string name="search_food_items">Search food items</string>

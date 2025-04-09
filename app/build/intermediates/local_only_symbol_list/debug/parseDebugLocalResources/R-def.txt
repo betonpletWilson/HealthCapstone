@@ -42,6 +42,8 @@ id breakfastAddButton
 id breakfastContainer
 id btn_add_meal
 id btn_log_mood
+id buttonLogin
+id buttonRegister
 id calendar_icon
 id caloriesTextView
 id calories_progress
@@ -52,6 +54,9 @@ id date_text
 id deleteButton
 id dinnerAddButton
 id dinnerContainer
+id editTextEmail
+id editTextName
+id editTextPassword
 id emotionTagsChipGroup
 id fab_add
 id face_amazing
@@ -67,6 +72,7 @@ id foodNameTextView
 id hobbiesTagsChipGroup
 id journalBackButton
 id journalEntryEditText
+id logoImage
 id lunchAddButton
 id lunchContainer
 id macrosTextView
@@ -100,9 +106,11 @@ id water_title
 layout activity_food_log
 layout activity_food_search
 layout activity_home
+layout activity_login
 layout activity_mood
 layout activity_mood_journal
 layout activity_profile
+layout activity_register
 layout dialog_add_tag
 layout dialog_food_search
 layout food_data_list_item
@@ -117,7 +125,9 @@ string add_meal
 string add_tag
 string add_text
 string add_todays_tags
+string amazing
 string app_name
+string awful
 string back
 string breakfast_text
 string calories_text
@@ -131,7 +141,9 @@ string enter_tag_name
 string fats_text
 string food_details
 string food_name
+string good
 string hobbies_text
+string how_are_you_today
 string journal_log
 string journal_text
 string last_time_text
@@ -140,11 +152,14 @@ string log_mood
 string lunch_text
 string meal_logging_text
 string meal_type
+string meh
+string mood_log_text
 string number_of_servings
 string nutrients_indicator
 string one
 string profile_image_desc
 string proteins_text
+string sad
 string save
 string search
 string search_food_items

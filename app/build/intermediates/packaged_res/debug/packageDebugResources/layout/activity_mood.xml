@@ -21,7 +21,7 @@
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Back"
+            android:text="@string/back"
             android:padding="12dp"
             android:src="@drawable/ic_back" />
 
@@ -29,7 +29,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="Mood Log"
+            android:text="@string/mood_log_text"
             android:textColor="@android:color/black"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -39,7 +39,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="How are you today?"
+        android:text="@string/how_are_you_today"
         android:textSize="24sp"
         android:layout_marginTop="32dp"
         android:textColor="@android:color/black"/>
@@ -74,13 +74,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:contentDescription="Amazing"
+                android:contentDescription="@string/amazing"
                 android:scaleType="fitCenter"
                 android:src="@drawable/face_amazing" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Amazing"
+                android:text="@string/amazing"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp"/>
         </LinearLayout>
@@ -97,13 +97,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:contentDescription="Good"
+                android:contentDescription="@string/good"
                 android:scaleType="fitCenter"
                 android:src="@drawable/face_good" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Good"
+                android:text="@string/good"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp"/>
         </LinearLayout>
@@ -120,13 +120,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:contentDescription="Meh"
+                android:contentDescription="@string/meh"
                 android:scaleType="fitCenter"
                 android:src="@drawable/face_meh" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Meh"
+                android:text="@string/meh"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp"/>
         </LinearLayout>
@@ -143,13 +143,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:contentDescription="Sad"
+                android:contentDescription="@string/sad"
                 android:scaleType="fitCenter"
                 android:src="@drawable/face_sad" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sad"
+                android:text="@string/sad"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp"/>
         </LinearLayout>
@@ -166,13 +166,13 @@
                 android:layout_width="63dp"
                 android:layout_height="wrap_content"
                 android:background="@null"
-                android:contentDescription="Awful"
+                android:contentDescription="@string/awful"
                 android:scaleType="fitCenter"
                 android:src="@drawable/face_awful" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Awful"
+                android:text="@string/awful"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp"/>
         </LinearLayout>

@@ -27,15 +27,8 @@
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.FitWizard" >
-
-        <!-- Define the HomeActivity as the main entry point -->
-        <activity android:name="com.fitwizard.fitwizard.FoodLogActivity" />
-        <activity android:name="com.fitwizard.fitwizard.ProfileActivity" />
-        <activity android:name="com.fitwizard.fitwizard.FoodSearchActivity" />
-        <activity android:name="com.fitwizard.fitwizard.MoodActivity" />
-        <activity android:name="com.fitwizard.fitwizard.MoodJournalActivity" />
         <activity
-            android:name="com.fitwizard.fitwizard.HomeActivity"
+            android:name="com.fitwizard.fitwizard.LoginActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,6 +36,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.fitwizard.fitwizard.RegisterActivity" />
+        <activity android:name="com.fitwizard.fitwizard.HomeActivity" />
+
+        <!-- Define the HomeActivity as the main entry point -->
+        <activity android:name="com.fitwizard.fitwizard.FoodLogActivity" />
+        <activity android:name="com.fitwizard.fitwizard.ProfileActivity" />
+        <activity android:name="com.fitwizard.fitwizard.FoodSearchActivity" />
+        <activity android:name="com.fitwizard.fitwizard.MoodActivity" />
+        <activity android:name="com.fitwizard.fitwizard.MoodJournalActivity" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

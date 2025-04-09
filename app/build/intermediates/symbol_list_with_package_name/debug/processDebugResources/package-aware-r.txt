@@ -3247,7 +3247,9 @@ id breakfastAddButton
 id breakfastContainer
 id btn_add_meal
 id btn_log_mood
+id buttonLogin
 id buttonPanel
+id buttonRegister
 id cache_measures
 id calendar_icon
 id callMeasure
@@ -3330,6 +3332,9 @@ id easeInOut
 id easeOut
 id east
 id edge
+id editTextEmail
+id editTextName
+id editTextPassword
 id edit_query
 id edit_text_id
 id elastic
@@ -3416,6 +3421,7 @@ id line3
 id linear
 id listMode
 id list_item
+id logoImage
 id lunchAddButton
 id lunchContainer
 id m3_side_sheet
@@ -3823,9 +3829,11 @@ layout abc_tooltip
 layout activity_food_log
 layout activity_food_search
 layout activity_home
+layout activity_login
 layout activity_mood
 layout activity_mood_journal
 layout activity_profile
+layout activity_register
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -3947,9 +3955,11 @@ string add_meal
 string add_tag
 string add_text
 string add_todays_tags
+string amazing
 string androidx_startup
 string app_name
 string appbar_scrolling_view_behavior
+string awful
 string back
 string bottom_sheet_behavior
 string bottomsheet_action_collapse
@@ -3985,8 +3995,10 @@ string fab_transformation_sheet_behavior
 string fats_text
 string food_details
 string food_name
+string good
 string hide_bottom_view_on_scroll_behavior
 string hobbies_text
+string how_are_you_today
 string icon_content_description
 string item_view_role_description
 string journal_log
@@ -4035,6 +4047,8 @@ string material_timepicker_select_time
 string material_timepicker_text_input_mode_description
 string meal_logging_text
 string meal_type
+string meh
+string mood_log_text
 string mtrl_badge_numberless_content_description
 string mtrl_checkbox_button_icon_path_checked
 string mtrl_checkbox_button_icon_path_group_name
@@ -4107,6 +4121,7 @@ string path_password_eye_mask_visible
 string path_password_strike_through
 string profile_image_desc
 string proteins_text
+string sad
 string save
 string search
 string search_food_items
