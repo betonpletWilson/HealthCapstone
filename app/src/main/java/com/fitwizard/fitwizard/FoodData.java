@@ -1,6 +1,8 @@
 package com.fitwizard.fitwizard;
 
 
+//TODO: Convert int to float
+
 // Formating and information to be pulled
 //Used by FoodSearchActivity
 //Used by FoodAdapter for getView()
@@ -24,10 +26,10 @@ public class FoodData {
     }
 
     public String getName() { return name; }
-    public int getCalories() { return calories; }
-    public int getProtein() { return protein; }
-    public int getFats() { return fats; }
-    public int getCarbs() { return carbs; }
+    public int getCalories() { return calories; }  // keep as an INT value
+    public int getProtein() { return protein; }  //change to _g
+    public int getFats() { return fats; }    //Change to _g
+    public int getCarbs() { return carbs; }   //Change to _g
     public String getServingSize() { return servingSize; }
 }
 

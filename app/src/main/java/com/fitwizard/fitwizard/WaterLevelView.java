@@ -20,9 +20,10 @@ public class WaterLevelView extends View {
     private Paint backgroundPaint;
     private Paint waterPaint;
     private Paint textPaint;
-    private Path wavePath;
+    private Path waterPath;
     private RectF containerRect;
     private float waterLevel = 0.76f; // 76%
+    private float cornerRadius = 40f;
 
     public WaterLevelView(Context context) {
         super(context);
@@ -42,13 +43,15 @@ public class WaterLevelView extends View {
         waterPaint = new Paint();
         waterPaint.setColor(Color.parseColor("#70A1FF")); // Light blue
         waterPaint.setStyle(Paint.Style.FILL);
+        waterPaint.setAntiAlias(true);
 
         textPaint = new Paint();
         textPaint.setColor(Color.WHITE);
         textPaint.setTextSize(30);
         textPaint.setTextAlign(Paint.Align.CENTER);
+        textPaint.setAntiAlias(true);
 
-        wavePath = new Path();
+        waterPath = new Path();
         containerRect = new RectF();
     }
 
@@ -59,31 +62,39 @@ public class WaterLevelView extends View {
         int width = getWidth();
         int height = getHeight();
 
-        //this needs to be fixed for the bottom part
         // Draw container background with rounded corners
         containerRect.set(0, 0, width, height);
-        canvas.drawRoundRect(containerRect, 40, 40, backgroundPaint);
+        canvas.drawRoundRect(containerRect, cornerRadius, cornerRadius, backgroundPaint);
 
         // Calculate water height based on percentage
         int waterHeight = (int) (height * waterLevel);
         int waterY = height - waterHeight;
 
-        // Draw water /blue and update water height
-        wavePath.reset();
-        wavePath.moveTo(0, waterY);
+        // Create a clipping path for the container shape
+        Path clipPath = new Path();
+        clipPath.addRoundRect(containerRect, cornerRadius, cornerRadius, Path.Direction.CW);
 
-        wavePath.lineTo(0, height);
-        wavePath.lineTo(width, height);
-        wavePath.lineTo(width, waterY);
-        wavePath.close();
+        // Save canvas state before clipping
+        canvas.save();
+        canvas.clipPath(clipPath);
 
-        canvas.drawPath(wavePath, waterPaint);
+        // Draw water rectangle (will be clipped to container shape)
+        waterPath.reset();
+        waterPath.moveTo(0, waterY);
+        waterPath.lineTo(0, height);
+        waterPath.lineTo(width, height);
+        waterPath.lineTo(width, waterY);
+        waterPath.close();
+        canvas.drawPath(waterPath, waterPaint);
 
         // Draw percentage text
         String percentText = (int)(waterLevel * 100) + "%";
         float textX = width / 2f;
         float textY = height / 2f + 10; // Adjust for text centering
         canvas.drawText(percentText, textX, textY, textPaint);
+
+        // Restore canvas to unclipped state
+        canvas.restore();
     }
 
     public void setWaterLevel(float level) {
