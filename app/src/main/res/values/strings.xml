@@ -1,0 +1,63 @@
+<resources>
+    <string name="app_name">FitWizard</string>
+
+    <!--Homepage text -->
+    <string name="last_time_text">Last time %s</string>
+    <string name="profile_image_desc">Profile Image</string>
+    <string name="today_text">Today</string>
+    <string name="nutrients_indicator">Nutrients Indicator</string>
+    <string name="proteins_text">Proteins</string>
+    <string name="fats_text">Fats</string>
+    <string name="carbs_text">Carbs</string>
+    <string name="calories_text">Calories</string>
+    <string name="water_intake_text">Water Intake</string>
+    <string name="water_text">Water</string>
+
+    <!-- meal logging screens -->
+    <string name="add_meal">Add Meal</string>
+    <string name="log_mood">Log Mood</string>
+    <string name="delete_food_item">Delete food item</string>
+    <string name="food_name">Food Name</string>
+    <string name="serving_size">Serving Size</string>
+    <string name="back">Back</string>
+    <string name="meal_type">Meal Type</string>
+    <string name="number_of_servings">Number of servings:</string>
+    <string name="one">1</string>
+    <string name="enter_servings">Enter servings</string>
+    <string name="cancel_text">Cancel</string>
+    <string name="add_text">Add</string>
+    <string name="search_food_items">Search food items</string>
+    <string name="search">Search</string>
+    <string name="add_breakfast_text">Add breakfast</string>
+    <string name="meal_logging_text">Meal Logging</string>
+    <string name="add_dinner_text">Add dinner</string>
+    <string name="add_lunch_text">Add lunch</string>
+    <string name="lunch_text">Lunch</string>
+    <string name="breakfast_text">Breakfast</string>
+    <string name="dinner_text">Dinner</string>
+    <string name="food_details">Calories: %1$d, Protein: %2$dg</string>
+
+
+    <!-- Mood logging -->
+    <string name="enter_tag_name">Enter tag name:</string>
+    <string name="selected_mood">Selected Mood</string>
+    <string name="journal_log">Journal Log</string>
+    <string name="add_tag">Add Tag</string>
+    <string name="add_todays_tags">Add Todays Tags</string>
+    <string name="emotion_text">Emotion</string>
+    <string name="sleep_text">Sleep</string>
+    <string name="hobbies_text">Hobbies</string>
+    <string name="social_text">Social</string>
+    <string name="journal_text">Journal</string>
+    <string name="log_how_youre_feeling_here">Log how you\'re feeling here...</string>
+    <string name="tag_name">Tag name</string>
+    <string name="save">Save</string>
+    <string name="today_s_date_at_time">Today\'s Date at Time</string>
+    <string name="how_are_you_today">How are you today?</string>
+    <string name="mood_log_text">Mood Log</string>
+    <string name="amazing">Amazing</string>
+    <string name="good">Good</string>
+    <string name="meh">Meh</string>
+    <string name="sad">Sad</string>
+    <string name="awful">Awful</string>
+</resources>
