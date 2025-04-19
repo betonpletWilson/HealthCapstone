@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -27,7 +26,6 @@ import java.util.Locale;
 // TODO: Structure of the popout nav drawer at the bottom, the buttons are in the wrong location
 // TODO: Popout nav drawer fix 2: when the user selects the screen outside of the drawer, the drawer should minimize again
 // TODO: Add water tracking backend
-// TODO: Fix water tracker shape (the blue pill shaped object)
 // TODO: Update 'Nutrients Indicator' section to get the real values
 
 
@@ -41,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
     private ProgressBar proteinsProgress, fatsProgress, carbsProgress, caloriesProgress;
     private FloatingActionButton addWaterBtn, subtractWaterBtn, addFab;
     private LinearLayout addMenu;
-    private Button addMealButton, logMoodButton;
+    private Button addMealButton, logMoodButton, newNotifButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +79,7 @@ public class HomeActivity extends AppCompatActivity {
         addMenu = findViewById(R.id.add_menu);
         addMealButton = findViewById(R.id.btn_add_meal);
         logMoodButton = findViewById(R.id.btn_log_mood);
+        newNotifButton = findViewById(R.id.btn_new_notif);
 
         // Set Date Text
         dateText.setText(new SimpleDateFormat("MMM dd", Locale.getDefault()).format(new Date()));
@@ -98,7 +97,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private void setupNutrientIndicators() {
         // Set initial progress values
-        proteinsProgress.setProgress(67);  // TODO: Change to dynamic calculation
+        proteinsProgress.setProgress(67);  // TODO: Change to dynamic calculation, get backend data
         fatsProgress.setProgress(25);
         carbsProgress.setProgress(94);
         caloriesProgress.setProgress(72);
@@ -113,16 +112,36 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setupPopupNavMenu() {
-        // Adjusting layout
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) addMenu.getLayoutParams();
-        layoutParams.bottomToTop = R.id.fab_add;
-        layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
-        layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
-        addMenu.setLayoutParams(layoutParams);
-
+        // Move the popup menu outside the bottom nav card
         addFab.setOnClickListener(v -> togglePopupMenu());
         addMealButton.setOnClickListener(v -> openActivity(FoodLogActivity.class));
         logMoodButton.setOnClickListener(v -> openActivity(MoodActivity.class));
+        newNotifButton.setOnClickListener(v -> openActivity(NotificationsActivity.class));
+    }
+
+    private void togglePopupMenu() {
+        if (addMenu.getVisibility() == View.GONE) {
+            addMenu.setVisibility(View.VISIBLE);
+            addMenu.setAlpha(0f);
+            addMenu.setTranslationY(100f);
+            addMenu.animate()
+                    .alpha(1f)
+                    .translationY(0f)
+                    .setDuration(200)
+                    .start();
+        } else {
+            addMenu.animate()
+                    .alpha(0f)
+                    .translationY(100f)
+                    .setDuration(200)
+                    .withEndAction(() -> addMenu.setVisibility(View.GONE))
+                    .start();
+        }
+    }
+
+    private void openActivity(Class<?> activityClass) {
+        startActivity(new Intent(HomeActivity.this, activityClass));
+        addMenu.setVisibility(View.GONE);
     }
 
     private void modifyWaterAmount(float amount) {
@@ -166,21 +185,6 @@ public class HomeActivity extends AppCompatActivity {
                 })
                 .setNegativeButton("Cancel", null)
                 .show();
-    }
-
-    private void togglePopupMenu() {
-        if (addMenu.getVisibility() == View.GONE) {
-            addMenu.setVisibility(View.VISIBLE);
-            addMenu.setAlpha(0f);
-            addMenu.animate().alpha(1f).setDuration(200).start();
-        } else {
-            addMenu.animate().alpha(0f).setDuration(200).withEndAction(() -> addMenu.setVisibility(View.GONE)).start();
-        }
-    }
-
-    private void openActivity(Class<?> activityClass) {
-        startActivity(new Intent(HomeActivity.this, activityClass));
-        addMenu.setVisibility(View.GONE);
     }
 
     private void showToast(String message) {

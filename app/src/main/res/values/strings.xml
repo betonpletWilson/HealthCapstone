@@ -60,4 +60,7 @@
     <string name="meh">Meh</string>
     <string name="sad">Sad</string>
     <string name="awful">Awful</string>
+    <string name="new_notif_text">New Notification</string>
+
+    <string name="notif_text">Notifications</string>
 </resources>

@@ -1,4 +1,5 @@
 package com.fitwizard.fitwizard;
+
 import android.app.AlertDialog;
 import android.content.Intent;
 import android.content.res.ColorStateList;
@@ -17,8 +18,8 @@ import androidx.core.content.ContextCompat;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -30,6 +31,7 @@ import java.util.UUID;
 
 //TODO: All functions related to sample data that need to be removed are at the bottom
 //TODO: Remove/Change functions with backend connections, VIEW TODOS BELOW / ABOVE FUNCTIONS THAT REQUIRE CHANGES
+//TODO: add emoji/mood data tag to the backend/ data calls in MoodData
 
 
 public class MoodJournalActivity extends AppCompatActivity {

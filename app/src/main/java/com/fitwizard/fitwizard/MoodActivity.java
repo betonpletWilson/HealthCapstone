@@ -10,6 +10,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+//This is the screen with emojis in a straight line / How are you today? screen
+//
+
+
 public class MoodActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,8 +69,6 @@ public class MoodActivity extends AppCompatActivity {
 
             // Pass the drawable resource ID to the next activity
             intent.putExtra("SELECTED_MOOD_RESOURCE_ID", drawableResourceId);
-
-
 
             // Start the activity
             startActivity(intent);

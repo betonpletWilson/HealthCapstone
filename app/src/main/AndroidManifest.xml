@@ -13,19 +13,21 @@
         android:theme="@style/Theme.FitWizard"
         tools:targetApi="31" >
 
-    <!-- Define the HomeActivity as the main entry point -->
-    <activity android:name=".FoodLogActivity" />
+        <!-- Define the HomeActivity as the main entry point -->
+        <activity android:name=".FoodLogActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name=".FoodSearchActivity" />
         <activity android:name=".MoodActivity" />
         <activity android:name=".MoodJournalActivity" />
-    <activity android:name=".HomeActivity"
-        android:exported="true">
-        <intent-filter>
-            <action android:name="android.intent.action.MAIN" />
-            <category android:name="android.intent.category.LAUNCHER" />
-        </intent-filter>
-    </activity>
+        <activity android:name=".NotificationsActivity" />
+        <activity android:name=".NotifCreationActivity" />
+        <activity android:name=".HomeActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
 
 
