@@ -37,6 +37,9 @@ public class NotifCreationActivity extends AppCompatActivity {
     private TextView selectedDaysTextView;
     private Button saveButton;
     private Button cancelButton;
+    private Button btnEveryday;
+    private Button btnWeekdays;
+    private Button btnWeekends;
 
     private int selectedHour = 8;
     private int selectedMinute = 0;
@@ -69,12 +72,17 @@ public class NotifCreationActivity extends AppCompatActivity {
         saveButton = findViewById(R.id.btn_save);
         cancelButton = findViewById(R.id.btn_cancel);
 
+        // Initialize new quick option buttons
+        btnEveryday = findViewById(R.id.btn_everyday);
+        btnWeekdays = findViewById(R.id.btn_weekdays);
+        btnWeekends = findViewById(R.id.btn_weekends);
+
         // Initialize weekday toggle buttons
         String[] weekdays = new String[]{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
         weekdayToggleButtons = new ToggleButton[7];
         for (int i = 0; i < 7; i++) {
             weekdayToggleButtons[i] = findViewById(getResources().getIdentifier(
-                    "toggle" + weekdays[i].toLowerCase(), "id", getPackageName()));
+                    "toggle_" + weekdays[i].toLowerCase(), "id", getPackageName()));
         }
 
         // Set default time display
@@ -100,6 +108,28 @@ public class NotifCreationActivity extends AppCompatActivity {
             }
         });
 
+        // Quick option buttons
+        btnEveryday.setOnClickListener(v -> selectAllDays(true));
+
+        btnWeekdays.setOnClickListener(v -> {
+            // First clear all selections
+            selectAllDays(false);
+
+            // Then select Monday to Friday (indices 0-4)
+            for (int i = 0; i < 5; i++) {
+                weekdayToggleButtons[i].setChecked(true);
+            }
+        });
+
+        btnWeekends.setOnClickListener(v -> {
+            // First clear all selections
+            selectAllDays(false);
+
+            // Then select Saturday and Sunday (indices 5-6)
+            weekdayToggleButtons[5].setChecked(true);
+            weekdayToggleButtons[6].setChecked(true);
+        });
+
         // Calendar date selection
         calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
             // Update the selected day of month
@@ -115,9 +145,6 @@ public class NotifCreationActivity extends AppCompatActivity {
 
             // Update selected days display
             updateSelectedDaysText();
-
-            // Optional: Highlight selected dates on calendar
-            // This would require a custom calendar implementation
         });
 
         // Save button
@@ -125,6 +152,13 @@ public class NotifCreationActivity extends AppCompatActivity {
 
         // Cancel button
         cancelButton.setOnClickListener(v -> finish());
+    }
+
+    // Helper method to select or deselect all days
+    private void selectAllDays(boolean select) {
+        for (ToggleButton button : weekdayToggleButtons) {
+            button.setChecked(select);
+        }
     }
 
     private void updateSelectedDaysText() {

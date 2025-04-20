@@ -1,10 +1,7 @@
 package com.fitwizard.fitwizard;
 
-
-
-
 public class NotifData {
-    // Model class for notification items
+
     public static class NotificationItem {
         private String title;
         private String time;
@@ -48,9 +45,7 @@ public class NotifData {
             return backgroundColor;
         }
 
-        public void setBackgroundColor(String backgroundColor) {
-            this.backgroundColor = backgroundColor;
-        }
+
 
         public String getCategory() {
             return category;

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -23,7 +24,7 @@ import java.util.Locale;
 
 public class FoodLogActivity extends AppCompatActivity {
 
-
+    private Button btnDone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,19 @@ public class FoodLogActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
+
+        // Initialize the Done button
+        btnDone = findViewById(R.id.btn_done);
+
+        // Done button functionality
+        btnDone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent homeIntent = new Intent(FoodLogActivity.this, HomeActivity.class);
+                startActivity(homeIntent);
+                finish();
+            }
+        });
 
         // Initialize UI elements
         setupMealSection("Breakfast");
@@ -51,7 +65,6 @@ public class FoodLogActivity extends AppCompatActivity {
     }
 
     private void setupMealSection(final String mealType) {
-        // Find the appropriate button based on meal type
         ImageButton addButton = null;
 
         switch (mealType.toLowerCase()) {
