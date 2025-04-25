@@ -79,6 +79,15 @@ public class HomeActivity extends AppCompatActivity {
 
         // Click listener for setting custom water amount
         waterAmount.setOnClickListener(v -> showWaterInputDialog());
+
+        Button goalsBtn = findViewById(R.id.btn_goals);
+        goalsBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, GoalsActivity.class);
+            intent.putExtra("reset_goal", true); // optional if you want it force-reset every time
+            startActivity(intent);
+
+        });
+
     }
 
     private void setupProfileImage() {

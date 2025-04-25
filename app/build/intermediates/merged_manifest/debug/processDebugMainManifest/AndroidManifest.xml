@@ -8,6 +8,8 @@
         android:minSdkVersion="24"
         android:targetSdkVersion="35" />
 
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <permission
         android:name="com.fitwizard.fitwizard.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
         android:protectionLevel="signature" />
@@ -21,9 +23,9 @@
         android:debuggable="true"
         android:extractNativeLibs="false"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/fitwizard_foreground"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@mipmap/fitwizard_round"
         android:supportsRtl="true"
         android:testOnly="true"
         android:theme="@style/Theme.FitWizard" >
@@ -38,6 +40,7 @@
         </activity>
         <activity android:name="com.fitwizard.fitwizard.RegisterActivity" />
         <activity android:name="com.fitwizard.fitwizard.HomeActivity" />
+        <activity android:name="com.fitwizard.fitwizard.GoalsActivity" />
 
         <!-- Define the HomeActivity as the main entry point -->
         <activity android:name="com.fitwizard.fitwizard.FoodLogActivity" />
@@ -45,6 +48,10 @@
         <activity android:name="com.fitwizard.fitwizard.FoodSearchActivity" />
         <activity android:name="com.fitwizard.fitwizard.MoodActivity" />
         <activity android:name="com.fitwizard.fitwizard.MoodJournalActivity" />
+
+        <receiver
+            android:name="com.fitwizard.fitwizard.GoalReminderReceiver"
+            android:exported="true" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

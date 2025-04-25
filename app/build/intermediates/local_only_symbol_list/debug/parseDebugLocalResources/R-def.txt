@@ -5,6 +5,7 @@ color dark_gray
 color dark_pink
 color gray
 color green
+color green1
 color light_blue
 color light_pink
 color lighter_gray
@@ -22,6 +23,7 @@ drawable face_awful
 drawable face_good
 drawable face_meh
 drawable face_sad
+drawable fitwizard_background
 drawable green_border_background
 drawable ic_add
 drawable ic_back
@@ -41,20 +43,26 @@ id backButton
 id breakfastAddButton
 id breakfastContainer
 id btn_add_meal
+id btn_goals
 id btn_log_mood
 id buttonLogin
+id buttonPickDate
+id buttonPickTime
 id buttonRegister
+id buttonSaveGoal
 id calendar_icon
 id caloriesTextView
 id calories_progress
 id cancelButton
 id carbs_progress
+id checkBoxDailyReminder
 id dateTimeTextView
 id date_text
 id deleteButton
 id dinnerAddButton
 id dinnerContainer
 id editTextEmail
+id editTextGoal
 id editTextName
 id editTextPassword
 id emotionTagsChipGroup
@@ -69,6 +77,9 @@ id foodDetails
 id foodListView
 id foodName
 id foodNameTextView
+id goalHeaderText
+id goalSummaryText
+id goalsListView
 id hobbiesTagsChipGroup
 id journalBackButton
 id journalEntryEditText
@@ -85,6 +96,7 @@ id profile_card
 id profile_image
 id proteins_progress
 id saveJournalButton
+id savedGoalsLabel
 id searchButton
 id searchEditText
 id selectedMoodImageView
@@ -93,6 +105,7 @@ id servingsEditText
 id sleepTagsChipGroup
 id socialTagsChipGroup
 id tagNameEditText
+id textGoalDeadline
 id titleTextView
 id username_text
 id water_add
@@ -105,6 +118,7 @@ id water_time
 id water_title
 layout activity_food_log
 layout activity_food_search
+layout activity_goals
 layout activity_home
 layout activity_login
 layout activity_mood
@@ -116,6 +130,9 @@ layout dialog_food_search
 layout food_data_list_item
 layout food_item_layout
 menu navigation_menu
+mipmap fitwizard
+mipmap fitwizard_foreground
+mipmap fitwizard_round
 mipmap ic_launcher
 mipmap ic_launcher_round
 string add_breakfast_text

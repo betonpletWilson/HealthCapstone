@@ -407,6 +407,16 @@
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <Button
+                    android:id="@+id/btn_goals"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Goals"
+                    android:backgroundTint="@color/green"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="8dp"/>
+
+
+                <Button
                     android:id="@+id/btn_add_meal"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -422,6 +432,7 @@
                     android:text="@string/log_mood"
                     android:backgroundTint="@color/green"
                     android:textColor="@color/white"/>
+
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
