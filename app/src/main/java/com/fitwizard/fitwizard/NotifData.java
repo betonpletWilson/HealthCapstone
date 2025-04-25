@@ -1,5 +1,7 @@
 package com.fitwizard.fitwizard;
 
+import java.util.Random;
+
 public class NotifData {
 
     public static class NotificationItem {
@@ -8,13 +10,30 @@ public class NotifData {
         private String duration;
         private String backgroundColor;
         private String category;
+        private int notifID;
 
         public NotificationItem(String title, String time, String duration, String backgroundColor, String category) {
+            this.notifID = new Random().nextInt(10000); // Generate a random ID
             this.title = title;
             this.time = time;
             this.duration = duration;
             this.backgroundColor = backgroundColor;
             this.category = category;
+            this.notifID = notifID;
+        }
+
+        // Add constructor with ID
+        public NotificationItem(int notifID, String title, String time, String duration, String backgroundColor, String category) {
+            this.notifID = notifID;
+            this.title = title;
+            this.time = time;
+            this.duration = duration;
+            this.backgroundColor = backgroundColor;
+            this.category = category;
+        }
+
+        public int getNotifID(){
+            return notifID;
         }
 
         public String getTitle() {
@@ -44,6 +63,7 @@ public class NotifData {
         public String getBackgroundColor() {
             return backgroundColor;
         }
+
 
 
 

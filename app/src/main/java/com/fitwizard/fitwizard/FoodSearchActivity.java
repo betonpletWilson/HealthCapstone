@@ -160,9 +160,9 @@ public class FoodSearchActivity extends AppCompatActivity {
 
         // Calculate total nutrition based on servings
         double totalCalories = food.getCalories() * servings;
-        double totalProtein = food.getProtein() * servings;
-        double totalFat = food.getFats() * servings;
-        double totalCarbs = food.getCarbs() * servings;
+        double totalProtein = food.getProtein_g() * servings;
+        double totalFat = food.getFats_g() * servings;
+        double totalCarbs = food.getCarbs_g() * servings;
 
         // Create an intent to return the data to FoodLogActivity
         Intent resultIntent = new Intent();

@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Locale;
 
 
-
+//TODO: change structure of food Item info
 
 //TODO: food_item_layout.xml update, remove hard coded values/ warnings
 //TODO: Fix meal logging screen so that the user can scroll when there are multiple food inputs

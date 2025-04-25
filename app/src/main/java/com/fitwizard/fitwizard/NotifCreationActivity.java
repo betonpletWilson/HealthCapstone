@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ import java.util.Set;
 public class NotifCreationActivity extends AppCompatActivity {
 
     private EditText nameEditText;
+    private EditText messageEditText;
     private TextView timeTextView;
     private ToggleButton[] weekdayToggleButtons;
     private RadioGroup recurrenceTypeRadioGroup;
@@ -44,6 +46,12 @@ public class NotifCreationActivity extends AppCompatActivity {
     private int selectedHour = 8;
     private int selectedMinute = 0;
 
+    View colorSelectionView;
+    View goalSelectionView;
+    View medicationSelectionView;
+
+
+
     // To store selected days for monthly reminders
     private Set<Integer> selectedDaysOfMonth = new HashSet<>();
     private Calendar currentCalendar = Calendar.getInstance();
@@ -57,6 +65,15 @@ public class NotifCreationActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
+        // Back button navigation
+        ImageButton backButton = findViewById(R.id.btn_back);
+        backButton.setOnClickListener(v -> {
+            // upper left button < , return to home page
+            Intent intent = new Intent(NotifCreationActivity.this, NotificationsActivity.class);
+            startActivity(intent);
+            finish(); // closes the current activity (Meal logging)
+        });
+
         initializeViews();
         setupListeners();
     }
@@ -64,6 +81,7 @@ public class NotifCreationActivity extends AppCompatActivity {
     private void initializeViews() {
         nameEditText = findViewById(R.id.et_notification_name);
         timeTextView = findViewById(R.id.tv_selected_time);
+        messageEditText = findViewById(R.id.et_notification_message);
         recurrenceTypeRadioGroup = findViewById(R.id.rg_recurrence_type);
         weekdaysContainer = findViewById(R.id.layout_weekdays);
         monthlyContainer = findViewById(R.id.layout_monthly);
@@ -76,6 +94,11 @@ public class NotifCreationActivity extends AppCompatActivity {
         btnEveryday = findViewById(R.id.btn_everyday);
         btnWeekdays = findViewById(R.id.btn_weekdays);
         btnWeekends = findViewById(R.id.btn_weekends);
+
+        colorSelectionView = findViewById(R.id.layout_color_selection);
+        goalSelectionView = findViewById(R.id.layout_goal_selection);
+        medicationSelectionView = findViewById(R.id.layout_medication_selection);
+
 
         // Initialize weekday toggle buttons
         String[] weekdays = new String[]{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
@@ -91,6 +114,23 @@ public class NotifCreationActivity extends AppCompatActivity {
         // Default to weekday view
         weekdaysContainer.setVisibility(View.VISIBLE);
         monthlyContainer.setVisibility(View.GONE);
+
+
+
+
+
+    }
+
+    private void showColorSelectionDialog(){
+
+    }
+
+    private void showGoalSelectionDialog(){
+
+    }
+
+    private void showMedicationSelectionDialog(){
+
     }
 
     private void setupListeners() {
@@ -145,6 +185,24 @@ public class NotifCreationActivity extends AppCompatActivity {
 
             // Update selected days display
             updateSelectedDaysText();
+
+
+        });
+
+
+        colorSelectionView.setOnClickListener(v -> {
+            // Show color selection dialog
+            showColorSelectionDialog();
+        });
+
+        goalSelectionView.setOnClickListener(v -> {
+            // Show goal selection dialog
+            showGoalSelectionDialog();
+        });
+
+        medicationSelectionView.setOnClickListener(v -> {
+            // Show medication selection dialog
+            showMedicationSelectionDialog();
         });
 
         // Save button
@@ -206,24 +264,58 @@ public class NotifCreationActivity extends AppCompatActivity {
 
     private void saveNotification() {
         String name = nameEditText.getText().toString().trim();
+        String message = messageEditText.getText().toString().trim();
+
         if (name.isEmpty()) {
             Toast.makeText(this, "Please enter a name for the reminder", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        NotifData.NotificationItem item = createNotificationItem(name);
+        // Get the selected color from the colorSelection view
+        // Assuming you have a method or variable to track the selected color
+        String backgroundColor = getSelectedBackgroundColor();
+
+        // Get the formatted time from the TextView
+        String timeString = timeTextView.getText().toString();
+
+        NotifData.NotificationItem item = createNotificationItem(name, message);
 
         // Add to database and handle scheduling logic here
         // ...
 
+        // Pass data back to NotificationsActivity
         Intent resultIntent = new Intent();
+        resultIntent.putExtra("notification_id", item.getNotifID());
+        resultIntent.putExtra("notification_name", name);
+        resultIntent.putExtra("notification_time", timeString);
+        resultIntent.putExtra("notification_background", backgroundColor);
+
+        // You might want to serialize the entire item or pass each attribute separately
         setResult(RESULT_OK, resultIntent);
         finish();
     }
 
-    private NotifData.NotificationItem createNotificationItem(String name) {
+
+    // Helper method to get selected background color
+    private String getSelectedBackgroundColor() {
+        // Implement logic to get the selected color from color selection view
+        // For example:
+        if (colorSelectionView != null) {
+            // Get the selected color tag or attribute
+            // This is a placeholder - implement based on color selection UI
+            Object selectedColor = colorSelectionView.getTag();
+            if (selectedColor != null && selectedColor instanceof String) {
+                return (String) selectedColor;
+            }
+        }
+        return "#FFF2D9"; // Default color
+    }
+
+
+    private NotifData.NotificationItem createNotificationItem(String name, String message) {
         // Format time
         String timeString = timeTextView.getText().toString();
+
 
         // Determine recurrence pattern
         String durationText;
@@ -276,6 +368,8 @@ public class NotifCreationActivity extends AppCompatActivity {
         // For this example, we'll use a default color
         String backgroundColor = "#FFF2D9";
         String category = "Activity";
+        String medication = "Flu Meds";
+
 
         return new NotifData.NotificationItem(name, timeString, durationText, backgroundColor, category);
     }

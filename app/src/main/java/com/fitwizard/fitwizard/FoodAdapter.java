@@ -27,7 +27,7 @@ public class FoodAdapter extends ArrayAdapter<FoodData> {
 
         assert food != null;
         nameText.setText(food.getName());
-        String details = getContext().getString(R.string.food_details, food.getCalories(), food.getProtein());
+        String details = getContext().getString(R.string.food_details, food.getCalories(), food.getProtein_g());
         detailsText.setText(details);
 
         return convertView;
