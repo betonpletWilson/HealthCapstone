@@ -51,7 +51,6 @@ public class NotifCreationActivity extends AppCompatActivity {
     View medicationSelectionView;
 
 
-
     // To store selected days for monthly reminders
     private Set<Integer> selectedDaysOfMonth = new HashSet<>();
     private Calendar currentCalendar = Calendar.getInstance();
@@ -71,7 +70,7 @@ public class NotifCreationActivity extends AppCompatActivity {
             // upper left button < , return to home page
             Intent intent = new Intent(NotifCreationActivity.this, NotificationsActivity.class);
             startActivity(intent);
-            finish(); // closes the current activity (Meal logging)
+            finish(); // closes the current activity
         });
 
         initializeViews();
@@ -272,7 +271,6 @@ public class NotifCreationActivity extends AppCompatActivity {
         }
 
         // Get the selected color from the colorSelection view
-        // Assuming you have a method or variable to track the selected color
         String backgroundColor = getSelectedBackgroundColor();
 
         // Get the formatted time from the TextView
@@ -289,12 +287,14 @@ public class NotifCreationActivity extends AppCompatActivity {
         resultIntent.putExtra("notification_name", name);
         resultIntent.putExtra("notification_time", timeString);
         resultIntent.putExtra("notification_background", backgroundColor);
+        resultIntent.putExtra("notification_type", item.getTypeMonthOrWeek()); // Add the type to the intent
 
         // You might want to serialize the entire item or pass each attribute separately
         setResult(RESULT_OK, resultIntent);
         finish();
     }
 
+    //TODO: setup background color selection
 
     // Helper method to get selected background color
     private String getSelectedBackgroundColor() {
@@ -316,11 +316,14 @@ public class NotifCreationActivity extends AppCompatActivity {
         // Format time
         String timeString = timeTextView.getText().toString();
 
-
         // Determine recurrence pattern
         String durationText;
+        // Determine notification type (weekly or monthly)
+        String notifTypeWeekOrMonth;
 
         if (recurrenceTypeRadioGroup.getCheckedRadioButtonId() == R.id.rb_weekday) {
+            notifTypeWeekOrMonth = "weekly"; // Set type as weekly
+
             // Collect selected weekdays
             List<String> selectedDays = new ArrayList<>();
             String[] weekdays = new String[]{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
@@ -350,6 +353,8 @@ public class NotifCreationActivity extends AppCompatActivity {
                 durationText = TextUtils.join(", ", selectedDays);
             }
         } else {
+            notifTypeWeekOrMonth = "monthly"; // Set type as monthly
+
             // Monthly recurrence - multiple days
             if (selectedDaysOfMonth.isEmpty()) {
                 durationText = "Monthly (no days selected)";
@@ -368,9 +373,8 @@ public class NotifCreationActivity extends AppCompatActivity {
         // For this example, we'll use a default color
         String backgroundColor = "#FFF2D9";
         String category = "Activity";
-        String medication = "Flu Meds";
 
-
-        return new NotifData.NotificationItem(name, timeString, durationText, backgroundColor, category);
+        // Include the type in the NotificationItem constructor
+        return new NotifData.NotificationItem(name, timeString, durationText, backgroundColor, category, notifTypeWeekOrMonth);
     }
 }

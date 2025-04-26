@@ -182,17 +182,17 @@ public class NotificationsActivity extends AppCompatActivity {
         filteredItems = new ArrayList<>();
 
         // Add sample notifications
-        notificationItems.add(new NotifData.NotificationItem("Exercise", "1:40 PM", "0/1 hr", "#FFFDD0", "exercise"));
-        notificationItems.add(new NotifData.NotificationItem("Exercise", "2:00 PM", "0/1 hr", "#FFE4B5", "exercise"));
-        notificationItems.add(new NotifData.NotificationItem("Exercise", "4:00 PM", "0/1 hr", "#FFCBC4", "exercise"));
-        notificationItems.add(new NotifData.NotificationItem("Exercise", "9:30 AM", "0/1 hr", "#FFD0CF", "exercise"));
-        notificationItems.add(new NotifData.NotificationItem("Exercise", "8:00 PM", "0/1 hr", "#E6E6FA", "exercise"));
-        notificationItems.add(new NotifData.NotificationItem("Medication", "7:00 AM", "1 pill", "#FFE6FA", "medication"));
-        notificationItems.add(new NotifData.NotificationItem("Medication", "11:00 PM", "1 pill", "#E6E6FA", "medication"));
-        notificationItems.add(new NotifData.NotificationItem("Exercise", "9:30 AM", "0/1 hr", "#FFD0CF", "exercise"));
-        notificationItems.add(new NotifData.NotificationItem("FLU meds", "9:00 PM", "0/1 hr", "#E6E6FA", "exercise"));
-        notificationItems.add(new NotifData.NotificationItem("Medication", "7:00 PM", "1 pill", "#FFE6FA", "medication"));
-        notificationItems.add(new NotifData.NotificationItem("Medication", "11:00 PM", "1 pill", "#E6E6FA", "medication"));
+        notificationItems.add(new NotifData.NotificationItem("Exercise", "1:40 PM", "0/1 hr", "#FFFDD0", "exercise", "Weekly"));
+        notificationItems.add(new NotifData.NotificationItem("Exercise", "2:00 PM", "0/1 hr", "#FFE4B5", "exercise", "Monthly"));
+        notificationItems.add(new NotifData.NotificationItem("Exercise", "4:00 PM", "0/1 hr", "#FFCBC4", "exercise", "Monthly"));
+        notificationItems.add(new NotifData.NotificationItem("Exercise", "9:30 AM", "0/1 hr", "#FFD0CF", "exercise", "Monthly"));
+        notificationItems.add(new NotifData.NotificationItem("Exercise", "8:00 PM", "0/1 hr", "#E6E6FA", "exercise", "Weekly"));
+        notificationItems.add(new NotifData.NotificationItem("Medication", "7:00 AM", "1 pill", "#FFE6FA", "medication", "Weekly"));
+        notificationItems.add(new NotifData.NotificationItem("Medication", "11:00 PM", "1 pill", "#E6E6FA", "medication", "Weekly"));
+        notificationItems.add(new NotifData.NotificationItem("Exercise", "9:30 AM", "0/1 hr", "#FFD0CF", "exercise", "Weekly"));
+        notificationItems.add(new NotifData.NotificationItem("FLU meds", "9:00 PM", "0/1 hr", "#E6E6FA", "exercise", "Weekly"));
+        notificationItems.add(new NotifData.NotificationItem("Medication", "7:00 PM", "1 pill", "#FFE6FA", "medication", "Weekly"));
+        notificationItems.add(new NotifData.NotificationItem("Medication", "11:00 PM", "1 pill", "#E6E6FA", "medication", "Weekly"));
 
 
 
@@ -249,19 +249,19 @@ public class NotificationsActivity extends AppCompatActivity {
             // Add morning section if it has items
             if (!timeGroups.get(CATEGORY_MORNING).isEmpty()) {
                 // Add section header
-                filteredItems.add(new NotifData.NotificationItem(CATEGORY_MORNING, "", null, "#FFFFFF", "header"));
+                filteredItems.add(new NotifData.NotificationItem(CATEGORY_MORNING, "", null, "#FFFFFF", "header", ""));
                 filteredItems.addAll(timeGroups.get(CATEGORY_MORNING));
             }
 
             // Add afternoon section if it has items
             if (!timeGroups.get(CATEGORY_AFTERNOON).isEmpty()) {
-                filteredItems.add(new NotifData.NotificationItem(CATEGORY_AFTERNOON, "", null, "#FFFFFF", "header"));
+                filteredItems.add(new NotifData.NotificationItem(CATEGORY_AFTERNOON, "", null, "#FFFFFF", "header", ""));
                 filteredItems.addAll(timeGroups.get(CATEGORY_AFTERNOON));
             }
 
             // Add night section if it has items
             if (!timeGroups.get(CATEGORY_NIGHT).isEmpty()) {
-                filteredItems.add(new NotifData.NotificationItem(CATEGORY_NIGHT, "", null, "#FFFFFF", "header"));
+                filteredItems.add(new NotifData.NotificationItem(CATEGORY_NIGHT, "", null, "#FFFFFF", "header", ""));
                 filteredItems.addAll(timeGroups.get(CATEGORY_NIGHT));
             }
         } else if (currentTimeFilter.equals("upcoming")) {
@@ -332,7 +332,7 @@ public class NotificationsActivity extends AppCompatActivity {
                 filteredItems.addAll(upcomingItems);
             } else {
                 // If no upcoming items, add a message
-                filteredItems.add(new NotifData.NotificationItem("No upcoming notifications", "", "", "#FFFFFF", "header"));
+                filteredItems.add(new NotifData.NotificationItem("No upcoming notifications", "", "", "#FFFFFF", "header", ""));
             }
         } else {
             // Handle all_month filter with existing logic
@@ -389,6 +389,8 @@ public class NotificationsActivity extends AppCompatActivity {
     }
 
 
+
+    //TODO: UPDATE THE NOTIFICATION TYPE
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -399,6 +401,7 @@ public class NotificationsActivity extends AppCompatActivity {
             String notificationName = data.getStringExtra("notification_name");
             String notificationTime = data.getStringExtra("notification_time");
             String backgroundColor = data.getStringExtra("notification_background");
+            String notifTypeWeeklyOrMonth = "";     //THIS IS KEPT BLANK
 
             // Create and add the new notification item
             NotifData.NotificationItem newItem = new NotifData.NotificationItem(
@@ -407,7 +410,9 @@ public class NotificationsActivity extends AppCompatActivity {
                     notificationTime,
                     "0/1 hr", // Default value, update as needed
                     backgroundColor,
-                    "exercise" // Default category, update as needed
+                    "exercise", // Default category, update as needed
+                    notifTypeWeeklyOrMonth
+
             );
 
             // Add the new item to the list

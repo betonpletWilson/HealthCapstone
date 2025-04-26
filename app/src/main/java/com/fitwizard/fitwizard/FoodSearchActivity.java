@@ -5,17 +5,20 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
-
 import java.util.ArrayList;
 import java.util.List;
+
+
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 
 
 public class FoodSearchActivity extends AppCompatActivity {
@@ -23,7 +26,6 @@ public class FoodSearchActivity extends AppCompatActivity {
     private String mealType;
     private EditText searchEditText;
     private ListView foodListView;
-
     private List<FoodData> foodList = new ArrayList<>();
 
     @Override
@@ -133,31 +135,18 @@ public class FoodSearchActivity extends AppCompatActivity {
     }
 
     // Sample food list for testing
+    // Sample food list for testing
     private List<FoodData> getSampleFoodList() {
         List<FoodData> sampleFoods = new ArrayList<>();
-        sampleFoods.add(new FoodData("Hard Boiled Egg", 78, 6, 5, 1, "1 large egg"));
-        sampleFoods.add(new FoodData("Green Apple", 95, 0, 0, 25, "1 medium apple"));
-        sampleFoods.add(new FoodData("Chicken Breast", 165, 31, 4, 0, "100g"));
-        sampleFoods.add(new FoodData("Apple Juice", 114, 0, 0, 28, "1 cup (240ml)"));
+        sampleFoods.add(new FoodData("Hard Boiled Egg", 78, 6.3f, 5.3f, 0.6f, "1 large egg"));
+        sampleFoods.add(new FoodData("Green Apple", 95, 0.5f, 0.3f, 25.1f, "1 medium apple"));
+        sampleFoods.add(new FoodData("Chicken Breast", 165, 31.0f, 3.6f, 0.0f, "100g"));
+        sampleFoods.add(new FoodData("Apple Juice", 114, 0.1f, 0.2f, 28.0f, "1 cup (240ml)"));
         return sampleFoods;
     }
 
-    // Search functionality
-    private void searchFoods(String query) {
-        List<FoodData> filteredList = new ArrayList<>();    // Change to get information from API, set a limit to only grab about 10 items
-        for (FoodData food : foodList) {
-            if (food.getName().toLowerCase().contains(query.toLowerCase())) {
-                filteredList.add(food);
-            }
-        }
-        foodListView.setAdapter(new FoodAdapter(this, filteredList));
-    }
-
-
-
     // Save the food item to the meal with specified servings
     private void saveFoodToMeal(FoodData food, String mealType, double servings) {
-
         // Calculate total nutrition based on servings
         double totalCalories = food.getCalories() * servings;
         double totalProtein = food.getProtein_g() * servings;
@@ -177,5 +166,18 @@ public class FoodSearchActivity extends AppCompatActivity {
         // Set the result and finish the activity
         setResult(Activity.RESULT_OK, resultIntent);
         finish();
+    }
+
+    // Search functionality
+    private void searchFoods(String query) {
+        List<FoodData> filteredList = new ArrayList<>();    // Change to get information from API, set a limit to only grab about 10 items
+        for (FoodData food : foodList) {
+            if (food.getName().toLowerCase().contains(query.toLowerCase())) {
+                filteredList.add(food);
+            }
         }
+        foodListView.setAdapter(new FoodAdapter(this, filteredList));
+    }
+
+
 }

@@ -15,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.Locale;
 
 
-//TODO: change structure of food Item info
+
 
 //TODO: food_item_layout.xml update, remove hard coded values/ warnings
 //TODO: Fix meal logging screen so that the user can scroll when there are multiple food inputs
@@ -23,8 +23,6 @@ import java.util.Locale;
 
 
 public class FoodLogActivity extends AppCompatActivity {
-
-    private Button btnDone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,19 +33,6 @@ public class FoodLogActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) {
             getSupportActionBar().hide();
         }
-
-        // Initialize the Done button
-        btnDone = findViewById(R.id.btn_done);
-
-        // Done button functionality
-        btnDone.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent homeIntent = new Intent(FoodLogActivity.this, HomeActivity.class);
-                startActivity(homeIntent);
-                finish();
-            }
-        });
 
         // Initialize UI elements
         setupMealSection("Breakfast");
@@ -60,11 +45,21 @@ public class FoodLogActivity extends AppCompatActivity {
             // upper left button < , return to home page
             Intent intent = new Intent(FoodLogActivity.this, HomeActivity.class);
             startActivity(intent);
-            finish(); // closes the current activity (Meal logging)
+            finish(); // close the screen, back to home screen
+        });
+
+        // Done button navigation
+        Button doneButton = findViewById(R.id.btn_done);
+        doneButton.setOnClickListener(v -> {
+            Intent intent = new Intent(FoodLogActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish(); // Close the current screen, back to home activity
         });
     }
 
+    //Connect plus buttons to their sections with ID
     private void setupMealSection(final String mealType) {
+        // Find the appropriate button based on meal type
         ImageButton addButton = null;
 
         switch (mealType.toLowerCase()) {
@@ -101,9 +96,9 @@ public class FoodLogActivity extends AppCompatActivity {
                 // Get the food data from the intent
                 String foodName = data.getStringExtra("FOOD_NAME");
                 double calories = data.getDoubleExtra("FOOD_CALORIES", 0);
-                double protein = data.getDoubleExtra("FOOD_PROTEIN", 0);
-                double fat = data.getDoubleExtra("FOOD_FAT", 0);
-                double carbs = data.getDoubleExtra("FOOD_CARBS", 0);
+                float protein = (float) data.getDoubleExtra("FOOD_PROTEIN", 0);
+                float fat = (float) data.getDoubleExtra("FOOD_FAT", 0);
+                float carbs = (float) data.getDoubleExtra("FOOD_CARBS", 0);
                 String serving = data.getStringExtra("FOOD_SERVING");
                 String mealType = data.getStringExtra("MEAL_TYPE");
 
@@ -118,8 +113,8 @@ public class FoodLogActivity extends AppCompatActivity {
         }
     }
 
-    private void addFoodItemToMeal(String foodName, double calories, double protein,
-                                   double fat, double carbs, String serving, String mealType) {
+    private void addFoodItemToMeal(String foodName, double calories, float protein,
+                                   float fat, float carbs, String serving, String mealType) {
         // Find the container for the specified meal type
         LinearLayout container = null;
         switch (mealType.toLowerCase()) {
@@ -171,9 +166,4 @@ public class FoodLogActivity extends AppCompatActivity {
             }
         }
     }
-
-
-
-
-
 }

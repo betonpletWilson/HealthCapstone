@@ -63,4 +63,5 @@
     <string name="new_notif_text">New Notification</string>
 
     <string name="notif_text">Notifications</string>
+    <string name="done_text">Done</string>
 </resources>
