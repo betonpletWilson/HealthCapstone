@@ -407,6 +407,15 @@
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <Button
+                    android:id="@+id/btn_medications"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Medications"
+                    android:backgroundTint="@color/green"
+                    android:textColor="@color/white" />
+
+
+                <Button
                     android:id="@+id/btn_goals"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

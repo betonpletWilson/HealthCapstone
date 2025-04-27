@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-45:12
-INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-45:12
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-50:12
+INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-50:12
+INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-50:12
+INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-50:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\ca00c0f84d8fe804219c377362d666dc\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\1bbe02b2503e26b80a5cbd0ebb6c0c9b\transformed\constraintlayout-2.2.1\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\cf2293aafd56327a0a63756dba1a19d5\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
@@ -61,8 +61,8 @@ ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidMani
 	android:name
 		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:7:22-74
 application
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:8:5-43:19
-INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:8:5-43:19
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:8:5-48:19
+INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:8:5-48:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\ca00c0f84d8fe804219c377362d666dc\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\ca00c0f84d8fe804219c377362d666dc\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\1bbe02b2503e26b80a5cbd0ebb6c0c9b\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -129,32 +129,44 @@ activity#com.fitwizard.fitwizard.GoalsActivity
 ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:29:9-51
 	android:name
 		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:29:19-48
+activity#com.fitwizard.fitwizard.AddEditGoalActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:30:9-57
+	android:name
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:30:19-54
+activity#com.fitwizard.fitwizard.AddEditMedicationActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:31:9-63
+	android:name
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:31:19-60
+activity#com.fitwizard.fitwizard.MedicationActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:32:9-56
+	android:name
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:32:19-53
 activity#com.fitwizard.fitwizard.FoodLogActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:33:5-49
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:38:5-49
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:33:15-46
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:38:15-46
 activity#com.fitwizard.fitwizard.ProfileActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:34:9-53
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:39:9-53
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:34:19-50
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:39:19-50
 activity#com.fitwizard.fitwizard.FoodSearchActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:35:9-56
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:9-56
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:35:19-53
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:19-53
 activity#com.fitwizard.fitwizard.MoodActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:36:9-50
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:9-50
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:36:19-47
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:19-47
 activity#com.fitwizard.fitwizard.MoodJournalActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:37:9-57
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:9-57
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:37:19-54
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:19-54
 receiver#com.fitwizard.fitwizard.GoalReminderReceiver
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:39:9-40:39
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:44:9-45:39
 	android:exported
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:13-36
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:45:13-36
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:39:19-55
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:44:19-55
 uses-sdk
 INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml

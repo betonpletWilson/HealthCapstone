@@ -41,6 +41,9 @@
         <activity android:name="com.fitwizard.fitwizard.RegisterActivity" />
         <activity android:name="com.fitwizard.fitwizard.HomeActivity" />
         <activity android:name="com.fitwizard.fitwizard.GoalsActivity" />
+        <activity android:name="com.fitwizard.fitwizard.AddEditGoalActivity" />
+        <activity android:name="com.fitwizard.fitwizard.AddEditMedicationActivity" />
+        <activity android:name="com.fitwizard.fitwizard.MedicationActivity" />
 
         <!-- Define the HomeActivity as the main entry point -->
         <activity android:name="com.fitwizard.fitwizard.FoodLogActivity" />

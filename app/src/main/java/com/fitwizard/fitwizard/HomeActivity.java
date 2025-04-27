@@ -118,6 +118,12 @@ public class HomeActivity extends AppCompatActivity {
         addFab.setOnClickListener(v -> togglePopupMenu());
         addMealButton.setOnClickListener(v -> openActivity(FoodLogActivity.class));
         logMoodButton.setOnClickListener(v -> openActivity(MoodActivity.class));
+        Button medicationsButton = findViewById(R.id.btn_medications);
+
+        medicationsButton.setOnClickListener(v -> {
+            openActivity(MedicationActivity.class);
+        });
+
     }
 
     private void modifyWaterAmount(float amount) {
