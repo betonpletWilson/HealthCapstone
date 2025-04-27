@@ -16,7 +16,7 @@
         android:theme="@style/Theme.FitWizard"
         tools:targetApi="31" >
 
-        <activity android:name=".LoginActivity"
+        <activity android:name="Login_Register.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,24 +24,24 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RegisterActivity" />
+        <activity android:name="Login_Register.RegisterActivity" />
         <activity android:name=".HomeActivity" />
-        <activity android:name=".GoalsActivity" />
-        <activity android:name=".AddEditGoalActivity" />
-        <activity android:name=".AddEditMedicationActivity" />
-        <activity android:name=".MedicationActivity" />
+        <activity android:name="Goals.GoalsActivity" />
+        <activity android:name="Goals.AddEditGoalActivity" />
+        <activity android:name="Medication.AddEditMedicationActivity" />
+        <activity android:name="Medication.MedicationActivity" />
 
 
 
 
         <!-- Define the HomeActivity as the main entry point -->
-    <activity android:name=".FoodLogActivity" />
+    <activity android:name="Recipe_Logging.FoodLogActivity" />
         <activity android:name=".ProfileActivity" />
-        <activity android:name=".FoodSearchActivity" />
-        <activity android:name=".MoodActivity" />
-        <activity android:name=".MoodJournalActivity" />
+        <activity android:name="Recipe_Logging.FoodSearchActivity" />
+        <activity android:name="Mood.MoodActivity" />
+        <activity android:name="Mood.MoodJournalActivity" />
 
-        <receiver android:name=".GoalReminderReceiver"
+        <receiver android:name="Goals.GoalReminderReceiver"
             android:exported="true" />
 
 

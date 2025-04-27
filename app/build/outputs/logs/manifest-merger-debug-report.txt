@@ -4,6 +4,7 @@ ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidMani
 INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-50:12
 INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-50:12
 INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-50:12
+MERGED from [androidx.databinding:viewbinding:8.8.1] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\e4fdd6f6c9028ec99eccbdb7b32856cb\transformed\viewbinding-8.8.1\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\ca00c0f84d8fe804219c377362d666dc\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\1bbe02b2503e26b80a5cbd0ebb6c0c9b\transformed\constraintlayout-2.2.1\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.appcompat:appcompat-resources:1.7.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\cf2293aafd56327a0a63756dba1a19d5\transformed\appcompat-resources-1.7.0\AndroidManifest.xml:2:1-7:12
@@ -22,7 +23,6 @@ MERGED from [androidx.lifecycle:lifecycle-livedata:2.6.2] C:\Users\Corey\StudioP
 MERGED from [androidx.lifecycle:lifecycle-viewmodel:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\11e0a009d0c39fd8340759f15720f5cf\transformed\lifecycle-viewmodel-2.6.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\7b7a45b00e1a5fb8ad34d81155250201\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:17:1-35:12
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\ee4b9ec457d743a20aa79a868f27db7a\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:17:1-22:12
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\4fc6e9f75ea7c361f62f79c3de58d033\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\c789b1f1b656802b83794455d3fe30c6\transformed\lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\f087451108d6474a7d408502f297444c\transformed\core-ktx-1.13.0\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.drawerlayout:drawerlayout:1.1.1] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\34ed54e472bd2d30a908ea63e225ac4f\transformed\drawerlayout-1.1.1\AndroidManifest.xml:17:1-24:12
@@ -33,6 +33,7 @@ MERGED from [androidx.viewpager:viewpager:1.0.0] C:\Users\Corey\StudioProjects\c
 MERGED from [androidx.recyclerview:recyclerview:1.1.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\a0a0588781fafb10ae125dbc364bbe16\transformed\recyclerview-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.customview:customview:1.1.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\58dccbc5983d9d92f3db71ed3bac2e92\transformed\customview-1.1.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.core:core:1.13.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\fc1880441c20890905f7d73cd3069266\transformed\core-1.13.0\AndroidManifest.xml:17:1-30:12
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\4fc6e9f75ea7c361f62f79c3de58d033\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:2:1-7:12
 MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\7ae4c45401208cd8caa66291f3cbd190\transformed\profileinstaller-1.4.0\AndroidManifest.xml:17:1-55:12
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\cded2a8656e1afc7986fcec9fe859819\transformed\cursoradapter-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.cardview:cardview:1.0.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\08a505f183d1f0a9fc2d7d23a10744a2\transformed\cardview-1.0.0\AndroidManifest.xml:17:1-22:12
@@ -101,12 +102,12 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\Co
 		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:16:9-47
 	android:dataExtractionRules
 		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:10:9-65
-activity#com.fitwizard.fitwizard.LoginActivity
+activity#Login_Register.LoginActivity
 ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:19:9-25:20
 	android:exported
 		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:20:13-36
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:19:19-48
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:19:19-62
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
 ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:21:13-24:29
 action#android.intent.action.MAIN
@@ -117,60 +118,62 @@ category#android.intent.category.LAUNCHER
 ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:23:17-77
 	android:name
 		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:23:27-74
-activity#com.fitwizard.fitwizard.RegisterActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:27:9-54
+activity#Login_Register.RegisterActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:27:9-68
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:27:19-51
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:27:19-65
 activity#com.fitwizard.fitwizard.HomeActivity
 ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:28:9-50
 	android:name
 		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:28:19-47
-activity#com.fitwizard.fitwizard.GoalsActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:29:9-51
+activity#Goals.GoalsActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:29:9-56
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:29:19-48
-activity#com.fitwizard.fitwizard.AddEditGoalActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:30:9-57
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:29:19-53
+activity#Goals.AddEditGoalActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:30:9-62
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:30:19-54
-activity#com.fitwizard.fitwizard.AddEditMedicationActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:31:9-63
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:30:19-59
+activity#Medication.AddEditMedicationActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:31:9-73
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:31:19-60
-activity#com.fitwizard.fitwizard.MedicationActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:32:9-56
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:31:19-70
+activity#Medication.MedicationActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:32:9-66
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:32:19-53
-activity#com.fitwizard.fitwizard.FoodLogActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:38:5-49
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:32:19-63
+activity#Recipe_Logging.FoodLogActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:38:5-63
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:38:15-46
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:38:15-60
 activity#com.fitwizard.fitwizard.ProfileActivity
 ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:39:9-53
 	android:name
 		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:39:19-50
-activity#com.fitwizard.fitwizard.FoodSearchActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:9-56
+activity#Recipe_Logging.FoodSearchActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:9-70
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:19-53
-activity#com.fitwizard.fitwizard.MoodActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:9-50
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:19-67
+activity#Mood.MoodActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:9-54
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:19-47
-activity#com.fitwizard.fitwizard.MoodJournalActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:9-57
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:19-51
+activity#Mood.MoodJournalActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:9-61
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:19-54
-receiver#com.fitwizard.fitwizard.GoalReminderReceiver
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:19-58
+receiver#Goals.GoalReminderReceiver
 ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:44:9-45:39
 	android:exported
 		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:45:13-36
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:44:19-55
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:44:19-60
 uses-sdk
 INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml
 INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml
+MERGED from [androidx.databinding:viewbinding:8.8.1] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\e4fdd6f6c9028ec99eccbdb7b32856cb\transformed\viewbinding-8.8.1\AndroidManifest.xml:5:5-44
+MERGED from [androidx.databinding:viewbinding:8.8.1] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\e4fdd6f6c9028ec99eccbdb7b32856cb\transformed\viewbinding-8.8.1\AndroidManifest.xml:5:5-44
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\ca00c0f84d8fe804219c377362d666dc\transformed\material-1.12.0\AndroidManifest.xml:20:5-44
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\ca00c0f84d8fe804219c377362d666dc\transformed\material-1.12.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\1bbe02b2503e26b80a5cbd0ebb6c0c9b\transformed\constraintlayout-2.2.1\AndroidManifest.xml:5:5-44
@@ -207,8 +210,6 @@ MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Corey\StudioPr
 MERGED from [androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\7b7a45b00e1a5fb8ad34d81155250201\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:21:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\ee4b9ec457d743a20aa79a868f27db7a\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-livedata-core:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\ee4b9ec457d743a20aa79a868f27db7a\transformed\lifecycle-livedata-core-2.6.2\AndroidManifest.xml:20:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\4fc6e9f75ea7c361f62f79c3de58d033\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
-MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\4fc6e9f75ea7c361f62f79c3de58d033\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\c789b1f1b656802b83794455d3fe30c6\transformed\lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.lifecycle:lifecycle-viewmodel-savedstate:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\c789b1f1b656802b83794455d3fe30c6\transformed\lifecycle-viewmodel-savedstate-2.6.2\AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core-ktx:1.13.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\f087451108d6474a7d408502f297444c\transformed\core-ktx-1.13.0\AndroidManifest.xml:5:5-44
@@ -229,6 +230,8 @@ MERGED from [androidx.customview:customview:1.1.0] C:\Users\Corey\StudioProjects
 MERGED from [androidx.customview:customview:1.1.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\58dccbc5983d9d92f3db71ed3bac2e92\transformed\customview-1.1.0\AndroidManifest.xml:20:5-22:41
 MERGED from [androidx.core:core:1.13.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\fc1880441c20890905f7d73cd3069266\transformed\core-1.13.0\AndroidManifest.xml:20:5-44
 MERGED from [androidx.core:core:1.13.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\fc1880441c20890905f7d73cd3069266\transformed\core-1.13.0\AndroidManifest.xml:20:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\4fc6e9f75ea7c361f62f79c3de58d033\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
+MERGED from [androidx.lifecycle:lifecycle-runtime:2.6.2] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\4fc6e9f75ea7c361f62f79c3de58d033\transformed\lifecycle-runtime-2.6.2\AndroidManifest.xml:5:5-44
 MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\7ae4c45401208cd8caa66291f3cbd190\transformed\profileinstaller-1.4.0\AndroidManifest.xml:21:5-44
 MERGED from [androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\7ae4c45401208cd8caa66291f3cbd190\transformed\profileinstaller-1.4.0\AndroidManifest.xml:21:5-44
 MERGED from [androidx.cursoradapter:cursoradapter:1.0.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\cded2a8656e1afc7986fcec9fe859819\transformed\cursoradapter-1.0.0\AndroidManifest.xml:20:5-44

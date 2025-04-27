@@ -48,8 +48,8 @@
 31-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:16:9-47
 32        <activity
 32-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:19:9-25:20
-33            android:name="com.fitwizard.fitwizard.LoginActivity"
-33-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:19:19-48
+33            android:name="Login_Register.LoginActivity"
+33-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:19:19-62
 34            android:exported="true" >
 34-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:20:13-36
 35            <intent-filter>
@@ -63,46 +63,46 @@
 38-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:23:27-74
 39            </intent-filter>
 40        </activity>
-41        <activity android:name="com.fitwizard.fitwizard.RegisterActivity" />
-41-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:27:9-54
-41-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:27:19-51
+41        <activity android:name="Login_Register.RegisterActivity" />
+41-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:27:9-68
+41-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:27:19-65
 42        <activity android:name="com.fitwizard.fitwizard.HomeActivity" />
 42-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:28:9-50
 42-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:28:19-47
-43        <activity android:name="com.fitwizard.fitwizard.GoalsActivity" />
-43-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:29:9-51
-43-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:29:19-48
-44        <activity android:name="com.fitwizard.fitwizard.AddEditGoalActivity" />
-44-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:30:9-57
-44-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:30:19-54
-45        <activity android:name="com.fitwizard.fitwizard.AddEditMedicationActivity" />
-45-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:31:9-63
-45-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:31:19-60
-46        <activity android:name="com.fitwizard.fitwizard.MedicationActivity" />
-46-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:32:9-56
-46-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:32:19-53
+43        <activity android:name="Goals.GoalsActivity" />
+43-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:29:9-56
+43-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:29:19-53
+44        <activity android:name="Goals.AddEditGoalActivity" />
+44-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:30:9-62
+44-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:30:19-59
+45        <activity android:name="Medication.AddEditMedicationActivity" />
+45-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:31:9-73
+45-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:31:19-70
+46        <activity android:name="Medication.MedicationActivity" />
+46-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:32:9-66
+46-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:32:19-63
 47
 48        <!-- Define the HomeActivity as the main entry point -->
-49        <activity android:name="com.fitwizard.fitwizard.FoodLogActivity" />
-49-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:38:5-49
-49-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:38:15-46
+49        <activity android:name="Recipe_Logging.FoodLogActivity" />
+49-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:38:5-63
+49-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:38:15-60
 50        <activity android:name="com.fitwizard.fitwizard.ProfileActivity" />
 50-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:39:9-53
 50-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:39:19-50
-51        <activity android:name="com.fitwizard.fitwizard.FoodSearchActivity" />
-51-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:9-56
-51-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:19-53
-52        <activity android:name="com.fitwizard.fitwizard.MoodActivity" />
-52-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:9-50
-52-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:19-47
-53        <activity android:name="com.fitwizard.fitwizard.MoodJournalActivity" />
-53-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:9-57
-53-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:19-54
+51        <activity android:name="Recipe_Logging.FoodSearchActivity" />
+51-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:9-70
+51-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:19-67
+52        <activity android:name="Mood.MoodActivity" />
+52-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:9-54
+52-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:19-51
+53        <activity android:name="Mood.MoodJournalActivity" />
+53-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:9-61
+53-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:19-58
 54
 55        <receiver
 55-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:44:9-45:39
-56            android:name="com.fitwizard.fitwizard.GoalReminderReceiver"
-56-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:44:19-55
+56            android:name="Goals.GoalReminderReceiver"
+56-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:44:19-60
 57            android:exported="true" />
 57-->C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:45:13-36
 58

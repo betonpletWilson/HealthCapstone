@@ -30,7 +30,7 @@
         android:testOnly="true"
         android:theme="@style/Theme.FitWizard" >
         <activity
-            android:name="com.fitwizard.fitwizard.LoginActivity"
+            android:name="Login_Register.LoginActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -38,22 +38,22 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.fitwizard.fitwizard.RegisterActivity" />
+        <activity android:name="Login_Register.RegisterActivity" />
         <activity android:name="com.fitwizard.fitwizard.HomeActivity" />
-        <activity android:name="com.fitwizard.fitwizard.GoalsActivity" />
-        <activity android:name="com.fitwizard.fitwizard.AddEditGoalActivity" />
-        <activity android:name="com.fitwizard.fitwizard.AddEditMedicationActivity" />
-        <activity android:name="com.fitwizard.fitwizard.MedicationActivity" />
+        <activity android:name="Goals.GoalsActivity" />
+        <activity android:name="Goals.AddEditGoalActivity" />
+        <activity android:name="Medication.AddEditMedicationActivity" />
+        <activity android:name="Medication.MedicationActivity" />
 
         <!-- Define the HomeActivity as the main entry point -->
-        <activity android:name="com.fitwizard.fitwizard.FoodLogActivity" />
+        <activity android:name="Recipe_Logging.FoodLogActivity" />
         <activity android:name="com.fitwizard.fitwizard.ProfileActivity" />
-        <activity android:name="com.fitwizard.fitwizard.FoodSearchActivity" />
-        <activity android:name="com.fitwizard.fitwizard.MoodActivity" />
-        <activity android:name="com.fitwizard.fitwizard.MoodJournalActivity" />
+        <activity android:name="Recipe_Logging.FoodSearchActivity" />
+        <activity android:name="Mood.MoodActivity" />
+        <activity android:name="Mood.MoodJournalActivity" />
 
         <receiver
-            android:name="com.fitwizard.fitwizard.GoalReminderReceiver"
+            android:name="Goals.GoalReminderReceiver"
             android:exported="true" />
 
         <provider

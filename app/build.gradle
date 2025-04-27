@@ -38,3 +38,12 @@ dependencies {
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
 }
+
+android {
+    buildFeatures {
+        viewBinding true
+    }
+    aaptOptions {
+        additionalParameters "--keep-raw-values"
+    }
+}

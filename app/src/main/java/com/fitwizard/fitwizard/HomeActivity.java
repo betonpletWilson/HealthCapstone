@@ -23,6 +23,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import Goals.GoalsActivity;
+import Medication.MedicationActivity;
+import Mood.MoodActivity;
+import Recipe_Logging.FoodLogActivity;
+
 public class HomeActivity extends AppCompatActivity {
 
     private WaterLevelView waterLevelView;
