@@ -1,5 +1,6 @@
 package com.fitwizard.fitwizard;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -18,11 +19,10 @@ import java.util.Locale;
 
 
 //TODO: food_item_layout.xml update, remove hard coded values/ warnings
-//TODO: Fix meal logging screen so that the user can scroll when there are multiple food inputs
-
 
 
 public class FoodLogActivity extends AppCompatActivity {
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -138,22 +138,29 @@ public class FoodLogActivity extends AppCompatActivity {
             TextView foodNameTextView = foodItemView.findViewById(R.id.foodNameTextView);
             TextView servingTextView = foodItemView.findViewById(R.id.servingTextView);
             TextView caloriesTextView = foodItemView.findViewById(R.id.caloriesTextView);
-            TextView macrosTextView = foodItemView.findViewById(R.id.macrosTextView);
 
             foodNameTextView.setText(foodName);
             servingTextView.setText(serving);
             caloriesTextView.setText(String.format(Locale.ENGLISH, "%.0f kcal", calories));
-            macrosTextView.setText(String.format(Locale.ENGLISH, "P: %.1fg, F: %.1fg, C: %.1fg", protein, fat, carbs));
+
+            // Store macros information in the view's tag
+            String macrosText = String.format(Locale.ENGLISH, "Protein: %.1fg\nFat: %.1fg\nCarbs: %.1fg", protein, fat, carbs);
+            foodItemView.setTag(macrosText);
+
+            // Set click listener for the entire food item to show macros popup
+            LinearLayout foodItemContainer = foodItemView.findViewById(R.id.foodItemContainer);
+            foodItemContainer.setOnClickListener(v -> showMacrosPopup(macrosText));
 
             // Add delete functionality
             ImageButton deleteButton = foodItemView.findViewById(R.id.deleteButton);
             LinearLayout finalContainer = container;
-            deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    finalContainer.removeView(foodItemView);
-                    // TODO: Update database when deleting the food item
-                }
+            deleteButton.setOnClickListener(v -> finalContainer.removeView(foodItemView));
+
+            // Add edit functionality
+            ImageButton editButton = foodItemView.findViewById(R.id.editButton);
+            editButton.setOnClickListener(v -> {
+                // TODO: Implement edit functionality
+                Toast.makeText(this, "Edit functionality to do", Toast.LENGTH_SHORT).show();
             });
 
             // Add the food item view to the container
@@ -166,4 +173,14 @@ public class FoodLogActivity extends AppCompatActivity {
             }
         }
     }
+
+    private void showMacrosPopup(String macrosText) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Nutrition Information");
+        builder.setMessage(macrosText);
+        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
+        builder.create().show();
+    }
+
+
 }

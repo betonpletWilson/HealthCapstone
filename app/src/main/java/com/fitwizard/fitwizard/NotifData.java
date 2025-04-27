@@ -13,6 +13,7 @@ public class NotifData {
         private String typeMonthOrWeek;  // Monthly or weekly reminder?
         private int notifID;   // reminder ID
 
+
         public NotificationItem(String title, String time, String duration, String backgroundColor, String category, String typeMonthOrWeek) {
             this.notifID = new Random().nextInt(10000); // Generate a random ID
             this.title = title;
@@ -63,9 +64,6 @@ public class NotifData {
         public String getBackgroundColor() {
             return backgroundColor;
         }
-
-
-
 
         public String getCategory() {
             return category;

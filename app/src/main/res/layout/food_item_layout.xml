@@ -5,9 +5,10 @@
     android:padding="8dp">
 
     <LinearLayout
+        android:id="@+id/foodItemContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_toStartOf="@id/deleteButton"
+        android:layout_toStartOf="@id/buttonContainer"
         android:orientation="vertical">
 
         <TextView
@@ -27,40 +28,41 @@
             android:textSize="14sp"
             android:textColor="@android:color/darker_gray" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/caloriesTextView"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="4dp">
-
-            <TextView
-                android:id="@+id/caloriesTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="100 kcal"
-                android:textSize="14sp"
-                android:textColor="@android:color/black" />
-
-            <TextView
-                android:id="@+id/macrosTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="P: 10g, F: 5g, C: 10g"
-                android:textSize="14sp"
-                android:layout_marginStart="16dp"
-                android:textColor="@android:color/black" />
-        </LinearLayout>
+            android:text="100 kcal"
+            android:textSize="14sp"
+            android:layout_marginTop="4dp"
+            android:textColor="@android:color/black" />
     </LinearLayout>
 
-    <ImageButton
-        android:id="@+id/deleteButton"
+    <LinearLayout
+        android:id="@+id/buttonContainer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="@string/delete_food_item"
-        android:padding="8dp"
-        android:src="@drawable/ic_subtract" />
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/editButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/edit_food_item"
+            android:padding="8dp"
+            android:src="@drawable/ic_edit" />
+
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/delete_food_item"
+            android:padding="8dp"
+            android:src="@drawable/ic_subtract" />
+    </LinearLayout>
 
 </RelativeLayout>

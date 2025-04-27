@@ -36,6 +36,9 @@
     <string name="breakfast_text">Breakfast</string>
     <string name="dinner_text">Dinner</string>
     <string name="food_details">Calories: %1$d, Protein: %2$dg</string>
+    <string name="edit_food_item">Edit food item</string>
+    <string name="nutrition_information">Nutrition Information</string>
+
 
 
     <!-- Mood logging -->

@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.chip.Chip;
@@ -59,6 +60,13 @@ public class NotificationsActivity extends AppCompatActivity {
     private String currentTimeFilter = "today"; // Changed default to "today"
     private List<String> currentCategoryFilters = new ArrayList<>();
 
+
+    //Daily Notifications
+    private TextView[] dayTextViews;
+    private final String[] dayNames = {"sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"};
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +78,7 @@ public class NotificationsActivity extends AppCompatActivity {
 
         initViews();
         setupBackButton();
+        setupCalendarView();
         setupFilterButtons();
         setupNotificationsList();
         setupPopupNavMenu();
@@ -84,6 +93,13 @@ public class NotificationsActivity extends AppCompatActivity {
         btnFiltertoday = findViewById(R.id.btn_filter_today);
         btnFilterUpcoming = findViewById(R.id.btn_filter_upcoming);
         btnFilterAllMonth = findViewById(R.id.btn_filter_all_month);
+
+        // Initialize day text views
+        dayTextViews = new TextView[7];
+        for (int i = 0; i < dayNames.length; i++) {
+            int resId = getResources().getIdentifier("day_text_" + dayNames[i], "id", getPackageName());
+            dayTextViews[i] = findViewById(resId);
+        }
 
         // Category chips
         chipMedication = findViewById(R.id.chip_medication);
@@ -105,6 +121,32 @@ public class NotificationsActivity extends AppCompatActivity {
         btnBack.setOnClickListener(v -> {
             finish();
         });
+    }
+
+    private void setupCalendarView() {
+        // Get the current calendar instance
+        Calendar calendar = Calendar.getInstance();
+
+        // Get the current day of week (0 = Sunday, 1 = Monday, ..., 6 = Saturday in Calendar)
+        int currentDayOfWeek = calendar.get(Calendar.DAY_OF_WEEK) - 1; // Convert to 0-based index
+
+        // Set dates for all days in the calendar view
+        for (int i = 0; i < dayTextViews.length; i++) {
+            // Calculate the date for this position
+            Calendar tempCal = (Calendar) calendar.clone();
+            tempCal.add(Calendar.DAY_OF_WEEK, i - currentDayOfWeek);
+            int dayOfMonth = tempCal.get(Calendar.DAY_OF_MONTH);
+
+            // Set the date text
+            dayTextViews[i].setText(String.valueOf(dayOfMonth));
+
+            // Set the background for the current day
+            if (i == currentDayOfWeek) {
+                dayTextViews[i].setBackground(ContextCompat.getDrawable(this, R.drawable.circle_outline_pink_double));
+            } else {
+                dayTextViews[i].setBackground(ContextCompat.getDrawable(this, R.drawable.circle_outline_pink));
+            }
+        }
     }
 
 
@@ -229,6 +271,7 @@ public class NotificationsActivity extends AppCompatActivity {
                     SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.US);
                     Date time1 = sdf.parse(item1.getTime());
                     Date time2 = sdf.parse(item2.getTime());
+                    assert time1 != null;
                     return time1.compareTo(time2);
                 } catch (Exception e) {
                     return 0;
