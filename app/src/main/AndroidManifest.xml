@@ -26,20 +26,22 @@
 
         <activity android:name="Login_Register.RegisterActivity" />
         <activity android:name=".HomeActivity" />
+        <activity android:name=".ProfileActivity" />
+
         <activity android:name="Goals.GoalsActivity" />
         <activity android:name="Goals.AddEditGoalActivity" />
+
         <activity android:name="Medication.AddEditMedicationActivity" />
         <activity android:name="Medication.MedicationActivity" />
 
 
-
-
-        <!-- Define the HomeActivity as the main entry point -->
-    <activity android:name="Recipe_Logging.FoodLogActivity" />
-        <activity android:name=".ProfileActivity" />
+        <activity android:name="Recipe_Logging.FoodLogActivity" />
         <activity android:name="Recipe_Logging.FoodSearchActivity" />
         <activity android:name="Mood.MoodActivity" />
         <activity android:name="Mood.MoodJournalActivity" />
+
+        <activity android:name="Reminders.NotificationsActivity" />
+        <activity android:name="Reminders.NotifCreationActivity" />
 
         <receiver android:name="Goals.GoalReminderReceiver"
             android:exported="true" />
