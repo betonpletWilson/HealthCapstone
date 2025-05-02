@@ -30,7 +30,8 @@
         <activity android:name="Goals.AddEditGoalActivity" />
         <activity android:name="Medication.AddEditMedicationActivity" />
         <activity android:name="Medication.MedicationActivity" />
-
+        <activity android:name="Exercise_Logging.ExerciseHistoryActivity" />
+        <activity android:name="Exercise_Logging.ExerciseLogActivity"  />
 
 
 

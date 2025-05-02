@@ -23,6 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import Exercise_Logging.ExerciseHistoryActivity;
 import Goals.GoalsActivity;
 import Medication.MedicationActivity;
 import Mood.MoodActivity;
@@ -92,7 +93,6 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
 
         });
-
     }
 
     private void setupProfileImage() {
@@ -124,6 +124,10 @@ public class HomeActivity extends AppCompatActivity {
         addMealButton.setOnClickListener(v -> openActivity(FoodLogActivity.class));
         logMoodButton.setOnClickListener(v -> openActivity(MoodActivity.class));
         Button medicationsButton = findViewById(R.id.btn_medications);
+
+        Button logExerciseButton = findViewById(R.id.btn_log_exercise);
+        logExerciseButton.setOnClickListener(v -> openActivity(ExerciseHistoryActivity.class));
+
 
         medicationsButton.setOnClickListener(v -> {
             openActivity(MedicationActivity.class);

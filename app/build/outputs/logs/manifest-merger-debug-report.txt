@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-50:12
-INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-50:12
-INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-50:12
-INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-50:12
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-51:12
+INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:2:1-51:12
 MERGED from [androidx.databinding:viewbinding:8.8.1] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\e4fdd6f6c9028ec99eccbdb7b32856cb\transformed\viewbinding-8.8.1\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\ca00c0f84d8fe804219c377362d666dc\transformed\material-1.12.0\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\1bbe02b2503e26b80a5cbd0ebb6c0c9b\transformed\constraintlayout-2.2.1\AndroidManifest.xml:2:1-9:12
@@ -62,8 +62,8 @@ ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidMani
 	android:name
 		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:7:22-74
 application
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:8:5-48:19
-INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:8:5-48:19
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:8:5-49:19
+INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:8:5-49:19
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\ca00c0f84d8fe804219c377362d666dc\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.12.0] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\ca00c0f84d8fe804219c377362d666dc\transformed\material-1.12.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.2.1] C:\Users\Corey\StudioProjects\caches\8.10.2\transforms\1bbe02b2503e26b80a5cbd0ebb6c0c9b\transformed\constraintlayout-2.2.1\AndroidManifest.xml:7:5-20
@@ -142,32 +142,40 @@ activity#Medication.MedicationActivity
 ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:32:9-66
 	android:name
 		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:32:19-63
+activity#Exercise_Logging.ExerciseHistoryActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:33:9-77
+	android:name
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:33:19-74
+activity#Exercise_Logging.ExerciseLogActivity
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:34:9-74
+	android:name
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:34:19-70
 activity#Recipe_Logging.FoodLogActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:38:5-63
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:39:5-63
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:38:15-60
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:39:15-60
 activity#com.fitwizard.fitwizard.ProfileActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:39:9-53
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:9-53
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:39:19-50
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:19-50
 activity#Recipe_Logging.FoodSearchActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:9-70
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:9-70
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:40:19-67
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:19-67
 activity#Mood.MoodActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:9-54
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:9-54
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:41:19-51
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:19-51
 activity#Mood.MoodJournalActivity
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:9-61
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:43:9-61
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:42:19-58
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:43:19-58
 receiver#Goals.GoalReminderReceiver
-ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:44:9-45:39
+ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:45:9-46:39
 	android:exported
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:45:13-36
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:46:13-36
 	android:name
-		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:44:19-60
+		ADDED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:45:19-60
 uses-sdk
 INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Corey\StudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml

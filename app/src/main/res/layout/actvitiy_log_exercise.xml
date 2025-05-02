@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@android:color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Back Button -->
+        <ImageButton
+            android:id="@+id/backButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back" />
+
+        <!-- Header -->
+        <TextView
+            android:id="@+id/exerciseLogTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Log Exercise"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="12dp" />
+
+        <!-- Exercise Name -->
+        <EditText
+            android:id="@+id/exerciseNameInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Exercise Name"
+            android:layout_marginTop="16dp"
+            android:padding="12dp"
+            android:background="@drawable/edittext_background"
+            android:textColor="@android:color/black" />
+
+        <!-- Type Spinner -->
+        <Spinner
+            android:id="@+id/exerciseTypeSpinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" />
+
+        <!-- Strength Fields -->
+        <LinearLayout
+            android:id="@+id/strengthInputs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            android:weightSum="3">
+
+            <EditText
+                android:id="@+id/repsInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Reps"
+                android:inputType="number"
+                android:padding="8dp"
+                android:background="@drawable/edittext_background" />
+
+            <EditText
+                android:id="@+id/setsInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Sets"
+                android:inputType="number"
+                android:padding="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/edittext_background" />
+
+            <EditText
+                android:id="@+id/weightInput"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="Weight (lbs)"
+                android:inputType="numberDecimal"
+                android:padding="8dp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/edittext_background" />
+        </LinearLayout>
+
+        <!-- Cardio Fields -->
+        <EditText
+            android:id="@+id/cardioTimeInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Time (minutes)"
+            android:inputType="number"
+            android:padding="12dp"
+            android:layout_marginTop="12dp"
+            android:visibility="gone"
+            android:background="@drawable/edittext_background" />
+
+        <!-- Save Button -->
+        <Button
+            android:id="@+id/saveExerciseButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Exercise"
+            android:layout_marginTop="24dp"
+            android:backgroundTint="@color/green"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+</ScrollView>

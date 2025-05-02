@@ -424,6 +424,15 @@
                     android:textColor="@color/white"
                     android:layout_marginTop="8dp"/>
 
+                <Button
+                    android:id="@+id/btn_log_exercise"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Log Exercise"
+                    android:backgroundTint="@color/green"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="8dp"/>
+
 
                 <Button
                     android:id="@+id/btn_add_meal"
