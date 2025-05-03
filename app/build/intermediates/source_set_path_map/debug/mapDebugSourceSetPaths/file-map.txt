@@ -1,34 +1,34 @@
-com.fitwizard.fitwizard.app-activity-1.8.0-0 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\05c29b100e90169b927adb964446a9b7\transformed\activity-1.8.0\res
-com.fitwizard.fitwizard.app-coordinatorlayout-1.1.0-1 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\11bac507eda9a49632d51058b7f1d64e\transformed\coordinatorlayout-1.1.0\res
-com.fitwizard.fitwizard.app-drawerlayout-1.1.1-2 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\1e22a042c027425d121f895a5780e536\transformed\drawerlayout-1.1.1\res
-com.fitwizard.fitwizard.app-transition-1.5.0-3 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\2b8e196431553beb3c2dd1b8737cd36f\transformed\transition-1.5.0\res
-com.fitwizard.fitwizard.app-lifecycle-process-2.6.2-4 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\2eb958d729571c56a1c880a36a112e93\transformed\lifecycle-process-2.6.2\res
-com.fitwizard.fitwizard.app-profileinstaller-1.4.0-5 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\res
-com.fitwizard.fitwizard.app-lifecycle-livedata-2.6.2-6 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30bf80ef6ab64410ba6887bcc1c0e7b3\transformed\lifecycle-livedata-2.6.2\res
-com.fitwizard.fitwizard.app-savedstate-1.2.1-7 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\404560cbf878f18e783887310663302d\transformed\savedstate-1.2.1\res
-com.fitwizard.fitwizard.app-fragment-1.5.4-8 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\41f1f3ef4c513fa0cad2c86ff5ef228f\transformed\fragment-1.5.4\res
-com.fitwizard.fitwizard.app-recyclerview-1.1.0-9 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\43b82bf81a4f52a56db9f06be1670c8a\transformed\recyclerview-1.1.0\res
-com.fitwizard.fitwizard.app-core-ktx-1.13.0-10 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\4dd7e62b1f38569b675ceac8e8ed97ef\transformed\core-ktx-1.13.0\res
-com.fitwizard.fitwizard.app-constraintlayout-2.2.1-11 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\4ddcbed010bc0ae495f9ec14e4525906\transformed\constraintlayout-2.2.1\res
-com.fitwizard.fitwizard.app-material-1.12.0-12 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\51a9f6e9c0924d8a672005fdb610cc09\transformed\material-1.12.0\res
-com.fitwizard.fitwizard.app-core-runtime-2.2.0-13 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\669e992c57af7827ac002b14ce479498\transformed\core-runtime-2.2.0\res
-com.fitwizard.fitwizard.app-core-1.13.0-14 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\7c4d19ae1635c7c758704dd9d1258c37\transformed\core-1.13.0\res
-com.fitwizard.fitwizard.app-startup-runtime-1.1.1-15 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\97f4fb2293256ac5691cdab9fd72270a\transformed\startup-runtime-1.1.1\res
-com.fitwizard.fitwizard.app-viewpager2-1.0.0-16 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\a0a0321b2c1efa0c51acc645a28a1167\transformed\viewpager2-1.0.0\res
-com.fitwizard.fitwizard.app-emoji2-views-helper-1.3.0-17 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\a17942c9d8eb2963d0d41fc44a25f177\transformed\emoji2-views-helper-1.3.0\res
-com.fitwizard.fitwizard.app-lifecycle-livedata-core-2.6.2-18 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\a949f8f918cf290480adb3388680e089\transformed\lifecycle-livedata-core-2.6.2\res
-com.fitwizard.fitwizard.app-lifecycle-runtime-2.6.2-19 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\d3af4807742a097c689dd5b41fedbd73\transformed\lifecycle-runtime-2.6.2\res
-com.fitwizard.fitwizard.app-cardview-1.0.0-20 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\d6028833c9cbbc81c1bb12ae8d791122\transformed\cardview-1.0.0\res
-com.fitwizard.fitwizard.app-appcompat-resources-1.7.0-21 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\dc47f4858f1c3f7dae31b86d8ef5af05\transformed\appcompat-resources-1.7.0\res
-com.fitwizard.fitwizard.app-annotation-experimental-1.4.0-22 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\e5c7c60dc588852f6a7a1e3b5b7656b4\transformed\annotation-experimental-1.4.0\res
-com.fitwizard.fitwizard.app-lifecycle-viewmodel-savedstate-2.6.2-23 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\e6d85b7c361a625e1c1a94d02c383b16\transformed\lifecycle-viewmodel-savedstate-2.6.2\res
-com.fitwizard.fitwizard.app-emoji2-1.3.0-24 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\e981eb7016aa7e35a33583d8f07af8e5\transformed\emoji2-1.3.0\res
-com.fitwizard.fitwizard.app-appcompat-1.7.0-25 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\fb7e54c3d425ba9b7b72feb02730895a\transformed\appcompat-1.7.0\res
-com.fitwizard.fitwizard.app-lifecycle-viewmodel-2.6.2-26 C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\fe41fa7f1667b34b7f80a6bd58caf188\transformed\lifecycle-viewmodel-2.6.2\res
-com.fitwizard.fitwizard.app-pngs-27 D:\HealthCapstone\app\build\generated\res\pngs\debug
-com.fitwizard.fitwizard.app-resValues-28 D:\HealthCapstone\app\build\generated\res\resValues\debug
-com.fitwizard.fitwizard.app-packageDebugResources-29 D:\HealthCapstone\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
-com.fitwizard.fitwizard.app-packageDebugResources-30 D:\HealthCapstone\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
-com.fitwizard.fitwizard.app-debug-31 D:\HealthCapstone\app\build\intermediates\merged_res\debug\mergeDebugResources
-com.fitwizard.fitwizard.app-debug-32 D:\HealthCapstone\app\src\debug\res
-com.fitwizard.fitwizard.app-main-33 D:\HealthCapstone\app\src\main\res
+com.fitwizard.fitwizard.app-profileinstaller-1.4.0-0 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\res
+com.fitwizard.fitwizard.app-appcompat-resources-1.7.0-1 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\0fc7738744b17a4bf213555a224daae9\transformed\appcompat-resources-1.7.0\res
+com.fitwizard.fitwizard.app-lifecycle-process-2.6.2-2 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\2427627138b1672b63f58caa44bc9134\transformed\lifecycle-process-2.6.2\res
+com.fitwizard.fitwizard.app-appcompat-1.7.0-3 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\43f73b5103be510aee23d1b5e11c1164\transformed\appcompat-1.7.0\res
+com.fitwizard.fitwizard.app-lifecycle-viewmodel-savedstate-2.6.2-4 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\47d7a9164a5b9d54763a2433ae62ae7e\transformed\lifecycle-viewmodel-savedstate-2.6.2\res
+com.fitwizard.fitwizard.app-activity-1.8.0-5 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\53713d5dad311620cf0c41800a7a43bc\transformed\activity-1.8.0\res
+com.fitwizard.fitwizard.app-coordinatorlayout-1.1.0-6 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\612cac3778e81f761b7ad68cfb1fe0f3\transformed\coordinatorlayout-1.1.0\res
+com.fitwizard.fitwizard.app-annotation-experimental-1.4.0-7 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\646f8dbb0b234badb88f2ed18c531ae5\transformed\annotation-experimental-1.4.0\res
+com.fitwizard.fitwizard.app-cardview-1.0.0-8 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\6720e48dbee2a22da5e48ab058ba12ae\transformed\cardview-1.0.0\res
+com.fitwizard.fitwizard.app-core-ktx-1.13.0-9 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\758576c693b021a94d7552127bc688ad\transformed\core-ktx-1.13.0\res
+com.fitwizard.fitwizard.app-core-runtime-2.2.0-10 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\77ea35e780c39953e663e95b5ea9b4a5\transformed\core-runtime-2.2.0\res
+com.fitwizard.fitwizard.app-lifecycle-livedata-2.6.2-11 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\811b20e419c80aa7dd4921907937b068\transformed\lifecycle-livedata-2.6.2\res
+com.fitwizard.fitwizard.app-emoji2-1.3.0-12 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\91dd6a19b9a09259813a31cce05a6a7c\transformed\emoji2-1.3.0\res
+com.fitwizard.fitwizard.app-material-1.12.0-13 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\93fd0d7beb0f2878ced76c63f62ef1b7\transformed\material-1.12.0\res
+com.fitwizard.fitwizard.app-constraintlayout-2.2.1-14 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\999c243b4c8177f84ec0c328128657cd\transformed\constraintlayout-2.2.1\res
+com.fitwizard.fitwizard.app-fragment-1.5.4-15 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\9d4b7ae9071adc87c13e35065c3a5cd5\transformed\fragment-1.5.4\res
+com.fitwizard.fitwizard.app-startup-runtime-1.1.1-16 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\9fc6c09aa9112db2f8bc979f20c5f7d1\transformed\startup-runtime-1.1.1\res
+com.fitwizard.fitwizard.app-drawerlayout-1.1.1-17 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\a3d7174c6b776b4f4e6af10299c21e02\transformed\drawerlayout-1.1.1\res
+com.fitwizard.fitwizard.app-lifecycle-runtime-2.6.2-18 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\b31477e4ca892ce1f0e8bff5378adb4e\transformed\lifecycle-runtime-2.6.2\res
+com.fitwizard.fitwizard.app-viewpager2-1.0.0-19 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\ce21bf01a7b6322679d5415ddb115013\transformed\viewpager2-1.0.0\res
+com.fitwizard.fitwizard.app-savedstate-1.2.1-20 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\d13ea9301c3253184a7386aa00f3a492\transformed\savedstate-1.2.1\res
+com.fitwizard.fitwizard.app-lifecycle-viewmodel-2.6.2-21 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\d15372c58499418ed845c9a875a6f8db\transformed\lifecycle-viewmodel-2.6.2\res
+com.fitwizard.fitwizard.app-lifecycle-livedata-core-2.6.2-22 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\d1e1168faf92cfa5cb882cfc6f12ebeb\transformed\lifecycle-livedata-core-2.6.2\res
+com.fitwizard.fitwizard.app-transition-1.5.0-23 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\d567851a7a3379c207fee3ad08ac6e82\transformed\transition-1.5.0\res
+com.fitwizard.fitwizard.app-emoji2-views-helper-1.3.0-24 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\d5f645a98e3bc28a3527ed1798224cb0\transformed\emoji2-views-helper-1.3.0\res
+com.fitwizard.fitwizard.app-recyclerview-1.1.0-25 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\ed58e8afd49428052e5bc2919cb5e2e9\transformed\recyclerview-1.1.0\res
+com.fitwizard.fitwizard.app-core-1.13.0-26 C:\Users\sbwea\.gradle\caches\8.10.2\transforms\f04b4489482547245457811497b9f1bc\transformed\core-1.13.0\res
+com.fitwizard.fitwizard.app-pngs-27 C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\build\generated\res\pngs\debug
+com.fitwizard.fitwizard.app-resValues-28 C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\build\generated\res\resValues\debug
+com.fitwizard.fitwizard.app-packageDebugResources-29 C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.fitwizard.fitwizard.app-packageDebugResources-30 C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.fitwizard.fitwizard.app-debug-31 C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.fitwizard.fitwizard.app-debug-32 C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\debug\res
+com.fitwizard.fitwizard.app-main-33 C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\res

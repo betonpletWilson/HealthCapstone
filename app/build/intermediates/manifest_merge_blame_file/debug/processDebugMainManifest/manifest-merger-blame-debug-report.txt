@@ -8,152 +8,134 @@
 8        android:minSdkVersion="24"
 9        android:targetSdkVersion="35" />
 10
-11    <uses-permission android:name="android.permission.INTERNET" />
-11-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:4:5-67
-11-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:4:22-64
-12
-13    <permission
-13-->[androidx.core:core:1.13.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\7c4d19ae1635c7c758704dd9d1258c37\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
-14        android:name="com.fitwizard.fitwizard.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
-14-->[androidx.core:core:1.13.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\7c4d19ae1635c7c758704dd9d1258c37\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
-15        android:protectionLevel="signature" />
-15-->[androidx.core:core:1.13.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\7c4d19ae1635c7c758704dd9d1258c37\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+11    <permission
+11-->[androidx.core:core:1.13.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\f04b4489482547245457811497b9f1bc\transformed\core-1.13.0\AndroidManifest.xml:22:5-24:47
+12        android:name="com.fitwizard.fitwizard.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+12-->[androidx.core:core:1.13.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\f04b4489482547245457811497b9f1bc\transformed\core-1.13.0\AndroidManifest.xml:23:9-81
+13        android:protectionLevel="signature" />
+13-->[androidx.core:core:1.13.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\f04b4489482547245457811497b9f1bc\transformed\core-1.13.0\AndroidManifest.xml:24:9-44
+14
+15    <uses-permission android:name="com.fitwizard.fitwizard.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+15-->[androidx.core:core:1.13.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\f04b4489482547245457811497b9f1bc\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
+15-->[androidx.core:core:1.13.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\f04b4489482547245457811497b9f1bc\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
 16
-17    <uses-permission android:name="com.fitwizard.fitwizard.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
-17-->[androidx.core:core:1.13.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\7c4d19ae1635c7c758704dd9d1258c37\transformed\core-1.13.0\AndroidManifest.xml:26:5-97
-17-->[androidx.core:core:1.13.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\7c4d19ae1635c7c758704dd9d1258c37\transformed\core-1.13.0\AndroidManifest.xml:26:22-94
-18
-19    <application
-19-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:6:5-37:19
-20        android:allowBackup="true"
-20-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:7:9-35
-21        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-21-->[androidx.core:core:1.13.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\7c4d19ae1635c7c758704dd9d1258c37\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
-22        android:dataExtractionRules="@xml/data_extraction_rules"
-22-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:8:9-65
-23        android:debuggable="true"
-24        android:extractNativeLibs="false"
-25        android:fullBackupContent="@xml/backup_rules"
-25-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:9:9-54
-26        android:icon="@mipmap/ic_launcher"
-26-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:10:9-43
-27        android:label="@string/app_name"
-27-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:11:9-41
-28        android:networkSecurityConfig="@xml/network_security_config"
-28-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:15:9-69
-29        android:roundIcon="@mipmap/ic_launcher_round"
-29-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:12:9-54
-30        android:supportsRtl="true"
-30-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:13:9-35
-31        android:testOnly="true"
-32        android:theme="@style/Theme.FitWizard" >
-32-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:14:9-47
-33
-34        <!-- Define the HomeActivity as the main entry point -->
-35        <activity android:name="com.fitwizard.fitwizard.FoodLogActivity" />
-35-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:19:9-53
-35-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:19:19-50
-36        <activity android:name="com.fitwizard.fitwizard.ProfileActivity" />
-36-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:20:9-53
-36-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:20:19-50
-37        <activity android:name="com.fitwizard.fitwizard.FoodSearchActivity" />
-37-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:21:9-56
-37-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:21:19-53
-38        <activity android:name="com.fitwizard.fitwizard.MoodActivity" />
-38-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:22:9-50
-38-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:22:19-47
-39        <activity android:name="com.fitwizard.fitwizard.MoodJournalActivity" />
-39-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:23:9-57
-39-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:23:19-54
-40        <activity android:name="com.fitwizard.fitwizard.NotificationsActivity" />
-40-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:24:9-59
-40-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:24:19-56
-41        <activity android:name="com.fitwizard.fitwizard.NotifCreationActivity" />
-41-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:25:9-59
-41-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:25:19-56
-42        <activity
-42-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:26:9-32:20
-43            android:name="com.fitwizard.fitwizard.HomeActivity"
-43-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:26:19-47
-44            android:exported="true" >
-44-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:27:13-36
-45            <intent-filter>
-45-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:28:13-31:29
-46                <action android:name="android.intent.action.MAIN" />
-46-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:29:17-69
-46-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:29:25-66
-47
-48                <category android:name="android.intent.category.LAUNCHER" />
-48-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:30:17-77
-48-->D:\HealthCapstone\app\src\main\AndroidManifest.xml:30:27-74
-49            </intent-filter>
-50        </activity>
-51
-52        <provider
-52-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\e981eb7016aa7e35a33583d8f07af8e5\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
-53            android:name="androidx.startup.InitializationProvider"
-53-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\e981eb7016aa7e35a33583d8f07af8e5\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
-54            android:authorities="com.fitwizard.fitwizard.androidx-startup"
-54-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\e981eb7016aa7e35a33583d8f07af8e5\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
-55            android:exported="false" >
-55-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\e981eb7016aa7e35a33583d8f07af8e5\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
-56            <meta-data
-56-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\e981eb7016aa7e35a33583d8f07af8e5\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
-57                android:name="androidx.emoji2.text.EmojiCompatInitializer"
-57-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\e981eb7016aa7e35a33583d8f07af8e5\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
-58                android:value="androidx.startup" />
-58-->[androidx.emoji2:emoji2:1.3.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\e981eb7016aa7e35a33583d8f07af8e5\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
-59            <meta-data
-59-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\2eb958d729571c56a1c880a36a112e93\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
-60                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
-60-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\2eb958d729571c56a1c880a36a112e93\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
-61                android:value="androidx.startup" />
-61-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\2eb958d729571c56a1c880a36a112e93\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
-62            <meta-data
-62-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
-63                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
-63-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
-64                android:value="androidx.startup" />
-64-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
-65        </provider>
-66
-67        <receiver
-67-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
-68            android:name="androidx.profileinstaller.ProfileInstallReceiver"
-68-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
-69            android:directBootAware="false"
-69-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
-70            android:enabled="true"
-70-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
-71            android:exported="true"
-71-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
-72            android:permission="android.permission.DUMP" >
-72-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
-73            <intent-filter>
-73-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
-74                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
-74-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
-74-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
-75            </intent-filter>
-76            <intent-filter>
-76-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
-77                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
-77-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
-77-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
-78            </intent-filter>
-79            <intent-filter>
-79-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
-80                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
-80-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
-80-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
-81            </intent-filter>
-82            <intent-filter>
-82-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
-83                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
-83-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
-83-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\Miles Wilson\.gradle\caches\8.10.2\transforms\30604abaac5c265bd56fc09e046264f7\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
-84            </intent-filter>
-85        </receiver>
-86    </application>
-87
-88</manifest>
+17    <application
+17-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:5:5-32:19
+18        android:allowBackup="true"
+18-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:6:9-35
+19        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+19-->[androidx.core:core:1.13.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\f04b4489482547245457811497b9f1bc\transformed\core-1.13.0\AndroidManifest.xml:28:18-86
+20        android:dataExtractionRules="@xml/data_extraction_rules"
+20-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:7:9-65
+21        android:debuggable="true"
+22        android:extractNativeLibs="false"
+23        android:fullBackupContent="@xml/backup_rules"
+23-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:8:9-54
+24        android:icon="@mipmap/ic_launcher"
+24-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:9:9-43
+25        android:label="@string/app_name"
+25-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:10:9-41
+26        android:roundIcon="@mipmap/ic_launcher_round"
+26-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:11:9-54
+27        android:supportsRtl="true"
+27-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:12:9-35
+28        android:testOnly="true"
+29        android:theme="@style/Theme.FitWizard" >
+29-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:13:9-47
+30
+31        <!-- Define the HomeActivity as the main entry point -->
+32        <activity android:name="com.fitwizard.fitwizard.FoodLogActivity" />
+32-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:18:5-49
+32-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:18:15-46
+33        <activity android:name="com.fitwizard.fitwizard.ProfileActivity" />
+33-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:19:9-53
+33-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:19:19-50
+34        <activity android:name="com.fitwizard.fitwizard.FoodSearchActivity" />
+34-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:20:9-56
+34-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:20:19-53
+35        <activity
+35-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:21:5-27:16
+36            android:name="com.fitwizard.fitwizard.HomeActivity"
+36-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:21:15-43
+37            android:exported="true" >
+37-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:22:9-32
+38            <intent-filter>
+38-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:23:9-26:25
+39                <action android:name="android.intent.action.MAIN" />
+39-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:24:13-65
+39-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:24:21-62
+40
+41                <category android:name="android.intent.category.LAUNCHER" />
+41-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:25:13-73
+41-->C:\Users\sbwea\AndroidStudioProjects\HealthCapstone\app\src\main\AndroidManifest.xml:25:23-70
+42            </intent-filter>
+43        </activity>
+44
+45        <provider
+45-->[androidx.emoji2:emoji2:1.3.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\91dd6a19b9a09259813a31cce05a6a7c\transformed\emoji2-1.3.0\AndroidManifest.xml:24:9-32:20
+46            android:name="androidx.startup.InitializationProvider"
+46-->[androidx.emoji2:emoji2:1.3.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\91dd6a19b9a09259813a31cce05a6a7c\transformed\emoji2-1.3.0\AndroidManifest.xml:25:13-67
+47            android:authorities="com.fitwizard.fitwizard.androidx-startup"
+47-->[androidx.emoji2:emoji2:1.3.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\91dd6a19b9a09259813a31cce05a6a7c\transformed\emoji2-1.3.0\AndroidManifest.xml:26:13-68
+48            android:exported="false" >
+48-->[androidx.emoji2:emoji2:1.3.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\91dd6a19b9a09259813a31cce05a6a7c\transformed\emoji2-1.3.0\AndroidManifest.xml:27:13-37
+49            <meta-data
+49-->[androidx.emoji2:emoji2:1.3.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\91dd6a19b9a09259813a31cce05a6a7c\transformed\emoji2-1.3.0\AndroidManifest.xml:29:13-31:52
+50                android:name="androidx.emoji2.text.EmojiCompatInitializer"
+50-->[androidx.emoji2:emoji2:1.3.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\91dd6a19b9a09259813a31cce05a6a7c\transformed\emoji2-1.3.0\AndroidManifest.xml:30:17-75
+51                android:value="androidx.startup" />
+51-->[androidx.emoji2:emoji2:1.3.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\91dd6a19b9a09259813a31cce05a6a7c\transformed\emoji2-1.3.0\AndroidManifest.xml:31:17-49
+52            <meta-data
+52-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\2427627138b1672b63f58caa44bc9134\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:29:13-31:52
+53                android:name="androidx.lifecycle.ProcessLifecycleInitializer"
+53-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\2427627138b1672b63f58caa44bc9134\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:30:17-78
+54                android:value="androidx.startup" />
+54-->[androidx.lifecycle:lifecycle-process:2.6.2] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\2427627138b1672b63f58caa44bc9134\transformed\lifecycle-process-2.6.2\AndroidManifest.xml:31:17-49
+55            <meta-data
+55-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:29:13-31:52
+56                android:name="androidx.profileinstaller.ProfileInstallerInitializer"
+56-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:30:17-85
+57                android:value="androidx.startup" />
+57-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:31:17-49
+58        </provider>
+59
+60        <receiver
+60-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:34:9-52:20
+61            android:name="androidx.profileinstaller.ProfileInstallReceiver"
+61-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:35:13-76
+62            android:directBootAware="false"
+62-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:36:13-44
+63            android:enabled="true"
+63-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:37:13-35
+64            android:exported="true"
+64-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:38:13-36
+65            android:permission="android.permission.DUMP" >
+65-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:39:13-57
+66            <intent-filter>
+66-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:40:13-42:29
+67                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE" />
+67-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:17-91
+67-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:41:25-88
+68            </intent-filter>
+69            <intent-filter>
+69-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:43:13-45:29
+70                <action android:name="androidx.profileinstaller.action.SKIP_FILE" />
+70-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:17-85
+70-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:44:25-82
+71            </intent-filter>
+72            <intent-filter>
+72-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:46:13-48:29
+73                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE" />
+73-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:17-88
+73-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:47:25-85
+74            </intent-filter>
+75            <intent-filter>
+75-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:49:13-51:29
+76                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION" />
+76-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:17-95
+76-->[androidx.profileinstaller:profileinstaller:1.4.0] C:\Users\sbwea\.gradle\caches\8.10.2\transforms\083241116c81c476130c0d8b797afde4\transformed\profileinstaller-1.4.0\AndroidManifest.xml:50:25-92
+77            </intent-filter>
+78        </receiver>
+79    </application>
+80
+81</manifest>

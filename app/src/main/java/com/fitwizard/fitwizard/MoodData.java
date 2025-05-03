@@ -1,16 +1,16 @@
 package com.fitwizard.fitwizard;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Date;
 
 public class MoodData {
-    private String id; //tag ID
-    private String content; // tag
-    private Date date; //date that tag was used and logged with journal
+    private String id;
+    private String content;
+    private Date date;
     private int moodResourceId;
-    private List<MoodData> selectedTags; // Tags selected by user to add to combined
+    private List<MoodData> selectedTags;
     private String tagName;
-    private String tagType; //Tag type:
+    private String tagType;
 
     public MoodData() {
         // Empty constructor
