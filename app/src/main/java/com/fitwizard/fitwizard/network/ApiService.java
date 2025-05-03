@@ -1,58 +1,41 @@
 package com.fitwizard.fitwizard.network;
 
-import java.io.IOException;
-
-import okhttp3.Call;
-import okhttp3.Callback;
+import com.google.gson.Gson;
+import android.util.Log;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
-import okhttp3.Response;
 
 public class ApiService {
 
     private static final OkHttpClient client = new OkHttpClient();
+    private static final Gson gson = new Gson();
+    private static final String TAG = "ApiService";
 
-    public interface ApiCallback {
-        void onSuccess(String responseBody);
+    public interface ApiCallback<T> {
+        void onSuccess(T data);
         void onFailure(String errorMessage);
     }
 
-    public static void doApiRequest(String functionName, String columnName, String queryValue, ApiCallback callback) {
-        String url = "http://3.148.77.114:3000/"
-                + functionName
-                + "?"
-                + columnName
-                + "="
-                + queryValue;
+    public static <T> void DBRequest(
+            String tableName,
+            String columnName,
+            String queryValue,
+            Class<T> clazz,
+            ApiCallback<T> callback
+    ) {
+
+        String url = "http://3.148.77.114:3000/getSimple"
+                + "?tableName="  + tableName
+                + "&columnName=" + columnName
+                + "&queryValue=" + queryValue;
+
+        // Log the full URL for debugging
+        Log.d(TAG, "DBRequest URL: " + url);
 
         Request request = new Request.Builder()
                 .url(url)
                 .build();
 
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                if (callback != null) {
-                    callback.onFailure("Request failed: " + e.getMessage());
-                }
-            }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                if (!response.isSuccessful()) {
-                    if (callback != null) {
-                        callback.onFailure("HTTP error code: " + response.code());
-                    }
-                } else {
-                    String responseData = response.body() != null
-                            ? response.body().string()
-                            : null;
-
-                    if (callback != null) {
-                        callback.onSuccess(responseData);
-                    }
-                }
-            }
-        });
+        client.newCall(request).enqueue(CallbackFactory.createCallback(callback, clazz));
     }
 }

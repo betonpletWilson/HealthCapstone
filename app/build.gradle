@@ -27,18 +27,15 @@ android {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
-    kotlinOptions {
-        jvmTarget = '11'
-    }
 }
 
 dependencies {
     implementation ("androidx.constraintlayout:constraintlayout:2.2.1")
-
-    implementation(libs.okhttp)
+    implementation ('com.google.code.gson:gson:2.10.1')
+    implementation("com.squareup.okhttp3:okhttp:4.10.0")
     implementation libs.appcompat
     implementation libs.material
-    implementation libs.core.ktx
+    implementation libs.material.v150
     testImplementation libs.junit
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core

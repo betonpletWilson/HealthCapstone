@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import java.util.List;
+import java.util.Locale;
 
 public class FoodAdapter extends ArrayAdapter<FoodData> {
     public FoodAdapter(Context context, List<FoodData> foods) {
@@ -25,8 +26,11 @@ public class FoodAdapter extends ArrayAdapter<FoodData> {
         TextView nameText = convertView.findViewById(R.id.foodName);
         TextView detailsText = convertView.findViewById(R.id.foodDetails);
 
+        assert food != null;
         nameText.setText(food.getName());
-        detailsText.setText("Calories: " + food.getCalories() + ", Protein: " + food.getProtein() + "g");
+        String details = String.format(Locale.getDefault(), "%d cal, %.1fg protein",
+                food.getCalories(), food.getProtein_g());
+        detailsText.setText(details);
 
         return convertView;
     }

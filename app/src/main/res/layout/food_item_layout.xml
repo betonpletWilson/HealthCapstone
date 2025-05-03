@@ -14,7 +14,7 @@
             android:id="@+id/foodNameTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Food Name"
+            android:text="@string/food_name"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="@android:color/black" />
@@ -23,7 +23,7 @@
             android:id="@+id/servingTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Serving Size"
+            android:text="@string/serving_size"
             android:textSize="14sp"
             android:textColor="@android:color/darker_gray" />
 
@@ -59,7 +59,7 @@
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
         android:background="?attr/selectableItemBackgroundBorderless"
-        android:contentDescription="Delete food item"
+        android:contentDescription="@string/delete_food_item"
         android:padding="8dp"
         android:src="@drawable/ic_subtract" />
 

@@ -21,6 +21,7 @@
             android:id="@+id/profile_image"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/profile_image_desc"
             android:scaleType="centerCrop"
             android:src="@drawable/profile_placehold_cat"
             android:clickable="true"
@@ -45,7 +46,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:text="Today"
+        android:contentDescription="@string/today_text"
         android:textColor="@color/black"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="@id/profile_card"
@@ -70,7 +71,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:text="Nutrients Indicator"
+        android:text="@string/nutrients_indicator"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -100,6 +101,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:baselineAligned="false"
                 android:orientation="horizontal">
 
                 <!-- Proteins -->
@@ -128,7 +130,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Proteins"
+                        android:text="@string/proteins_text"
                         android:textAlignment="center"
                         android:textColor="@color/black" />
                 </LinearLayout>
@@ -159,7 +161,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Fats"
+                        android:text="@string/fats_text"
                         android:textAlignment="center"
                         android:textColor="@color/black" />
                 </LinearLayout>
@@ -190,7 +192,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Carbs"
+                        android:text="@string/carbs_text"
                         android:textAlignment="center"
                         android:textColor="@color/black" />
                 </LinearLayout>
@@ -221,7 +223,7 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Calories"
+                    android:text="@string/calories_text"
                     android:textAlignment="center"
                     android:textColor="@color/black" />
             </LinearLayout>
@@ -235,7 +237,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
-        android:text="Water Intake"
+        android:text="@string/water_intake_text"
         android:textColor="@color/black"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -273,7 +275,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Water"
+                    android:text="@string/water_text"
                     android:textColor="@color/dark_gray"
                     android:textSize="16sp" />
 
@@ -284,7 +286,11 @@
                     android:text="1.9 / 2.5L"
                     android:textColor="@color/black"
                     android:textSize="22sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:background="?attr/selectableItemBackground"
+                    android:padding="4dp" />
 
                 <TextView
                     android:id="@+id/water_time"
@@ -310,6 +316,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
                 android:backgroundTint="@color/white"
+                android:contentDescription="@string/water_text"
                 android:src="@drawable/ic_add"
                 app:borderWidth="0dp"
                 app:fabSize="mini"
@@ -323,6 +330,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="12dp"
                 android:backgroundTint="@color/white"
+                android:contentDescription="@string/water_text"
                 android:src="@drawable/ic_subtract"
                 app:borderWidth="0dp"
                 app:fabSize="mini"
@@ -331,6 +339,52 @@
                 app:tint="@color/dark_gray" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <!-- pop nav section, this is behind the bottom navigation bar and pops up when add_fab clicked -->
+    <!-- sets height of popup background -->
+    <LinearLayout
+        android:id="@+id/add_menu"
+        android:layout_width="match_parent"
+        android:layout_height="280dp"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@drawable/popup_background"
+        android:padding="16dp"
+        android:layout_marginBottom="8dp"
+        android:paddingBottom="88dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btn_add_meal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_meal"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btn_log_mood"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/log_mood"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp"/>
+
+        <Button
+            android:id="@+id/btn_new_notif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/new_notif_text"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:layout_marginBottom="55dp"/>
+    </LinearLayout>
+
 
     <!-- Bottom Navigation -->
     <androidx.cardview.widget.CardView
@@ -345,6 +399,7 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_nav_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp">
@@ -360,12 +415,14 @@
                 app:layout_constraintEnd_toStartOf="@id/fab_add"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/green"
                 android:src="@drawable/ic_add"
+                android:layout_marginBottom="10dp"
                 app:borderWidth="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -384,38 +441,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/fab_add"
                 app:layout_constraintTop_toTopOf="parent" />
-
-            <LinearLayout
-                android:id="@+id/add_menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone"
-                android:background="@drawable/popup_background"
-                android:padding="20dp"
-                android:layout_marginBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@id/fab_add"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-                <Button
-                    android:id="@+id/btn_add_meal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Add Meal"
-                    android:backgroundTint="@color/green"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="8dp"/>
-
-                <Button
-                    android:id="@+id/btn_log_mood"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Log Mood"
-                    android:backgroundTint="@color/green"
-                    android:textColor="@color/white"/>
-            </LinearLayout>
-
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

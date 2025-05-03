@@ -5,16 +5,15 @@ package com.fitwizard.fitwizard;
 //Used by FoodSearchActivity
 //Used by FoodAdapter for getView()
 public class FoodData {
-
     private final String name;
     private final int calories;
-    private final int protein;
-    private final int fats;
-    private final int carbs;
+    private final float protein;
+    private final float fats;
+    private final float carbs;
     private final String servingSize;
 
-    //Food info to get
-    public FoodData(String name, int calories, int protein, int fats, int carbs, String servingSize) {
+
+    public FoodData(String name, int calories, float protein, float fats, float carbs, String servingSize) {
         this.name = name;
         this.calories = calories;
         this.protein = protein;
@@ -25,9 +24,8 @@ public class FoodData {
 
     public String getName() { return name; }
     public int getCalories() { return calories; }
-    public int getProtein() { return protein; }
-    public int getFats() { return fats; }
-    public int getCarbs() { return carbs; }
+    public float getProtein_g() { return protein; }
+    public float getFats_g() { return fats; }
+    public float getCarbs_g() { return carbs; }
     public String getServingSize() { return servingSize; }
 }
-

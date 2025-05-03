@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -12,6 +13,14 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Locale;
+
+
+
+
+//TODO: food_item_layout.xml update, remove hard coded values/ warnings
+//TODO: Fix meal logging screen so that the user can scroll when there are multiple food inputs
+
+
 
 public class FoodLogActivity extends AppCompatActivity {
 
@@ -36,10 +45,19 @@ public class FoodLogActivity extends AppCompatActivity {
             // upper left button < , return to home page
             Intent intent = new Intent(FoodLogActivity.this, HomeActivity.class);
             startActivity(intent);
-            finish(); // closes the current activity (Meal logging)
+            finish(); // close the screen, back to home screen
+        });
+
+        // Done button navigation
+        Button doneButton = findViewById(R.id.btn_done);
+        doneButton.setOnClickListener(v -> {
+            Intent intent = new Intent(FoodLogActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish(); // Close the current screen, back to home activity
         });
     }
 
+    //Connect plus buttons to their sections with ID
     private void setupMealSection(final String mealType) {
         // Find the appropriate button based on meal type
         ImageButton addButton = null;
@@ -78,9 +96,9 @@ public class FoodLogActivity extends AppCompatActivity {
                 // Get the food data from the intent
                 String foodName = data.getStringExtra("FOOD_NAME");
                 double calories = data.getDoubleExtra("FOOD_CALORIES", 0);
-                double protein = data.getDoubleExtra("FOOD_PROTEIN", 0);
-                double fat = data.getDoubleExtra("FOOD_FAT", 0);
-                double carbs = data.getDoubleExtra("FOOD_CARBS", 0);
+                float protein = (float) data.getDoubleExtra("FOOD_PROTEIN", 0);
+                float fat = (float) data.getDoubleExtra("FOOD_FAT", 0);
+                float carbs = (float) data.getDoubleExtra("FOOD_CARBS", 0);
                 String serving = data.getStringExtra("FOOD_SERVING");
                 String mealType = data.getStringExtra("MEAL_TYPE");
 
@@ -95,8 +113,8 @@ public class FoodLogActivity extends AppCompatActivity {
         }
     }
 
-    private void addFoodItemToMeal(String foodName, double calories, double protein,
-                                   double fat, double carbs, String serving, String mealType) {
+    private void addFoodItemToMeal(String foodName, double calories, float protein,
+                                   float fat, float carbs, String serving, String mealType) {
         // Find the container for the specified meal type
         LinearLayout container = null;
         switch (mealType.toLowerCase()) {
@@ -134,7 +152,7 @@ public class FoodLogActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     finalContainer.removeView(foodItemView);
-                    // TODO: Remove from database if you're storing the data
+                    // TODO: Update database when deleting the food item
                 }
             });
 
@@ -148,9 +166,4 @@ public class FoodLogActivity extends AppCompatActivity {
             }
         }
     }
-
-
-
-
-
 }
