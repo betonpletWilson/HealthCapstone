@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NotificationsActivity">
+    tools:context="Reminders.NotificationsActivity">
 
     <!-- Top Bar with Back Button -->
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -63,11 +63,12 @@
                 <!-- Example Week Layout (will be generated dynamically for past 5 weeks) -->
                 <!-- Current Week (highlighted) -->
                 <LinearLayout
+                    android:id="@+id/current_week_layout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center"
-                    android:layout_marginEnd="16dp">
+                    android:layout_marginEnd="10dp">
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -77,9 +78,10 @@
 
                         <!-- Saturday -->
                         <LinearLayout
+                            android:id="@+id/day_layout_saturday"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
+                            android:layout_marginEnd="4dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -95,6 +97,7 @@
                                 android:layout_height="40dp">
 
                                 <TextView
+                                    android:id="@+id/day_text_saturday"
                                     android:layout_width="36dp"
                                     android:layout_height="36dp"
                                     android:background="@drawable/circle_outline_pink"
@@ -106,9 +109,10 @@
 
                         <!-- Sunday -->
                         <LinearLayout
+                            android:id="@+id/day_layout_sunday"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
+                            android:layout_marginEnd="4dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -124,6 +128,7 @@
                                 android:layout_height="40dp">
 
                                 <TextView
+                                    android:id="@+id/day_text_sunday"
                                     android:layout_width="36dp"
                                     android:layout_height="36dp"
                                     android:background="@drawable/circle_outline_pink"
@@ -135,9 +140,10 @@
 
                         <!-- Monday -->
                         <LinearLayout
+                            android:id="@+id/day_layout_monday"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
+                            android:layout_marginEnd="4dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -153,6 +159,7 @@
                                 android:layout_height="40dp">
 
                                 <TextView
+                                    android:id="@+id/day_text_monday"
                                     android:layout_width="36dp"
                                     android:layout_height="36dp"
                                     android:background="@drawable/circle_outline_pink"
@@ -164,9 +171,10 @@
 
                         <!-- Tuesday -->
                         <LinearLayout
+                            android:id="@+id/day_layout_tuesday"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
+                            android:layout_marginEnd="4dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -182,6 +190,7 @@
                                 android:layout_height="40dp">
 
                                 <TextView
+                                    android:id="@+id/day_text_tuesday"
                                     android:layout_width="36dp"
                                     android:layout_height="36dp"
                                     android:background="@drawable/circle_outline_pink"
@@ -193,9 +202,10 @@
 
                         <!-- Wednesday -->
                         <LinearLayout
+                            android:id="@+id/day_layout_wednesday"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
+                            android:layout_marginEnd="4dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -211,6 +221,7 @@
                                 android:layout_height="40dp">
 
                                 <TextView
+                                    android:id="@+id/day_text_wednesday"
                                     android:layout_width="36dp"
                                     android:layout_height="36dp"
                                     android:background="@drawable/circle_outline_pink"
@@ -222,9 +233,10 @@
 
                         <!-- Thursday -->
                         <LinearLayout
+                            android:id="@+id/day_layout_thursday"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
+                            android:layout_marginEnd="4dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -240,6 +252,7 @@
                                 android:layout_height="40dp">
 
                                 <TextView
+                                    android:id="@+id/day_text_thursday"
                                     android:layout_width="36dp"
                                     android:layout_height="36dp"
                                     android:background="@drawable/circle_outline_pink"
@@ -251,8 +264,10 @@
 
                         <!-- Friday -->
                         <LinearLayout
+                            android:id="@+id/day_layout_friday"
                             android:layout_width="48dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -268,9 +283,10 @@
                                 android:layout_height="40dp">
 
                                 <TextView
+                                    android:id="@+id/day_text_friday"
                                     android:layout_width="36dp"
                                     android:layout_height="36dp"
-                                    android:background="@drawable/circle_outline_pink_double"
+                                    android:background="@drawable/circle_outline_pink"
                                     android:gravity="center"
                                     android:text="25"
                                     android:textSize="16sp" />
@@ -288,7 +304,6 @@
             </LinearLayout>
         </LinearLayout>
     </HorizontalScrollView>
-
 
     <!-- Sort By Text -->
     <TextView

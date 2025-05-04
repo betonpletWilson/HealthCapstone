@@ -16,4 +16,10 @@
     <color name="dark_gray">#4A4A4A</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+    <color name="green1">#4CAF50</color>
+    <color name="light_green">#C8E6C9</color>
+    <color name="light_yellow">#FFF9C4</color>
+    <color name="light_purple">#E1BEE7</color>
+    <color name="light_orange">#FFE0B2</color>
+    <color name="med_purple">#B97EF7</color>
 </resources>

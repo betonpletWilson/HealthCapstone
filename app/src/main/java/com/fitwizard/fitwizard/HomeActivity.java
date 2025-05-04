@@ -1,6 +1,7 @@
 package com.fitwizard.fitwizard;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.text.InputType;
 import android.view.View;
@@ -14,7 +15,6 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -22,41 +22,38 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
-
-//      TO-DO/ THINGS THAT NEED TO BE FIXED
-// TODO: Structure of the popout nav drawer at the bottom, the buttons are in the wrong location
-// TODO: Popout nav drawer fix 2: when the user selects the screen outside of the drawer, the drawer should minimize again
-// TODO: Add water tracking backend
-// TODO: Fix water tracker shape (the blue pill shaped object)
-// TODO: Update 'Nutrients Indicator' section to get the real values
-
+import Goals.GoalsActivity;
+import Medication.MedicationActivity;
+import Recipe_Logging.FoodLogActivity;
+import Reminders.NotificationsActivity;
+import Mood.MoodActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
     private WaterLevelView waterLevelView;
-    private TextView waterAmount, waterTime, dateText;
+    private TextView waterAmount, waterTime, dateText, usernameText;
     private float currentWater = 1.9f;
     final float waterGoal = 2.5f;
 
     private ProgressBar proteinsProgress, fatsProgress, carbsProgress, caloriesProgress;
     private FloatingActionButton addWaterBtn, subtractWaterBtn, addFab;
     private LinearLayout addMenu;
-    private Button addMealButton, logMoodButton;
+    private Button addMealButton, logMoodButton, newNotifButton, medicationsButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
+        if (getSupportActionBar() != null) getSupportActionBar().hide();
+
 
         initializeViews();
         setupProfileImage();
         setupNutrientIndicators();
         setupWaterControls();
         setupPopupNavMenu();
+        loadUserData();
     }
 
     private void initializeViews() {
@@ -65,6 +62,7 @@ public class HomeActivity extends AppCompatActivity {
         waterTime = findViewById(R.id.water_time);
         waterLevelView = findViewById(R.id.water_level);
         dateText = findViewById(R.id.date_text);
+        usernameText = findViewById(R.id.username_text); // 👈 NEW
 
         // Progress Bars
         proteinsProgress = findViewById(R.id.proteins_progress);
@@ -79,26 +77,35 @@ public class HomeActivity extends AppCompatActivity {
         // Popup menu components
         addFab = findViewById(R.id.fab_add);
         addMenu = findViewById(R.id.add_menu);
+
         addMealButton = findViewById(R.id.btn_add_meal);
         logMoodButton = findViewById(R.id.btn_log_mood);
+        newNotifButton = findViewById(R.id.btn_new_notif);
+        medicationsButton = findViewById(R.id.btn_medications);
 
         // Set Date Text
         dateText.setText(new SimpleDateFormat("MMM dd", Locale.getDefault()).format(new Date()));
 
         // Click listener for setting custom water amount
         waterAmount.setOnClickListener(v -> showWaterInputDialog());
+
+        Button goalsBtn = findViewById(R.id.btn_goals);
+        goalsBtn.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, GoalsActivity.class);
+            intent.putExtra("reset_goal", true); // optional if you want it force-reset every time
+            startActivity(intent);
+
+        });
+
     }
 
     private void setupProfileImage() {
         ImageView profileImage = findViewById(R.id.profile_image);
-        profileImage.setOnClickListener(v -> {
-            startActivity(new Intent(HomeActivity.this, ProfileActivity.class));
-        });
+        profileImage.setOnClickListener(v -> startActivity(new Intent(HomeActivity.this, ProfileActivity.class)));
     }
 
     private void setupNutrientIndicators() {
-        // Set initial progress values
-        proteinsProgress.setProgress(67);  // TODO: Change to dynamic calculation
+        proteinsProgress.setProgress(67);  // TODO: Replace with dynamic data
         fatsProgress.setProgress(25);
         carbsProgress.setProgress(94);
         caloriesProgress.setProgress(72);
@@ -110,19 +117,6 @@ public class HomeActivity extends AppCompatActivity {
 
         // Initial display update
         updateWaterDisplay();
-    }
-
-    private void setupPopupNavMenu() {
-        // Adjusting layout
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) addMenu.getLayoutParams();
-        layoutParams.bottomToTop = R.id.fab_add;
-        layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
-        layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
-        addMenu.setLayoutParams(layoutParams);
-
-        addFab.setOnClickListener(v -> togglePopupMenu());
-        addMealButton.setOnClickListener(v -> openActivity(FoodLogActivity.class));
-        logMoodButton.setOnClickListener(v -> openActivity(MoodActivity.class));
     }
 
     private void modifyWaterAmount(float amount) {
@@ -168,13 +162,45 @@ public class HomeActivity extends AppCompatActivity {
                 .show();
     }
 
+    private void setupPopupNavMenu() {
+        // Move the popup menu outside the bottom nav card
+        addFab.setOnClickListener(v -> togglePopupMenu());
+        addMealButton.setOnClickListener(v -> openActivity(FoodLogActivity.class));
+        logMoodButton.setOnClickListener(v -> openActivity(MoodActivity.class));
+        newNotifButton.setOnClickListener(v -> openActivity(NotificationsActivity.class));
+        medicationsButton.setOnClickListener(v -> openActivity(MedicationActivity.class));
+
+/*
+        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) addMenu.getLayoutParams();
+        layoutParams.bottomToTop = R.id.fab_add;
+        layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
+        layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
+        addMenu.setLayoutParams(layoutParams);
+*/
+
+
+
+
+
+    }
+
     private void togglePopupMenu() {
         if (addMenu.getVisibility() == View.GONE) {
             addMenu.setVisibility(View.VISIBLE);
             addMenu.setAlpha(0f);
-            addMenu.animate().alpha(1f).setDuration(200).start();
+            addMenu.setTranslationY(100f);
+            addMenu.animate()
+                    .alpha(1f)
+                    .translationY(0f)
+                    .setDuration(200)
+                    .start();
         } else {
-            addMenu.animate().alpha(0f).setDuration(200).withEndAction(() -> addMenu.setVisibility(View.GONE)).start();
+            addMenu.animate()
+                    .alpha(0f)
+                    .translationY(100f)
+                    .setDuration(200)
+                    .withEndAction(() -> addMenu.setVisibility(View.GONE))
+                    .start();
         }
     }
 
@@ -183,7 +209,16 @@ public class HomeActivity extends AppCompatActivity {
         addMenu.setVisibility(View.GONE);
     }
 
+
+
     private void showToast(String message) {
         Toast.makeText(HomeActivity.this, message, Toast.LENGTH_SHORT).show();
+    }
+
+    // 👇 Load user's name from shared preferences
+    private void loadUserData() {
+        SharedPreferences preferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        String userName = preferences.getString("user_name", "GetName");
+        usernameText.setText(userName);
     }
 }
