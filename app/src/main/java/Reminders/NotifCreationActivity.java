@@ -30,6 +30,8 @@ import java.util.Set;
 
 public class NotifCreationActivity extends AppCompatActivity {
 
+
+
     private EditText nameEditText;
     private EditText messageEditText;
     private TextView timeTextView;
@@ -137,6 +139,34 @@ public class NotifCreationActivity extends AppCompatActivity {
     private void setupListeners() {
         // Time selection
         timeTextView.setOnClickListener(v -> showTimePickerDialog());
+
+        /*
+
+         // Add save button listener
+        saveButton.setOnClickListener(v -> {
+            String name = nameEditText.getText().toString().trim();
+            String message = messageEditText.getText().toString().trim();
+
+            if (name.isEmpty()) {
+                Toast.makeText(this, "Please enter a name for the notification", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Create the notification item
+            NotifData.NotificationItem notification = createNotificationItem(name, message);
+
+            // Save the notification to SharedPreferences
+            NotifData.addNotification(this, notification);
+
+            // Show success message
+            Toast.makeText(this, "Notification saved successfully", Toast.LENGTH_SHORT).show();
+
+            // Return to the notifications list
+            Intent intent = new Intent(NotifCreationActivity.this, NotificationsActivity.class);
+            startActivity(intent);
+            finish();
+        });
+         */
 
         // Recurrence type selection
         recurrenceTypeRadioGroup.setOnCheckedChangeListener((group, checkedId) -> {

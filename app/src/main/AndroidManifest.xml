@@ -34,10 +34,11 @@
         <activity android:name="Medication.AddEditMedicationActivity" />
         <activity android:name="Medication.MedicationActivity" />
 
-
         <activity android:name="Recipe_Logging.FoodLogActivity" />
         <activity android:name="Recipe_Logging.FoodSearchActivity" />
+
         <activity android:name="Mood.MoodActivity" />
+        <activity android:name="Mood.MoodLogsActivity" />
         <activity android:name="Mood.MoodJournalActivity" />
 
         <activity android:name="Reminders.NotificationsActivity" />

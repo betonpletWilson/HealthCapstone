@@ -20,6 +20,18 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Check if user is already logged in
+        prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        boolean isLoggedIn = prefs.getBoolean("is_logged_in", false);
+
+        // If already logged in, skip to HomeActivity
+        if (isLoggedIn) {
+            navigateToHome();
+            return; // Important to return early and avoid setting content view
+        }
+
+        // If not logged in, show login screen
         setContentView(R.layout.activity_login);
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
@@ -29,8 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         Button loginBtn = findViewById(R.id.buttonLogin);
         Button registerBtn = findViewById(R.id.buttonRegister);
 
-        prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-
         loginBtn.setOnClickListener(v -> {
             String email = emailInput.getText().toString().trim();
             String password = passwordInput.getText().toString().trim();
@@ -39,8 +49,12 @@ public class LoginActivity extends AppCompatActivity {
             String savedPassword = prefs.getString("password", "");
 
             if (email.equals(savedEmail) && password.equals(savedPassword)) {
-                startActivity(new Intent(this, HomeActivity.class));
-                finish();
+                // Set logged in status to true
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("is_logged_in", true);
+                editor.apply();
+
+                navigateToHome();
             } else {
                 Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
             }
@@ -49,5 +63,10 @@ public class LoginActivity extends AppCompatActivity {
         registerBtn.setOnClickListener(v -> {
             startActivity(new Intent(this, RegisterActivity.class));
         });
+    }
+
+    private void navigateToHome() {
+        startActivity(new Intent(this, HomeActivity.class));
+        finish();
     }
 }

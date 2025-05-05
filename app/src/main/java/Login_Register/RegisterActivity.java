@@ -45,7 +45,7 @@ public class RegisterActivity extends AppCompatActivity {
             editor.putBoolean("is_logged_in", false); // still false, user hasn't logged in yet
             editor.apply();
 
-            Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Account created! Please login.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         });

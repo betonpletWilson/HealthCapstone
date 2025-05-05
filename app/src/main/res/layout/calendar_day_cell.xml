@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="50dp"
+    android:layout_columnWeight="1"
+    android:padding="4dp">
+
+    <TextView
+        android:id="@+id/calendar_day_text"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="14sp" />
+
+</FrameLayout>

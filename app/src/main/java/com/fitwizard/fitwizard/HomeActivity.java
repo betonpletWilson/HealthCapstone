@@ -15,15 +15,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import Goals.GoalsActivity;
 import Medication.MedicationActivity;
+import Mood.MoodData;
+import Mood.MoodLogsActivity;
 import Recipe_Logging.FoodLogActivity;
 import Reminders.NotificationsActivity;
 import Mood.MoodActivity;
@@ -38,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
     private ProgressBar proteinsProgress, fatsProgress, carbsProgress, caloriesProgress;
     private FloatingActionButton addWaterBtn, subtractWaterBtn, addFab;
     private LinearLayout addMenu;
+
     private Button addMealButton, logMoodButton, newNotifButton, medicationsButton;
 
     @Override
@@ -74,6 +79,8 @@ public class HomeActivity extends AppCompatActivity {
         addWaterBtn = findViewById(R.id.water_add);
         subtractWaterBtn = findViewById(R.id.water_subtract);
 
+
+
         // Popup menu components
         addFab = findViewById(R.id.fab_add);
         addMenu = findViewById(R.id.add_menu);
@@ -88,6 +95,14 @@ public class HomeActivity extends AppCompatActivity {
 
         // Click listener for setting custom water amount
         waterAmount.setOnClickListener(v -> showWaterInputDialog());
+
+        CardView moodCard = findViewById(R.id.mood_card);
+        moodCard.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, MoodLogsActivity.class);
+            startActivity(intent);
+        });
+
+
 
         Button goalsBtn = findViewById(R.id.btn_goals);
         goalsBtn.setOnClickListener(v -> {
@@ -161,6 +176,8 @@ public class HomeActivity extends AppCompatActivity {
                 .setNegativeButton("Cancel", null)
                 .show();
     }
+
+
 
     private void setupPopupNavMenu() {
         // Move the popup menu outside the bottom nav card

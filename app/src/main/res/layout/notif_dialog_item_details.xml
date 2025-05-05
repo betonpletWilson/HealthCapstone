@@ -1,0 +1,38 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tv_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <RadioGroup
+        android:id="@+id/status_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton android:id="@+id/status_incomplete" android:text="Incomplete" android:layout_height="5dp" android:layout_width="10dp"/>
+        <RadioButton android:id="@+id/status_in_progress" android:text="In Progress" android:layout_height="5dp" android:layout_width="10dp"/>
+        <RadioButton android:id="@+id/status_complete" android:text="Complete" android:layout_height="5dp" android:layout_width="10dp"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btn_save_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save" />
+</LinearLayout>
