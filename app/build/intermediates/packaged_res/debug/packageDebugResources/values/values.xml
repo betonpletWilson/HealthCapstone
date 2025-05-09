@@ -2,6 +2,7 @@
 <resources>
     <color name="black">#000000</color>
     <color name="dark_gray">#4A4A4A</color>
+    <color name="dark_green">#006400</color>
     <color name="dark_pink">#FF6B6B</color>
     <color name="gray">#8A8A8A</color>
     <color name="green">#4CD964</color>
@@ -87,5 +88,7 @@
         
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         
+        <item name="android:forceDarkAllowed">true</item>
+
     </style>
 </resources>

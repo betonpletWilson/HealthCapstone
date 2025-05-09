@@ -23,15 +23,27 @@ public class ExerciseEntry {
         return date;
     }
 
-    public String toPrefString() {
-        return name + "%%" + details + "%%" + date;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public static ExerciseEntry fromPrefString(String pref) {
-        String[] parts = pref.split("%%");
-        if (parts.length == 3) {
-            return new ExerciseEntry(parts[0], parts[1], parts[2]);
+    public void setDetails(String details) {
+        this.details = details;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public String toPrefString() {
+        return name + ";;" + details + ";;" + date;
+    }
+
+    public static ExerciseEntry fromPrefString(String data) {
+        String[] parts = data.split(";;");
+        if (parts.length != 3) {
+            return new ExerciseEntry("Unknown", "No details", "N/A");
         }
-        return new ExerciseEntry("Unnamed", "", "");
+        return new ExerciseEntry(parts[0], parts[1], parts[2]);
     }
 }

@@ -7,6 +7,19 @@
     android:background="@color/white"
     tools:context=".HomeActivity">
 
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Settings"
+        android:src="@drawable/ic_settings"
+        app:tint="@color/green"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+    >
     <androidx.cardview.widget.CardView
         android:id="@+id/profile_card"
         android:layout_width="40dp"
@@ -45,24 +58,26 @@
         android:id="@+id/date_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/today_text"
+        android:layout_marginEnd="8dp"
+        android:text="Today"
         android:textColor="@color/black"
         android:textSize="16sp"
+        app:layout_constraintTop_toTopOf="@id/profile_card"
         app:layout_constraintBottom_toBottomOf="@id/profile_card"
-        app:layout_constraintEnd_toStartOf="@id/calendar_icon"
-        app:layout_constraintTop_toTopOf="@id/profile_card" />
+        app:layout_constraintEnd_toStartOf="@id/calendar_icon" />
 
     <ImageView
         android:id="@+id/calendar_icon"
         android:layout_width="24dp"
         android:layout_height="24dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="8dp"
         android:src="@drawable/ic_calendar"
+        android:contentDescription="Calendar"
         app:tint="@color/green"
+        app:layout_constraintTop_toTopOf="@id/profile_card"
         app:layout_constraintBottom_toBottomOf="@id/profile_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/profile_card" />
+        app:layout_constraintEnd_toStartOf="@id/settingsButton" />
+
 
     <!-- Nutrients Section -->
     <TextView

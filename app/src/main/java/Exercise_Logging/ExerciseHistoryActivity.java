@@ -22,7 +22,6 @@ public class ExerciseHistoryActivity extends AppCompatActivity {
 
     private static final int REQUEST_LOG_EXERCISE = 101;
     private static final String PREFS_NAME = "ExercisePrefs";
-    private static final String EXERCISE_KEY = "exercise_logs";
 
     private ArrayList<ExerciseEntry> exerciseList;
     private ExerciseAdapter adapter;
@@ -36,7 +35,7 @@ public class ExerciseHistoryActivity extends AppCompatActivity {
         if (getSupportActionBar() != null) getSupportActionBar().hide();
 
         prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
-        exerciseList = loadExerciseLogs();
+        exerciseList = loadExerciseLogs(); // ✅ fixed return type
 
         RecyclerView recyclerView = findViewById(R.id.exerciseRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -80,20 +79,26 @@ public class ExerciseHistoryActivity extends AppCompatActivity {
     }
 
     private ArrayList<ExerciseEntry> loadExerciseLogs() {
-        Set<String> savedSet = prefs.getStringSet(EXERCISE_KEY, new HashSet<>());
+        Set<String> savedSet = prefs.getStringSet(getUserSpecificKey("exercise_logs"), new HashSet<>());
         ArrayList<ExerciseEntry> list = new ArrayList<>();
-        for (String entry : savedSet) {
-            list.add(ExerciseEntry.fromPrefString(entry));
+        for (String s : savedSet) {
+            list.add(ExerciseEntry.fromPrefString(s)); // ✅ Convert string back to object
         }
         return list;
     }
 
     private void saveExerciseLogs() {
-        Set<String> set = new HashSet<>();
+        Set<String> toSave = new HashSet<>();
         for (ExerciseEntry entry : exerciseList) {
-            set.add(entry.toPrefString());
+            toSave.add(entry.toPrefString()); // ✅ Serialize to string
         }
-        prefs.edit().putStringSet(EXERCISE_KEY, set).apply();
+        prefs.edit().putStringSet(getUserSpecificKey("exercise_logs"), toSave).apply();
+    }
+
+    private String getUserSpecificKey(String baseKey) {
+        SharedPreferences userPrefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        String email = userPrefs.getString("email", "default_user");
+        return baseKey + "_" + email;
     }
 
     @Override

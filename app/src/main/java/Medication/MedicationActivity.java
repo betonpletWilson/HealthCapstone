@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fitwizard.fitwizard.R;
+import Login_Register.UserSession;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -31,7 +32,7 @@ public class MedicationActivity extends AppCompatActivity implements MedicationA
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_medication); // singular name!
+        setContentView(R.layout.activity_medication);
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
 
@@ -44,7 +45,7 @@ public class MedicationActivity extends AppCompatActivity implements MedicationA
         recyclerView.setAdapter(adapter);
 
         ImageButton backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(v -> finish()); // Cleaner back behavior
+        backButton.setOnClickListener(v -> finish());
 
         findViewById(R.id.addMedicationButton).setOnClickListener(v -> {
             Intent intent = new Intent(MedicationActivity.this, AddEditMedicationActivity.class);
@@ -54,13 +55,11 @@ public class MedicationActivity extends AppCompatActivity implements MedicationA
         new ItemTouchHelper(itemTouchHelperCallback).attachToRecyclerView(recyclerView);
     }
 
-
     private ArrayList<Medication> loadMedications() {
+        Set<String> set = prefs.getStringSet(UserSession.getUserKey(this, "medications_list"), new HashSet<>());
         ArrayList<Medication> list = new ArrayList<>();
-        Set<String> set = prefs.getStringSet("medications_list", new HashSet<>());
         for (String item : set) {
             list.add(Medication.fromString(item));
-
         }
         return list;
     }
@@ -70,7 +69,7 @@ public class MedicationActivity extends AppCompatActivity implements MedicationA
         for (Medication medication : medicationList) {
             set.add(medication.toString());
         }
-        prefs.edit().putStringSet("medications_list", set).apply();
+        prefs.edit().putStringSet(UserSession.getUserKey(this, "medications_list"), set).apply();
     }
 
     @Override
@@ -122,11 +121,10 @@ public class MedicationActivity extends AppCompatActivity implements MedicationA
                         saveMedications();
                     })
                     .setNegativeButton("Cancel", (dialog, which) -> {
-                        adapter.notifyItemChanged(position);  // Reset swipe if cancel
+                        adapter.notifyItemChanged(position);
                     })
                     .setCancelable(false)
                     .show();
         }
-
     };
 }

@@ -32,11 +32,9 @@
         <activity android:name="Medication.MedicationActivity" />
         <activity android:name="Exercise_Logging.ExerciseHistoryActivity" />
         <activity android:name="Exercise_Logging.ExerciseLogActivity"  />
-
-
-
+        <activity android:name=".SettingsActivity" />
         <!-- Define the HomeActivity as the main entry point -->
-    <activity android:name="Recipe_Logging.FoodLogActivity" />
+        <activity android:name="Recipe_Logging.FoodLogActivity" />
         <activity android:name=".ProfileActivity" />
         <activity android:name="Recipe_Logging.FoodSearchActivity" />
         <activity android:name="Mood.MoodActivity" />
@@ -44,8 +42,6 @@
 
         <receiver android:name="Goals.GoalReminderReceiver"
             android:exported="true" />
-
-
     </application>
 
 </manifest>

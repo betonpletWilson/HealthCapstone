@@ -104,10 +104,6 @@
         "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\mipmap-xxhdpi\\fitwizard.webp"
     },
     {
-        "merged": "com.fitwizard.fitwizard.app-debug-4:/layout_activity_goals.xml.flat",
-        "source": "com.fitwizard.fitwizard.app-main-6:/layout/activity_goals.xml"
-    },
-    {
         "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\mipmap-xhdpi_fitwizard_round.webp.flat",
         "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\mipmap-xhdpi\\fitwizard_round.webp"
     },
@@ -154,6 +150,10 @@
     {
         "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\drawable_edittext_background.xml.flat",
         "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\drawable\\edittext_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\layout_activity_settings.xml.flat",
+        "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\layout\\activity_settings.xml"
     },
     {
         "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\layout_activity_profile.xml.flat",
@@ -232,6 +232,10 @@
         "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\drawable\\rounded_button_background.xml"
     },
     {
+        "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\drawable_ic_settings.png.flat",
+        "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\drawable\\ic_settings.png"
+    },
+    {
         "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\layout_activity_home.xml.flat",
         "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\layout\\activity_home.xml"
     },
@@ -282,6 +286,10 @@
     {
         "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\xml_backup_rules.xml.flat",
         "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\xml\\backup_rules.xml"
+    },
+    {
+        "merged": "com.fitwizard.fitwizard.app-debug-4:/layout_activity_settings.xml.flat",
+        "source": "com.fitwizard.fitwizard.app-main-6:/layout/activity_settings.xml"
     },
     {
         "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\layout_activity_goals.xml.flat",

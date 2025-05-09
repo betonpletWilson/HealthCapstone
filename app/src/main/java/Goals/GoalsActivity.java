@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
+import Login_Register.UserSession;
+
 public class GoalsActivity extends AppCompatActivity implements GoalAdapter.OnItemClickListener {
 
     private RecyclerView recyclerView;
@@ -36,25 +38,19 @@ public class GoalsActivity extends AppCompatActivity implements GoalAdapter.OnIt
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
 
-        // Back Button setup
         ImageButton backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(v -> {
-            Intent intent = new Intent(GoalsActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-        });
+        backButton.setOnClickListener(v -> finish());
 
         recyclerView = findViewById(R.id.goalsRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         prefs = getSharedPreferences("GoalPrefs", MODE_PRIVATE);
-
         goalList = loadGoals();
         goalAdapter = new GoalAdapter(this, goalList);
         recyclerView.setAdapter(goalAdapter);
 
         findViewById(R.id.addGoalButton).setOnClickListener(v -> {
-            Intent intent = new Intent(GoalsActivity.this, AddEditGoalActivity.class);
+            Intent intent = new Intent(this, AddEditGoalActivity.class);
             startActivityForResult(intent, ADD_GOAL_REQUEST);
         });
 
@@ -62,8 +58,8 @@ public class GoalsActivity extends AppCompatActivity implements GoalAdapter.OnIt
     }
 
     private ArrayList<Goal> loadGoals() {
+        Set<String> set = prefs.getStringSet(UserSession.getUserKey(this, "goals_list"), new HashSet<>());
         ArrayList<Goal> list = new ArrayList<>();
-        Set<String> set = prefs.getStringSet("goals_list", new HashSet<>());
         for (String item : set) {
             list.add(Goal.fromString(item));
         }
@@ -75,7 +71,7 @@ public class GoalsActivity extends AppCompatActivity implements GoalAdapter.OnIt
         for (Goal goal : goalList) {
             set.add(goal.toString());
         }
-        prefs.edit().putStringSet("goals_list", set).apply();
+        prefs.edit().putStringSet(UserSession.getUserKey(this, "goals_list"), set).apply();
     }
 
     @Override
@@ -124,9 +120,7 @@ public class GoalsActivity extends AppCompatActivity implements GoalAdapter.OnIt
                     goalAdapter.notifyItemRemoved(position);
                     saveGoals();
                 })
-                .setNegativeButton("Cancel", (dialog, which) -> {
-                    goalAdapter.notifyItemChanged(position); // reset swipe if canceled
-                })
+                .setNegativeButton("Cancel", (dialog, which) -> goalAdapter.notifyItemChanged(position))
                 .setCancelable(false)
                 .show();
     }
@@ -142,4 +136,5 @@ public class GoalsActivity extends AppCompatActivity implements GoalAdapter.OnIt
         intent.putExtra("position", position);
         startActivityForResult(intent, EDIT_GOAL_REQUEST);
     }
+
 }

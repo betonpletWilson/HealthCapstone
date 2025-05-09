@@ -39,15 +39,22 @@ public class RegisterActivity extends AppCompatActivity {
 
             SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
             SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("user_name", name);
-            editor.putString("email", email);
-            editor.putString("password", password);
-            editor.putBoolean("is_logged_in", false); // still false, user hasn't logged in yet
+
+            // Save user-specific credentials using unique keys
+            editor.putString("user_" + email + "_name", name);
+            editor.putString("user_" + email + "_password", password);
+
+            // Set current user session
+            editor.putString("current_user", email);
+            editor.putBoolean("is_logged_in", true);
             editor.apply();
 
             Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, LoginActivity.class));
+
+            // Go directly to HomeActivity after registration
+            startActivity(new Intent(this, com.fitwizard.fitwizard.HomeActivity.class));
             finish();
         });
+
     }
 }

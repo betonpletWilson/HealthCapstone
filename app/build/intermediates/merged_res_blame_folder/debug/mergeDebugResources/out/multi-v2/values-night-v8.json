@@ -6,6 +6,60 @@
                 {
                     "source": "C:\\Users\\Corey\\StudioProjects\\caches\\8.10.2\\transforms\\9e0f7750f0d1aa41822a2968eea2c998\\transformed\\appcompat-1.7.0\\res\\values-night-v8\\values-night-v8.xml",
                     "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "2,3,4,5,6,7,8,50",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,125,209,293,389,491,593,4221",
+                        "endColumns": "69,83,83,95,101,101,93,88",
+                        "endOffsets": "120,204,288,384,486,588,682,4305"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Corey\\StudioProjects\\HealthCapstone\\app\\src\\main\\res\\values-night\\themes.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "102",
+                        "endLines": "16",
+                        "endColumns": "12",
+                        "endOffsets": "878"
+                    },
+                    "to": {
+                        "startLines": "9",
+                        "startColumns": "4",
+                        "startOffsets": "687",
+                        "endLines": "23",
+                        "endColumns": "12",
+                        "endOffsets": "1328"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Corey\\StudioProjects\\caches\\8.10.2\\transforms\\ca00c0f84d8fe804219c377362d666dc\\transformed\\material-1.12.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
+                        "startLines": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startColumns": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1",
+                        "startOffsets": "-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1"
+                    },
+                    "to": {
+                        "startLines": "24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40,41,42,43,44,45,46,47,48,49,51,52,53,54,55,56,57,58",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "1333,1408,1519,1608,1709,1816,1923,2022,2129,2232,2359,2447,2571,2673,2775,2891,2993,3107,3235,3351,3473,3609,3729,3863,3983,4095,4310,4427,4551,4681,4803,4941,5075,5191",
+                        "endColumns": "74,110,88,100,106,106,98,106,102,126,87,123,101,101,115,101,113,127,115,121,135,119,133,119,111,125,116,123,129,121,137,133,115,119",
+                        "endOffsets": "1403,1514,1603,1704,1811,1918,2017,2124,2227,2354,2442,2566,2668,2770,2886,2988,3102,3230,3346,3468,3604,3724,3858,3978,4090,4216,4422,4546,4676,4798,4936,5070,5186,5306"
+                    }
+                }
+            ]
+        },
+        {
+            "outputFile": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-2:\\values-night-v8\\values-night-v8.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\Corey\\StudioProjects\\caches\\8.10.2\\transforms\\9e0f7750f0d1aa41822a2968eea2c998\\transformed\\appcompat-1.7.0\\res\\values-night-v8\\values-night-v8.xml",
+                    "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
                         "startOffsets": "55,125,209,293,389,491,593,687",

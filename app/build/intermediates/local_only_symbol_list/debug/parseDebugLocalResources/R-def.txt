@@ -2,6 +2,7 @@ R_DEF: Internal format may change without notice
 local
 color black
 color dark_gray
+color dark_green
 color dark_pink
 color gray
 color green
@@ -35,12 +36,15 @@ drawable ic_calendar
 drawable ic_edit
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_settings
 drawable ic_subtract
 drawable popup_background
 drawable profile_placehold_cat
 drawable profile_placeholder
 drawable rounded_button_background
 drawable search_background
+id aboutText
+id aboutTitle
 id addButton
 id addExerciseButton
 id addGoalButton
@@ -70,6 +74,7 @@ id cardioRadio
 id cardioTimeInput
 id checkBoxDailyReminder
 id dailyReminderCheckBox
+id darkModeSwitch
 id dateTimeTextView
 id date_text
 id deadlineTextView
@@ -116,7 +121,10 @@ id headerTitle
 id hobbiesTagsChipGroup
 id journalBackButton
 id journalEntryEditText
+id legalText
+id legalTitle
 id logoImage
+id logoutButton
 id lunchAddButton
 id lunchContainer
 id macrosTextView
@@ -145,6 +153,7 @@ id servingTextView
 id servingsEditText
 id setsInput
 id setsRepsInput
+id settingsButton
 id sleepTagsChipGroup
 id socialTagsChipGroup
 id strengthInputs
@@ -178,6 +187,7 @@ layout activity_mood
 layout activity_mood_journal
 layout activity_profile
 layout activity_register
+layout activity_settings
 layout actvitiy_log_exercise
 layout dialog_add_tag
 layout dialog_edit_goal

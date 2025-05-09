@@ -46,7 +46,7 @@
         <activity android:name="Medication.MedicationActivity" />
         <activity android:name="Exercise_Logging.ExerciseHistoryActivity" />
         <activity android:name="Exercise_Logging.ExerciseLogActivity" />
-
+        <activity android:name="com.fitwizard.fitwizard.SettingsActivity" />
         <!-- Define the HomeActivity as the main entry point -->
         <activity android:name="Recipe_Logging.FoodLogActivity" />
         <activity android:name="com.fitwizard.fitwizard.ProfileActivity" />

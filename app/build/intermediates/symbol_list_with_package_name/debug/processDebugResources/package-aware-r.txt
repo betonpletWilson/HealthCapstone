@@ -1389,6 +1389,7 @@ color cardview_light_background
 color cardview_shadow_end_color
 color cardview_shadow_start_color
 color dark_gray
+color dark_green
 color dark_pink
 color design_bottom_navigation_shadow_color
 color design_box_stroke_color
@@ -3063,6 +3064,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable ic_settings
 drawable ic_subtract
 drawable indeterminate_static
 drawable m3_avd_hide_password
@@ -3159,6 +3161,8 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
+id aboutText
+id aboutTitle
 id above
 id accelerate
 id accessibility_action_clickable_span
@@ -3314,6 +3318,7 @@ id custom
 id customPanel
 id cut
 id dailyReminderCheckBox
+id darkModeSwitch
 id dateTimeTextView
 id date_picker_actions
 id date_text
@@ -3460,12 +3465,15 @@ id layout
 id left
 id leftToRight
 id legacy
+id legalText
+id legalTitle
 id line1
 id line3
 id linear
 id listMode
 id list_item
 id logoImage
+id logoutButton
 id lunchAddButton
 id lunchContainer
 id m3_side_sheet
@@ -3643,6 +3651,7 @@ id servingTextView
 id servingsEditText
 id setsInput
 id setsRepsInput
+id settingsButton
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -3901,6 +3910,7 @@ layout activity_mood
 layout activity_mood_journal
 layout activity_profile
 layout activity_register
+layout activity_settings
 layout actvitiy_log_exercise
 layout custom_dialog
 layout design_bottom_navigation_item
