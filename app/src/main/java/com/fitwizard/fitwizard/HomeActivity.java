@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
@@ -22,11 +23,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
 
+import Exercise_Logging.ExerciseHistoryActivity;
 import Goals.GoalsActivity;
 import Medication.MedicationActivity;
-import Recipe_Logging.FoodLogActivity;
-import Reminders.NotificationsActivity;
 import Mood.MoodActivity;
+import Recipe_Logging.FoodLogActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -38,7 +39,7 @@ public class HomeActivity extends AppCompatActivity {
     private ProgressBar proteinsProgress, fatsProgress, carbsProgress, caloriesProgress;
     private FloatingActionButton addWaterBtn, subtractWaterBtn, addFab;
     private LinearLayout addMenu;
-    private Button addMealButton, logMoodButton, newNotifButton, medicationsButton;
+    private Button addMealButton, logMoodButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +47,6 @@ public class HomeActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
-
 
         initializeViews();
         setupProfileImage();
@@ -77,11 +77,8 @@ public class HomeActivity extends AppCompatActivity {
         // Popup menu components
         addFab = findViewById(R.id.fab_add);
         addMenu = findViewById(R.id.add_menu);
-
         addMealButton = findViewById(R.id.btn_add_meal);
         logMoodButton = findViewById(R.id.btn_log_mood);
-        newNotifButton = findViewById(R.id.btn_new_notif);
-        medicationsButton = findViewById(R.id.btn_medications);
 
         // Set Date Text
         dateText.setText(new SimpleDateFormat("MMM dd", Locale.getDefault()).format(new Date()));
@@ -96,7 +93,6 @@ public class HomeActivity extends AppCompatActivity {
             startActivity(intent);
 
         });
-
     }
 
     private void setupProfileImage() {
@@ -114,9 +110,29 @@ public class HomeActivity extends AppCompatActivity {
     private void setupWaterControls() {
         addWaterBtn.setOnClickListener(v -> modifyWaterAmount(0.1f));
         subtractWaterBtn.setOnClickListener(v -> modifyWaterAmount(-0.1f));
-
-        // Initial display update
         updateWaterDisplay();
+    }
+
+    private void setupPopupNavMenu() {
+        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) addMenu.getLayoutParams();
+        layoutParams.bottomToTop = R.id.fab_add;
+        layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
+        layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
+        addMenu.setLayoutParams(layoutParams);
+
+        addFab.setOnClickListener(v -> togglePopupMenu());
+        addMealButton.setOnClickListener(v -> openActivity(FoodLogActivity.class));
+        logMoodButton.setOnClickListener(v -> openActivity(MoodActivity.class));
+        Button medicationsButton = findViewById(R.id.btn_medications);
+
+        Button logExerciseButton = findViewById(R.id.btn_log_exercise);
+        logExerciseButton.setOnClickListener(v -> openActivity(ExerciseHistoryActivity.class));
+
+
+        medicationsButton.setOnClickListener(v -> {
+            openActivity(MedicationActivity.class);
+        });
+
     }
 
     private void modifyWaterAmount(float amount) {
@@ -162,45 +178,13 @@ public class HomeActivity extends AppCompatActivity {
                 .show();
     }
 
-    private void setupPopupNavMenu() {
-        // Move the popup menu outside the bottom nav card
-        addFab.setOnClickListener(v -> togglePopupMenu());
-        addMealButton.setOnClickListener(v -> openActivity(FoodLogActivity.class));
-        logMoodButton.setOnClickListener(v -> openActivity(MoodActivity.class));
-        newNotifButton.setOnClickListener(v -> openActivity(NotificationsActivity.class));
-        medicationsButton.setOnClickListener(v -> openActivity(MedicationActivity.class));
-
-/*
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) addMenu.getLayoutParams();
-        layoutParams.bottomToTop = R.id.fab_add;
-        layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
-        layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
-        addMenu.setLayoutParams(layoutParams);
-*/
-
-
-
-
-
-    }
-
     private void togglePopupMenu() {
         if (addMenu.getVisibility() == View.GONE) {
             addMenu.setVisibility(View.VISIBLE);
             addMenu.setAlpha(0f);
-            addMenu.setTranslationY(100f);
-            addMenu.animate()
-                    .alpha(1f)
-                    .translationY(0f)
-                    .setDuration(200)
-                    .start();
+            addMenu.animate().alpha(1f).setDuration(200).start();
         } else {
-            addMenu.animate()
-                    .alpha(0f)
-                    .translationY(100f)
-                    .setDuration(200)
-                    .withEndAction(() -> addMenu.setVisibility(View.GONE))
-                    .start();
+            addMenu.animate().alpha(0f).setDuration(200).withEndAction(() -> addMenu.setVisibility(View.GONE)).start();
         }
     }
 
@@ -208,8 +192,6 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(new Intent(HomeActivity.this, activityClass));
         addMenu.setVisibility(View.GONE);
     }
-
-
 
     private void showToast(String message) {
         Toast.makeText(HomeActivity.this, message, Toast.LENGTH_SHORT).show();

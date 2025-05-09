@@ -35,7 +35,8 @@
 
         <activity android:name="Medication.AddEditMedicationActivity" />
         <activity android:name="Medication.MedicationActivity" />
-
+        <activity android:name="Exercise_Logging.ExerciseHistoryActivity" />
+        <activity android:name="Exercise_Logging.ExerciseLogActivity"  />
 
         <activity android:name="Recipe_Logging.FoodLogActivity" />
         <activity android:name="Recipe_Logging.FoodSearchActivity" />
