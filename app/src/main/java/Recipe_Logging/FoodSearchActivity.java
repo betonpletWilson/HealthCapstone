@@ -19,6 +19,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.fitwizard.fitwizard.R;
+import com.fitwizard.fitwizard.network.ApiService;
 
 
 public class FoodSearchActivity extends AppCompatActivity {
@@ -51,7 +52,6 @@ public class FoodSearchActivity extends AppCompatActivity {
         titleTextView.setText("Add " + mealType.substring(0, 1).toUpperCase() + mealType.substring(1));
 
         //Deal with Food Data from FoodData and FoodAdapter
-        foodList = getSampleFoodList(); // Load mock backend data
         foodListView.setAdapter(new FoodAdapter(this, foodList));
 
         // Set up item click listener for the food list
@@ -66,6 +66,30 @@ public class FoodSearchActivity extends AppCompatActivity {
         // Search button functionality
         Button searchButton = findViewById(R.id.searchButton);
         searchButton.setOnClickListener(v -> searchFoods(searchEditText.getText().toString()));
+    }
+
+    private void searchFoods(String query) {
+        if (query.trim().isEmpty()) return;
+
+        ApiService.DBSearch(
+                "food",
+                "name",
+                query,
+                FoodData[].class,
+                new ApiService.ApiCallback<List<FoodData>>() {
+                    @Override
+                    public void onSuccess(List<FoodData> list) {
+                        runOnUiThread(() ->
+                                foodListView.setAdapter(
+                                        new FoodAdapter(FoodSearchActivity.this, list)));
+                    }
+                    @Override
+                    public void onFailure(String err) {
+                        runOnUiThread(() ->
+                                Toast.makeText(FoodSearchActivity.this,
+                                        "No results: " + err, Toast.LENGTH_SHORT).show());
+                    }
+                });
     }
 
     // Show serving size dialog when a food is selected
@@ -122,6 +146,14 @@ public class FoodSearchActivity extends AppCompatActivity {
 
                 // Optional: Show confirmation and return to previous screen
                 Toast.makeText(FoodSearchActivity.this, food.getName() + " added to " + formatMealType(mealType), Toast.LENGTH_SHORT).show();
+
+                ApiService.addFoodToDb(food);
+
+                saveFoodToMeal(food, mealType, servings);  // existing call
+                dialog.dismiss();
+                Toast.makeText(FoodSearchActivity.this,
+                        food.getName() + " added to " + formatMealType(mealType),
+                        Toast.LENGTH_SHORT).show();
                 finish();
             }
         });
@@ -134,28 +166,6 @@ public class FoodSearchActivity extends AppCompatActivity {
         }
         return mealType.substring(0, 1).toUpperCase() + mealType.substring(1);
     }
-
-    // Sample food list for testing
-    private List<FoodData> getSampleFoodList() {
-        List<FoodData> sampleFoods = new ArrayList<>();
-        sampleFoods.add(new FoodData("Hard Boiled Egg", 78, 6, 5, 1, "1 large egg"));
-        sampleFoods.add(new FoodData("Green Apple", 95, 0, 0, 25, "1 medium apple"));
-        sampleFoods.add(new FoodData("Chicken Breast", 165, 31, 4, 0, "100g"));
-        sampleFoods.add(new FoodData("Apple Juice", 114, 0, 0, 28, "1 cup (240ml)"));
-        return sampleFoods;
-    }
-
-    // Search functionality
-    private void searchFoods(String query) {
-        List<FoodData> filteredList = new ArrayList<>();    // Change to get information from API, set a limit to only grab about 10 items
-        for (FoodData food : foodList) {
-            if (food.getName().toLowerCase().contains(query.toLowerCase())) {
-                filteredList.add(food);
-            }
-        }
-        foodListView.setAdapter(new FoodAdapter(this, filteredList));
-    }
-
 
 
     // Save the food item to the meal with specified servings

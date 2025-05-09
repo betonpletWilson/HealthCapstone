@@ -1,8 +1,8 @@
 package com.fitwizard.fitwizard.network;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URLEncoder;
+import java.util.Arrays;
+import java.util.List;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonSyntaxException;
@@ -67,6 +67,49 @@ public class CallbackFactory {
                     callback.onSuccess(obj);
                 }
             }
+        };
+    }
+    public static <T> Callback createListCallback(
+            final Class<T[]> arrayClazz,
+            final ApiService.ApiCallback<List<T>> cb) {
+
+        return new Callback() {
+            @Override public void onFailure(Call c, IOException e) {
+                if (cb != null) cb.onFailure("Request failed: " + e.getMessage());
+            }
+            @Override public void onResponse(Call c, Response r) {
+                if (!r.isSuccessful()) {
+                    if (cb != null) cb.onFailure("HTTP " + r.code());
+                    return;
+                }
+                String json;
+                try (ResponseBody body = r.body()) {
+                    json = (body != null) ? body.string() : null;
+                } catch (IOException io) { cb.onFailure(io.getMessage()); return; }
+
+                if (json == null || json.isEmpty()) { cb.onFailure("Empty body"); return; }
+
+                try {
+                    List<T> list;
+                    if (json.trim().startsWith("[")) {                 // ← array
+                        T[] arr = gson.fromJson(json, arrayClazz);
+                        list = Arrays.asList(arr);
+                    } else {                                          // ← single obj
+                        Class<T> comp = (Class<T>) arrayClazz.getComponentType();
+                        T obj = gson.fromJson(json, comp);
+                        list = java.util.Collections.singletonList(obj);
+                    }
+                    cb.onSuccess(list);
+                } catch (JsonSyntaxException ex) {
+                    cb.onFailure("Parse error: " + ex.getMessage());
+                }
+            }
+        };
+    }
+    public static Callback createVoidCallback() {
+        return new Callback() {
+            @Override public void onFailure(Call c, IOException e) { /* no‑op */ }
+            @Override public void onResponse(Call c, Response r)   { r.close(); }
         };
     }
 }

@@ -1,0 +1,477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="Reminders.NotificationsActivity">
+
+    <!-- Top Bar with Back Button -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/top_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back"
+            android:contentDescription="@string/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/notif_text"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/btn_back"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginStart="16dp" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Calendar Horizontal Scroll -->
+    <HorizontalScrollView
+        android:id="@+id/calendar_scroll_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/top_bar">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <!-- This container will be populated with weeks dynamically -->
+            <LinearLayout
+                android:id="@+id/weeks_container"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- Example Week Layout (will be generated dynamically for past 5 weeks) -->
+                <!-- Current Week (highlighted) -->
+                <LinearLayout
+                    android:id="@+id/current_week_layout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center"
+                    android:layout_marginEnd="10dp">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="8dp"
+                        android:orientation="horizontal">
+
+                        <!-- Saturday -->
+                        <LinearLayout
+                            android:id="@+id/day_layout_saturday"
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="Sa"
+                                android:textSize="14sp" />
+
+                            <FrameLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp">
+
+                                <TextView
+                                    android:id="@+id/day_text_saturday"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:background="@drawable/circle_outline_pink"
+                                    android:gravity="center"
+                                    android:text="19"
+                                    android:textSize="16sp" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <!-- Sunday -->
+                        <LinearLayout
+                            android:id="@+id/day_layout_sunday"
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="Su"
+                                android:textSize="14sp" />
+
+                            <FrameLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp">
+
+                                <TextView
+                                    android:id="@+id/day_text_sunday"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:background="@drawable/circle_outline_pink"
+                                    android:gravity="center"
+                                    android:text="20"
+                                    android:textSize="16sp" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <!-- Monday -->
+                        <LinearLayout
+                            android:id="@+id/day_layout_monday"
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="Mo"
+                                android:textSize="14sp" />
+
+                            <FrameLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp">
+
+                                <TextView
+                                    android:id="@+id/day_text_monday"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:background="@drawable/circle_outline_pink"
+                                    android:gravity="center"
+                                    android:text="21"
+                                    android:textSize="16sp" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <!-- Tuesday -->
+                        <LinearLayout
+                            android:id="@+id/day_layout_tuesday"
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="Tu"
+                                android:textSize="14sp" />
+
+                            <FrameLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp">
+
+                                <TextView
+                                    android:id="@+id/day_text_tuesday"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:background="@drawable/circle_outline_pink"
+                                    android:gravity="center"
+                                    android:text="22"
+                                    android:textSize="16sp" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <!-- Wednesday -->
+                        <LinearLayout
+                            android:id="@+id/day_layout_wednesday"
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="We"
+                                android:textSize="14sp" />
+
+                            <FrameLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp">
+
+                                <TextView
+                                    android:id="@+id/day_text_wednesday"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:background="@drawable/circle_outline_pink"
+                                    android:gravity="center"
+                                    android:text="23"
+                                    android:textSize="16sp" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <!-- Thursday -->
+                        <LinearLayout
+                            android:id="@+id/day_layout_thursday"
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="Th"
+                                android:textSize="14sp" />
+
+                            <FrameLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp">
+
+                                <TextView
+                                    android:id="@+id/day_text_thursday"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:background="@drawable/circle_outline_pink"
+                                    android:gravity="center"
+                                    android:text="24"
+                                    android:textSize="16sp" />
+                            </FrameLayout>
+                        </LinearLayout>
+
+                        <!-- Friday -->
+                        <LinearLayout
+                            android:id="@+id/day_layout_friday"
+                            android:layout_width="48dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="4dp"
+                            android:gravity="center"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginBottom="8dp"
+                                android:text="Fr"
+                                android:textSize="14sp" />
+
+                            <FrameLayout
+                                android:layout_width="40dp"
+                                android:layout_height="40dp">
+
+                                <TextView
+                                    android:id="@+id/day_text_friday"
+                                    android:layout_width="36dp"
+                                    android:layout_height="36dp"
+                                    android:background="@drawable/circle_outline_pink"
+                                    android:gravity="center"
+                                    android:text="25"
+                                    android:textSize="16sp" />
+                            </FrameLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/light_pink"/>
+                </LinearLayout>
+
+                <!-- Space for future weeks (will be dynamically generated) -->
+            </LinearLayout>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Sort By Text -->
+    <TextView
+        android:id="@+id/tv_sort_by"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sort by"
+        android:textColor="@color/green"
+        android:textSize="16sp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/calendar_scroll_view" />
+
+
+    <!-- Filter Buttons -->
+    <HorizontalScrollView
+        android:id="@+id/filter_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/tv_sort_by">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <Button
+                android:id="@+id/btn_filter_today"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Today"
+                android:textColor="@color/white"
+                android:backgroundTint="@color/green"
+                android:layout_marginEnd="8dp"
+                app:cornerRadius="24dp" />
+
+            <Button
+                android:id="@+id/btn_filter_upcoming"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Upcoming"
+                android:textColor="@color/black"
+                android:backgroundTint="@android:color/white"
+                android:layout_marginEnd="8dp"
+                app:cornerRadius="24dp"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton" />
+
+            <Button
+                android:id="@+id/btn_filter_all_month"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="All Month"
+                android:textColor="@color/black"
+                android:backgroundTint="@android:color/white"
+                app:cornerRadius="24dp"/>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Category Filters -->
+    <HorizontalScrollView
+        android:id="@+id/category_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        android:layout_marginTop="8dp"
+        app:layout_constraintTop_toBottomOf="@id/filter_scrollview">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_medication"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Medication"
+                android:textColor="@color/white"
+                app:chipBackgroundColor="@color/med_purple" />
+
+            <!-- Additional category chips can be added here -->
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- Notification List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_notifications"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
+        android:paddingBottom="350dp"
+        app:layout_constraintTop_toBottomOf="@id/category_scrollview"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/notif_item_layout" />
+
+    <!-- Bottom Navigation -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:cardBackgroundColor="@android:color/transparent"
+        app:cardElevation="0dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_nav_container"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:background="@android:color/transparent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/fab_add"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:backgroundTint="@color/green"
+                android:src="@drawable/ic_add"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.498"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.0"
+                app:tint="@color/white" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Add popup menu as a separate view outside the bottom navigation -->
+    <LinearLayout
+        android:id="@+id/add_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@drawable/popup_background"
+        android:padding="20dp"
+        android:layout_marginBottom="80dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <Button
+            android:id="@+id/btn_add_notif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Create a Notification"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp"/>
+        <Button
+            android:id="@+id/nav_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Home"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:layout_marginBottom="8dp"/>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

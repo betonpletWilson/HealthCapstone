@@ -1,10 +1,21 @@
 {
     "logs": [
         {
-            "outputFile": "com.fitwizard.fitwizard.app-mergeDebugResources-2:/values-v23/values-v23.xml",
+            "outputFile": "com.fitwizard.fitwizard.app-mergeDebugResources-29:/values-v23/values-v23.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\Corey\\StudioProjects\\caches\\8.10.2\\transforms\\ca00c0f84d8fe804219c377362d666dc\\transformed\\material-1.12.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\Miles Wilson\\.gradle\\caches\\8.10.2\\transforms\\71903bfba6f8a9d03636eae1fc3bad2e\\transformed\\appcompat-1.7.0\\res\\values-v23\\values-v23.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
+                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,190,325,400,487,1225,1975,2094,2221,2443,2667,2782,2889,3002",
+                        "endLines": "2,3,4,5,19,33,34,35,38,42,43,44,45,49",
+                        "endColumns": "134,134,74,86,12,12,118,126,12,12,114,106,112,12",
+                        "endOffsets": "185,320,395,482,1220,1970,2089,2216,2438,2662,2777,2884,2997,3227"
+                    }
+                },
+                {
+                    "source": "C:\\Users\\Miles Wilson\\.gradle\\caches\\8.10.2\\transforms\\c14237d546f2c578839802b76bdbf547\\transformed\\material-1.12.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2,5,9,13,16,19,22,25,28,32",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",
@@ -23,7 +34,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\Corey\\StudioProjects\\caches\\8.10.2\\transforms\\08a505f183d1f0a9fc2d7d23a10744a2\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
+                    "source": "C:\\Users\\Miles Wilson\\.gradle\\caches\\8.10.2\\transforms\\f8dd5ba456fcb78fbf37852ab595dcd0\\transformed\\cardview-1.0.0\\res\\values-v23\\values-v23.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -39,17 +50,6 @@
                         "endLines": "52",
                         "endColumns": "12",
                         "endOffsets": "3377"
-                    }
-                },
-                {
-                    "source": "C:\\Users\\Corey\\StudioProjects\\caches\\8.10.2\\transforms\\9e0f7750f0d1aa41822a2968eea2c998\\transformed\\appcompat-1.7.0\\res\\values-v23\\values-v23.xml",
-                    "from": {
-                        "startLines": "2,3,4,5,6,20,34,35,36,39,43,44,45,46",
-                        "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4",
-                        "startOffsets": "55,190,325,400,487,1225,1975,2094,2221,2443,2667,2782,2889,3002",
-                        "endLines": "2,3,4,5,19,33,34,35,38,42,43,44,45,49",
-                        "endColumns": "134,134,74,86,12,12,118,126,12,12,114,106,112,12",
-                        "endOffsets": "185,320,395,482,1220,1970,2089,2216,2438,2662,2777,2884,2997,3227"
                     }
                 }
             ]
