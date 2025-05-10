@@ -6,6 +6,7 @@
     android:orientation="vertical"
     android:background="@android:color/white">
 
+
     <!-- Header Row with Back Button, Mood Image and Text -->
     <RelativeLayout
         android:layout_width="match_parent"
@@ -43,6 +44,7 @@
     </RelativeLayout>
 
     <!-- Content area -->
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
@@ -53,16 +55,31 @@
             android:orientation="vertical"
             android:padding="16dp">
 
-            <!-- Today's Tags Section -->
-
-            <ImageButton
-                android:id="@+id/addTagButton"
-                android:layout_width="wrap_content"
+            <!-- Tag Management Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/rounded_button_background"
-                android:contentDescription="@string/add_tag"
-                android:padding="8dp"
-                android:src="@drawable/ic_add" />
+                android:orientation="horizontal">
+
+                <ImageButton
+                    android:id="@+id/addTagButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button_background"
+                    android:contentDescription="@string/add_tag"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_add" />
+
+                <ImageButton
+                    android:id="@+id/editTagsButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:background="@drawable/rounded_button_background"
+                    android:contentDescription="@string/edit_tags"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_edit" />
+            </LinearLayout>
 
             <TextView
                 android:layout_width="wrap_content"

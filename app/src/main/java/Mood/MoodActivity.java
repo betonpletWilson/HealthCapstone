@@ -1,8 +1,11 @@
 package Mood;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +14,10 @@ import com.fitwizard.fitwizard.R;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
+
+//This is the screen with emojis in a straight line / How are you today? screen
+//
+
 
 public class MoodActivity extends AppCompatActivity {
     @Override
@@ -38,6 +45,26 @@ public class MoodActivity extends AppCompatActivity {
         setupMoodButton(R.id.face_meh);
         setupMoodButton(R.id.face_sad);
         setupMoodButton(R.id.face_awful);
+
+
+        Button calendarButton = findViewById(R.id.open_calendar_button);
+        calendarButton.setOnClickListener(v -> {
+            // Format today's date key
+            SimpleDateFormat keyFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            String todayKey = keyFormat.format(new Date());
+
+            // Load from SharedPreferences
+            SharedPreferences prefs = getSharedPreferences("MoodPrefs", MODE_PRIVATE);
+            String savedEntry = prefs.getString(todayKey, null);
+
+            if (savedEntry != null) {
+                Intent intent = new Intent(MoodActivity.this, MoodLogsActivity.class);
+                intent.putExtra("MOOD_DATA_STRING", savedEntry);
+                startActivity(intent);
+            } else {
+                Toast.makeText(MoodActivity.this, "No entry found for today.", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
 
@@ -67,8 +94,6 @@ public class MoodActivity extends AppCompatActivity {
 
             // Pass the drawable resource ID to the next activity
             intent.putExtra("SELECTED_MOOD_RESOURCE_ID", drawableResourceId);
-
-
 
             // Start the activity
             startActivity(intent);
