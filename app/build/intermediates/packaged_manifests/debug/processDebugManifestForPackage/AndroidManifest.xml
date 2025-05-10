@@ -53,6 +53,8 @@
         <activity android:name="Recipe_Logging.FoodSearchActivity" />
         <activity android:name="Mood.MoodActivity" />
         <activity android:name="Mood.MoodJournalActivity" />
+        <activity android:name="Reminders.NotifCreationActivity" />
+        <activity android:name="Reminders.NotificationsActivity" />
 
         <receiver
             android:name="Goals.GoalReminderReceiver"

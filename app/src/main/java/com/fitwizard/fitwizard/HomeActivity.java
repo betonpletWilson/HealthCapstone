@@ -29,6 +29,7 @@ import Goals.GoalsActivity;
 import Medication.MedicationActivity;
 import Mood.MoodActivity;
 import Recipe_Logging.FoodLogActivity;
+import Reminders.NotificationsActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -123,6 +124,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void setupPopupNavMenu() {
+        // Attach the popup menu just above the FAB
         ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) addMenu.getLayoutParams();
         layoutParams.bottomToTop = R.id.fab_add;
         layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
@@ -130,19 +132,24 @@ public class HomeActivity extends AppCompatActivity {
         addMenu.setLayoutParams(layoutParams);
 
         addFab.setOnClickListener(v -> togglePopupMenu());
+
+        // Button references
+        Button addMealButton = findViewById(R.id.btn_add_meal);
+        Button logMoodButton = findViewById(R.id.btn_log_mood);
+        Button goalsButton = findViewById(R.id.btn_goals);
+        Button medicationsButton = findViewById(R.id.btn_medications);
+        Button logExerciseButton = findViewById(R.id.btn_log_exercise);
+        Button newNotifButton = findViewById(R.id.btn_new_notif);
+
+        // Set listeners
         addMealButton.setOnClickListener(v -> openActivity(FoodLogActivity.class));
         logMoodButton.setOnClickListener(v -> openActivity(MoodActivity.class));
-        Button medicationsButton = findViewById(R.id.btn_medications);
-
-        Button logExerciseButton = findViewById(R.id.btn_log_exercise);
-        logExerciseButton.setOnClickListener(v -> openActivity(ExerciseHistoryActivity.class));
-
-
-        medicationsButton.setOnClickListener(v -> {
-            openActivity(MedicationActivity.class);
-        });
-
+        goalsButton.setOnClickListener(v -> openActivity(GoalsActivity.class)); // Replace with your actual class
+        medicationsButton.setOnClickListener(v -> openActivity(MedicationActivity.class));
+        logExerciseButton.setOnClickListener(v -> openActivity(ExerciseHistoryActivity.class)); // Or ExerciseLogActivity.class
+        newNotifButton.setOnClickListener(v -> openActivity(Reminders.NotificationsActivity.class));
     }
+
 
     private void modifyWaterAmount(float amount) {
         currentWater = Math.max(0, currentWater + amount);
@@ -188,19 +195,30 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void togglePopupMenu() {
+        View profileCard = findViewById(R.id.profile_card);
+
         if (addMenu.getVisibility() == View.GONE) {
             addMenu.setVisibility(View.VISIBLE);
             addMenu.setAlpha(0f);
             addMenu.animate().alpha(1f).setDuration(200).start();
+
+            // Hide profile while menu is up
+            profileCard.setVisibility(View.GONE);
         } else {
-            addMenu.animate().alpha(0f).setDuration(200).withEndAction(() -> addMenu.setVisibility(View.GONE)).start();
+            addMenu.animate().alpha(0f).setDuration(200).withEndAction(() -> {
+                addMenu.setVisibility(View.GONE);
+                profileCard.setVisibility(View.VISIBLE); // Restore profile when menu closes
+            }).start();
         }
     }
 
-    private void openActivity(Class<?> activityClass) {
-        startActivity(new Intent(HomeActivity.this, activityClass));
-        addMenu.setVisibility(View.GONE);
+
+    private void openActivity(Class<?> targetActivity) {
+        Intent intent = new Intent(this, targetActivity);
+        startActivity(intent);
+        addMenu.setVisibility(View.GONE); // Optional: hide menu after opening
     }
+
 
     private void showToast(String message) {
         Toast.makeText(HomeActivity.this, message, Toast.LENGTH_SHORT).show();
