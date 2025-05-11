@@ -47,37 +47,6 @@
             android:contentDescription="Mood icon"
             android:src="@drawable/face_amazing" />
 
-        <TextView
-            android:id="@+id/dateTextView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Date"
-            android:textSize="16sp"
-            android:layout_marginTop="8dp"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:id="@+id/journalEntryLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Journal Entry:"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp" />
-
-        <TextView
-            android:id="@+id/journalEntryTextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Your journal entry will appear here."
-            android:layout_marginTop="4dp" />
-
-        <TextView
-            android:id="@+id/tagsLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tags:"
-            android:textStyle="bold"
-            android:layout_marginTop="16dp" />
 
         <LinearLayout
             android:id="@+id/tagsContainer"
@@ -85,6 +54,22 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="4dp">
+        </LinearLayout>
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            xmlns:tools="http://schemas.android.com/tools"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            tools:context=".MoodLogsActivity">
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/moodLogsRecyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clipToPadding="false"
+                android:padding="8dp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

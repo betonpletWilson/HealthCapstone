@@ -30,11 +30,13 @@ import com.fitwizard.fitwizard.R;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
 import java.util.UUID;
@@ -256,8 +258,8 @@ public class MoodJournalActivity extends AppCompatActivity {
 
         Toast.makeText(this, "Added " + tagName + " to " + category, Toast.LENGTH_SHORT).show();
 
-        // save this new tag to backend/database here
-        saveMoodDataToBackend(newMoodData);
+        // Save all tags to SharedPreferences
+        saveAllTagsToPrefs();
     }
 
     /**
@@ -268,13 +270,7 @@ public class MoodJournalActivity extends AppCompatActivity {
 
     }
 
-    /**
-     * Save journal entry to backend database
-     */
-    private void saveJournalEntryToDatabase(MoodData journalEntry) {
-        // TODO: Implement database logic here to save journal entry
 
-    }
 
     private int darkenColor(int color, float factor) {
         int a = Color.alpha(color);
@@ -287,6 +283,7 @@ public class MoodJournalActivity extends AppCompatActivity {
     /**
      * Save the journal entry and selected tags to the database
      */
+    // New improved saveJournalEntry method for MoodJournalActivity
     private void saveJournalEntry() {
         EditText journalEditText = findViewById(R.id.journalEntryEditText);
         String journalContent = journalEditText.getText().toString().trim();
@@ -318,8 +315,8 @@ public class MoodJournalActivity extends AppCompatActivity {
         // Set the selected tags to the journal entry
         journalEntry.setSelectedTags(selectedTags);
 
-        // Save journal entry to database
-        saveJournalEntryToDatabase(journalEntry);
+        // Save journal entry to SharedPreferences
+        saveJournalEntryToSharedPreferences(journalEntry);
 
         // Show success message with the number of selected tags
         Toast.makeText(this, "Journal entry saved with " + selectedTags.size() + " tags", Toast.LENGTH_SHORT).show();
@@ -330,6 +327,107 @@ public class MoodJournalActivity extends AppCompatActivity {
         startActivity(intent);
         finish(); // Optional: remove it from the stack
     }
+
+    /**
+     * Save journal entry to SharedPreferences
+     */
+    private void saveJournalEntryToSharedPreferences(MoodData journalEntry) {
+        SharedPreferences prefs = getSharedPreferences("MoodPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        // Format date for key
+        SimpleDateFormat keyFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String dateKey = keyFormat.format(journalEntry.getDate());
+
+        // Save entry as string
+        String entryString = journalEntry.toString();
+        editor.putString(dateKey, entryString);
+
+        // Also add to all entries list
+        Set<String> allEntries = prefs.getStringSet("all_journal_entries", new HashSet<>());
+        allEntries.add(dateKey);
+        editor.putStringSet("all_journal_entries", allEntries);
+
+        editor.apply();
+    }
+
+    /**
+     * Load journal entry from SharedPreferences for a specific date
+     */
+    public static MoodData loadJournalEntryFromPrefs(Context context, Date date) {
+        SharedPreferences prefs = context.getSharedPreferences("MoodPrefs", Context.MODE_PRIVATE);
+
+        // Format date for key
+        SimpleDateFormat keyFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String dateKey = keyFormat.format(date);
+
+        // Get entry string
+        String entryString = prefs.getString(dateKey, null);
+
+        if (entryString != null) {
+            MoodData journalEntry = MoodData.fromString(entryString);
+
+            // Load the complete tag data
+            List<MoodData> allTags = loadAllTagsFromPrefs(context);
+
+            // Replace the placeholder tags with complete tags
+            if (journalEntry.getSelectedTags() != null) {
+                List<MoodData> selectedTags = new ArrayList<>();
+
+                for (MoodData placeholderTag : journalEntry.getSelectedTags()) {
+                    MoodData fullTag = MoodData.findTagById(allTags, placeholderTag.getId());
+                    if (fullTag != null) {
+                        selectedTags.add(fullTag);
+                    }
+                }
+
+                journalEntry.setSelectedTags(selectedTags);
+            }
+
+            return journalEntry;
+        }
+
+        return null;
+    }
+
+    /**
+     * Save all tags to SharedPreferences
+     */
+    private void saveAllTagsToPrefs() {
+        SharedPreferences prefs = getSharedPreferences("MoodPrefs", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        Set<String> tagSet = new HashSet<>();
+        for (MoodData tagData : moodDataList) {
+            tagSet.add(tagData.toString());
+        }
+
+        editor.putStringSet("mood_tags", tagSet);
+        editor.apply();
+    }
+
+    /**
+     * Load all tags from SharedPreferences
+     */
+    public static List<MoodData> loadAllTagsFromPrefs(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences("MoodPrefs", Context.MODE_PRIVATE);
+        Set<String> tagSet = prefs.getStringSet("mood_tags", new HashSet<>());
+
+        List<MoodData> tagsList = new ArrayList<>();
+
+        for (String tagString : tagSet) {
+            MoodData tagData = MoodData.fromString(tagString);
+            tagsList.add(tagData);
+        }
+
+        // If no tags are saved yet, return default tags
+        if (tagsList.isEmpty()) {
+            tagsList = createDefaultTags();
+        }
+
+        return tagsList;
+    }
+
 
     /**
      * Initialize tag colors for different categories
@@ -375,39 +473,45 @@ public class MoodJournalActivity extends AppCompatActivity {
     }
 
     /**
-     * Load mood data from backend data source
-     * Currently contains sample data
+     * Create default tags (used when no tags are saved yet)
      */
-    private void loadMoodData() {
-        // TODO: Replace with database call to load tags
-
-        // Initialize the list
-        moodDataList = new ArrayList<>();
+    private static List<MoodData> createDefaultTags() {
+        List<MoodData> defaultTags = new ArrayList<>();
 
         // Emotion tags
-        moodDataList.add(new MoodData("e1", "happy", "emotion"));
-        moodDataList.add(new MoodData("e2", "sad", "emotion"));
-        moodDataList.add(new MoodData("e3", "Relaxed", "emotion"));
-        moodDataList.add(new MoodData("e4", "Sick", "emotion"));
-        moodDataList.add(new MoodData("e5", "Yuck", "emotion"));
+        defaultTags.add(new MoodData("e1", "happy", "emotion"));
+        defaultTags.add(new MoodData("e2", "sad", "emotion"));
+        defaultTags.add(new MoodData("e3", "Relaxed", "emotion"));
+        defaultTags.add(new MoodData("e4", "Sick", "emotion"));
+        defaultTags.add(new MoodData("e5", "Yuck", "emotion"));
 
         // Sleep tags
-        moodDataList.add(new MoodData("s1", "Good Sleep", "sleep"));
-        moodDataList.add(new MoodData("s2", "Bad Sleep", "sleep"));
-        moodDataList.add(new MoodData("s3", "Overslept", "sleep"));
-        moodDataList.add(new MoodData("s4", "Ok Sleep", "sleep"));
+        defaultTags.add(new MoodData("s1", "Good Sleep", "sleep"));
+        defaultTags.add(new MoodData("s2", "Bad Sleep", "sleep"));
+        defaultTags.add(new MoodData("s3", "Overslept", "sleep"));
+        defaultTags.add(new MoodData("s4", "Ok Sleep", "sleep"));
 
         // Hobbies tags
-        moodDataList.add(new MoodData("h1", "Read", "hobbies"));
-        moodDataList.add(new MoodData("h2", "Shop", "hobbies"));
-        moodDataList.add(new MoodData("h3", "Work", "hobbies"));
-        moodDataList.add(new MoodData("h4", "Relax", "hobbies"));
-        moodDataList.add(new MoodData("h5", "Exercise", "hobbies"));
+        defaultTags.add(new MoodData("h1", "Read", "hobbies"));
+        defaultTags.add(new MoodData("h2", "Shop", "hobbies"));
+        defaultTags.add(new MoodData("h3", "Work", "hobbies"));
+        defaultTags.add(new MoodData("h4", "Relax", "hobbies"));
+        defaultTags.add(new MoodData("h5", "Exercise", "hobbies"));
 
         // Social tags
-        moodDataList.add(new MoodData("so1", "Family", "social"));
-        moodDataList.add(new MoodData("so2", "Friends", "social"));
-        moodDataList.add(new MoodData("so3", "Party", "social"));
+        defaultTags.add(new MoodData("so1", "Family", "social"));
+        defaultTags.add(new MoodData("so2", "Friends", "social"));
+        defaultTags.add(new MoodData("so3", "Party", "social"));
+
+        return defaultTags;
+    }
+
+    /**
+     * Update loadMoodData to load from SharedPreferences
+     */
+    private void loadMoodData() {
+        // Load tags from SharedPreferences
+        moodDataList = loadAllTagsFromPrefs(this);
 
         // Populate the UI with the loaded tags
         populateTagsUI();

@@ -1,9 +1,11 @@
 package Mood;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 
@@ -15,6 +17,7 @@ public class MoodData {
     private Date date;
     private int moodResourceId;
     private List<MoodData> selectedTags;
+    // Date format for serialization
 
     // Default constructor
     public MoodData() {
@@ -116,28 +119,23 @@ public class MoodData {
     }
 
 
-
     @Override
     public String toString() {
+        // Format: id;tagName;tagType;content;dateInMillis;moodResourceId;tag1,tag2,tag3
         StringBuilder sb = new StringBuilder();
+        sb.append(id != null ? id : "").append(";");
+        sb.append(tagName != null ? tagName : "").append(";");
+        sb.append(tagType != null ? tagType : "").append(";");
+        sb.append(content != null ? content : "").append(";");
+        sb.append(date != null ? date.getTime() : 0).append(";");
+        sb.append(moodResourceId).append(";");
 
-        // Add primary fields with semicolon separator (like Goal class)
-        sb.append(id).append(";")
-                .append(date != null ? date.getTime() : 0).append(";")
-                .append(tagName != null ? tagName.replace(";", "\\;") : "").append(";")
-                .append(tagType != null ? tagType : "").append(";")
-                .append(content != null ? content.replace(";", "\\;") : "").append(";")
-                .append(moodResourceId).append(";");
-
-        // Add selected tag IDs with comma separator
+        // Append selectedTags IDs as comma-separated values
         if (selectedTags != null && !selectedTags.isEmpty()) {
             for (int i = 0; i < selectedTags.size(); i++) {
-                MoodData tag = selectedTags.get(i);
-                if (tag != null && tag.getId() != null) {
-                    sb.append(tag.getId());
-                    if (i < selectedTags.size() - 1) {
-                        sb.append(",");
-                    }
+                sb.append(selectedTags.get(i).getId());
+                if (i < selectedTags.size() - 1) {
+                    sb.append(",");
                 }
             }
         }
@@ -145,50 +143,63 @@ public class MoodData {
         return sb.toString();
     }
 
-    // Needed for loading from SharedPreferences
-    public static MoodData fromString(String moodString) {
-        if (moodString == null || moodString.isEmpty()) {
-            return null;
-        }
+    //  Needed for loading from SharedPreferences
+    public static MoodData fromString(String moodDataString) {
+        String[] parts = moodDataString.split(";");
+        if (parts.length >= 6) { // At least 6 parts (may not have tags)
+            MoodData moodData = new MoodData();
 
-        String[] parts = moodString.split(";");
-        if (parts.length < 6) {
-            // Invalid format, return default MoodData
-            return new MoodData(UUID.randomUUID().toString(), "Invalid", "invalid");
-        }
+            moodData.setId(parts[0]);
+            moodData.setTagName(parts[1]);
+            moodData.setTagType(parts[2]);
+            moodData.setContent(parts[3]);
 
-        String id = parts[0];
-        long dateMillis = Long.parseLong(parts[1]);
-        Date date = new Date(dateMillis);
-        String tagName = parts[2].replace("\\;", ";");
-        String tagType = parts[3];
-        String content = parts[4].replace("\\;", ";");
-        int moodResourceId = Integer.parseInt(parts[5]);
+            // Parse date
+            try {
+                long dateMillis = Long.parseLong(parts[4]);
+                if (dateMillis > 0) {
+                    moodData.setDate(new Date(dateMillis));
+                }
+            } catch (NumberFormatException e) {
+                moodData.setDate(new Date()); // Default to current date if parsing fails
+            }
 
-        // Create the base MoodData object
-        MoodData moodData = new MoodData();
-        moodData.setId(id);
-        moodData.setDate(date);
-        moodData.setTagName(tagName);
-        moodData.setTagType(tagType);
-        moodData.setContent(content);
-        moodData.setMoodResourceId(moodResourceId);
+            // Parse moodResourceId
+            try {
+                moodData.setMoodResourceId(Integer.parseInt(parts[5]));
+            } catch (NumberFormatException e) {
+                moodData.setMoodResourceId(-1); // Default value if parsing fails
+            }
 
-        // Process selected tags if present
-        List<MoodData> selectedTags = new ArrayList<>();
-        if (parts.length > 6 && !parts[6].isEmpty()) {
-            String[] tagIds = parts[6].split(",");
-            for (String tagId : tagIds) {
-                if (!tagId.isEmpty()) {
+            // Parse selectedTags if available (part index 6)
+            if (parts.length > 6 && !parts[6].isEmpty()) {
+                String[] tagIds = parts[6].split(",");
+                List<MoodData> placeholderTags = new ArrayList<>();
+
+                for (String tagId : tagIds) {
+                    // Create placeholder tags with IDs only - to be replaced later with full tags
                     MoodData tag = new MoodData();
                     tag.setId(tagId);
-                    selectedTags.add(tag);
+                    placeholderTags.add(tag);
                 }
+
+                moodData.setSelectedTags(placeholderTags);
+            }
+
+            return moodData;
+        } else {
+            // If data is broken
+            return new MoodData();
+        }
+    }
+
+    public static MoodData findTagById(List<MoodData> allTags, String tagId) {
+        for (MoodData tag : allTags) {
+            if (tag.getId().equals(tagId)) {
+                return tag;
             }
         }
-        moodData.setSelectedTags(selectedTags);
-
-        return moodData;
+        return null;
     }
 
     // Helper method to get a list of tag IDs
