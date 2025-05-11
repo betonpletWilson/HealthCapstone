@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
-import java.util.Set;
+
 
 
 public class NotifData {
@@ -82,13 +82,13 @@ public class NotifData {
             this.notifID = notifID;
         }
 
+        private NotificationStatus status = NotificationStatus.INCOMPLETE;
+
         public enum NotificationStatus {
             INCOMPLETE,
             IN_PROGRESS,
             COMPLETE
         }
-
-        private NotificationStatus status = NotificationStatus.INCOMPLETE;
 
         public NotificationStatus getStatus() {
             return status;
@@ -97,6 +97,94 @@ public class NotifData {
         public void setStatus(NotificationStatus status) {
             this.status = status;
         }
+
+        // Add these methods to the NotificationItem class
+
+        /**
+         * Converts the notification item to a string for storage in SharedPreferences
+         * Format: notifID;title;time;duration;backgroundColor;category;typeMonthOrWeek;status;activeDaysOfWeek/Month
+         */
+        @Override
+        public String toString() {
+            StringBuilder sb = new StringBuilder();
+            sb.append(notifID).append(";");
+            sb.append(title).append(";");
+            sb.append(time).append(";");
+            sb.append(duration).append(";");
+            sb.append(backgroundColor).append(";");
+            sb.append(category).append(";");
+            sb.append(typeMonthOrWeek).append(";");
+            sb.append(status.name()).append(";");
+
+            // Convert boolean arrays to strings
+            if ("Weekly".equals(typeMonthOrWeek) && activeDaysOfWeek != null) {
+                for (boolean day : activeDaysOfWeek) {
+                    sb.append(day ? "1" : "0");
+                }
+            } else if ("Monthly".equals(typeMonthOrWeek) && activeDaysOfMonth != null) {
+                for (boolean day : activeDaysOfMonth) {
+                    sb.append(day ? "1" : "0");
+                }
+            }
+
+            return sb.toString();
+        }
+
+        /**
+         * Creates a NotificationItem from a string retrieved from SharedPreferences
+         */
+        public static NotificationItem fromString(String notifString) {
+            String[] parts = notifString.split(";");
+            if (parts.length >= 9) { // We need at least 9 parts for a valid notification
+                try {
+                    int notifID = Integer.parseInt(parts[0]);
+                    String title = parts[1];
+                    String time = parts[2];
+                    String duration = parts[3];
+                    String backgroundColor = parts[4];
+                    String category = parts[5];
+                    String typeMonthOrWeek = parts[6];
+                    NotificationStatus status = NotificationStatus.valueOf(parts[7]);
+
+                    // Parse active days
+                    String activeDaysString = parts[8];
+
+                    boolean[] activeDaysOfWeek = null;
+                    boolean[] activeDaysOfMonth = null;
+
+                    if ("Weekly".equals(typeMonthOrWeek)) {
+                        activeDaysOfWeek = new boolean[7];
+                        for (int i = 0; i < Math.min(activeDaysString.length(), 7); i++) {
+                            activeDaysOfWeek[i] = activeDaysString.charAt(i) == '1';
+                        }
+                    } else if ("Monthly".equals(typeMonthOrWeek)) {
+                        activeDaysOfMonth = new boolean[31];
+                        for (int i = 0; i < Math.min(activeDaysString.length(), 31); i++) {
+                            activeDaysOfMonth[i] = activeDaysString.charAt(i) == '1';
+                        }
+                    }
+
+                    // Create the notification item
+                    NotificationItem item = new NotificationItem(
+                            notifID, title, time, duration, backgroundColor,
+                            category, typeMonthOrWeek, activeDaysOfWeek, activeDaysOfMonth
+                    );
+                    item.setStatus(status);
+
+                    return item;
+                } catch (Exception e) {
+                    // If parsing fails, return a default notification
+                    return new NotificationItem("Invalid Notification", "08:00", "0 min",
+                            "#FFFFFF", "General", "Weekly");
+                }
+            } else {
+                // If data is broken
+                return new NotificationItem("Invalid Notification Data", "08:00", "0 min",
+                        "#FFFFFF", "General", "Weekly");
+            }
+        }
+
+
 
         /**
          * Get the active days of the week for weekly notifications

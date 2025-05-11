@@ -321,7 +321,7 @@
             android:id="@+id/calendar_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Birthday Reminder"
+            android:text="Your Reminders"
             android:textColor="@android:color/black"
             android:textSize="20sp"
             android:textStyle="bold"
@@ -457,7 +457,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-
+    <!-- end of calendar view  // End of All month calendar view --> -->
     <!-- Sort By Text -->
     <TextView
         android:id="@+id/tv_sort_by"

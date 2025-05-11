@@ -19,6 +19,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.fitwizard.fitwizard.HomeActivity;
@@ -43,6 +44,9 @@ import java.util.Map;
 
 
 public class NotificationsActivity extends AppCompatActivity {
+
+    private NotifManager notifManager;
+
     // Add this constant at the class level
     private static final int CREATE_NOTIFICATION_REQUEST = 1001;
 
@@ -69,7 +73,6 @@ public class NotificationsActivity extends AppCompatActivity {
     // Current filter state
     private String currentTimeFilter = "today"; // Changed default to "today"
     private List<String> currentCategoryFilters = new ArrayList<>();
-
 
     //Daily Notifications
     private TextView[] dayTextViews;
@@ -99,11 +102,13 @@ public class NotificationsActivity extends AppCompatActivity {
             getSupportActionBar().hide();
         }
 
-        // Initialize calendar with current date
-        currentCalendar = Calendar.getInstance();
+
 
         initViews();
         setupBackButton();
+        notifManager = new NotifManager(this);
+        // Initialize calendar with current date
+        currentCalendar = Calendar.getInstance();
         setupCalendarView(); // Upper horizontal scroll calendar
         setupMonthCalendarView(); // All month calendar view
         setupFilterButtons();
@@ -204,60 +209,6 @@ public class NotificationsActivity extends AppCompatActivity {
                 today.get(Calendar.MONTH) == calendar.get(Calendar.MONTH));
         int currentDay = today.get(Calendar.DAY_OF_MONTH);
 
-
-        // Add cells for each day
-        /*
-        for (int i = 0; i < 42; i++) {
-            LayoutInflater inflater = LayoutInflater.from(this);
-            View dayView = inflater.inflate(R.layout.calendar_day_cell, calendarGrid, false);
-            TextView dayText = dayView.findViewById(R.id.calendar_day_text);
-
-            int dayOfMonth = i - monthStartDayOfWeek + 1;
-
-            // Set day number if it's within the current month
-            if (dayOfMonth > 0 && dayOfMonth <= daysInMonth) {
-                dayText.setText(String.valueOf(dayOfMonth));
-
-                // Check if this day has notifications
-                boolean hasNotification = dayHasNotifications(dayOfMonth);
-
-
-
-
-                // Highlight today
-                if (isCurrentMonth && dayOfMonth == currentDay) {
-                    dayText.setBackground(getResources().getDrawable(R.drawable.circle_background_today, null));
-                }
-                // Highlight days with notifications
-                else if (hasNotification) {
-                    String color = getColorForNotification(dayOfMonth);
-                    // Create a dynamic drawable for the color
-                    GradientDrawable bgShape = new GradientDrawable();
-                    bgShape.setShape(GradientDrawable.OVAL);
-                    bgShape.setColor(Color.parseColor(color));
-                    dayText.setBackground(bgShape);
-                }
-
-                // Set click listener
-                final int day = dayOfMonth;
-                dayView.setOnClickListener(v -> selectCalendarDay(day));
-
-                // Store reference to this cell
-                calendarDayCells.add(dayText);
-
-
-            }
-            else {
-                // Empty cell for days outside current month
-                dayText.setText("");
-                dayText.setBackground(null);
-                dayView.setOnClickListener(null);
-                calendarDayCells.add(null);  // We still add null for days outside the month
-            }
-
-            calendarGrid.addView(dayView);
-        }
-*/
         // If a day was previously selected, try to reselect it
         if (selectedCalendarDay > 0 && selectedCalendarDay <= daysInMonth) {
             selectCalendarDay(selectedCalendarDay);
@@ -372,9 +323,13 @@ public class NotificationsActivity extends AppCompatActivity {
 
     //go back to home screen
     private void setupBackButton() {
-        ImageButton btnBack = findViewById(R.id.btn_back);
-        btnBack.setOnClickListener(v -> {
-            finish();
+        // Back button navigation
+        ImageButton backButton = findViewById(R.id.btn_back);
+        backButton.setOnClickListener(v -> {
+            // upper left button < , return to home page
+            Intent intent = new Intent(NotificationsActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish(); // closes the current activity
         });
     }
 
@@ -697,6 +652,7 @@ public class NotificationsActivity extends AppCompatActivity {
     }
 
     private void setupNotificationsList() {
+        /*
         // Initialize notification items list
         notificationItems = new ArrayList<>();
         filteredItems = new ArrayList<>();
@@ -705,9 +661,11 @@ public class NotificationsActivity extends AppCompatActivity {
 
         // Exercise on Monday, Wednesday, Friday (days 1, 3, 5)
         boolean[] mondayWedFri = new boolean[7];
+        mondayWedFri[1] = true; // Monday
+        mondayWedFri[3] = true; // Wednesday
         mondayWedFri[5] = true; // Friday
         notificationItems.add(new NotifData.NotificationItem(
-                "Morning Exercise (FRI)",
+                "Morning Exercise (MonWedFRI)",
                 "7:30 AM",
                 "0/1 hr",
                 "#FFFDD0",
@@ -863,11 +821,26 @@ public class NotificationsActivity extends AppCompatActivity {
                 null,
                 monthEnd));
 
-        // Set up adapter with empty list (will be populated in filterNotifications)
+         */
+
+
+        if (notificationItems == null) {
+            notificationItems = new ArrayList<>();
+        }
+
+        // Load saved notifications from NotifManager
+        notificationItems.clear();
+        notificationItems.addAll(notifManager.getAllNotifications());
+
+        // Filtered list
+        filteredItems = new ArrayList<>();
+
+        // Set up the RecyclerView with the loaded data
         notificationAdapter = new SectionedNotificationAdapter(this, filteredItems);
+        notificationsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         notificationsRecyclerView.setAdapter(notificationAdapter);
 
-        // Apply initial filters
+        // Initial filtering
         filterNotifications();
     }
 
@@ -1458,7 +1431,11 @@ public class NotificationsActivity extends AppCompatActivity {
             );
 
             // Add the new item to the list
-            notificationItems.add(newItem);
+       //     notificationItems.add(newItem);
+
+            notifManager.addNotification(newItem);
+            notificationItems.clear();
+            notificationItems.addAll(notifManager.getAllNotifications());
 
             // Update the recycler view
             notificationAdapter.notifyDataSetChanged();
