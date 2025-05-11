@@ -7,6 +7,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -26,6 +27,7 @@ import java.util.Locale;
 
 import Goals.GoalsActivity;
 import Medication.MedicationActivity;
+import Exercise_Logging.ExerciseHistoryActivity;
 import Mood.MoodData;
 import Mood.MoodLogsActivity;
 import Recipe_Logging.FoodLogActivity;
@@ -43,7 +45,7 @@ public class HomeActivity extends AppCompatActivity {
     private FloatingActionButton addWaterBtn, subtractWaterBtn, addFab;
     private LinearLayout addMenu;
 
-    private Button addMealButton, logMoodButton, newNotifButton, medicationsButton;
+    private Button addMealButton, logMoodButton, newNotifButton, medicationsButton, logExerciseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +68,6 @@ public class HomeActivity extends AppCompatActivity {
         waterAmount = findViewById(R.id.water_amount);
         waterTime = findViewById(R.id.water_time);
         waterLevelView = findViewById(R.id.water_level);
-        dateText = findViewById(R.id.date_text);
         usernameText = findViewById(R.id.username_text); // 👈 NEW
 
         // Progress Bars
@@ -84,14 +85,17 @@ public class HomeActivity extends AppCompatActivity {
         // Popup menu components
         addFab = findViewById(R.id.fab_add);
         addMenu = findViewById(R.id.add_menu);
-
+        logExerciseButton = findViewById(R.id.btn_log_exercise);
         addMealButton = findViewById(R.id.btn_add_meal);
         logMoodButton = findViewById(R.id.btn_log_mood);
         newNotifButton = findViewById(R.id.btn_new_notif);
         medicationsButton = findViewById(R.id.btn_medications);
 
-        // Set Date Text
-        dateText.setText(new SimpleDateFormat("MMM dd", Locale.getDefault()).format(new Date()));
+        ImageButton settingsButton = findViewById(R.id.settingsButton);
+        settingsButton.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, SettingsActivity.class);
+            startActivity(intent);
+        });
 
         // Click listener for setting custom water amount
         waterAmount.setOnClickListener(v -> showWaterInputDialog());
@@ -180,23 +184,15 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void setupPopupNavMenu() {
+
         // Move the popup menu outside the bottom nav card
         addFab.setOnClickListener(v -> togglePopupMenu());
+
         addMealButton.setOnClickListener(v -> openActivity(FoodLogActivity.class));
         logMoodButton.setOnClickListener(v -> openActivity(MoodActivity.class));
         newNotifButton.setOnClickListener(v -> openActivity(NotificationsActivity.class));
         medicationsButton.setOnClickListener(v -> openActivity(MedicationActivity.class));
-
-/*
-        ConstraintLayout.LayoutParams layoutParams = (ConstraintLayout.LayoutParams) addMenu.getLayoutParams();
-        layoutParams.bottomToTop = R.id.fab_add;
-        layoutParams.startToStart = ConstraintLayout.LayoutParams.PARENT_ID;
-        layoutParams.endToEnd = ConstraintLayout.LayoutParams.PARENT_ID;
-        addMenu.setLayoutParams(layoutParams);
-*/
-
-
-
+        logExerciseButton.setOnClickListener(v -> openActivity(ExerciseHistoryActivity.class));
 
 
     }

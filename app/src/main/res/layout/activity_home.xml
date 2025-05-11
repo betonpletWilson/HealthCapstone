@@ -41,30 +41,21 @@
         app:layout_constraintStart_toEndOf="@id/profile_card"
         app:layout_constraintTop_toTopOf="@id/profile_card" />
 
-    <TextView
-        android:id="@+id/date_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/today_text"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/profile_card"
-        app:layout_constraintEnd_toStartOf="@id/calendar_icon"
-        app:layout_constraintTop_toTopOf="@id/profile_card" />
-
-    <ImageView
-        android:id="@+id/calendar_icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_calendar"
-        app:tint="@color/green"
-        app:layout_constraintBottom_toBottomOf="@id/profile_card"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/profile_card" />
 
     <!-- Nutrients Section -->
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Settings"
+        android:src="@drawable/ic_settings"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="@color/green" />
+
     <TextView
         android:id="@+id/nutrients_title"
         android:layout_width="wrap_content"
@@ -482,6 +473,15 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Medications"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:layout_marginBottom="16dp"/>
+
+        <Button
+            android:id="@+id/btn_log_exercise"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Log Exercise"
             android:backgroundTint="@color/green"
             android:textColor="@color/white"
             android:layout_marginBottom="16dp"/>

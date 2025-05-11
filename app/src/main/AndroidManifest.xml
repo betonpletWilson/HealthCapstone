@@ -27,6 +27,7 @@
         <activity android:name="Login_Register.RegisterActivity" />
         <activity android:name=".HomeActivity" />
         <activity android:name=".ProfileActivity" />
+        <activity android:name=".SettingsActivity" />
 
         <activity android:name="Goals.GoalsActivity" />
         <activity android:name="Goals.AddEditGoalActivity" />
