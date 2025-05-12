@@ -23,6 +23,8 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Set;
 
+//"Your Journals" screen
+
 public class MoodLogsActivity extends AppCompatActivity {
     private RecyclerView moodLogsRecyclerView;
     private List<MoodData> journalEntries;

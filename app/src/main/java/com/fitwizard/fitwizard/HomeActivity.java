@@ -2,8 +2,11 @@ package com.fitwizard.fitwizard;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -14,6 +17,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
@@ -22,13 +26,12 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
+
 
 import Goals.GoalsActivity;
 import Medication.MedicationActivity;
 import Exercise_Logging.ExerciseHistoryActivity;
-import Mood.MoodData;
 import Mood.MoodLogsActivity;
 import Recipe_Logging.FoodLogActivity;
 import Reminders.NotificationsActivity;
@@ -45,12 +48,48 @@ public class HomeActivity extends AppCompatActivity {
     private FloatingActionButton addWaterBtn, subtractWaterBtn, addFab;
     private LinearLayout addMenu;
 
+    private final String channelId = "i.apps.notifications";
+
     private Button addMealButton, logMoodButton, newNotifButton, medicationsButton, logExerciseButton;
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == 101) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted
+                Log.d("NotificationPermission", "Granted");
+            } else {
+                // Permission denied
+                Toast.makeText(this, "Notification permission denied", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        /*
+        // Ask for notification permission on Android 13+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                        101
+                );
+            }
+        }
+
+         */
+
+
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
 
@@ -68,7 +107,7 @@ public class HomeActivity extends AppCompatActivity {
         waterAmount = findViewById(R.id.water_amount);
         waterTime = findViewById(R.id.water_time);
         waterLevelView = findViewById(R.id.water_level);
-        usernameText = findViewById(R.id.username_text); // 👈 NEW
+        usernameText = findViewById(R.id.username_text);
 
         // Progress Bars
         proteinsProgress = findViewById(R.id.proteins_progress);
@@ -184,18 +223,55 @@ public class HomeActivity extends AppCompatActivity {
 
 
     private void setupPopupNavMenu() {
-
         // Move the popup menu outside the bottom nav card
         addFab.setOnClickListener(v -> togglePopupMenu());
 
         addMealButton.setOnClickListener(v -> openActivity(FoodLogActivity.class));
-        logMoodButton.setOnClickListener(v -> openActivity(MoodActivity.class));
+
+        // Modified mood button logic
+        logMoodButton.setOnClickListener(v -> {
+            checkAndNavigateToMoodActivity();
+        });
+
         newNotifButton.setOnClickListener(v -> openActivity(NotificationsActivity.class));
         medicationsButton.setOnClickListener(v -> openActivity(MedicationActivity.class));
         logExerciseButton.setOnClickListener(v -> openActivity(ExerciseHistoryActivity.class));
-
-
     }
+
+    private void checkAndNavigateToMoodActivity() {
+        // Format today's date key
+        SimpleDateFormat keyFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String todayKey = keyFormat.format(new Date());
+
+        // Load from SharedPreferences
+        SharedPreferences prefs = getSharedPreferences("MoodPrefs", MODE_PRIVATE);
+        String savedEntry = prefs.getString(todayKey, null);
+
+        if (savedEntry != null) {
+            // Entry exists for today, go to MoodEntryDetailActivity
+            try {
+                // Parse the saved entry to get the full date string
+                SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM d, yyyy 'at' h:mm a", Locale.getDefault());
+                Date currentDate = new Date(); // Use the current date
+                String fullDateString = dateFormat.format(currentDate);
+
+                // Create intent for detail activity
+                Intent intent = new Intent(HomeActivity.this, MoodLogsActivity.class);
+                intent.putExtra("ENTRY_DATE", fullDateString);
+                startActivity(intent);
+            } catch (Exception e) {
+                // If any error occurs, default to the MoodActivity
+                Intent intent = new Intent(HomeActivity.this, MoodActivity.class);
+                startActivity(intent);
+            }
+        } else {
+            // No entry exists for today, go to the mood selection activity
+            Intent intent = new Intent(HomeActivity.this, MoodActivity.class);
+            startActivity(intent);
+        }
+    }
+
+
 
     private void togglePopupMenu() {
         if (addMenu.getVisibility() == View.GONE) {

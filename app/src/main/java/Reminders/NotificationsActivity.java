@@ -5,9 +5,12 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
@@ -103,10 +106,13 @@ public class NotificationsActivity extends AppCompatActivity {
         }
 
 
-
         initViews();
         setupBackButton();
         notifManager = new NotifManager(this);
+        // Initialize list to prevent null crashes
+        notificationItems = new ArrayList<>();
+        filteredItems = new ArrayList<>();
+
         // Initialize calendar with current date
         currentCalendar = Calendar.getInstance();
         setupCalendarView(); // Upper horizontal scroll calendar
@@ -114,6 +120,19 @@ public class NotificationsActivity extends AppCompatActivity {
         setupFilterButtons();
         setupNotificationsList();
         setupPopupNavMenu();
+    }
+
+    private void adjustRecyclerViewMargin(boolean isAllMonthView) {
+        RecyclerView recyclerView = findViewById(R.id.rv_notifications);
+        ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) recyclerView.getLayoutParams();
+
+        if (isAllMonthView) {
+            params.topMargin = getResources().getDimensionPixelSize(R.dimen.recycler_margin_all_month);
+        } else {
+            params.topMargin = getResources().getDimensionPixelSize(R.dimen.recycler_margin_default);
+        }
+
+        recyclerView.setLayoutParams(params);
     }
 
     private void initViews() {
@@ -180,12 +199,69 @@ public class NotificationsActivity extends AppCompatActivity {
     }
 
     private void setupMonthCalendarView() {
-        // Set the month and year
-        updateMonthCalendarTitle();
+        calendarGrid.removeAllViews();
+        calendarDayCells.clear();
 
-        // Build the calendar grid
-        populateCalendarGrid();
+        currentCalendar.set(Calendar.DAY_OF_MONTH, 1);
+        int firstDayOfWeek = currentCalendar.get(Calendar.DAY_OF_WEEK) - 1; // 0=Sunday
+        int daysInMonth = currentCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+
+        // Set current month text
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
+        currentMonthText.setText(monthFormat.format(currentCalendar.getTime()));
+
+        int totalCells = firstDayOfWeek + daysInMonth;
+
+        for (int i = 0; i < totalCells; i++) {
+            TextView dayCell = new TextView(this);
+            dayCell.setPadding(8, 8, 8, 8);
+        //    dayCell.setBackgroundResource(R.drawable.calendar_day_background); // Optional custom bg
+
+            if (i >= firstDayOfWeek) {
+                int day = i - firstDayOfWeek + 1;
+                dayCell.setText(String.valueOf(day));
+                dayCell.setGravity(Gravity.TOP | Gravity.START);
+                calendarDayCells.add(dayCell);
+
+                // Attach a container for notifications
+                LinearLayout container = new LinearLayout(this);
+                container.setOrientation(LinearLayout.VERTICAL);
+                container.setGravity(Gravity.BOTTOM);
+                container.setPadding(4, 4, 4, 4);
+
+                // Add notifications (if any)
+                for (NotifData.NotificationItem item : notificationItems) {
+                    if ("Monthly".equals(item.getTypeMonthOrWeek())
+                            && item.getActiveDaysOfMonth() != null
+                            && item.getActiveDaysOfMonth()[day - 1]) {
+                        TextView notifText = new TextView(this);
+                        notifText.setText(item.getTitle());
+                        notifText.setBackgroundColor(Color.parseColor(item.getBackgroundColor()));
+                        notifText.setTextSize(10);
+                        container.addView(notifText);
+                    }
+                }
+
+                // Add container to FrameLayout for layout stacking
+                FrameLayout dayFrame = new FrameLayout(this);
+                dayFrame.addView(dayCell);
+                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                        FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
+                params.gravity = Gravity.BOTTOM;
+                dayFrame.addView(container, params);
+
+                GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
+                gridParams.width = 0;
+                gridParams.height = GridLayout.LayoutParams.WRAP_CONTENT;
+                gridParams.columnSpec = GridLayout.spec(i % 7, 1f);
+                calendarGrid.addView(dayFrame, gridParams);
+
+            } else {
+                calendarGrid.addView(new TextView(this)); // empty cell for alignment
+            }
+        }
     }
+
 
     private void updateMonthCalendarTitle() {
         SimpleDateFormat monthYearFormat = new SimpleDateFormat("MMM yyyy", Locale.getDefault());
@@ -489,7 +565,11 @@ public class NotificationsActivity extends AppCompatActivity {
         });
 
         btnFilterAllMonth.setOnClickListener(v -> {
-            updateTimeFilter("all_month");
+            boolean isMonthViewVisible = monthCalendarContainer.getVisibility() == View.VISIBLE;
+            monthCalendarContainer.setVisibility(isMonthViewVisible ? View.GONE : View.VISIBLE);
+
+            adjustRecyclerViewMargin(!isMonthViewVisible);
+
             updateFilterButtonAppearance();
             filterNotifications();
         });
@@ -652,177 +732,6 @@ public class NotificationsActivity extends AppCompatActivity {
     }
 
     private void setupNotificationsList() {
-        /*
-        // Initialize notification items list
-        notificationItems = new ArrayList<>();
-        filteredItems = new ArrayList<>();
-
-        // Add weekly notifications with varying days
-
-        // Exercise on Monday, Wednesday, Friday (days 1, 3, 5)
-        boolean[] mondayWedFri = new boolean[7];
-        mondayWedFri[1] = true; // Monday
-        mondayWedFri[3] = true; // Wednesday
-        mondayWedFri[5] = true; // Friday
-        notificationItems.add(new NotifData.NotificationItem(
-                "Morning Exercise (MonWedFRI)",
-                "7:30 AM",
-                "0/1 hr",
-                "#FFFDD0",
-                "exercise",
-                "Weekly",
-                mondayWedFri,
-                null));
-
-        // Cardio on Tuesday, Thursday, Saturday (days 2, 4, 6)
-        boolean[] tueThuSat = new boolean[7];
-        tueThuSat[2] = true; // Tuesday
-        tueThuSat[4] = true; // Thursday
-        notificationItems.add(new NotifData.NotificationItem(
-                "Cardio Workout (TUETHUR)",
-                "4:30 PM",
-                "0/1 hr",
-                "#E6E6FA",
-                "exercise",
-                "Weekly",
-                tueThuSat,
-                null));
-
-        // Weekend Yoga (Saturday, Sunday - days 6, 0)
-        boolean[] weekendDays = new boolean[7];
-        weekendDays[0] = true; // Sunday
-        weekendDays[6] = true; // Saturday
-        notificationItems.add(new NotifData.NotificationItem(
-                "Weekend Yoga (SATSUN)",
-                "9:30 AM",
-                "0/1 hr",
-                "#FFD0CF",
-                "exercise",
-                "Weekly",
-                weekendDays,
-                null));
-
-        // Daily medication (every day)
-        boolean[] allDays = new boolean[7];
-        for (int i = 0; i < 7; i++) {
-            allDays[i] = true;
-        }
-        notificationItems.add(new NotifData.NotificationItem(
-                "Morning Medication ALL",
-                "8:00 AM",
-                "1 pill",
-                "#FFE6FA",
-                "medication",
-                "Weekly",
-                allDays,
-                null));
-
-        // Evening medication (every day)
-        notificationItems.add(new NotifData.NotificationItem(
-                "Evening Medication ALL",
-                "8:00 PM",
-                "1 pill",
-                "#E6E6FA",
-                "medication",
-                "Weekly",
-                allDays,
-                null));
-
-        // Monday only meeting
-        boolean[] mondayOnly = new boolean[7];
-        mondayOnly[1] = true; // Monday
-        notificationItems.add(new NotifData.NotificationItem(
-                "Weekly Team Meeting MON",
-                "10:00 AM",
-                "1 hr",
-                "#FFCBC4",
-                "goal",
-                "Weekly",
-                mondayOnly,
-                null));
-
-        // Thursday only therapy
-        boolean[] thursdayOnly = new boolean[7];
-        thursdayOnly[4] = true; // Thursday
-        notificationItems.add(new NotifData.NotificationItem(
-                "Therapy Session THUR",
-                "2:00 PM",
-                "1 hr",
-                "#FFE4B5",
-                "goal",
-                "Weekly",
-                thursdayOnly,
-                null));
-
-        // Add monthly notifications with varying dates
-
-        // Monthly checkup on the 1st
-        boolean[] firstOfMonth = new boolean[31];
-        firstOfMonth[0] = true; // 1st day
-        notificationItems.add(new NotifData.NotificationItem(
-                "Monthly Checkup 1st",
-                "9:00 AM",
-                "1 hr",
-                "#FFFDD0",
-                "medication",
-                "Monthly",
-                null,
-                firstOfMonth));
-
-        // Rent payment reminder on the 28th
-        boolean[] rentDay = new boolean[31];
-        rentDay[27] = true; // 28th day
-        notificationItems.add(new NotifData.NotificationItem(
-                "Rent Payment Due 28th",
-                "10:00 AM",
-                "Pay $1200",
-                "#FFCBC4",
-                "goal",
-                "Monthly",
-                null,
-                rentDay));
-
-        // Quarterly review (15th of every 3rd month)
-        boolean[] midMonth = new boolean[31];
-        midMonth[14] = true; // 15th day
-        notificationItems.add(new NotifData.NotificationItem(
-                "Quarterly Review 15th",
-                "3:00 PM",
-                "1 hr",
-                "#FFE4B5",
-                "goal",
-                "Monthly",
-                null,
-                midMonth));
-
-        // Monthly gym subscription on the 5th
-        boolean[] fifthDay = new boolean[31];
-        fifthDay[4] = true; // 5th day
-        notificationItems.add(new NotifData.NotificationItem(
-                "Gym Subscription 5th",
-                "12:00 PM",
-                "Pay $50",
-                "#E6E6FA",
-                "exercise",
-                "Monthly",
-                null,
-                fifthDay));
-
-        // Monthly planning session on the 30th
-        boolean[] monthEnd = new boolean[31];
-        monthEnd[29] = true; // 30th day
-        notificationItems.add(new NotifData.NotificationItem(
-                "Monthly Planning 30th",
-                "4:00 PM",
-                "1 hr",
-                "#FFD0CF",
-                "goal",
-                "Monthly",
-                null,
-                monthEnd));
-
-         */
-
 
         if (notificationItems == null) {
             notificationItems = new ArrayList<>();

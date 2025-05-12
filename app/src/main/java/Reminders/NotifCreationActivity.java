@@ -1,11 +1,15 @@
 package Reminders;
 
+import android.Manifest;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -21,24 +25,34 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import com.fitwizard.fitwizard.NotificationUtils;
 import com.fitwizard.fitwizard.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+import java.util.Random;
 import java.util.Set;
+
+import Goals.Goal;
+import Medication.Medication;
 
 public class NotifCreationActivity extends AppCompatActivity {
 
+    private static final int NOTIFICATION_PERMISSION_REQUEST_CODE = 1001;
 
     private NotifManager notificationManager;
-
     private EditText nameEditText;
     private EditText messageEditText;
     private TextView timeTextView;
@@ -57,10 +71,15 @@ public class NotifCreationActivity extends AppCompatActivity {
     private int selectedHour = 8;
     private int selectedMinute = 0;
 
-
     View colorSelectionView;
     View goalSelectionView;
+    private TextView selectedGoalTextView;
+    private String selectedGoalId = ""; // Default to no goal
+    private String selectedGoalName = "(Optional)";
     View medicationSelectionView;
+    private TextView selectedMedicationTextView;
+    private String selectedMedicationId = ""; // Default to no medication
+    private String selectedMedicationName = "(Optional)";
 
 
     // Color options with hex values (without # prefix)
@@ -115,17 +134,24 @@ public class NotifCreationActivity extends AppCompatActivity {
         btnWeekdays = findViewById(R.id.btn_weekdays);
         btnWeekends = findViewById(R.id.btn_weekends);
 
-
-        goalSelectionView = findViewById(R.id.layout_goal_selection);
-        medicationSelectionView = findViewById(R.id.layout_medication_selection);
-
         // Get references to both the row layout and the circle indicator
-        colorSelectionView = findViewById(R.id.layout_color_selection);
+        View colorSelectionLayout = findViewById(R.id.layout_color_selection);
         colorSelectionView = findViewById(R.id.view_selected_color);
 
-
+        // Set click listener on the layout to show color picker
+        colorSelectionLayout.setOnClickListener(v -> showColorSelectionDialog());
         // Set initial color indicator
         updateColorIndicator(selectedColor);
+
+        // Initialize goal selection view properly
+        goalSelectionView = findViewById(R.id.layout_goal_selection);
+        selectedGoalTextView = findViewById(R.id.tv_selected_goal);
+
+        // Initialize medication selection view
+        medicationSelectionView = findViewById(R.id.layout_medication_selection);
+        selectedMedicationTextView = findViewById(R.id.tv_selected_medication);
+
+
 
         // Initialize weekday toggle buttons
         String[] weekdays = new String[]{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
@@ -213,7 +239,7 @@ public class NotifCreationActivity extends AppCompatActivity {
     private void updateColorIndicator(String colorHex) {
         if (colorSelectionView != null) {
             try {
-                // Apply the color to just the circle view
+                // Apply the color to the circle view
                 GradientDrawable shape = new GradientDrawable();
                 shape.setShape(GradientDrawable.OVAL);
                 shape.setColor(Color.parseColor(colorHex));
@@ -224,12 +250,124 @@ public class NotifCreationActivity extends AppCompatActivity {
         }
     }
 
-    private void showGoalSelectionDialog(){
 
+
+    // Add method to load goals from SharedPreferences
+    private List<Goal> loadGoals() {
+        List<Goal> goals = new ArrayList<>();
+        SharedPreferences prefs = getSharedPreferences("GoalPrefs", MODE_PRIVATE);
+        Set<String> goalStrings = prefs.getStringSet("goals_list", new HashSet<>());
+
+        for (String goalString : goalStrings) {
+            Goal goal = Goal.fromString(goalString);
+            goals.add(goal);
+        }
+
+        return goals;
     }
 
-    private void showMedicationSelectionDialog(){
+    private List<Medication> loadMedications() {
+        List<Medication> medications = new ArrayList<>();
+        SharedPreferences prefs = getSharedPreferences("MedicationPrefs", MODE_PRIVATE);
+        Set<String> medicationStrings = prefs.getStringSet("medications_list", new HashSet<>());
 
+        for (String medicationString : medicationStrings) {
+            Medication medication = Medication.fromString(medicationString);
+            medications.add(medication);
+        }
+
+        return medications;
+    }
+
+    // Add method to show goal selection dialog
+    private void showGoalSelectionDialog() {
+        List<Goal> goals = loadGoals();
+
+        if (goals.isEmpty()) {
+            // If no goals are available
+            Toast.makeText(this, "No goals available. Create goals first.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Create array of goal names for the dialog
+        final String[] goalNames = new String[goals.size() + 1]; // +1 for "None" option
+        goalNames[0] = "None"; // First option to remove goal assignment
+
+        // Map to store goal name to its string representation for SharedPreferences
+        final Map<String, String> goalMap = new HashMap<>();
+
+        for (int i = 0; i < goals.size(); i++) {
+            Goal goal = goals.get(i);
+            goalNames[i + 1] = goal.getName();
+            goalMap.put(goal.getName(), goal.toString());
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select a Goal");
+
+        builder.setItems(goalNames, (dialog, which) -> {
+            if (which == 0) {
+                // "None" selected
+                selectedGoalId = "";
+                selectedGoalName = "(Optional)";
+            } else {
+                // A goal was selected
+                selectedGoalName = goalNames[which];
+                selectedGoalId = goalMap.get(selectedGoalName);
+            }
+
+            // Update the text view
+            selectedGoalTextView.setText(selectedGoalName);
+
+            dialog.dismiss();
+        });
+
+        builder.show();
+    }
+
+    private void showMedicationSelectionDialog() {
+        List<Medication> medications = loadMedications();
+
+        if (medications.isEmpty()) {
+            // If no medications are available
+            Toast.makeText(this, "No medications available. Add medications first.", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Create array of medication names for the dialog
+        final String[] medicationNames = new String[medications.size() + 1]; // +1 for "None" option
+        medicationNames[0] = "None"; // First option to remove medication assignment
+
+        // Map to store medication name to its string representation for SharedPreferences
+        final Map<String, String> medicationMap = new HashMap<>();
+
+        for (int i = 0; i < medications.size(); i++) {
+            Medication medication = medications.get(i);
+            medicationNames[i + 1] = medication.getName();
+            medicationMap.put(medication.getName(), medication.toString());
+        }
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select a Medication");
+
+        builder.setItems(medicationNames, (dialog, which) -> {
+            if (which == 0) {
+                // "None" selected
+                selectedMedicationId = "";
+                selectedMedicationName = "(Optional)";
+            } else {
+                // A medication was selected
+                selectedMedicationName = medicationNames[which];
+                selectedMedicationId = medicationMap.get(selectedMedicationName);
+            }
+
+            // Update the text view
+            selectedMedicationTextView.setText(selectedMedicationName);
+
+            dialog.dismiss();
+        });
+
+        builder.show();
     }
 
     private void setupListeners() {
@@ -305,14 +443,22 @@ public class NotifCreationActivity extends AppCompatActivity {
         });
 
         // Save button with save to Shared Pref and save with proper formatting
+        // Save button with save to Shared Pref and save with proper formatting
         saveButton.setOnClickListener(v -> {
             // Create notification from UI fields
             NotifData.NotificationItem notification = createNotificationFromInput();
+
+            // Check if notification creation was successful
+            if (notification != null) {
+                // Request notification permissions
+                requestNotificationPermission(notification);
+            }
 
             if (notification == null) {
                 Toast.makeText(this, "Notification creation failed. Missing required fields.", Toast.LENGTH_SHORT).show();
                 return;
             }
+
 
             // Save it
             boolean success = notificationManager.addNotification(notification);
@@ -332,10 +478,93 @@ public class NotifCreationActivity extends AppCompatActivity {
                 Toast.makeText(this, "Failed to save notification. Please check your inputs.", Toast.LENGTH_SHORT).show();
             }
         });
-    //    saveButton.setOnClickListener(v -> saveNotification());
+
 
         // Cancel button
         cancelButton.setOnClickListener(v -> finish());
+    }
+
+    // Field to store the current notification item temporarily
+    private NotifData.NotificationItem currentNotificationItem;
+
+    @Override
+    public void onRequestPermissionsResult(
+            int requestCode,
+            @NonNull String[] permissions,
+            @NonNull int[] grantResults
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == NOTIFICATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 &&
+                    grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Permission granted, proceed with saving and sending notification
+                if (currentNotificationItem != null) {
+                    saveAndSendNotification(currentNotificationItem);
+                    currentNotificationItem = null;
+                }
+            } else {
+                // Permission denied
+                Toast.makeText(
+                        this,
+                        "Notification permission is required to create reminders",
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+        }
+    }
+
+    private void saveAndSendNotification(NotifData.NotificationItem notificationItem) {
+        // Save the notification (assuming you have a method to do this)
+        // For example:
+        // notificationManager.saveNotification(notificationItem);
+
+        // Send a confirmation notification
+        NotificationUtils.showNotification(
+                this,
+                "New Reminder Created",
+                "Your reminder '" + notificationItem.getTitle() + "' has been set up",
+                NotificationUtils.TYPE_GENERAL,
+                null
+        );
+
+        // Return to Notifications Activity
+        Intent intent = new Intent(NotifCreationActivity.this, NotificationsActivity.class);
+        intent.putExtra("new_notification_created", true);
+        startActivity(intent);
+        finish();
+    }
+
+    /**
+     * Request notification permissions
+     * @param notificationItem The notification item to be saved
+     */
+    private void requestNotificationPermission(NotifData.NotificationItem notificationItem) {
+        // Check if running on Android 13 (Tiramisu) or higher
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            // Check if permission is not granted
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    Manifest.permission.POST_NOTIFICATIONS
+            ) != PackageManager.PERMISSION_GRANTED) {
+
+                // Request the permission
+                ActivityCompat.requestPermissions(
+                        this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS},
+                        NOTIFICATION_PERMISSION_REQUEST_CODE
+                );
+
+                // Store the notification item to be processed after permission is granted
+                this.currentNotificationItem = notificationItem;
+            } else {
+                // Permission already granted, proceed with saving and sending notification
+                saveAndSendNotification(notificationItem);
+            }
+        } else {
+            // For Android versions below 13, directly save and send notification
+            saveAndSendNotification(notificationItem);
+        }
     }
 
     private void clearForm() {
@@ -412,7 +641,7 @@ public class NotifCreationActivity extends AppCompatActivity {
 
         if (title.isEmpty() || time.isEmpty()) {
             Toast.makeText(this, "Please fill in all required sections", Toast.LENGTH_SHORT).show();
-
+            return null;
         }
 
         // Determine notification type
@@ -438,8 +667,21 @@ public class NotifCreationActivity extends AppCompatActivity {
             }
         }
 
-        NotifData.NotificationItem item = createNotificationItem(title, message);
+        // Format time
+        String timeString = timeTextView.getText().toString();
 
+        // Determine recurrence pattern
+     //   String durationText = getDurationText(isWeekly);
+
+        // Create a random notification ID
+        int notifID = new Random().nextInt(10000);
+
+        // Create notification with goal and medication IDs
+        NotifData.NotificationItem item = new NotifData.NotificationItem(
+                notifID, title, timeString, duration, backgroundColor, category,
+                typeMonthOrWeek, activeDaysOfWeek, activeDaysOfMonth,
+                selectedGoalId, selectedMedicationId
+        );
 
         // Pass data back to NotificationsActivity
         Intent resultIntent = new Intent();
@@ -448,21 +690,23 @@ public class NotifCreationActivity extends AppCompatActivity {
         resultIntent.putExtra("notification_time", time);
         resultIntent.putExtra("notification_background", selectedColor);
         resultIntent.putExtra("notification_type", item.getTypeMonthOrWeek()); // Add the type to the intent
+        resultIntent.putExtra("goal_id", selectedGoalId);
+        resultIntent.putExtra("medication_id", selectedMedicationId);
 
         // You might want to serialize the entire item or pass each attribute separately
         setResult(RESULT_OK, resultIntent);
 
-        return new NotifData.NotificationItem(
-                title, time, duration, backgroundColor, category,
-                typeMonthOrWeek, activeDaysOfWeek, activeDaysOfMonth
-        );
+        return item;
     }
 
     private String getSelectedCategory() {
         // Get selected category based on your UI implementation
-      //  if (goalSelectionView.isSelected()) return "Goal";
-    //    if (medicationSelectionView.isSelected()) return "Medication";
-        return "General"; // Default category
+        if ((goalSelectionView.isSelected() && medicationSelectionView.isSelected()) || medicationSelectionView.isSelected()) return "Medication";
+        else if (goalSelectionView.isSelected()) return "Goal";
+        else {
+            return "General"; // Default category}
+        }
+
     }
 
     //TODO: setup background color selection

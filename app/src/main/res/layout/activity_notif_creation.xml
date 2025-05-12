@@ -137,8 +137,7 @@
                     android:id="@+id/view_selected_color"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
-                    android:background="@drawable/circle_color_indicator"
-                    android:backgroundTint="#FFD6D6" />
+                    android:background="@drawable/circle_color_indicator" />
 
                 <ImageView
                     android:layout_width="24dp"

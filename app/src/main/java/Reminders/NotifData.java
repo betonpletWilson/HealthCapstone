@@ -20,7 +20,7 @@ public class NotifData {
     public static class NotificationItem {
         private String title;   // Name of the reminder here
         private String time;    // Time of day for reminder
-        private String duration;  // "0/1 hr"   "2 pills"  "
+        private String duration;  // "0/1 hr"   "2 pills"
         private String backgroundColor;  //User chooses notification color
         private String category;    // goal, medication,
         private String typeMonthOrWeek;  // Monthly or weekly reminder?
@@ -30,7 +30,8 @@ public class NotifData {
         private boolean[] activeDaysOfWeek;  // Array of 7 booleans representing Sunday(0) to Saturday(6)
         private boolean[] activeDaysOfMonth; // Array of 31 booleans representing 1st to 31st
 
-
+        private String goalId;  // ID of associated goal (if any)
+        private String medicationId;  // ID of associated medication (if any)
 
         public NotificationItem(String title, String time, String duration, String backgroundColor,
                                 String category, String typeMonthOrWeek) {
@@ -41,6 +42,8 @@ public class NotifData {
             this.backgroundColor = backgroundColor;
             this.category = category;
             this.typeMonthOrWeek = typeMonthOrWeek;
+            this.goalId = "";  // Default empty goal ID
+            this.medicationId = "";  // Default empty medication ID
 
             // Initialize arrays based on type
             if ("Weekly".equals(typeMonthOrWeek)) {
@@ -80,6 +83,34 @@ public class NotifData {
             this(title, time, duration, backgroundColor, category, typeMonthOrWeek,
                     activeDaysOfWeek, activeDaysOfMonth);
             this.notifID = notifID;
+        }
+
+        // Updated constructor with goalId and medicationId
+        public NotificationItem(int notifID, String title, String time, String duration,
+                                String backgroundColor, String category, String typeMonthOrWeek,
+                                boolean[] activeDaysOfWeek, boolean[] activeDaysOfMonth,
+                                String goalId, String medicationId) {
+            this(notifID, title, time, duration, backgroundColor, category, typeMonthOrWeek,
+                    activeDaysOfWeek, activeDaysOfMonth);
+            this.goalId = goalId;
+            this.medicationId = medicationId;
+        }
+
+        // Getters and setters for goalId and medicationId
+        public String getGoalId() {
+            return goalId;
+        }
+
+        public void setGoalId(String goalId) {
+            this.goalId = goalId;
+        }
+
+        public String getMedicationId() {
+            return medicationId;
+        }
+
+        public void setMedicationId(String medicationId) {
+            this.medicationId = medicationId;
         }
 
         private NotificationStatus status = NotificationStatus.INCOMPLETE;
@@ -127,6 +158,10 @@ public class NotifData {
                 }
             }
 
+            // Add goalId and medicationId
+            sb.append(";").append(goalId != null ? goalId : "");
+            sb.append(";").append(medicationId != null ? medicationId : "");
+
             return sb.toString();
         }
 
@@ -164,12 +199,26 @@ public class NotifData {
                         }
                     }
 
-                    // Create the notification item
+                    // Parse goalId and medicationId (if available)
+                    String goalId = "";
+                    String medicationId = "";
+
+                    if (parts.length >= 10) {
+                        goalId = parts[9];
+                    }
+
+                    if (parts.length >= 11) {
+                        medicationId = parts[10];
+                    }
+
+                    // Create the notification item with goalId and medicationId
                     NotificationItem item = new NotificationItem(
                             notifID, title, time, duration, backgroundColor,
                             category, typeMonthOrWeek, activeDaysOfWeek, activeDaysOfMonth
                     );
                     item.setStatus(status);
+                    item.setGoalId(goalId);
+                    item.setMedicationId(medicationId);
 
                     return item;
                 } catch (Exception e) {
