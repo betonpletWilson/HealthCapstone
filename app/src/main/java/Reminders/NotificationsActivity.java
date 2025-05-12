@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.FrameLayout;
 import android.widget.GridLayout;
 import android.widget.HorizontalScrollView;
@@ -37,9 +38,11 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 
 //TODO: fix layout of bottom nav
@@ -89,6 +92,8 @@ public class NotificationsActivity extends AppCompatActivity {
 
 
     // Added variables for month calendar view
+
+
     private ConstraintLayout monthCalendarContainer;
     private TextView currentMonthText;
     private GridLayout calendarGrid;
@@ -122,6 +127,7 @@ public class NotificationsActivity extends AppCompatActivity {
         setupPopupNavMenu();
     }
 
+    //YOUR REMINDERS // FULL CALENDAR VIEW
     private void adjustRecyclerViewMargin(boolean isAllMonthView) {
         RecyclerView recyclerView = findViewById(R.id.rv_notifications);
         ViewGroup.MarginLayoutParams params = (ViewGroup.MarginLayoutParams) recyclerView.getLayoutParams();
@@ -161,7 +167,6 @@ public class NotificationsActivity extends AppCompatActivity {
         // Month calendar views
         monthCalendarContainer = findViewById(R.id.notif_calendar_month_view);
         currentMonthText = findViewById(R.id.tv_current_month);
-        calendarGrid = findViewById(R.id.calendar_grid);
         calendarScrollView = findViewById(R.id.calendar_scroll_view);
 
         // Add month navigation buttons
@@ -179,89 +184,89 @@ public class NotificationsActivity extends AppCompatActivity {
 
     }
 
-    private void changeMonth(int delta) {
-        // Move to previous/next month
-        currentCalendar.add(Calendar.MONTH, delta);
+    // Method to change the month
+    private void changeMonth(int monthOffset) {
+        // Update the calendar
+        currentCalendar.add(Calendar.MONTH, monthOffset);
 
-        // Reset day selection
-        selectedCalendarDay = -1;
-        selectedDayOfWeek = -1;
-        selectedDayOfMonth = -1;
-
-        // Update calendar
-        updateMonthCalendarTitle();
-        populateCalendarGrid();
-
-        // Update notifications - reset to show all for the new month
-        updateTimeFilter("all_month");
-        updateFilterButtonAppearance();
-        filterNotifications();
-    }
-
-    private void setupMonthCalendarView() {
-        calendarGrid.removeAllViews();
-        calendarDayCells.clear();
-
-        currentCalendar.set(Calendar.DAY_OF_MONTH, 1);
-        int firstDayOfWeek = currentCalendar.get(Calendar.DAY_OF_WEEK) - 1; // 0=Sunday
-        int daysInMonth = currentCalendar.getActualMaximum(Calendar.DAY_OF_MONTH);
-
-        // Set current month text
+        // Update month title
         SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
         currentMonthText.setText(monthFormat.format(currentCalendar.getTime()));
 
-        int totalCells = firstDayOfWeek + daysInMonth;
+        // Update CalendarView date
+        CalendarView calendarView = findViewById(R.id.calendar_monthly);
+        calendarView.setDate(currentCalendar.getTimeInMillis(), true, true);
 
-        for (int i = 0; i < totalCells; i++) {
-            TextView dayCell = new TextView(this);
-            dayCell.setPadding(8, 8, 8, 8);
-        //    dayCell.setBackgroundResource(R.drawable.calendar_day_background); // Optional custom bg
+        // Reset selection
+        selectedCalendarDay = -1;
+        TextView selectedDaysText = findViewById(R.id.tv_selected_days);
+        selectedDaysText.setText("No days selected");
 
-            if (i >= firstDayOfWeek) {
-                int day = i - firstDayOfWeek + 1;
-                dayCell.setText(String.valueOf(day));
-                dayCell.setGravity(Gravity.TOP | Gravity.START);
-                calendarDayCells.add(dayCell);
-
-                // Attach a container for notifications
-                LinearLayout container = new LinearLayout(this);
-                container.setOrientation(LinearLayout.VERTICAL);
-                container.setGravity(Gravity.BOTTOM);
-                container.setPadding(4, 4, 4, 4);
-
-                // Add notifications (if any)
-                for (NotifData.NotificationItem item : notificationItems) {
-                    if ("Monthly".equals(item.getTypeMonthOrWeek())
-                            && item.getActiveDaysOfMonth() != null
-                            && item.getActiveDaysOfMonth()[day - 1]) {
-                        TextView notifText = new TextView(this);
-                        notifText.setText(item.getTitle());
-                        notifText.setBackgroundColor(Color.parseColor(item.getBackgroundColor()));
-                        notifText.setTextSize(10);
-                        container.addView(notifText);
-                    }
-                }
-
-                // Add container to FrameLayout for layout stacking
-                FrameLayout dayFrame = new FrameLayout(this);
-                dayFrame.addView(dayCell);
-                FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
-                        FrameLayout.LayoutParams.MATCH_PARENT, FrameLayout.LayoutParams.WRAP_CONTENT);
-                params.gravity = Gravity.BOTTOM;
-                dayFrame.addView(container, params);
-
-                GridLayout.LayoutParams gridParams = new GridLayout.LayoutParams();
-                gridParams.width = 0;
-                gridParams.height = GridLayout.LayoutParams.WRAP_CONTENT;
-                gridParams.columnSpec = GridLayout.spec(i % 7, 1f);
-                calendarGrid.addView(dayFrame, gridParams);
-
-            } else {
-                calendarGrid.addView(new TextView(this)); // empty cell for alignment
-            }
+        // Update notifications if using a date filter
+        if ("selected_day".equals(currentTimeFilter)) {
+            // Reset to all month view since no day is selected
+            updateTimeFilter("all_month");
+            updateFilterButtonAppearance();
         }
+
+        filterNotifications();
     }
 
+    // Updated calendar setup method to work with CalendarView instead of GridLayout
+    private void setupMonthCalendarView() {
+        // Initialize current month text
+        SimpleDateFormat monthFormat = new SimpleDateFormat("MMMM yyyy", Locale.getDefault());
+        currentMonthText.setText(monthFormat.format(currentCalendar.getTime()));
+
+        // Initialize CalendarView
+        CalendarView calendarView = findViewById(R.id.calendar_monthly);
+
+        // Set the initial date to the current date
+        calendarView.setDate(currentCalendar.getTimeInMillis());
+
+        // Set date change listener
+        calendarView.setOnDateChangeListener((view, year, month, dayOfMonth) -> {
+            // Update the calendar to the selected date
+            currentCalendar.set(Calendar.YEAR, year);
+            currentCalendar.set(Calendar.MONTH, month);
+            currentCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+
+            // Update selected day
+            selectedCalendarDay = dayOfMonth;
+
+            // Update selection tracking variables
+            Calendar cal = (Calendar) currentCalendar.clone();
+            cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+            selectedDayOfWeek = cal.get(Calendar.DAY_OF_WEEK) - 1; // 0-based
+            selectedDayOfMonth = dayOfMonth;
+
+            // Update selected days text
+            updateSelectedDaysText(dayOfMonth);
+
+            // Update filter to show selected day's notifications
+            updateTimeFilter("selected_day");
+            updateFilterButtonAppearance();
+            filterNotifications();
+        });
+    }
+
+    // Helper method to update the selected days text view
+    private void updateSelectedDaysText(int dayOfMonth) {
+        TextView selectedDaysText = findViewById(R.id.tv_selected_days);
+
+        // Format date as "Month Day" (e.g., "May 15")
+        SimpleDateFormat dateFormat = new SimpleDateFormat("MMMM d", Locale.getDefault());
+        Calendar cal = (Calendar) currentCalendar.clone();
+        cal.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        String formattedDate = dateFormat.format(cal.getTime());
+
+        // Check if the selected day has notifications
+        if (dayHasNotifications(dayOfMonth)) {
+            selectedDaysText.setText("Selected: " + formattedDate + " (has notifications)");
+        } else {
+            selectedDaysText.setText("Selected: " + formattedDate);
+        }
+    }
 
     private void updateMonthCalendarTitle() {
         SimpleDateFormat monthYearFormat = new SimpleDateFormat("MMM yyyy", Locale.getDefault());
@@ -409,6 +414,7 @@ public class NotificationsActivity extends AppCompatActivity {
         });
     }
 
+    //HORIZONTAL SCROLL CALENDAR AT TOP OF SCREEN
     private void setupCalendarView() {
         // First ensure all day text views are properly initialized
         if (dayTextViews == null || dayTextViews.length != 7) {
@@ -459,7 +465,7 @@ public class NotificationsActivity extends AppCompatActivity {
         }
     }
 
-    /**
+    /** HORIZONTAL CALENDAR VIEW
      * Updates all day text views with the correct dates for the current week
      */
     private void updateAllDayTexts() {
@@ -489,7 +495,7 @@ public class NotificationsActivity extends AppCompatActivity {
         }
     }
 
-    /**
+    /** HORIZONTAL CALENDAR VIEW
      * Selects a day and updates the UI and filters
      */
     private void selectDay(TextView dayTextView, int dayIndex) {
@@ -520,7 +526,7 @@ public class NotificationsActivity extends AppCompatActivity {
         }
     }
 
-    /**
+    /** HORIZONTAL CALENDAR VIEW
      * Deselects the currently selected day
      */
     private void deselectDay() {
@@ -553,12 +559,22 @@ public class NotificationsActivity extends AppCompatActivity {
     private void setupFilterButtons() {
         // Time filter buttons
         btnFiltertoday.setOnClickListener(v -> {
+            // If currently in all month view, hide it
+            if (monthCalendarContainer.getVisibility() == View.VISIBLE) {
+                monthCalendarContainer.setVisibility(View.GONE);
+            }
+
             updateTimeFilter("today");
             updateFilterButtonAppearance();
             filterNotifications();
         });
 
         btnFilterUpcoming.setOnClickListener(v -> {
+            // If currently in all month view, hide it
+            if (monthCalendarContainer.getVisibility() == View.VISIBLE) {
+                monthCalendarContainer.setVisibility(View.GONE);
+            }
+
             updateTimeFilter("upcoming");
             updateFilterButtonAppearance();
             filterNotifications();
@@ -568,8 +584,7 @@ public class NotificationsActivity extends AppCompatActivity {
             boolean isMonthViewVisible = monthCalendarContainer.getVisibility() == View.VISIBLE;
             monthCalendarContainer.setVisibility(isMonthViewVisible ? View.GONE : View.VISIBLE);
 
-            adjustRecyclerViewMargin(!isMonthViewVisible);
-
+            updateTimeFilter("all_month");
             updateFilterButtonAppearance();
             filterNotifications();
         });
@@ -587,20 +602,28 @@ public class NotificationsActivity extends AppCompatActivity {
         });
     }
 
-
     private void updateTimeFilter(String filter) {
         currentTimeFilter = filter;
 
-        // Show/hide the monthly calendar when "all_month" is selected
-        if ("all_month".equals(filter)) {
-            monthCalendarContainer.setVisibility(View.VISIBLE);
-            calendarScrollView.setVisibility(View.GONE);
-        } else {
-            monthCalendarContainer.setVisibility(View.GONE);
-            calendarScrollView.setVisibility(View.VISIBLE);
+        // Handle visibility of calendar views
+        switch (filter) {
+            case "all_month":
+                monthCalendarContainer.setVisibility(View.VISIBLE);
+                calendarScrollView.setVisibility(View.GONE);
+                adjustRecyclerViewMargin(true);
+                break;
+            case "today":
+            case "upcoming":
+                monthCalendarContainer.setVisibility(View.GONE);
+                calendarScrollView.setVisibility(View.VISIBLE);
+                adjustRecyclerViewMargin(false);
+                break;
+            case "selected_day":
+                // Keep current calendar view state
+                break;
         }
 
-        // Reset day selection when filter changes
+        // Reset day selection when filter changes (except for selected_day)
         if (!"selected_day".equals(filter)) {
             selectedDayOfWeek = -1;
             selectedDayOfMonth = -1;
@@ -1067,153 +1090,6 @@ public class NotificationsActivity extends AppCompatActivity {
     }
 
 
-
-
-    /*
-    private void filterNotifications() {
-        filteredItems.clear();
-
-
-
-        if (currentTimeFilter.equals("today")) {
-            // For "Today" filter, organize by time periods
-            // First, filter by category if needed
-            List<NotifData.NotificationItem> categoryFiltered = new ArrayList<>();
-
-            if (currentCategoryFilters.isEmpty()) {
-                categoryFiltered.addAll(notificationItems);
-            } else {
-                for (NotifData.NotificationItem item : notificationItems) {
-                    if (currentCategoryFilters.contains(item.getCategory())) {
-                        categoryFiltered.add(item);
-                    }
-                }
-            }
-
-            // Sort items by time
-            Collections.sort(categoryFiltered, (item1, item2) -> {
-                try {
-                    SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.US);
-                    Date time1 = sdf.parse(item1.getTime());
-                    Date time2 = sdf.parse(item2.getTime());
-                    assert time1 != null;
-                    return time1.compareTo(time2);
-                } catch (Exception e) {
-                    return 0;
-                }
-            });
-
-            // Group by time period and add section headers
-            Map<String, List<NotifData.NotificationItem>> timeGroups = new HashMap<>();
-            timeGroups.put(CATEGORY_MORNING, new ArrayList<>());
-            timeGroups.put(CATEGORY_AFTERNOON, new ArrayList<>());
-            timeGroups.put(CATEGORY_NIGHT, new ArrayList<>());
-
-            for (NotifData.NotificationItem item : categoryFiltered) {
-                String timeCategory = getTimeCategory(item.getTime());
-                timeGroups.get(timeCategory).add(item);
-            }
-
-            // Add morning section if it has items
-            if (!timeGroups.get(CATEGORY_MORNING).isEmpty()) {
-                // Add section header
-                filteredItems.add(new NotifData.NotificationItem(CATEGORY_MORNING, "", null, "#FFFFFF", "header", ""));
-                filteredItems.addAll(timeGroups.get(CATEGORY_MORNING));
-            }
-
-            // Add afternoon section if it has items
-            if (!timeGroups.get(CATEGORY_AFTERNOON).isEmpty()) {
-                filteredItems.add(new NotifData.NotificationItem(CATEGORY_AFTERNOON, "", null, "#FFFFFF", "header", ""));
-                filteredItems.addAll(timeGroups.get(CATEGORY_AFTERNOON));
-            }
-
-            // Add night section if it has items
-            if (!timeGroups.get(CATEGORY_NIGHT).isEmpty()) {
-                filteredItems.add(new NotifData.NotificationItem(CATEGORY_NIGHT, "", null, "#FFFFFF", "header", ""));
-                filteredItems.addAll(timeGroups.get(CATEGORY_NIGHT));
-            }
-        } else if (currentTimeFilter.equals("upcoming")) {
-            // For "Upcoming" filter, show notifications after current time
-
-            // Get current time and round down to nearest hour
-            Calendar now = Calendar.getInstance();
-            int currentHour = now.get(Calendar.HOUR_OF_DAY);
-
-            // Create a calendar with the rounded hour
-            Calendar roundedTime = Calendar.getInstance();
-            roundedTime.set(Calendar.HOUR_OF_DAY, currentHour);
-            roundedTime.set(Calendar.MINUTE, 0);
-            roundedTime.set(Calendar.SECOND, 0);
-            roundedTime.set(Calendar.MILLISECOND, 0);
-
-            Date roundedDate = roundedTime.getTime();
-
-            // Filter by category and time
-            List<NotifData.NotificationItem> upcomingItems = new ArrayList<>();
-
-            for (NotifData.NotificationItem item : notificationItems) {
-                if (currentCategoryFilters.isEmpty() || currentCategoryFilters.contains(item.getCategory())) {
-                    // Parse the notification time
-                    try {
-                        SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.US);
-                        Date itemTime = sdf.parse(item.getTime());
-
-                        // Create calendar for the item's time on today's date
-                        Calendar itemCalendar = Calendar.getInstance();
-                        itemCalendar.set(Calendar.HOUR_OF_DAY, 0);
-                        itemCalendar.set(Calendar.MINUTE, 0);
-                        itemCalendar.set(Calendar.SECOND, 0);
-                        itemCalendar.set(Calendar.MILLISECOND, 0);
-
-                        // Add the hours and minutes from the parsed time
-                        Calendar tempCal = Calendar.getInstance();
-                        tempCal.setTime(itemTime);
-                        itemCalendar.set(Calendar.HOUR_OF_DAY, tempCal.get(Calendar.HOUR_OF_DAY));
-                        itemCalendar.set(Calendar.MINUTE, tempCal.get(Calendar.MINUTE));
-
-                        // Check if this time is after the rounded current time
-                        if (itemCalendar.getTime().after(roundedDate) || itemCalendar.getTime().equals(roundedDate)) {
-                            upcomingItems.add(item);
-                        }
-                    } catch (Exception e) {
-                        // In case of parsing errors, we'll skip this item
-                        Log.e("NotificationsActivity", "Error parsing time: " + e.getMessage());
-                    }
-                }
-            }
-
-            // Sort by time
-            Collections.sort(upcomingItems, (item1, item2) -> {
-                try {
-                    SimpleDateFormat sdf = new SimpleDateFormat("h:mm a", Locale.US);
-                    Date time1 = sdf.parse(item1.getTime());
-                    Date time2 = sdf.parse(item2.getTime());
-                    return time1.compareTo(time2);
-                } catch (Exception e) {
-                    return 0;
-                }
-            });
-
-            // Add to filtered items
-            if (!upcomingItems.isEmpty()) {
-
-                filteredItems.addAll(upcomingItems);
-            } else {
-                // If no upcoming items, add a message
-                filteredItems.add(new NotifData.NotificationItem("No upcoming notifications", "", "", "#FFFFFF", "header", ""));
-            }
-        } else {
-            // Handle all_month filter with existing logic
-            for (NotifData.NotificationItem item : notificationItems) {
-                if (currentCategoryFilters.isEmpty() || currentCategoryFilters.contains(item.getCategory())) {
-                    filteredItems.add(item);
-                }
-            }
-        }
-
-        notificationAdapter.notifyDataSetChanged();
-    }
-*/
 
 
     /**
