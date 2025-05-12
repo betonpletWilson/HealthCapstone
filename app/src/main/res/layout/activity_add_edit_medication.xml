@@ -30,6 +30,7 @@
         app:layout_constraintHorizontal_bias="0.5"
         android:layout_marginStart="8dp"/>
 
+    <!-- Medication Name -->
     <EditText
         android:id="@+id/medicationEditText"
         android:layout_width="0dp"
@@ -43,13 +44,41 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="24dp" />
 
+    <!-- Instructions -->
+    <EditText
+        android:id="@+id/instructionsEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Instructions (e.g. take with food)"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/medicationEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <!-- Frequency -->
+    <EditText
+        android:id="@+id/frequencyEditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:hint="Frequency (e.g. 2x per day)"
+        android:background="@drawable/edittext_background"
+        android:padding="12dp"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toBottomOf="@id/instructionsEditText"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp" />
+
     <CheckBox
         android:id="@+id/dailyReminderCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Enable Daily Reminder"
         android:textColor="@android:color/black"
-        app:layout_constraintTop_toBottomOf="@id/medicationEditText"
+        app:layout_constraintTop_toBottomOf="@id/frequencyEditText"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="16dp" />
 

@@ -11,43 +11,56 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.fitwizard.fitwizard.HomeActivity;
 import com.fitwizard.fitwizard.R;
+import com.fitwizard.fitwizard.network.ApiService;
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText emailInput, passwordInput;
-    private SharedPreferences prefs;
+    private EditText idInput, passwordInput;   // idInput = username OR email
+    private Button   loginBtn, registerBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-
         if (getSupportActionBar() != null) getSupportActionBar().hide();
 
-        emailInput = findViewById(R.id.editTextEmail);
+        idInput       = findViewById(R.id.editTextIdentifier);
         passwordInput = findViewById(R.id.editTextPassword);
-        Button loginBtn = findViewById(R.id.buttonLogin);
-        Button registerBtn = findViewById(R.id.buttonRegister);
-
-        prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        loginBtn      = findViewById(R.id.buttonLogin);
+        registerBtn   = findViewById(R.id.buttonRegister);
 
         loginBtn.setOnClickListener(v -> {
-            String email = emailInput.getText().toString().trim();
-            String password = passwordInput.getText().toString().trim();
+            String id   = idInput.getText().toString().trim();
+            String pass = passwordInput.getText().toString().trim();
 
-            String savedEmail = prefs.getString("email", "");
-            String savedPassword = prefs.getString("password", "");
-
-            if (email.equals(savedEmail) && password.equals(savedPassword)) {
-                startActivity(new Intent(this, HomeActivity.class));
-                finish();
-            } else {
-                Toast.makeText(this, "Invalid email or password", Toast.LENGTH_SHORT).show();
+            if (id.isEmpty() || pass.isEmpty()) {
+                Toast.makeText(this,
+                        "Enter username/email and password",
+                        Toast.LENGTH_SHORT).show();
+                return;
             }
+
+            ApiService.login(id, pass, new ApiService.AuthCallback() {
+                @Override public void onSuccess(String jwt) {
+                    getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                            .edit().putString("jwt", jwt).apply();
+                    runOnUiThread(() -> {
+                        startActivity(new Intent(
+                                LoginActivity.this, HomeActivity.class));
+                        finish();
+                    });
+                }
+                @Override public void onFailure(String err) {
+                    runOnUiThread(() ->
+                            Toast.makeText(LoginActivity.this,
+                                    "Login failed: " + err,
+                                    Toast.LENGTH_SHORT).show()
+                    );
+                }
+            });
         });
 
-        registerBtn.setOnClickListener(v -> {
-            startActivity(new Intent(this, RegisterActivity.class));
-        });
+        registerBtn.setOnClickListener(v ->
+                startActivity(new Intent(this, RegisterActivity.class)));
     }
 }

@@ -9,11 +9,14 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.fitwizard.fitwizard.HomeActivity;
 import com.fitwizard.fitwizard.R;
+import com.fitwizard.fitwizard.network.ApiService;
 
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText nameInput, emailInput, passwordInput;
+    private Button   registerBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,32 +25,52 @@ public class RegisterActivity extends AppCompatActivity {
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
 
-        nameInput = findViewById(R.id.editTextName);
-        emailInput = findViewById(R.id.editTextEmail);
+        nameInput     = findViewById(R.id.editTextName);
+        emailInput    = findViewById(R.id.editTextEmail);
         passwordInput = findViewById(R.id.editTextPassword);
-        Button registerBtn = findViewById(R.id.buttonRegister);
+        registerBtn   = findViewById(R.id.buttonRegister);
 
         registerBtn.setOnClickListener(v -> {
-            String name = nameInput.getText().toString().trim();
+            String name  = nameInput.getText().toString().trim();
             String email = emailInput.getText().toString().trim();
-            String password = passwordInput.getText().toString().trim();
+            String pass  = passwordInput.getText().toString().trim();
 
-            if (email.isEmpty() || password.isEmpty() || name.isEmpty()) {
-                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+            if (name.isEmpty() || email.isEmpty() || pass.isEmpty()) {
+                Toast.makeText(this,
+                        "Please fill in all fields",
+                        Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
-            SharedPreferences.Editor editor = preferences.edit();
-            editor.putString("user_name", name);
-            editor.putString("email", email);
-            editor.putString("password", password);
-            editor.putBoolean("is_logged_in", false); // still false, user hasn't logged in yet
-            editor.apply();
+            // Call remote register
+            ApiService.register(name, email, pass, new ApiService.AuthCallback() {
+                @Override
+                public void onSuccess(String jwt) {
+                    // save JWT
+                    SharedPreferences prefs = getSharedPreferences(
+                            "UserPrefs", MODE_PRIVATE);
+                    prefs.edit()
+                            .putString("jwt", jwt)
+                            .apply();
 
-            Toast.makeText(this, "Account created!", Toast.LENGTH_SHORT).show();
-            startActivity(new Intent(this, LoginActivity.class));
-            finish();
+                    runOnUiThread(() -> {
+                        Toast.makeText(RegisterActivity.this,
+                                "Account created!", Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(
+                                RegisterActivity.this, HomeActivity.class));
+                        finish();
+                    });
+                }
+
+                @Override
+                public void onFailure(String error) {
+                    runOnUiThread(() ->
+                            Toast.makeText(RegisterActivity.this,
+                                    "Register failed: " + error,
+                                    Toast.LENGTH_SHORT).show()
+                    );
+                }
+            });
         });
     }
 }

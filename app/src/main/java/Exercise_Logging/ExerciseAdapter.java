@@ -14,6 +14,9 @@ import com.fitwizard.fitwizard.R;
 
 import java.util.ArrayList;
 
+/**
+ * Shows each ExerciseEntry (name, details, date, calories) in a colored CardView.
+ */
 public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ExerciseViewHolder> {
 
     private Context context;
@@ -27,7 +30,6 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
             R.color.light_yellow
     };
 
-    // Proper constructor
     public ExerciseAdapter(Context context, ArrayList<ExerciseEntry> exerciseLogs) {
         this.context = context;
         this.exerciseLogs = (exerciseLogs != null) ? exerciseLogs : new ArrayList<>();
@@ -36,7 +38,8 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
     @NonNull
     @Override
     public ExerciseViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_exercise, parent, false);
+        View view = LayoutInflater.from(context)
+                .inflate(R.layout.item_exercise, parent, false);
         return new ExerciseViewHolder(view);
     }
 
@@ -47,8 +50,15 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
         holder.exerciseDetailsTextView.setText(log.getDetails());
         holder.exerciseDateTextView.setText("Date: " + log.getDate());
 
+        // ➜ new binding for calories
+        holder.exerciseCaloriesTextView.setText(
+                String.format("%.1f kcal", log.getCalories())
+        );
+
         int color = pastelColors[position % pastelColors.length];
-        holder.cardView.setCardBackgroundColor(context.getResources().getColor(color));
+        holder.cardView.setCardBackgroundColor(
+                context.getResources().getColor(color)
+        );
     }
 
     @Override
@@ -57,15 +67,19 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
     }
 
     public static class ExerciseViewHolder extends RecyclerView.ViewHolder {
-        TextView exerciseNameTextView, exerciseDetailsTextView, exerciseDateTextView;
+        TextView exerciseNameTextView,
+                exerciseDetailsTextView,
+            exerciseCaloriesTextView,   // new view
+        exerciseDateTextView;
         CardView cardView;
 
         public ExerciseViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardView = itemView.findViewById(R.id.cardView);
-            exerciseNameTextView = itemView.findViewById(R.id.exerciseNameTextView);
-            exerciseDetailsTextView = itemView.findViewById(R.id.exerciseDetailsTextView);
-            exerciseDateTextView = itemView.findViewById(R.id.exerciseDateTextView);
+            cardView                 = itemView.findViewById(R.id.cardView);
+            exerciseNameTextView     = itemView.findViewById(R.id.exerciseNameTextView);
+            exerciseDetailsTextView  = itemView.findViewById(R.id.exerciseDetailsTextView);
+            exerciseCaloriesTextView = itemView.findViewById(R.id.exerciseCaloriesTextView);
+            exerciseDateTextView     = itemView.findViewById(R.id.exerciseDateTextView);
         }
     }
 }

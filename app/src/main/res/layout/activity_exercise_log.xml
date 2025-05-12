@@ -36,44 +36,12 @@
             android:background="@drawable/edittext_background"
             android:padding="12dp" />
 
-        <RadioGroup
-            android:id="@+id/typeRadioGroup"
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp">
-
-            <RadioButton
-                android:id="@+id/strengthRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Strength" />
-
-            <RadioButton
-                android:id="@+id/cardioRadio"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:text="Cardio" />
-        </RadioGroup>
-
-        <EditText
-            android:id="@+id/setsRepsInput"
-            android:hint="Sets x Reps (e.g., 3 x 12)"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:visibility="gone"
-            android:background="@drawable/edittext_background"
-            android:padding="12dp" />
-
         <EditText
             android:id="@+id/durationInput"
-            android:hint="Duration (e.g., 30 mins)"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:visibility="gone"
+            android:hint="Duration (minutes)"
             android:background="@drawable/edittext_background"
             android:padding="12dp" />
 

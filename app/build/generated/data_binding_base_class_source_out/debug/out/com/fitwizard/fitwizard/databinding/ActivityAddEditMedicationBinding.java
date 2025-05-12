@@ -29,6 +29,12 @@ public final class ActivityAddEditMedicationBinding implements ViewBinding {
   public final CheckBox dailyReminderCheckBox;
 
   @NonNull
+  public final EditText frequencyEditText;
+
+  @NonNull
+  public final EditText instructionsEditText;
+
+  @NonNull
   public final EditText medicationEditText;
 
   @NonNull
@@ -39,11 +45,14 @@ public final class ActivityAddEditMedicationBinding implements ViewBinding {
 
   private ActivityAddEditMedicationBinding(@NonNull ConstraintLayout rootView,
       @NonNull ImageButton backButton, @NonNull CheckBox dailyReminderCheckBox,
+      @NonNull EditText frequencyEditText, @NonNull EditText instructionsEditText,
       @NonNull EditText medicationEditText, @NonNull Button pickTimeButton,
       @NonNull Button saveMedicationButton) {
     this.rootView = rootView;
     this.backButton = backButton;
     this.dailyReminderCheckBox = dailyReminderCheckBox;
+    this.frequencyEditText = frequencyEditText;
+    this.instructionsEditText = instructionsEditText;
     this.medicationEditText = medicationEditText;
     this.pickTimeButton = pickTimeButton;
     this.saveMedicationButton = saveMedicationButton;
@@ -88,6 +97,18 @@ public final class ActivityAddEditMedicationBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.frequencyEditText;
+      EditText frequencyEditText = ViewBindings.findChildViewById(rootView, id);
+      if (frequencyEditText == null) {
+        break missingId;
+      }
+
+      id = R.id.instructionsEditText;
+      EditText instructionsEditText = ViewBindings.findChildViewById(rootView, id);
+      if (instructionsEditText == null) {
+        break missingId;
+      }
+
       id = R.id.medicationEditText;
       EditText medicationEditText = ViewBindings.findChildViewById(rootView, id);
       if (medicationEditText == null) {
@@ -107,7 +128,8 @@ public final class ActivityAddEditMedicationBinding implements ViewBinding {
       }
 
       return new ActivityAddEditMedicationBinding((ConstraintLayout) rootView, backButton,
-          dailyReminderCheckBox, medicationEditText, pickTimeButton, saveMedicationButton);
+          dailyReminderCheckBox, frequencyEditText, instructionsEditText, medicationEditText,
+          pickTimeButton, saveMedicationButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

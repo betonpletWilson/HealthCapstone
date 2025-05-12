@@ -1,6 +1,7 @@
 package com.fitwizard.fitwizard.network;
 import com.fitwizard.fitwizard.BuildConfig;
 import Recipe_Logging.FoodData;
+import Medication.Medication;
 
 import com.google.gson.Gson;
 import android.util.Log;
@@ -12,20 +13,94 @@ import okhttp3.MediaType;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 import okhttp3.ResponseBody;
+import okhttp3.logging.HttpLoggingInterceptor;
+import okhttp3.EventListener;
+import okhttp3.Protocol;
+import okhttp3.Handshake;
+import okhttp3.ConnectionSpec;
+import okhttp3.TlsVersion;
 
+import java.util.Collections;
 import java.net.URLEncoder;
 import java.util.List;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.io.EOFException;
+import java.net.InetSocketAddress;
+import java.net.Socket;
+import java.net.Proxy;
+import javax.net.ssl.SSLException;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonElement;
 
 public class ApiService {
+    private static final OkHttpClient client;
 
-    private static final OkHttpClient client = new OkHttpClient();
+    /* ─── TLS‑debug listener (OkHttp 4.x) ──────────────────────────────── */
+    static final class TlsDebugListener extends EventListener {
+
+        @Override public void secureConnectEnd(Call call, Handshake hs) {
+            Log.d("TLS‑DBG", "OK  "
+                    + hs.tlsVersion() + ' ' + hs.cipherSuite()
+                    + "  " + call.request().url());
+        }
+
+        @Override public void connectFailed(
+                Call call,
+                InetSocketAddress addr,
+                Proxy proxy,
+                Protocol proto,
+                IOException ioe) {
+
+            Log.e("TLS‑DBG", "connectFailed " + addr + "  " + ioe);
+
+            if (ioe instanceof SSLException) {
+                /* one‑shot raw peek */
+                try (Socket s = new Socket()) {
+                    s.connect(addr, 2000);
+                /* send an SSLv2 ClientHello with no cipher suites
+                   (just 2 bytes “00 00”) – every TLS server will
+                   immediately reply with an alert ‑or‑ handshake */
+                    s.getOutputStream().write(new byte[] {0,0});
+                    byte[] buf = new byte[32];
+                    int n = s.getInputStream().read(buf);
+                    Log.e("TLS‑RAW", n + " bytes : " + hex(buf, n));
+                } catch (Exception ignore) {}
+            }
+        }
+
+        private static String hex(byte[] b, int n) {
+            StringBuilder sb = new StringBuilder(3*n);
+            for (int i = 0; i < n; i++) sb.append(String.format("%02x ", b[i]));
+            return sb.toString();
+        }
+    }
+
+
+    static {
+        Log.i("FW‑BASE",
+                "[" + BuildConfig.SERVER_BASE_URL + "] len="
+                        + BuildConfig.SERVER_BASE_URL.length());
+
+        HttpLoggingInterceptor wire =
+                new HttpLoggingInterceptor(msg -> Log.d("HTTP‑WIRE", msg))
+                        .setLevel(HttpLoggingInterceptor.Level.BODY);
+
+        ConnectionSpec tlsOnly = new ConnectionSpec.Builder(ConnectionSpec.MODERN_TLS)
+                .allEnabledTlsVersions()         // lets 4.x phones use TLS‑1.0/1.1
+                .allEnabledCipherSuites()
+                .build();
+
+
+        client = new OkHttpClient.Builder().build();;
+    }
     private static final Gson gson = new Gson();
     private static final String TAG = "ApiService";
+
+
+
 
     public interface ApiCallback<T> {
         void onSuccess(T data);
@@ -40,7 +115,7 @@ public class ApiService {
             ApiCallback<T> callback
     ) {
 
-        String url = "http://3.148.77.114:3000/getSimple"
+        String url = baseUrl() + "/getSimple"
                 + "?tableName="  + tableName
                 + "&columnName=" + columnName
                 + "&queryValue=" + queryValue;
@@ -182,14 +257,75 @@ public class ApiService {
     }
 
 
+    private static <T> void externalOpenFDA(
+            String query,
+            Class<T[]> arrClazz,
+            ApiCallback<List<T>> cb
+    ) {
+        String term = "\"" + query + "\"";
+        String searchParam =
+                "openfda.brand_name:"  + encode(term)
+                        + "+OR+openfda.generic_name:" + encode(term);
 
-
-    private static <T> void externalOpenFDA(String q, Class<T[]> arr,
-                                            ApiCallback<List<T>> cb) {
-        String api = "https://api.fda.gov/drug/label.json"
+        String url = "https://api.fda.gov/drug/label.json"
                 + "?api_key=zL0hMetU7UXn8LUTLLa1iJuUQsgZNg1M0O1EzGb9"
-                + "&search=openfda.brand_name:" + encode(q);
-        callExternal(api, arr, cb, "medication");
+                + "&search="   + searchParam
+                + "&limit=20";
+
+        Request req = new Request.Builder()
+                .url(url)
+                .build();
+
+        client.newCall(req).enqueue(new Callback() {
+            @Override public void onFailure(Call call, IOException e) {
+                cb.onFailure("OpenFDA error: " + e.getMessage());
+            }
+
+            @Override public void onResponse(Call call, Response resp) throws IOException {
+                if (!resp.isSuccessful()) {
+                    Log.e("HTTP‑BAD",
+                            resp.code() + " body = " + resp.peekBody(Long.MAX_VALUE).string());
+                    cb.onFailure("HTTP " + resp.code());
+                    return;
+                }
+                String json = resp.body().string();
+                JsonObject root = gson.fromJson(json, JsonObject.class);
+                if (!root.has("results") || !root.get("results").isJsonArray()) {
+                    cb.onFailure("No results from OpenFDA");
+                    return;
+                }
+
+                JsonArray arr = root.getAsJsonArray("results");
+                List<Medication> meds = new ArrayList<>();
+                for (JsonElement el : arr) {
+                    if (!el.isJsonObject()) continue;
+                    JsonObject obj = el.getAsJsonObject()
+                            .getAsJsonObject("openfda");
+                    String name = null;
+                    if (obj != null && obj.has("brand_name")) {
+                        JsonArray b = obj.getAsJsonArray("brand_name");
+                        if (b.size() > 0 && !b.get(0).isJsonNull())
+                            name = b.get(0).getAsString();
+                    }
+                    if (name == null && obj != null && obj.has("generic_name")) {
+                        JsonArray g = obj.getAsJsonArray("generic_name");
+                        if (g.size() > 0 && !g.get(0).isJsonNull())
+                            name = g.get(0).getAsString();
+                    }
+                    if (name != null) {
+                        meds.add(new Medication(name, "", "", 0L));
+                    }
+                }
+
+                if (meds.isEmpty()) {
+                    cb.onFailure("No OpenFDA matches");
+                } else {
+                    @SuppressWarnings("unchecked")
+                    List<T> cast = (List<T>)(List<?>)meds;
+                    cb.onSuccess(cast);
+                }
+            }
+        });
     }
     private static <T> void externalNinjaWorkout(String q, Class<T[]> arr,
                                                  ApiCallback<List<T>> cb) {
@@ -215,7 +351,6 @@ public class ApiService {
                 CallbackFactory.createListCallback(arr, new ApiCallback<List<T>>() {
                     @Override public void onSuccess(List<T> list) {
                         if (list.isEmpty()) { cb.onFailure("No match in ext API"); return; }
-                        // TODO: POST list[0].. to /addSimple to cache in DB if desired
                         cb.onSuccess(list);
                     }
                     @Override public void onFailure(String e) { cb.onFailure(e); }
@@ -229,7 +364,6 @@ public class ApiService {
         return BuildConfig.SERVER_BASE_URL;
     }
 
-    /* ─── SAFE & FLEXIBLE: FDC record → FoodData ───────────────────────── */
     private static FoodData mapFdcToFoodData(JsonObject jo) {
 
         String name  = jo.has("description") ? jo.get("description").getAsString()
@@ -283,5 +417,80 @@ public class ApiService {
                 .build();
 
         client.newCall(req).enqueue(CallbackFactory.createVoidCallback());
+    }
+
+    public interface AuthCallback {
+        void onSuccess(String jwt);
+        void onFailure(String error);
+    }
+
+    public static void register(
+            String username,
+            String email,
+            String password,
+            AuthCallback cb) {
+
+        JsonObject body = new JsonObject();
+        body.addProperty("username", username);
+        body.addProperty("email",    email);
+        body.addProperty("password", password);
+
+        Request req = new Request.Builder()
+                .url(baseUrl() + "/register")
+                .post(RequestBody.create(
+                        gson.toJson(body),
+                        MediaType.parse("application/json")))
+                .build();
+
+
+        client.newCall(req).enqueue(new Callback(){
+            @Override public void onFailure(Call c, IOException e) {
+                cb.onFailure(e.getMessage());
+            }
+            @Override public void onResponse(Call c, Response r) throws IOException {
+                if (!r.isSuccessful()) {
+                    Log.e("HTTP‑BAD", "failed body = " + r.peekBody(Long.MAX_VALUE).string());
+                    cb.onFailure("HTTP " + r.code());
+                    return;
+                }
+                String jwt = gson.fromJson(r.body().string(), JsonObject.class)
+                        .get("token").getAsString();
+                cb.onSuccess(jwt);
+            }
+        });
+    }
+
+    public static void login(
+            String identifier,
+            String password,
+            AuthCallback cb) {
+
+        JsonObject body = new JsonObject();
+        body.addProperty("identifier", identifier);
+        body.addProperty("password",   password);
+
+        Request req = new Request.Builder()
+                .url(baseUrl() + "/login")
+                .post(RequestBody.create(
+                        gson.toJson(body),
+                        MediaType.parse("application/json")))
+                .build();
+
+        client.newCall(req).enqueue(new Callback() {
+            @Override public void onFailure(Call c, IOException e) {
+                cb.onFailure(e.getMessage());
+            }
+            @Override public void onResponse(Call c, Response r) throws IOException {
+                if (!r.isSuccessful()) {
+                    Log.e("HTTP‑BAD", "login failed body = " + r.peekBody(Long.MAX_VALUE).string());
+                    cb.onFailure("HTTP " + r.code());
+                    return;
+                }
+                String jwt = gson.fromJson(
+                                r.body().string(), JsonObject.class)
+                        .get("token").getAsString();
+                cb.onSuccess(jwt);
+            }
+        });
     }
 }

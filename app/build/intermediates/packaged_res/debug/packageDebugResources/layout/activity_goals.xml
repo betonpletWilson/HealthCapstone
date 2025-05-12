@@ -19,10 +19,10 @@
             android:id="@+id/backButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_back"
             android:contentDescription="Back"
-            android:src="@drawable/ic_back" />
+            android:background="?attr/selectableItemBackgroundBorderless" />
+
 
         <TextView
             android:layout_width="wrap_content"

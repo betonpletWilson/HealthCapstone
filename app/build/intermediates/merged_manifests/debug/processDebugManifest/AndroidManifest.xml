@@ -47,10 +47,9 @@
         <activity android:name="Goals.AddEditGoalActivity" />
         <activity android:name="Medication.AddEditMedicationActivity" />
         <activity android:name="Medication.MedicationActivity" />
-
-        <!-- Define the HomeActivity as the main entry point -->
+        <activity android:name="Exercise_Logging.ExerciseHistoryActivity" />
+        <activity android:name="Exercise_Logging.ExerciseLogActivity" />
         <activity android:name="Recipe_Logging.FoodLogActivity" />
-        <activity android:name="com.fitwizard.fitwizard.ProfileActivity" />
         <activity android:name="Recipe_Logging.FoodSearchActivity" />
         <activity android:name="Mood.MoodActivity" />
         <activity android:name="Mood.MoodJournalActivity" />

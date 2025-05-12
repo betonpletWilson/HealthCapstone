@@ -78,6 +78,8 @@ public class MedicationActivity extends AppCompatActivity implements MedicationA
         Intent intent = new Intent(this, AddEditMedicationActivity.class);
         Medication medication = medicationList.get(position);
         intent.putExtra("name", medication.getName());
+        intent.putExtra("instructions", medication.getInstructions());
+        intent.putExtra("frequency",    medication.getFrequency());
         intent.putExtra("reminderTime", medication.getReminderTimeMillis());
         intent.putExtra("position", position);
         startActivityForResult(intent, EDIT_MEDICATION_REQUEST);
@@ -89,14 +91,16 @@ public class MedicationActivity extends AppCompatActivity implements MedicationA
 
         if (resultCode == RESULT_OK && data != null) {
             String name = data.getStringExtra("name");
+            String instr        = data.getStringExtra("instructions");
+            String freq         = data.getStringExtra("frequency");
             long reminderTime = data.getLongExtra("reminderTime", 0);
             int position = data.getIntExtra("position", -1);
 
             if (requestCode == ADD_MEDICATION_REQUEST) {
-                medicationList.add(new Medication(name, reminderTime));
+                medicationList.add(new Medication(name, instr, freq, reminderTime));
                 adapter.notifyItemInserted(medicationList.size() - 1);
             } else if (requestCode == EDIT_MEDICATION_REQUEST && position != -1) {
-                medicationList.set(position, new Medication(name, reminderTime));
+                medicationList.set(position, new Medication(name, instr, freq, reminderTime));
                 adapter.notifyItemChanged(position);
             }
             saveMedications();

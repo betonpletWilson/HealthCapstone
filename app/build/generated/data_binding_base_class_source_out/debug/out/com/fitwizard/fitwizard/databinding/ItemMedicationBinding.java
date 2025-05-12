@@ -27,17 +27,26 @@ public final class ItemMedicationBinding implements ViewBinding {
   public final ImageButton editMedicationButton;
 
   @NonNull
+  public final TextView frequencyTextView;
+
+  @NonNull
+  public final TextView instructionsTextView;
+
+  @NonNull
   public final TextView medicationTextView;
 
   @NonNull
   public final TextView reminderTimeTextView;
 
   private ItemMedicationBinding(@NonNull CardView rootView, @NonNull CardView cardView,
-      @NonNull ImageButton editMedicationButton, @NonNull TextView medicationTextView,
+      @NonNull ImageButton editMedicationButton, @NonNull TextView frequencyTextView,
+      @NonNull TextView instructionsTextView, @NonNull TextView medicationTextView,
       @NonNull TextView reminderTimeTextView) {
     this.rootView = rootView;
     this.cardView = cardView;
     this.editMedicationButton = editMedicationButton;
+    this.frequencyTextView = frequencyTextView;
+    this.instructionsTextView = instructionsTextView;
     this.medicationTextView = medicationTextView;
     this.reminderTimeTextView = reminderTimeTextView;
   }
@@ -77,6 +86,18 @@ public final class ItemMedicationBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.frequencyTextView;
+      TextView frequencyTextView = ViewBindings.findChildViewById(rootView, id);
+      if (frequencyTextView == null) {
+        break missingId;
+      }
+
+      id = R.id.instructionsTextView;
+      TextView instructionsTextView = ViewBindings.findChildViewById(rootView, id);
+      if (instructionsTextView == null) {
+        break missingId;
+      }
+
       id = R.id.medicationTextView;
       TextView medicationTextView = ViewBindings.findChildViewById(rootView, id);
       if (medicationTextView == null) {
@@ -90,7 +111,7 @@ public final class ItemMedicationBinding implements ViewBinding {
       }
 
       return new ItemMedicationBinding((CardView) rootView, cardView, editMedicationButton,
-          medicationTextView, reminderTimeTextView);
+          frequencyTextView, instructionsTextView, medicationTextView, reminderTimeTextView);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

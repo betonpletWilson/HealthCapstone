@@ -30,22 +30,19 @@ public final class ActivityHomeBinding implements ViewBinding {
   public final LinearLayout addMenu;
 
   @NonNull
-  public final ConstraintLayout bottomNavContainer;
-
-  @NonNull
   public final Button btnAddMeal;
 
   @NonNull
   public final Button btnGoals;
 
   @NonNull
+  public final Button btnLogExercise;
+
+  @NonNull
   public final Button btnLogMood;
 
   @NonNull
   public final Button btnMedications;
-
-  @NonNull
-  public final Button btnNewNotif;
 
   @NonNull
   public final ImageView calendarIcon;
@@ -114,9 +111,8 @@ public final class ActivityHomeBinding implements ViewBinding {
   public final TextView waterTitle;
 
   private ActivityHomeBinding(@NonNull ConstraintLayout rootView, @NonNull LinearLayout addMenu,
-      @NonNull ConstraintLayout bottomNavContainer, @NonNull Button btnAddMeal,
-      @NonNull Button btnGoals, @NonNull Button btnLogMood, @NonNull Button btnMedications,
-      @NonNull Button btnNewNotif, @NonNull ImageView calendarIcon,
+      @NonNull Button btnAddMeal, @NonNull Button btnGoals, @NonNull Button btnLogExercise,
+      @NonNull Button btnLogMood, @NonNull Button btnMedications, @NonNull ImageView calendarIcon,
       @NonNull ProgressBar caloriesProgress, @NonNull ProgressBar carbsProgress,
       @NonNull TextView dateText, @NonNull FloatingActionButton fabAdd,
       @NonNull ProgressBar fatsProgress, @NonNull TextView navHome, @NonNull TextView navReports,
@@ -129,12 +125,11 @@ public final class ActivityHomeBinding implements ViewBinding {
       @NonNull TextView waterTime, @NonNull TextView waterTitle) {
     this.rootView = rootView;
     this.addMenu = addMenu;
-    this.bottomNavContainer = bottomNavContainer;
     this.btnAddMeal = btnAddMeal;
     this.btnGoals = btnGoals;
+    this.btnLogExercise = btnLogExercise;
     this.btnLogMood = btnLogMood;
     this.btnMedications = btnMedications;
-    this.btnNewNotif = btnNewNotif;
     this.calendarIcon = calendarIcon;
     this.caloriesProgress = caloriesProgress;
     this.carbsProgress = carbsProgress;
@@ -192,12 +187,6 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.bottom_nav_container;
-      ConstraintLayout bottomNavContainer = ViewBindings.findChildViewById(rootView, id);
-      if (bottomNavContainer == null) {
-        break missingId;
-      }
-
       id = R.id.btn_add_meal;
       Button btnAddMeal = ViewBindings.findChildViewById(rootView, id);
       if (btnAddMeal == null) {
@@ -210,6 +199,12 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_log_exercise;
+      Button btnLogExercise = ViewBindings.findChildViewById(rootView, id);
+      if (btnLogExercise == null) {
+        break missingId;
+      }
+
       id = R.id.btn_log_mood;
       Button btnLogMood = ViewBindings.findChildViewById(rootView, id);
       if (btnLogMood == null) {
@@ -219,12 +214,6 @@ public final class ActivityHomeBinding implements ViewBinding {
       id = R.id.btn_medications;
       Button btnMedications = ViewBindings.findChildViewById(rootView, id);
       if (btnMedications == null) {
-        break missingId;
-      }
-
-      id = R.id.btn_new_notif;
-      Button btnNewNotif = ViewBindings.findChildViewById(rootView, id);
-      if (btnNewNotif == null) {
         break missingId;
       }
 
@@ -360,12 +349,11 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityHomeBinding((ConstraintLayout) rootView, addMenu, bottomNavContainer,
-          btnAddMeal, btnGoals, btnLogMood, btnMedications, btnNewNotif, calendarIcon,
-          caloriesProgress, carbsProgress, dateText, fabAdd, fatsProgress, navHome, navReports,
-          nutrientsCard, nutrientsTitle, profileCard, profileImage, proteinsProgress, usernameText,
-          waterAdd, waterAmount, waterCard, waterInfo, waterLevel, waterSubtract, waterTime,
-          waterTitle);
+      return new ActivityHomeBinding((ConstraintLayout) rootView, addMenu, btnAddMeal, btnGoals,
+          btnLogExercise, btnLogMood, btnMedications, calendarIcon, caloriesProgress, carbsProgress,
+          dateText, fabAdd, fatsProgress, navHome, navReports, nutrientsCard, nutrientsTitle,
+          profileCard, profileImage, proteinsProgress, usernameText, waterAdd, waterAmount,
+          waterCard, waterInfo, waterLevel, waterSubtract, waterTime, waterTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -21,8 +21,8 @@ import java.util.Set;
 public class ExerciseHistoryActivity extends AppCompatActivity {
 
     private static final int REQUEST_LOG_EXERCISE = 101;
-    private static final String PREFS_NAME = "ExercisePrefs";
-    private static final String EXERCISE_KEY = "exercise_logs";
+    private static final String PREFS_NAME      = "ExercisePrefs";
+    private static final String EXERCISE_KEY    = "exercise_logs";
 
     private ArrayList<ExerciseEntry> exerciseList;
     private ExerciseAdapter adapter;
@@ -100,15 +100,18 @@ public class ExerciseHistoryActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == REQUEST_LOG_EXERCISE && resultCode == RESULT_OK && data != null) {
-            String name = data.getStringExtra("exercise_name");
-            String details = data.getStringExtra("exercise_details");
-            String date = data.getStringExtra("exercise_date");
+        if (requestCode == REQUEST_LOG_EXERCISE
+                && resultCode == RESULT_OK
+                && data != null) {
 
-            ExerciseEntry newEntry = new ExerciseEntry(name, details, date);
-            exerciseList.add(0, newEntry);
-            adapter.notifyItemInserted(0);
-            saveExerciseLogs();
+            // ◀◀◀ REPLACED the old name/details/date logic with the single pref-string
+            String pref = data.getStringExtra("exercise_pref");
+            if (pref != null) {
+                ExerciseEntry newEntry = ExerciseEntry.fromPrefString(pref);
+                exerciseList.add(0, newEntry);
+                adapter.notifyItemInserted(0);
+                saveExerciseLogs();
+            }
         }
     }
 }

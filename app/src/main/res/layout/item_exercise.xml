@@ -23,11 +23,22 @@
             android:textColor="@android:color/black"
             android:textStyle="bold" />
 
+
+        <TextView
+            android:id="@+id/exerciseCaloriesTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_below="@id/exerciseNameTextView"
+            android:text="0 kcal"
+            android:textSize="14sp"
+            android:textStyle="italic" />
+
         <TextView
             android:id="@+id/exerciseDetailsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/exerciseNameTextView"
+            android:layout_below="@id/exerciseCaloriesTextView"
             android:layout_marginTop="4dp"
             android:text="Details (e.g. sets/reps or minutes)"
             android:textSize="14sp"
