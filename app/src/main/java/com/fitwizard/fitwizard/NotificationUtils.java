@@ -34,11 +34,20 @@ public class NotificationUtils extends BroadcastReceiver {
     private static final String EXTRA_NOTIFICATION_TYPE = "notification_type";
     private static final String EXTRA_GOAL_ID = "goal_id";
     private static final String EXTRA_MEDICATION_ID = "medication_id";
+    private static final String EXTRA_NOTIFICATION_ID = "notification_id";
+    private static final String EXTRA_NOTIFICATION_TITLE = "notification_title";
+    private static final String EXTRA_NOTIFICATION_MESSAGE = "notification_message";
+    private static final String EXTRA_IS_MONTHLY = "is_monthly";
+    private static final String EXTRA_DAY_OF_MONTH = "day_of_month";
+    private static final String EXTRA_HOUR = "hour";
+    private static final String EXTRA_MINUTE = "minute";
+    private static final String EXTRA_ACTIVE_DAYS = "active_days";
 
     // Notification types
     public static final String TYPE_GOAL = "goal";
     public static final String TYPE_MEDICATION = "medication";
     public static final String TYPE_GENERAL = "general";
+
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -75,45 +84,6 @@ public class NotificationUtils extends BroadcastReceiver {
         showNotification(context, title, message, notificationType, referenceId);
     }
 
-
-    /**
-     * Creates a notification channel for a specific type of notification
-     * @param context Application context
-     * @param channelId Unique channel ID
-     * @param channelName User-visible channel name
-     * @param importance Notification importance
-     */
-    private void createNotificationChannel(Context context, String channelId,
-                                           String channelName, int importance) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationManager notificationManager =
-                    context.getSystemService(NotificationManager.class);
-
-            if (notificationManager != null) {
-                NotificationChannel channel =
-                        new NotificationChannel(channelId, channelName, importance);
-
-                // Configure channel properties
-                switch (channelId) {
-                    case CHANNEL_ID_GOALS:
-                        channel.setDescription("Notifications for goal reminders");
-                        break;
-                    case CHANNEL_ID_MEDICATIONS:
-                        channel.setDescription("Notifications for medication reminders");
-                        break;
-                    case CHANNEL_ID_GENERAL:
-                        channel.setDescription("General app notifications");
-                        break;
-                }
-
-                // Optional: Set sound, vibration, etc.
-                channel.enableVibration(true);
-                channel.setVibrationPattern(new long[]{100, 200, 300, 400, 500});
-
-                notificationManager.createNotificationChannel(channel);
-            }
-        }
-    }
 
     /**
      * Shows a notification with the specified details

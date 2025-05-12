@@ -154,7 +154,7 @@ public class NotifCreationActivity extends AppCompatActivity {
 
 
         // Initialize weekday toggle buttons
-        String[] weekdays = new String[]{"Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"};
+        String[] weekdays = new String[]{"Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"};
         weekdayToggleButtons = new ToggleButton[7];
         for (int i = 0; i < 7; i++) {
             weekdayToggleButtons[i] = findViewById(getResources().getIdentifier(
@@ -671,7 +671,7 @@ public class NotifCreationActivity extends AppCompatActivity {
         String timeString = timeTextView.getText().toString();
 
         // Determine recurrence pattern
-     //   String durationText = getDurationText(isWeekly);
+        //   String durationText = getDurationText(isWeekly);
 
         // Create a random notification ID
         int notifID = new Random().nextInt(10000);
@@ -780,7 +780,7 @@ public class NotifCreationActivity extends AppCompatActivity {
 
         // Include the selected background color in the NotificationItem constructor
         return new NotifData.NotificationItem(name, timeString, durationText,
-                                                selectedColor, category, notifTypeWeekOrMonth);
+                selectedColor, category, notifTypeWeekOrMonth);
 
     }
 }

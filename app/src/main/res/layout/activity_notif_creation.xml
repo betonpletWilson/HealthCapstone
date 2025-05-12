@@ -383,6 +383,17 @@
                 android:orientation="horizontal"
                 android:weightSum="7">
 
+
+
+                <ToggleButton
+                    android:id="@+id/toggle_sun"
+                    style="@style/WeekdayToggleButton"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:textOff="Sun"
+                    android:textOn="Sun" />
+
                 <ToggleButton
                     android:id="@+id/toggle_mon"
                     style="@style/WeekdayToggleButton"
@@ -437,14 +448,7 @@
                     android:textOff="Sat"
                     android:textOn="Sat" />
 
-                <ToggleButton
-                    android:id="@+id/toggle_sun"
-                    style="@style/WeekdayToggleButton"
-                    android:layout_width="0dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:textOff="Sun"
-                    android:textOn="Sun" />
+
             </LinearLayout>
         </LinearLayout>
 
