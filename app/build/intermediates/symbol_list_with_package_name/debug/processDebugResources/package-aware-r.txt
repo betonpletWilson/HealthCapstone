@@ -3307,9 +3307,11 @@ id calendar_title
 id callMeasure
 id caloriesTextView
 id calories_progress
+id calories_value
 id cancelButton
 id cancel_button
 id carbs_progress
+id carbs_value
 id cardView
 id cardioRadio
 id cardioTimeInput
@@ -3451,6 +3453,7 @@ id face_meh
 id face_sad
 id fade
 id fats_progress
+id fats_value
 id fill
 id fill_horizontal
 id fill_vertical
@@ -3678,6 +3681,7 @@ id profile_image
 id progress_circular
 id progress_horizontal
 id proteins_progress
+id proteins_value
 id radio
 id ratio
 id rb_monthly

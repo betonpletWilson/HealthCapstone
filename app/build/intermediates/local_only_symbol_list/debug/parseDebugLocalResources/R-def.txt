@@ -99,8 +99,10 @@ id calendar_scroll_view
 id calendar_title
 id caloriesTextView
 id calories_progress
+id calories_value
 id cancelButton
 id carbs_progress
+id carbs_value
 id cardView
 id cardioRadio
 id cardioTimeInput
@@ -161,6 +163,7 @@ id face_good
 id face_meh
 id face_sad
 id fats_progress
+id fats_value
 id filter_scrollview
 id foodDetails
 id foodListView
@@ -215,6 +218,7 @@ id pickTimeButton
 id profile_card
 id profile_image
 id proteins_progress
+id proteins_value
 id rb_monthly
 id rb_weekday
 id reminderTextView

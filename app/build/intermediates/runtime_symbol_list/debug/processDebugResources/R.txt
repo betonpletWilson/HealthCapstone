@@ -3306,9 +3306,11 @@ int id calendar_title 0x7f080090
 int id callMeasure 0x7f080091
 int id caloriesTextView 0x7f080092
 int id calories_progress 0x7f080093
+int id calories_value 0x7f0802e2
 int id cancelButton 0x7f080094
 int id cancel_button 0x7f080095
 int id carbs_progress 0x7f080096
+int id carbs_value 0x7f0802e3
 int id cardView 0x7f080097
 int id cardioRadio 0x7f080098
 int id cardioTimeInput 0x7f080099
@@ -3450,6 +3452,7 @@ int id face_meh 0x7f080120
 int id face_sad 0x7f080121
 int id fade 0x7f080122
 int id fats_progress 0x7f080123
+int id fats_value 0x7f0802e4
 int id fill 0x7f080124
 int id fill_horizontal 0x7f080125
 int id fill_vertical 0x7f080126
@@ -3677,6 +3680,7 @@ int id profile_image 0x7f0801fd
 int id progress_circular 0x7f0801fe
 int id progress_horizontal 0x7f0801ff
 int id proteins_progress 0x7f080200
+int id proteins_value 0x7f0802e5
 int id radio 0x7f080201
 int id ratio 0x7f080202
 int id rb_monthly 0x7f080203

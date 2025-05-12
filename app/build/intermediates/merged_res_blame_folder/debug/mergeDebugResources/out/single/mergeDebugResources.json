@@ -44,16 +44,16 @@
         "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\mipmap-hdpi\\fitwizard.webp"
     },
     {
-        "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\layout_dialog_add_tag.xml.flat",
-        "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\layout\\dialog_add_tag.xml"
+        "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\drawable_ic_subtract.xml.flat",
+        "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\drawable\\ic_subtract.xml"
     },
     {
         "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\layout_actvitiy_log_exercise.xml.flat",
         "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\layout\\actvitiy_log_exercise.xml"
     },
     {
-        "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\drawable_ic_subtract.xml.flat",
-        "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\drawable\\ic_subtract.xml"
+        "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\layout_dialog_add_tag.xml.flat",
+        "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\layout\\dialog_add_tag.xml"
     },
     {
         "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\mipmap-anydpi-v26_fitwizard.xml.flat",
@@ -68,12 +68,12 @@
         "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\drawable\\notif_message.xml"
     },
     {
-        "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\layout_activity_food_search.xml.flat",
-        "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\layout\\activity_food_search.xml"
-    },
-    {
         "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\mipmap-mdpi_fitwizard_foreground.webp.flat",
         "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\mipmap-mdpi\\fitwizard_foreground.webp"
+    },
+    {
+        "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\layout_activity_food_search.xml.flat",
+        "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\layout\\activity_food_search.xml"
     },
     {
         "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\mipmap-xxxhdpi_fitwizard.webp.flat",
@@ -144,16 +144,16 @@
         "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\drawable\\ic_add.xml"
     },
     {
-        "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\layout_activity_notifications.xml.flat",
+        "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\layout\\activity_notifications.xml"
     },
     {
         "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\drawable_ic_chevron_right.xml.flat",
         "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\drawable\\ic_chevron_right.xml"
     },
     {
-        "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\layout_activity_notifications.xml.flat",
-        "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\layout\\activity_notifications.xml"
+        "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-6:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
         "merged": "C:\\Users\\Corey\\StudioProjects\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-4:\\drawable_ic_launcher_background.xml.flat",

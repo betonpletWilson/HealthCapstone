@@ -27,7 +27,7 @@ public class NotificationUtils {
         }
 
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, CHANNEL_ID)
-                .setSmallIcon(R.drawable.fitwizard_background) // make sure this icon exists in your drawable folder
+                .setSmallIcon(R.drawable.fitwizard_background)
                 .setContentTitle(title)
                 .setContentText(message)
                 .setAutoCancel(true);
