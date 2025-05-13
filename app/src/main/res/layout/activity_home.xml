@@ -112,9 +112,10 @@
                         android:progressTint="@color/red" />
 
                     <TextView
+                        android:id="@+id/proteins_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="150 / 225"
+                        android:text="0 / 225"
                         android:textAlignment="center"
                         android:textColor="@color/black" />
 
@@ -143,9 +144,10 @@
                         android:progressTint="@color/orange" />
 
                     <TextView
+                        android:id="@+id/fats_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="30 / 118"
+                        android:text="0 / 118"
                         android:textAlignment="center"
                         android:textColor="@color/black" />
 
@@ -174,9 +176,10 @@
                         android:progressTint="@color/green" />
 
                     <TextView
+                        android:id="@+id/carbs_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="319 / 340"
+                        android:text="0 / 340"
                         android:textAlignment="center"
                         android:textColor="@color/black" />
 
@@ -201,13 +204,15 @@
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:progress="72"
+                    android:progress="0"
+                    android:max="3400"
                     android:progressTint="@color/green" />
 
                 <TextView
+                    android:id="@+id/calories_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2456 / 3400"
+                    android:text="0 / 3400"
                     android:textAlignment="center"
                     android:textColor="@color/black" />
 

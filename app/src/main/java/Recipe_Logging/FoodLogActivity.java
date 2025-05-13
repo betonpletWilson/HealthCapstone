@@ -149,6 +149,9 @@ public class FoodLogActivity extends AppCompatActivity {
 
                     // Save to preferences
                     saveFoodItems();
+
+                    // Add to Homescreen
+                    updateNutritionTotals();
                 } else {
                     Toast.makeText(this, "Meal type is missing.", Toast.LENGTH_SHORT).show();
                 }
@@ -190,6 +193,9 @@ public class FoodLogActivity extends AppCompatActivity {
                     // Save changes to preferences
                     saveFoodItems();
 
+                    updateNutritionTotals();
+
+
                     // If no items left, show placeholder
                     if (mealFoodMap.get(mealType).isEmpty()) {
                         addPlaceholder(container);
@@ -220,8 +226,6 @@ public class FoodLogActivity extends AppCompatActivity {
                 return null;
         }
     }
-
-    // ===== UPDATED CODE FOR SAVING/LOADING WITHOUT GSON =====
 
     private void loadFoodItemsForToday() {
         SharedPreferences prefs = getSharedPreferences(FOOD_LOG_PREFS, Context.MODE_PRIVATE);
@@ -347,5 +351,32 @@ public class FoodLogActivity extends AppCompatActivity {
     private String getCurrentDate() {
         SimpleDateFormat dateFormat = new SimpleDateFormat(KEY_DATE_FORMAT, Locale.getDefault());
         return dateFormat.format(new Date());
+    }
+
+
+    private void updateNutritionTotals() {
+        int totalProtein = 0;
+        int totalFats = 0;
+        int totalCarbs = 0;
+        int totalCalories = 0;
+
+        for (List<FoodData> mealList : mealFoodMap.values()) {
+            for (FoodData food : mealList) {
+                totalProtein += food.getProtein();
+                totalFats += food.getFats();
+                totalCarbs += food.getCarbs();
+                totalCalories += food.getCalories();
+            }
+        }
+
+        SharedPreferences prefs = getSharedPreferences("health_data", MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        String today = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+
+        editor.putInt("proteins_" + today, totalProtein);
+        editor.putInt("fats_" + today, totalFats);
+        editor.putInt("carbs_" + today, totalCarbs);
+        editor.putInt("calories_" + today, totalCalories);
+        editor.apply();
     }
 }

@@ -43,6 +43,7 @@ import Mood.MoodActivity;
 
 public class HomeActivity extends AppCompatActivity {
 
+    private TextView proteinsValue, fatsValue, carbsValue, caloriesValue;
     private WaterLevelView waterLevelView;
     private TextView waterAmount, waterTime, dateText, usernameText;
     private float currentWater = 1.9f;
@@ -55,6 +56,17 @@ public class HomeActivity extends AppCompatActivity {
     private final String channelId = "i.apps.notifications";
 
     private Button addMealButton, logMoodButton, newNotifButton, medicationsButton, logExerciseButton;
+
+    private static final String PREFS_NAME = "health_data";
+    private static final String KEY_WATER = "water_";
+    private static final String KEY_TIME = "water_time_";
+    private static final String KEY_PROTEINS = "proteins_";
+    private static final String KEY_FATS = "fats_";
+    private static final String KEY_CARBS = "carbs_";
+    private static final String KEY_CALORIES = "calories_";
+    private static final String KEY_LAST_UPDATE_DATE = "last_update_date";
+
+
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
@@ -69,6 +81,24 @@ public class HomeActivity extends AppCompatActivity {
                 Toast.makeText(this, "Notification permission denied", Toast.LENGTH_SHORT).show();
             }
         }
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        editor.putFloat(getTodayKey(KEY_WATER), currentWater);
+        editor.putString(getTodayKey(KEY_TIME), waterTime.getText().toString());
+
+        editor.putInt(getTodayKey(KEY_PROTEINS), proteinsProgress.getProgress());
+        editor.putInt(getTodayKey(KEY_FATS), fatsProgress.getProgress());
+        editor.putInt(getTodayKey(KEY_CARBS), carbsProgress.getProgress());
+        editor.putInt(getTodayKey(KEY_CALORIES), caloriesProgress.getProgress());
+
+        editor.apply();
     }
 
 
@@ -152,11 +182,15 @@ public class HomeActivity extends AppCompatActivity {
         carbsProgress = findViewById(R.id.carbs_progress);
         caloriesProgress = findViewById(R.id.calories_progress);
 
+        proteinsValue = findViewById(R.id.proteins_value);
+        fatsValue = findViewById(R.id.fats_value);
+        carbsValue = findViewById(R.id.carbs_value);
+        caloriesValue = findViewById(R.id.calories_value);
+
+
         // Water buttons
         addWaterBtn = findViewById(R.id.water_add);
         subtractWaterBtn = findViewById(R.id.water_subtract);
-
-
 
         // Popup menu components
         addFab = findViewById(R.id.fab_add);
@@ -192,6 +226,11 @@ public class HomeActivity extends AppCompatActivity {
 
         });
 
+    }
+
+    private String getTodayKey(String baseKey) {
+        String today = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        return baseKey + today;
     }
 
     private void setupProfileImage() {
@@ -346,5 +385,57 @@ public class HomeActivity extends AppCompatActivity {
         SharedPreferences preferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
         String userName = preferences.getString("user_name", "GetName");
         usernameText.setText(userName);
+        SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+
+        String today = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        String lastUpdate = prefs.getString(KEY_LAST_UPDATE_DATE, "");
+
+        // ✅ Reset data at midnight before loading values
+        if (!today.equals(lastUpdate)) {
+            editor.putString(KEY_LAST_UPDATE_DATE, today);
+            editor.putFloat(getTodayKey(KEY_WATER), 0f);
+            editor.putString(getTodayKey(KEY_TIME), "");
+            editor.putInt(getTodayKey(KEY_PROTEINS), 0);
+            editor.putInt(getTodayKey(KEY_FATS), 0);
+            editor.putInt(getTodayKey(KEY_CARBS), 0);
+            editor.putInt(getTodayKey(KEY_CALORIES), 0);
+            editor.apply();
+        }
+
+        // ✅ Load water
+        currentWater = prefs.getFloat(getTodayKey(KEY_WATER), 0f);
+        waterAmount.setText(String.format(Locale.getDefault(), "%.1f / %.1fL", currentWater, waterGoal));
+        waterLevelView.setWaterLevel(Math.min(currentWater / waterGoal, 1.0f));
+
+        String timeText = prefs.getString(getTodayKey(KEY_TIME), "");
+        if (!timeText.isEmpty()) {
+            waterTime.setText(timeText);
+        } else {
+            waterTime.setText(""); // Clear text if no time saved
+        }
+
+        // ✅ Load nutrient indicators (start at 0 if not set)
+        proteinsProgress.setProgress(prefs.getInt(getTodayKey(KEY_PROTEINS), 0));
+        fatsProgress.setProgress(prefs.getInt(getTodayKey(KEY_FATS), 0));
+        carbsProgress.setProgress(prefs.getInt(getTodayKey(KEY_CARBS), 0));
+        caloriesProgress.setProgress(prefs.getInt(getTodayKey(KEY_CALORIES), 0));
+
+        int protein = prefs.getInt(getTodayKey(KEY_PROTEINS), 0);
+        int fat = prefs.getInt(getTodayKey(KEY_FATS), 0);
+        int carbs = prefs.getInt(getTodayKey(KEY_CARBS), 0);
+        int calories = prefs.getInt(getTodayKey(KEY_CALORIES), 0);
+
+        proteinsProgress.setProgress(protein);
+        fatsProgress.setProgress(fat);
+        carbsProgress.setProgress(carbs);
+        caloriesProgress.setProgress(calories);
+
+// Update the text values (Assume goals: 225g protein, 118g fat, 340g carbs, 3400 cal)
+        proteinsValue.setText(protein + " / 225");
+        fatsValue.setText(fat + " / 118");
+        carbsValue.setText(carbs + " / 340");
+        caloriesValue.setText(calories + " / 3400");
+
     }
 }
