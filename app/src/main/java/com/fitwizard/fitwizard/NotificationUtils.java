@@ -11,13 +11,17 @@ import android.content.Intent;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
+import android.os.Bundle;
+import android.provider.Settings;
 import android.util.Log;
+import android.widget.Toast;
 
 import androidx.core.app.NotificationCompat;
 
 import java.util.Calendar;
 
 import Reminders.NotifData;
+import Reminders.NotificationsActivity;
 
 public class NotificationUtils extends BroadcastReceiver {
     // Notification Channel IDs
@@ -34,20 +38,10 @@ public class NotificationUtils extends BroadcastReceiver {
     private static final String EXTRA_NOTIFICATION_TYPE = "notification_type";
     private static final String EXTRA_GOAL_ID = "goal_id";
     private static final String EXTRA_MEDICATION_ID = "medication_id";
-    private static final String EXTRA_NOTIFICATION_ID = "notification_id";
-    private static final String EXTRA_NOTIFICATION_TITLE = "notification_title";
-    private static final String EXTRA_NOTIFICATION_MESSAGE = "notification_message";
-    private static final String EXTRA_IS_MONTHLY = "is_monthly";
-    private static final String EXTRA_DAY_OF_MONTH = "day_of_month";
-    private static final String EXTRA_HOUR = "hour";
-    private static final String EXTRA_MINUTE = "minute";
-    private static final String EXTRA_ACTIVE_DAYS = "active_days";
 
-    // Notification types
     public static final String TYPE_GOAL = "goal";
     public static final String TYPE_MEDICATION = "medication";
     public static final String TYPE_GENERAL = "general";
-
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -145,6 +139,15 @@ public class NotificationUtils extends BroadcastReceiver {
         // Use the default ringtone
         Uri defaultRingtoneUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
+        // Create a intent to open the app when notification is clicked
+        Intent intent = new Intent(context, NotificationsActivity.class);
+        PendingIntent pendingIntent = PendingIntent.getActivity(
+                context,
+                0,
+                intent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
+
         // Build the notification
         NotificationCompat.Builder builder = new NotificationCompat.Builder(context, channelId)
                 .setSmallIcon(R.drawable.fitwizard_background) // Ensure this icon exists
@@ -152,7 +155,8 @@ public class NotificationUtils extends BroadcastReceiver {
                 .setContentText(message)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .setAutoCancel(true)
-                .setSound(defaultRingtoneUri);
+                .setSound(defaultRingtoneUri)
+                .setContentIntent(pendingIntent);
 
         // Show the notification
         if (notificationManager != null) {
@@ -164,6 +168,7 @@ public class NotificationUtils extends BroadcastReceiver {
             notificationManager.notify(notificationId, builder.build());
         }
     }
+
     /**
      * Reschedules a monthly notification for the next month
      * @param context Application context
@@ -172,57 +177,101 @@ public class NotificationUtils extends BroadcastReceiver {
      * @param hour Hour of the notification
      * @param minute Minute of the notification
      */
-    private void rescheduleMonthlyNotification(Context context, Intent originalIntent,
-                                               int dayOfMonth, int hour, int minute) {
-        // Extract notification details
-        int notificationId = originalIntent.getIntExtra("notification_id", -1);
-        String title = originalIntent.getStringExtra("notification_title");
-        String message = originalIntent.getStringExtra("notification_message");
-        String notificationType = originalIntent.getStringExtra(EXTRA_NOTIFICATION_TYPE);
+    private void rescheduleMonthlyNotification(Context context, Intent originalIntent, int dayOfMonth, int hour, int minute) {
+        // Create a calendar for next month's trigger date
+        Calendar nextTrigger = Calendar.getInstance();
+        nextTrigger.add(Calendar.MONTH, 1); // Move to next month
+        nextTrigger.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+        nextTrigger.set(Calendar.HOUR_OF_DAY, hour);
+        nextTrigger.set(Calendar.MINUTE, minute);
+        nextTrigger.set(Calendar.SECOND, 0);
+        nextTrigger.set(Calendar.MILLISECOND, 0);
 
-        if (notificationId == -1 || title == null || message == null) {
-            Log.e("NotificationUtils", "Cannot reschedule with invalid notification data");
-            return;
+        // Create a new intent with the same extras
+        Intent newIntent = new Intent(context, NotificationUtils.class);
+        Bundle extras = originalIntent.getExtras();
+        if (extras != null) {
+            newIntent.putExtras(extras);
         }
 
-        // Create new intent for next month
-        Intent intent = new Intent(context, NotificationUtils.class);
-        intent.putExtra("notification_id", notificationId);
-        intent.putExtra("notification_title", title);
-        intent.putExtra("notification_message", message);
-        intent.putExtra(EXTRA_NOTIFICATION_TYPE, notificationType);
-        intent.putExtra("is_monthly", true);
-        intent.putExtra("day_of_month", dayOfMonth);
-        intent.putExtra("hour", hour);
-        intent.putExtra("minute", minute);
+        // Keep the notification ID consistent
+        int notificationId = originalIntent.getIntExtra("notification_id", -1) * 100 + dayOfMonth;
 
-        // Create pending intent
-        int requestCode = notificationId * 100 + dayOfMonth;
+        // Create the pending intent
         PendingIntent pendingIntent = PendingIntent.getBroadcast(
                 context,
-                requestCode,
-                intent,
-                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
+                notificationId,
+                newIntent,
+                PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE
+        );
 
-        // Set calendar for next month
-        Calendar calendar = Calendar.getInstance();
-        calendar.add(Calendar.MONTH, 1);
-        calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-        calendar.set(Calendar.HOUR_OF_DAY, hour);
-        calendar.set(Calendar.MINUTE, minute);
-        calendar.set(Calendar.SECOND, 0);
-        calendar.set(Calendar.MILLISECOND, 0);
-
-        // Schedule the alarm
+        // Get the alarm manager and schedule the next notification
         AlarmManager alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         if (alarmManager != null) {
-            alarmManager.set(
-                    AlarmManager.RTC_WAKEUP,
-                    calendar.getTimeInMillis(),
-                    pendingIntent
-            );
-        } else {
-            Log.e("NotificationUtils", "AlarmManager is null, cannot reschedule");
+            try {
+                // Check for permission to schedule exact alarms on Android 12+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    if (!alarmManager.canScheduleExactAlarms()) {
+                        // Permission not granted, show a message and redirect to settings
+                        Log.w("NotificationUtils", "Permission to schedule exact alarms not granted");
+
+                        // Show a toast to inform the user
+                        Toast.makeText(
+                                context,
+                                "Please enable exact alarm permission for notifications to work properly",
+                                Toast.LENGTH_LONG
+                        ).show();
+
+                        // Open the settings screen for the app
+                        Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+                        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        context.startActivity(intent);
+
+                        // Fall back to inexact alarm
+                        alarmManager.set(
+                                AlarmManager.RTC_WAKEUP,
+                                nextTrigger.getTimeInMillis(),
+                                pendingIntent
+                        );
+                        return;
+                    }
+                }
+
+                // Permission granted, proceed with scheduling exact alarm
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    alarmManager.setExactAndAllowWhileIdle(
+                            AlarmManager.RTC_WAKEUP,
+                            nextTrigger.getTimeInMillis(),
+                            pendingIntent
+                    );
+                } else {
+                    alarmManager.setExact(
+                            AlarmManager.RTC_WAKEUP,
+                            nextTrigger.getTimeInMillis(),
+                            pendingIntent
+                    );
+                }
+
+                Log.d("NotificationUtils", "Rescheduled monthly notification for day " +
+                        dayOfMonth + " next month at " + hour + ":" + minute);
+            } catch (SecurityException e) {
+                // Handle the SecurityException that might be thrown
+                Log.e("NotificationUtils", "Security exception when scheduling alarm: " + e.getMessage());
+
+                // Fall back to inexact alarm as a backup
+                alarmManager.set(
+                        AlarmManager.RTC_WAKEUP,
+                        nextTrigger.getTimeInMillis(),
+                        pendingIntent
+                );
+
+                // Notify user about the permission issue
+                Toast.makeText(
+                        context,
+                        "Notification may be delayed due to missing alarm permission",
+                        Toast.LENGTH_SHORT
+                ).show();
+            }
         }
     }
 

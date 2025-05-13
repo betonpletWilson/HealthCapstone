@@ -6,6 +6,7 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -51,7 +52,8 @@
 
         <receiver android:name="Goals.GoalReminderReceiver"
             android:exported="true" />
-        <receiver android:name=".NotificationUtils"/>
+        <receiver android:name=".NotificationUtils"
+            android:enabled="true"/>
 
 
     </application>

@@ -178,13 +178,20 @@
         </LinearLayout>
     </LinearLayout>
 
+    <!-- Spacer view to push button to bottom -->
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Pill-shaped button at bottom -->
     <Button
         android:id="@+id/open_calendar_button"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
-        android:text="View Today's Entry"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_marginBottom="16dp"
+        android:text="View Journal"
+        android:background="@drawable/pill_button_background"
+        android:textColor="@android:color/white"
+        android:paddingVertical="12dp" />
 </LinearLayout>

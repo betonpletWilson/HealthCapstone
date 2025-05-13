@@ -91,6 +91,10 @@ public class MoodJournalActivity extends AppCompatActivity {
         ImageButton addTagButton = findViewById(R.id.addTagButton);
         addTagButton.setOnClickListener(v -> showAddTagDialog());
 
+        // Set up edit tags button
+        ImageButton editTagsButton = findViewById(R.id.editTagsButton);
+        editTagsButton.setOnClickListener(v -> showEditTagsDialog());
+
         Intent intent = getIntent();
         if (intent != null) {
             // Get resource ID of the selected mood
@@ -115,6 +119,204 @@ public class MoodJournalActivity extends AppCompatActivity {
 
         // Set up save button
         findViewById(R.id.saveJournalButton).setOnClickListener(v -> saveJournalEntry()); // call saveJournalEntry function
+    }
+
+    /**
+     * Returns a list of custom tags (non-default tags)
+     */
+    private List<MoodData> getCustomTags() {
+        List<MoodData> customTags = new ArrayList<>();
+        List<MoodData> defaultTags = createDefaultTags();
+        Set<String> defaultTagNames = new HashSet<>();
+
+        // Get all default tag names
+        for (MoodData defaultTag : defaultTags) {
+            defaultTagNames.add(defaultTag.getTagName().toLowerCase());
+        }
+
+        // Find custom tags (not in default tags)
+        for (MoodData tag : moodDataList) {
+            if (!defaultTagNames.contains(tag.getTagName().toLowerCase())) {
+                customTags.add(tag);
+            }
+        }
+
+        return customTags;
+    }
+
+    private void showEditTagsDialog() {
+        // Get only custom tags (not default ones)
+        List<MoodData> customTags = getCustomTags();
+
+        if (customTags.isEmpty()) {
+            Toast.makeText(this, "No custom tags to edit", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Create array of tag names for the dialog
+        final String[] tagNames = new String[customTags.size()];
+        for (int i = 0; i < customTags.size(); i++) {
+            tagNames[i] = customTags.get(i).getTagName() + " (" +
+                    customTags.get(i).getTagType().substring(0, 1).toUpperCase() +
+                    customTags.get(i).getTagType().substring(1) + ")";
+        }
+
+        // Show dialog with list of custom tags
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Select Tag to Edit")
+                .setItems(tagNames, (dialog, which) -> {
+                    // Show edit/delete options for the selected tag
+                    showTagOptionsDialog(customTags.get(which));
+                })
+                .setNegativeButton("Cancel", null);
+
+        builder.create().show();
+    }
+
+    private void showTagOptionsDialog(MoodData tagData) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Tag: " + tagData.getTagName())
+                .setItems(new String[]{"Edit", "Delete"}, (dialog, which) -> {
+                    if (which == 0) {
+                        // Edit option
+                        showEditTagDialog(tagData);
+                    } else {
+                        // Delete option
+                        showDeleteTagConfirmation(tagData);
+                    }
+                })
+                .setNegativeButton("Cancel", null);
+
+        builder.create().show();
+    }
+
+    private void refreshTagChips() {
+        // Clear all chip groups
+        emotionTagsChipGroup.removeAllViews();
+        sleepTagsChipGroup.removeAllViews();
+        hobbiesTagsChipGroup.removeAllViews();
+        socialTagsChipGroup.removeAllViews();
+
+        // Sort tags by type and re-populate chip groups
+        for (MoodData moodData : moodDataList) {
+            Chip chip = createChip(moodData);
+
+            switch (moodData.getTagType().toLowerCase()) {
+                case "emotion":
+                    emotionTagsChipGroup.addView(chip);
+                    break;
+                case "sleep":
+                    sleepTagsChipGroup.addView(chip);
+                    break;
+                case "hobbies":
+                    hobbiesTagsChipGroup.addView(chip);
+                    break;
+                case "social":
+                    socialTagsChipGroup.addView(chip);
+                    break;
+            }
+        }
+    }
+
+    private int getCategoryIndex(String category) {
+        switch (category.toLowerCase()) {
+            case "emotion": return 0;
+            case "sleep": return 1;
+            case "hobbies": return 2;
+            case "social": return 3;
+            default: return 0;
+        }
+    }
+
+    private void showEditTagDialog(MoodData tagData) {
+        // Inflate dialog layout
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_add_tag, null);
+        EditText tagNameEditText = dialogView.findViewById(R.id.tagNameEditText);
+        tagNameEditText.setText(tagData.getTagName());
+
+        // Create the category options
+        final String[] categories = {"Emotion", "Sleep", "Hobbies", "Social"};
+        int defaultSelection = getCategoryIndex(tagData.getTagType());
+        final int[] selectedCategory = {defaultSelection};
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle("Edit Tag")
+                .setView(dialogView)
+                .setSingleChoiceItems(categories, defaultSelection, (dialogInterface, which) -> {
+                    selectedCategory[0] = which;
+                })
+                .setPositiveButton("Save", (dialogInterface, i) -> {
+                    String tagName = tagNameEditText.getText().toString().trim();
+                    if (!tagName.isEmpty()) {
+                        updateTag(tagData, tagName, categories[selectedCategory[0]].toLowerCase());
+                    } else {
+                        Toast.makeText(MoodJournalActivity.this, "Tag name cannot be empty", Toast.LENGTH_SHORT).show();
+                    }
+                })
+                .setNegativeButton("Cancel", null)
+                .create();
+
+        dialog.show();
+    }
+
+    private void updateTag(MoodData tagData, String newName, String newCategory) {
+        // Find tag in the list
+        for (int i = 0; i < moodDataList.size(); i++) {
+            MoodData tag = moodDataList.get(i);
+            if (tag.getId().equals(tagData.getId())) {
+                // Update tag properties
+                tag.setTagName(newName);
+                tag.setTagType(newCategory);
+
+                // Save updated tags
+                saveAllTagsToPrefs();
+
+                // Reload the UI to reflect changes
+                refreshTagChips();
+
+                Toast.makeText(this, "Tag updated successfully", Toast.LENGTH_SHORT).show();
+                return;
+            }
+        }
+    }
+
+    /**
+     * Deletes a tag
+     */
+    private void deleteTag(MoodData tagData) {
+        // Remove tag from selectedTagIds if selected
+        selectedTagIds.remove(tagData.getId());
+
+        // Remove tag from list
+        for (int i = 0; i < moodDataList.size(); i++) {
+            if (moodDataList.get(i).getId().equals(tagData.getId())) {
+                moodDataList.remove(i);
+                break;
+            }
+        }
+
+        // Save updated tags
+        saveAllTagsToPrefs();
+
+        // Reload the UI to reflect changes
+        refreshTagChips();
+
+        Toast.makeText(this, "Tag deleted successfully", Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * Shows confirmation dialog before deleting a tag
+     */
+    private void showDeleteTagConfirmation(MoodData tagData) {
+        new AlertDialog.Builder(this)
+                .setTitle("Delete Tag")
+                .setMessage("Are you sure you want to delete the tag '" + tagData.getTagName() + "'?")
+                .setPositiveButton("Delete", (dialog, which) -> {
+                    deleteTag(tagData);
+                })
+                .setNegativeButton("Cancel", null)
+                .create()
+                .show();
     }
 
     /*

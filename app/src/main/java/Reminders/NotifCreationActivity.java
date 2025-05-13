@@ -451,6 +451,7 @@ public class NotifCreationActivity extends AppCompatActivity {
             // Check if notification creation was successful
             if (notification != null) {
                 // Request notification permissions
+                //Notification: "Your Reminder Created" Notif
                 requestNotificationPermission(notification);
             }
 
@@ -484,7 +485,7 @@ public class NotifCreationActivity extends AppCompatActivity {
         cancelButton.setOnClickListener(v -> finish());
     }
 
-    // Field to store the current notification item temporarily
+    // Field to store the "Notification Created" current notification item temporarily
     private NotifData.NotificationItem currentNotificationItem;
 
     @Override
@@ -500,6 +501,7 @@ public class NotifCreationActivity extends AppCompatActivity {
                     grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 // Permission granted, proceed with saving and sending notification
                 if (currentNotificationItem != null) {
+                    //Notification: "Your Reminder Created" Notif
                     saveAndSendNotification(currentNotificationItem);
                     currentNotificationItem = null;
                 }
@@ -514,6 +516,7 @@ public class NotifCreationActivity extends AppCompatActivity {
         }
     }
 
+    //Notification: "Your Reminderr Created" Notif
     private void saveAndSendNotification(NotifData.NotificationItem notificationItem) {
         // Save the notification (assuming you have a method to do this)
         // For example:
@@ -559,10 +562,12 @@ public class NotifCreationActivity extends AppCompatActivity {
                 this.currentNotificationItem = notificationItem;
             } else {
                 // Permission already granted, proceed with saving and sending notification
+                //Notification: "Your Reminder Created" Notif
                 saveAndSendNotification(notificationItem);
             }
         } else {
             // For Android versions below 13, directly save and send notification
+            //Notification: "Your Reminder Created" Notif
             saveAndSendNotification(notificationItem);
         }
     }

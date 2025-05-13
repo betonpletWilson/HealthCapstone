@@ -1,10 +1,14 @@
 package com.fitwizard.fitwizard;
 
+import android.app.AlarmManager;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -73,6 +77,8 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        checkExactAlarmPermission();
+
         /*
         // Ask for notification permission on Android 13+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -100,6 +106,37 @@ public class HomeActivity extends AppCompatActivity {
         setupWaterControls();
         setupPopupNavMenu();
         loadUserData();
+    }
+
+    private static final int EXACT_ALARM_PERMISSION_REQUEST_CODE = 1002;
+
+    /**
+     * Checks and requests permission to schedule exact alarms (for Android 12+)
+     */
+    private void checkExactAlarmPermission() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+            if (!alarmManager.canScheduleExactAlarms()) {
+                // Show an explanation to the user
+                new AlertDialog.Builder(this)
+                        .setTitle("Permission Required")
+                        .setMessage("To ensure your reminders work correctly, please enable the 'Alarms & Reminders' permission for this app.")
+                        .setPositiveButton("Go to Settings", (dialog, which) -> {
+                            // Open settings screen for exact alarm permission
+                            Intent intent = new Intent(Settings.ACTION_REQUEST_SCHEDULE_EXACT_ALARM);
+                            intent.setData(Uri.parse("package:" + getPackageName()));
+                            startActivityForResult(intent, EXACT_ALARM_PERMISSION_REQUEST_CODE);
+                        })
+                        .setNegativeButton("Not Now", (dialog, which) -> {
+                            Toast.makeText(this,
+                                    "Reminders may not work exactly on time without this permission",
+                                    Toast.LENGTH_LONG).show();
+                        })
+                        .setCancelable(false)
+                        .show();
+            }
+        }
     }
 
     private void initializeViews() {
