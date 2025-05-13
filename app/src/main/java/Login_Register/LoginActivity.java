@@ -33,7 +33,7 @@ public class LoginActivity extends AppCompatActivity {
         if (savedJwt != null) {
             Log.d("JWT-LOAD", savedJwt);
             ApiService.validate(savedJwt, new ApiService.AuthCallback() {
-                @Override public void onSuccess(String jwt, int userId) {
+                @Override public void onSuccess(String jwt, int userId, String username) {
                     launchHome();                          // already uses runOnUiThread
                 }
                 @Override public void onFailure(String err) {
@@ -75,11 +75,12 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         ApiService.login(id, pass, new ApiService.AuthCallback() {
-            @Override public void onSuccess(String jwt, int userId) {
+            @Override public void onSuccess(String jwt, int userId, String username) {
                 SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
                 prefs.edit()
                         .putString("jwt", jwt)
-                        .putInt("userId", userId)   // ← store it here
+                        .putInt("userId", userId)
+                        .putString("user_name", username)
                         .apply();
 
                 launchHome();

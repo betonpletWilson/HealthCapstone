@@ -1,370 +1,418 @@
 [
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_circle_outline_pink_double.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\circle_outline_pink_double.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_pill_button_background.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\pill_button_background.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_fitwizard_background.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\fitwizard_background.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xxxhdpi_fitwizard_round.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xxxhdpi\\fitwizard_round.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_mood.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_mood.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\ic_launcher_background.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_dialog_edit_goal.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\dialog_edit_goal.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-anydpi-v26_fitwizard.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-anydpi-v26\\fitwizard.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_mood_widget_background.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\mood_widget_background.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_weekday_toggle_background.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\weekday_toggle_background.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_item_mood_log.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\item_mood_log.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_mood_journal.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_mood_journal.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_rounded_button_background.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\rounded_button_background.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_profile_placehold_cat.jpg.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\profile_placehold_cat.jpg"
     },
     {
-        "merged": "com.fitwizard.fitwizard.app-debug-31:/layout_item_medication.xml.flat",
-        "source": "com.fitwizard.fitwizard.app-main-33:/layout/item_medication.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_ic_subtract.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\ic_subtract.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-hdpi_fitwizard_round.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-hdpi\\fitwizard_round.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_login.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_login.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_item_medication.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\item_medication.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_profile_placehold_cat.jpg.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\profile_placehold_cat.jpg"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\xml_network_security_config.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\xml\\network_security_config.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xxhdpi_fitwizard_round.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xxhdpi\\fitwizard_round.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_calendar_day_cell.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\calendar_day_cell.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xxxhdpi_fitwizard_round.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xxxhdpi\\fitwizard_round.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_popup_background.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\popup_background.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_ic_edit.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\ic_edit.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_notif_dialog_item_details.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\notif_dialog_item_details.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_face_good.png.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\face_good.png"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_ic_back.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\ic_back.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-mdpi_fitwizard.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-mdpi\\fitwizard.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-mdpi_fitwizard_foreground.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-mdpi\\fitwizard_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_search_background.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\search_background.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xxxhdpi_fitwizard.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xxxhdpi\\fitwizard.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_dialog_exercise_search.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\dialog_exercise_search.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_edittext_background.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\edittext_background.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_dialog_add_tag.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\dialog_add_tag.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_notif_creation.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_notif_creation.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_ic_back.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\ic_back.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_register.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_register.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_circle_color_indicator.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\circle_color_indicator.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-mdpi_fitwizard.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-mdpi\\fitwizard.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_ic_launcher_background.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\ic_launcher_background.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_food_data_list_item.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\food_data_list_item.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_home.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_home.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xhdpi_fitwizard_round.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xhdpi\\fitwizard_round.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_actvitiy_log_exercise.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\actvitiy_log_exercise.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_dialog_edit_goal.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\dialog_edit_goal.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_add_edit_medication.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_add_edit_medication.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_item_medication.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\item_medication.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_item_exercise.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\item_exercise.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_dialog_medication_search.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\dialog_medication_search.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-hdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_dialog_food_search.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\dialog_food_search.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_green_border_background.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\green_border_background.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_exercise_log.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_exercise_log.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_log_exercise.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_log_exercise.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_green_border_background.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\green_border_background.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_medication.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_medication.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_exercise_history.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_exercise_history.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_ic_subtract.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\ic_subtract.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_dialog_exercise_search.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\dialog_exercise_search.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_profile_placeholder.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\profile_placeholder.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_search_background.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\search_background.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_notif_creation.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_notif_creation.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-mdpi_fitwizard_round.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-mdpi\\fitwizard_round.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_add_edit_medication.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_add_edit_medication.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_ic_edit.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\ic_edit.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-mdpi_fitwizard_round.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-mdpi\\fitwizard_round.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xxxhdpi_fitwizard.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xxxhdpi\\fitwizard.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_item_goal.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\item_goal.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xhdpi_fitwizard_foreground.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xhdpi\\fitwizard_foreground.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_profile.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_profile.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_food_data_list_item.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\food_data_list_item.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xhdpi_fitwizard.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xhdpi\\fitwizard.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_face_sad.png.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\face_sad.png"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_ic_launcher_foreground.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\ic_launcher_foreground.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\xml\\backup_rules.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_section_header_layout.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\section_header_layout.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_profile.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_profile.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_mood_entry_detail.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_mood_entry_detail.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_time_selector_background.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\time_selector_background.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_circle_outline_pink.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\circle_outline_pink.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_ic_add.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\ic_add.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_dialog_add_tag.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\dialog_add_tag.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_popup_background.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\popup_background.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xhdpi_fitwizard_foreground.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xhdpi\\fitwizard_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_edittext_background.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\edittext_background.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-hdpi_fitwizard.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-hdpi\\fitwizard.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_ic_calendar.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\ic_calendar.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_face_awful.png.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\face_awful.png"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_settings.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_settings.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-mdpi_fitwizard_foreground.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-mdpi\\fitwizard_foreground.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-hdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_goal_item.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\goal_item.xml"
+        "merged": "com.fitwizard.fitwizard.app-debug-32:/layout_item_exercise.xml.flat",
+        "source": "com.fitwizard.fitwizard.app-main-34:/layout/item_exercise.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xxxhdpi_fitwizard_foreground.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xxxhdpi\\fitwizard_foreground.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xxhdpi_fitwizard_round.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xxhdpi\\fitwizard_round.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\xml_network_security_config.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\xml\\network_security_config.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_circle_outline_pink_double.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\circle_outline_pink_double.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_section_header_layout.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\section_header_layout.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_time_selector_background.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\time_selector_background.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_circle_color_indicator.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\circle_color_indicator.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_actvitiy_log_exercise.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\actvitiy_log_exercise.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_mood_journal.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_mood_journal.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_notifications.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_notifications.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_notif_item_layout.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\notif_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_add_edit_goal.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_add_edit_goal.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-mdpi\\ic_launcher_round.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_rounded_panel_background.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\rounded_panel_background.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_moodlogs_entries.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_moodlogs_entries.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_food_item_layout.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\food_item_layout.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_face_awful.png.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\face_awful.png"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xhdpi_fitwizard_round.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xhdpi\\fitwizard_round.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_circle_outline_pink.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\circle_outline_pink.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-mdpi\\ic_launcher.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_item_goal.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\item_goal.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xxhdpi_fitwizard.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xxhdpi\\fitwizard.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_medication.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_medication.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_food_log.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_food_log.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_mood.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_mood.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_goals.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_goals.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_food_log.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_food_log.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_face_amazing.png.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\face_amazing.png"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_food_search.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_food_search.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_face_meh.png.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\face_meh.png"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_ic_calendar.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\ic_calendar.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_ic_add.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\ic_add.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xxhdpi_fitwizard_foreground.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xxhdpi\\fitwizard_foreground.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_dialog_medication_search.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\dialog_medication_search.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_notif_message.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\notif_message.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-anydpi-v26_fitwizard.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-anydpi-v26\\fitwizard.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_notif_item_layout.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\notif_item_layout.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_notification_details_popup.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\notification_details_popup.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_register.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_register.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-hdpi_fitwizard.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-hdpi\\fitwizard.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-hdpi_fitwizard_round.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-hdpi\\fitwizard_round.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_mood_logs.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_mood_logs.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_face_meh.png.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\face_meh.png"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_rounded_panel_background.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\rounded_panel_background.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_fitwizard_background.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\fitwizard_background.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_log_exercise.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_log_exercise.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_rounded_button_background.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\rounded_button_background.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-anydpi-v26_fitwizard_round.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-anydpi-v26\\fitwizard_round.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_dialog_food_search.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\dialog_food_search.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\xml\\data_extraction_rules.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_food_item_layout.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\food_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xxhdpi_fitwizard.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xxhdpi\\fitwizard.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_profile_placeholder.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\profile_placeholder.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_item_exercise.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\item_exercise.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_exercise_history.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_exercise_history.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_home.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_home.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_exercise_log.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_exercise_log.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_face_amazing.png.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\face_amazing.png"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xxhdpi_fitwizard_foreground.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xxhdpi\\fitwizard_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-hdpi_fitwizard_foreground.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-hdpi\\fitwizard_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xxxhdpi_fitwizard_foreground.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xxxhdpi\\fitwizard_foreground.webp"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\layout_activity_goals.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_goals.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_circle_background_today.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\circle_background_today.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\drawable_ic_chevron_right.xml.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\drawable\\ic_chevron_right.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_add_edit_goal.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_add_edit_goal.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-31:\\mipmap-hdpi_fitwizard_foreground.webp.flat",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\mipmap-hdpi\\fitwizard_foreground.webp"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_notifications.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_notifications.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_weekday_toggle_background.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\weekday_toggle_background.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xhdpi_fitwizard.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xhdpi\\fitwizard.webp"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_ic_settings.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\ic_settings.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_ic_chevron_right.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\ic_chevron_right.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-xhdpi\\ic_launcher.webp"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_activity_food_search.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_food_search.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_face_sad.png.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\face_sad.png"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\mipmap-anydpi-v26_fitwizard_round.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\mipmap-anydpi-v26\\fitwizard_round.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\layout_goal_item.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\goal_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_notif_message.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\notif_message.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\drawable_face_good.png.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\drawable\\face_good.png"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-debug-32:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\xml\\data_extraction_rules.xml"
     }
 ]

@@ -44,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity {
 
             // Call remote register
             ApiService.register(name, email, pass, new ApiService.AuthCallback() {
-                public void onSuccess(String jwt, int userId) {
+                public void onSuccess(String jwt, int userId, String username) {
                     // save JWT and userId
                     SharedPreferences prefs = getSharedPreferences(
                             "UserPrefs", MODE_PRIVATE);

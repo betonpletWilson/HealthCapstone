@@ -122,6 +122,8 @@ attr alertDialogButtonGroupStyle
 attr alertDialogCenterButtons
 attr alertDialogStyle
 attr alertDialogTheme
+attr alignContent
+attr alignItems
 attr allowStacking
 attr alpha
 attr alphabeticModifiers
@@ -459,6 +461,9 @@ attr dialogTheme
 attr displayOptions
 attr divider
 attr dividerColor
+attr dividerDrawable
+attr dividerDrawableHorizontal
+attr dividerDrawableVertical
 attr dividerHorizontal
 attr dividerInsetEnd
 attr dividerInsetStart
@@ -550,6 +555,8 @@ attr fastScrollHorizontalTrackDrawable
 attr fastScrollVerticalThumbDrawable
 attr fastScrollVerticalTrackDrawable
 attr firstBaselineToTopHeight
+attr flexDirection
+attr flexWrap
 attr floatingActionButtonLargePrimaryStyle
 attr floatingActionButtonLargeSecondaryStyle
 attr floatingActionButtonLargeStyle
@@ -697,6 +704,7 @@ attr itemTextAppearanceActiveBoldEnabled
 attr itemTextAppearanceInactive
 attr itemTextColor
 attr itemVerticalPadding
+attr justifyContent
 attr keyPositionType
 attr keyboardIcon
 attr keylines
@@ -711,6 +719,7 @@ attr layout
 attr layoutDescription
 attr layoutDuringTransition
 attr layoutManager
+attr layout_alignSelf
 attr layout_anchor
 attr layout_anchorGravity
 attr layout_behavior
@@ -765,6 +774,9 @@ attr layout_constraintWidth_percent
 attr layout_dodgeInsetEdges
 attr layout_editor_absoluteX
 attr layout_editor_absoluteY
+attr layout_flexBasisPercent
+attr layout_flexGrow
+attr layout_flexShrink
 attr layout_goneMarginBaseline
 attr layout_goneMarginBottom
 attr layout_goneMarginEnd
@@ -775,10 +787,16 @@ attr layout_goneMarginTop
 attr layout_insetEdge
 attr layout_keyline
 attr layout_marginBaseline
+attr layout_maxHeight
+attr layout_maxWidth
+attr layout_minHeight
+attr layout_minWidth
 attr layout_optimizationLevel
+attr layout_order
 attr layout_scrollEffect
 attr layout_scrollFlags
 attr layout_scrollInterpolator
+attr layout_wrapBefore
 attr layout_wrapBehaviorInParent
 attr liftOnScroll
 attr liftOnScrollColor
@@ -863,6 +881,7 @@ attr maxButtonHeight
 attr maxCharacterCount
 attr maxHeight
 attr maxImageSize
+attr maxLine
 attr maxLines
 attr maxNumber
 attr maxVelocity
@@ -1049,6 +1068,9 @@ attr shouldRemoveExpandedCorners
 attr showAnimationBehavior
 attr showAsAction
 attr showDelay
+attr showDivider
+attr showDividerHorizontal
+attr showDividerVertical
 attr showDividers
 attr showMarker
 attr showMotionSpec
@@ -2930,6 +2952,8 @@ dimen notification_small_icon_size_as_large
 dimen notification_subtext_size
 dimen notification_top_pad
 dimen notification_top_pad_large_text
+dimen recycler_margin_all_month
+dimen recycler_margin_default
 dimen tooltip_corner_radius
 dimen tooltip_horizontal_padding
 dimen tooltip_margin
@@ -3027,6 +3051,7 @@ drawable btn_radio_off_mtrl
 drawable btn_radio_off_to_on_mtrl_animation
 drawable btn_radio_on_mtrl
 drawable btn_radio_on_to_off_mtrl_animation
+drawable circle_background_today
 drawable circle_color_indicator
 drawable circle_outline_pink
 drawable circle_outline_pink_double
@@ -3068,6 +3093,7 @@ drawable ic_mtrl_chip_checked_black
 drawable ic_mtrl_chip_checked_circle
 drawable ic_mtrl_chip_close_circle
 drawable ic_search_black_24
+drawable ic_settings
 drawable ic_subtract
 drawable indeterminate_static
 drawable m3_avd_hide_password
@@ -3091,6 +3117,7 @@ drawable material_ic_keyboard_arrow_previous_black_24dp
 drawable material_ic_keyboard_arrow_right_black_24dp
 drawable material_ic_menu_arrow_down_black_24dp
 drawable material_ic_menu_arrow_up_black_24dp
+drawable mood_widget_background
 drawable mtrl_bottomsheet_drag_handle
 drawable mtrl_checkbox_button
 drawable mtrl_checkbox_button_checked_unchecked
@@ -3143,6 +3170,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable pill_button_background
 drawable popup_background
 drawable profile_placehold_cat
 drawable profile_placeholder
@@ -3157,6 +3185,7 @@ drawable weekday_toggle_background
 id ALT
 id BOTTOM_END
 id BOTTOM_START
+id BackButton
 id CTRL
 id FUNCTION
 id META
@@ -3168,6 +3197,8 @@ id SHOW_PROGRESS
 id SYM
 id TOP_END
 id TOP_START
+id aboutText
+id aboutTitle
 id above
 id accelerate
 id accessibility_action_clickable_span
@@ -3269,6 +3300,8 @@ id btn_add_meal
 id btn_add_notif
 id btn_back
 id btn_cancel
+id btn_close_popup
+id btn_done
 id btn_everyday
 id btn_filter_all_month
 id btn_filter_today
@@ -3277,7 +3310,11 @@ id btn_goals
 id btn_log_exercise
 id btn_log_mood
 id btn_medications
+id btn_new_notif
+id btn_next_month
+id btn_prev_month
 id btn_save
+id btn_save_status
 id btn_weekdays
 id btn_weekends
 id buttonLogin
@@ -3287,15 +3324,18 @@ id buttonPickReminderTime
 id buttonRegister
 id buttonSaveGoal
 id cache_measures
-id calendar_icon
+id calendar_day_text
 id calendar_monthly
 id calendar_scroll_view
+id calendar_title
 id callMeasure
 id caloriesTextView
 id calories_progress
+id calories_value
 id cancelButton
 id cancel_button
 id carbs_progress
+id carbs_value
 id cardView
 id cardioTimeInput
 id carryVelocity
@@ -3321,6 +3361,8 @@ id clip_vertical
 id clockwise
 id closest
 id collapseActionView
+id column
+id column_reverse
 id compress
 id confirm_button
 id constraint
@@ -3334,14 +3376,13 @@ id cos
 id counterclockwise
 id cradle
 id currentState
-id current_week_layout
 id custom
 id customPanel
 id cut
 id dailyReminderCheckBox
+id darkModeSwitch
 id dateTimeTextView
 id date_picker_actions
-id date_text
 id day_layout_friday
 id day_layout_monday
 id day_layout_saturday
@@ -3369,6 +3410,11 @@ id design_menu_item_action_area
 id design_menu_item_action_area_stub
 id design_menu_item_text
 id design_navigation_view
+id detailContentTextView
+id detailDateTextView
+id detailMoodImageView
+id detailTagsContainer
+id details_container
 id dialogGoalEditText
 id dialogPickTimeButton
 id dialogReminderTimeText
@@ -3382,6 +3428,7 @@ id disableIntraAutoTransition
 id disablePostScroll
 id disableScroll
 id disjoint
+id divider
 id dragAnticlockwise
 id dragClockwise
 id dragDown
@@ -3400,6 +3447,7 @@ id edge
 id editGoalBtn
 id editGoalButton
 id editMedicationButton
+id editTagsButton
 id editTextEmail
 id editTextGoalName
 id editTextIdentifier
@@ -3436,6 +3484,7 @@ id face_meh
 id face_sad
 id fade
 id fats_progress
+id fats_value
 id fill
 id fill_horizontal
 id fill_vertical
@@ -3447,6 +3496,8 @@ id fitStart
 id fitToContents
 id fitXY
 id fixed
+id flex_end
+id flex_start
 id flip
 id floating
 id foodDetails
@@ -3503,6 +3554,11 @@ id journalBackButton
 id journalEntryEditText
 id jumpToEnd
 id jumpToStart
+id label_active_days
+id label_category
+id label_duration
+id label_frequency
+id label_time
 id labeled
 id layout
 id layout_assignments
@@ -3515,12 +3571,19 @@ id layout_weekdays
 id left
 id leftToRight
 id legacy
+id legalText
+id legalTitle
 id line1
 id line3
 id linear
 id listMode
 id list_item
+id logContentPreviewTextView
+id logDateTextView
+id logMoodImageView
+id logTagsTextView
 id logoImage
+id logoutButton
 id lunchAddButton
 id lunchContainer
 id m3_side_sheet
@@ -3559,11 +3622,21 @@ id message
 id middle
 id mini
 id month_grid
+id month_navigation
 id month_navigation_bar
 id month_navigation_fragment_toggle
 id month_navigation_next
 id month_navigation_previous
 id month_title
+id moodImageView
+id moodLogsLayout
+id moodLogsRecyclerView
+id mood_card
+id mood_description
+id mood_icon
+id mood_tags
+id mood_title
+id mood_widget_container
 id motion_base
 id mtrl_anchor_parent
 id mtrl_calendar_day_selector_frame
@@ -3590,7 +3663,6 @@ id mtrl_picker_title_text
 id mtrl_view_tag_bottom_padding
 id multiply
 id nav_home
-id nav_reports
 id navigation_bar_item_active_indicator_view
 id navigation_bar_item_icon_container
 id navigation_bar_item_icon_view
@@ -3606,14 +3678,17 @@ id noState
 id none
 id normal
 id north
+id notif_calendar_month_view
 id notification_background
 id notification_main_column
 id notification_main_column_container
+id nowrap
 id nutrients_card
 id nutrients_title
 id off
 id on
 id onInterceptTouchReturnSwipe
+id open_calendar_button
 id open_search_bar_text_view
 id open_search_view_background
 id open_search_view_clear_button
@@ -3652,6 +3727,7 @@ id profile_image
 id progress_circular
 id progress_horizontal
 id proteins_progress
+id proteins_value
 id radio
 id ratio
 id rb_monthly
@@ -3668,7 +3744,9 @@ id rightToLeft
 id right_icon
 id right_side
 id rounded
+id row
 id row_index_key
+id row_reverse
 id rv_notifications
 id saveExerciseButton
 id saveJournalButton
@@ -3703,6 +3781,7 @@ id selection_type
 id servingTextView
 id servingsEditText
 id setsInput
+id settingsButton
 id sharedValueSet
 id sharedValueUnset
 id shortcut
@@ -3720,6 +3799,9 @@ id snap
 id snapMargins
 id socialTagsChipGroup
 id south
+id space_around
+id space_between
+id space_evenly
 id spacer
 id special_effects_controller_view_tag
 id spline
@@ -3738,6 +3820,10 @@ id startToEnd
 id startVertical
 id staticLayout
 id staticPostLayout
+id status_complete
+id status_group
+id status_in_progress
+id status_incomplete
 id stop
 id strengthInputs
 id stretch
@@ -3759,6 +3845,8 @@ id tag_transition_group
 id tag_unhandled_key_event_manager
 id tag_unhandled_key_listeners
 id tag_window_insets_animation_callback
+id tagsContainer
+id tagsScrollView
 id text
 id text2
 id textEnd
@@ -3788,6 +3876,7 @@ id toggle_sun
 id toggle_thu
 id toggle_tue
 id toggle_wed
+id toolbar
 id toolbarLayout
 id top
 id topPanel
@@ -3804,11 +3893,19 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tv_current_month
+id tv_duration
 id tv_message_label
 id tv_name_label
 id tv_notification_medication
 id tv_notification_time
 id tv_notification_title
+id tv_popup_active_days
+id tv_popup_category
+id tv_popup_duration
+id tv_popup_frequency
+id tv_popup_time
+id tv_popup_title
 id tv_recurrence_label
 id tv_section_header
 id tv_selected_days
@@ -3817,6 +3914,7 @@ id tv_selected_medication
 id tv_selected_time
 id tv_sort_by
 id tv_tap_to_change
+id tv_time
 id tv_time_label
 id tv_title
 id unchecked
@@ -3844,6 +3942,7 @@ id water_level
 id water_subtract
 id water_time
 id water_title
+id week_layout
 id weeks_container
 id weightInput
 id west
@@ -3854,6 +3953,7 @@ id workoutListView
 id wrap
 id wrap_content
 id wrap_content_constrained
+id wrap_reverse
 id x_left
 id x_right
 integer abc_config_activityDefaultDur
@@ -3982,12 +4082,17 @@ layout activity_log_exercise
 layout activity_login
 layout activity_medication
 layout activity_mood
+layout activity_mood_entry_detail
 layout activity_mood_journal
+layout activity_mood_logs
+layout activity_moodlogs_entries
 layout activity_notif_creation
 layout activity_notifications
 layout activity_profile
 layout activity_register
+layout activity_settings
 layout actvitiy_log_exercise
+layout calendar_day_cell
 layout custom_dialog
 layout design_bottom_navigation_item
 layout design_bottom_sheet_dialog
@@ -4017,6 +4122,7 @@ layout ime_secondary_split_test_activity
 layout item_exercise
 layout item_goal
 layout item_medication
+layout item_mood_log
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -4068,9 +4174,11 @@ layout mtrl_picker_text_input_date
 layout mtrl_picker_text_input_date_range
 layout mtrl_search_bar
 layout mtrl_search_view
+layout notif_dialog_item_details
 layout notif_item_layout
 layout notification_action
 layout notification_action_tombstone
+layout notification_details_popup
 layout notification_template_custom_big
 layout notification_template_icon_group
 layout notification_template_part_chronometer
@@ -4150,9 +4258,11 @@ string clear_text_end_icon_content_description
 string delete_food_item
 string dinner_text
 string done_text
+string edit_tags
 string emotion_text
 string enter_servings
 string enter_tag_name
+string entry_details
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -4214,6 +4324,8 @@ string material_timepicker_text_input_mode_description
 string meal_logging_text
 string meal_type
 string meh
+string mood_icon
+string mood_image
 string mood_log_text
 string mtrl_badge_numberless_content_description
 string mtrl_checkbox_button_icon_path_checked
@@ -4278,6 +4390,7 @@ string mtrl_switch_track_path
 string mtrl_timepicker_cancel
 string mtrl_timepicker_confirm
 string new_notif_text
+string no_foods_added
 string notif_text
 string number_of_servings
 string nutrients_indicator
@@ -4309,6 +4422,7 @@ string today_s_date_at_time
 string today_text
 string water_intake_text
 string water_text
+string your_journals
 style AlertDialog_AppCompat
 style AlertDialog_AppCompat_Light
 style Animation_AppCompat_Dialog
@@ -5488,6 +5602,8 @@ styleable DrawerArrowToggle arrowHeadLength arrowShaftLength barLength color dra
 styleable DrawerLayout elevation
 styleable ExtendedFloatingActionButton collapsedSize elevation extendMotionSpec extendStrategy hideMotionSpec showMotionSpec shrinkMotionSpec
 styleable ExtendedFloatingActionButton_Behavior_Layout behavior_autoHide behavior_autoShrink
+styleable FlexboxLayout alignContent alignItems dividerDrawable dividerDrawableHorizontal dividerDrawableVertical flexDirection flexWrap justifyContent maxLine showDivider showDividerHorizontal showDividerVertical
+styleable FlexboxLayout_Layout layout_alignSelf layout_flexBasisPercent layout_flexGrow layout_flexShrink layout_maxHeight layout_maxWidth layout_minHeight layout_minWidth layout_order layout_wrapBefore
 styleable FloatingActionButton android_enabled backgroundTint backgroundTintMode borderWidth elevation ensureMinTouchTargetSize fabCustomSize fabSize hideMotionSpec hoveredFocusedTranslationZ maxImageSize pressedTranslationZ rippleColor shapeAppearance shapeAppearanceOverlay showMotionSpec useCompatPadding
 styleable FloatingActionButton_Behavior_Layout behavior_autoHide
 styleable FlowLayout itemSpacing lineSpacing

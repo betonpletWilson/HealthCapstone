@@ -1,130 +1,162 @@
 [
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_login.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_login.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_notif_creation.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_notif_creation.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\food_item_layout.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\food_item_layout.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\notif_dialog_item_details.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\notif_dialog_item_details.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\notif_item_layout.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\notif_item_layout.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_goals.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_goals.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_register.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_register.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\item_goal.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\item_goal.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\actvitiy_log_exercise.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\actvitiy_log_exercise.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_exercise_log.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_exercise_log.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\goal_item.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\goal_item.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_food_search.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_food_search.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\section_header_layout.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\section_header_layout.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_profile.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_profile.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_log_exercise.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_log_exercise.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\dialog_add_tag.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\dialog_add_tag.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_goals.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_goals.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_add_edit_goal.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_add_edit_goal.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_notifications.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_notifications.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_notifications.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_notifications.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\dialog_exercise_search.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\dialog_exercise_search.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\dialog_medication_search.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\dialog_medication_search.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\dialog_add_tag.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\dialog_add_tag.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\notif_item_layout.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\notif_item_layout.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\item_exercise.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\item_exercise.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\dialog_exercise_search.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\dialog_exercise_search.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\food_data_list_item.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\food_data_list_item.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\dialog_food_search.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\dialog_food_search.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\item_medication.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\item_medication.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_home.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_home.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_exercise_history.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_exercise_history.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_login.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\dialog_medication_search.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\dialog_medication_search.xml"
+        "merged": "com.fitwizard.fitwizard.app-mergeDebugResources-31:/layout/item_exercise.xml",
+        "source": "com.fitwizard.fitwizard.app-main-34:/layout/item_exercise.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_food_search.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_food_search.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\item_mood_log.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\item_mood_log.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_home.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_home.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_mood.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_mood.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_medication.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_medication.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\calendar_day_cell.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\calendar_day_cell.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\item_goal.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\item_goal.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_food_log.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_food_log.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_exercise_log.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_exercise_log.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_exercise_history.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_exercise_history.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_add_edit_medication.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_add_edit_medication.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\item_medication.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\item_medication.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_add_edit_goal.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_add_edit_goal.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_settings.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_settings.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_mood.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_mood.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_moodlogs_entries.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_moodlogs_entries.xml"
     },
     {
-        "merged": "com.fitwizard.fitwizard.app-mergeDebugResources-30:/layout/activity_login.xml",
-        "source": "com.fitwizard.fitwizard.app-main-33:/layout/activity_login.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\item_exercise.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\item_exercise.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_mood_journal.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_mood_journal.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_medication.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_medication.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\dialog_food_search.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\dialog_food_search.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_add_edit_medication.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_add_edit_medication.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_notif_creation.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_notif_creation.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_mood_logs.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_mood_logs.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_food_log.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_food_log.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\notification_details_popup.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\notification_details_popup.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\dialog_edit_goal.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\dialog_edit_goal.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\actvitiy_log_exercise.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\actvitiy_log_exercise.xml"
     },
     {
-        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-30:\\layout\\activity_profile.xml",
-        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-33:\\layout\\activity_profile.xml"
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_mood_journal.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_mood_journal.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\dialog_edit_goal.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\dialog_edit_goal.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\goal_item.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\goal_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\section_header_layout.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\section_header_layout.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_log_exercise.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_log_exercise.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\food_data_list_item.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\food_data_list_item.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_mood_entry_detail.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_mood_entry_detail.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\activity_register.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-mergeDebugResources-31:\\layout\\food_item_layout.xml",
+        "source": "C:\\Users\\Miles Wilson\\.gradle\\daemon\\8.10.2\\com.fitwizard.fitwizard.app-main-34:\\layout\\food_item_layout.xml"
     }
 ]

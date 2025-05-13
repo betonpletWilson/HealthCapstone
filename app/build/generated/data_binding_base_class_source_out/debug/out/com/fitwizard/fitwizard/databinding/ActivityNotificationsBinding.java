@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CalendarView;
 import android.widget.HorizontalScrollView;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
@@ -48,16 +49,25 @@ public final class ActivityNotificationsBinding implements ViewBinding {
   public final Button btnFilterUpcoming;
 
   @NonNull
+  public final ImageButton btnNextMonth;
+
+  @NonNull
+  public final ImageButton btnPrevMonth;
+
+  @NonNull
+  public final CalendarView calendarMonthly;
+
+  @NonNull
   public final HorizontalScrollView calendarScrollView;
+
+  @NonNull
+  public final TextView calendarTitle;
 
   @NonNull
   public final HorizontalScrollView categoryScrollview;
 
   @NonNull
   public final Chip chipMedication;
-
-  @NonNull
-  public final LinearLayout currentWeekLayout;
 
   @NonNull
   public final LinearLayout dayLayoutFriday;
@@ -108,7 +118,16 @@ public final class ActivityNotificationsBinding implements ViewBinding {
   public final HorizontalScrollView filterScrollview;
 
   @NonNull
+  public final LinearLayout layoutMonthly;
+
+  @NonNull
+  public final LinearLayout monthNavigation;
+
+  @NonNull
   public final Button navHome;
+
+  @NonNull
+  public final ConstraintLayout notifCalendarMonthView;
 
   @NonNull
   public final RecyclerView rvNotifications;
@@ -117,7 +136,16 @@ public final class ActivityNotificationsBinding implements ViewBinding {
   public final ConstraintLayout topBar;
 
   @NonNull
+  public final TextView tvCurrentMonth;
+
+  @NonNull
+  public final TextView tvSelectedDays;
+
+  @NonNull
   public final TextView tvSortBy;
+
+  @NonNull
+  public final LinearLayout weekLayout;
 
   @NonNull
   public final LinearLayout weeksContainer;
@@ -126,9 +154,10 @@ public final class ActivityNotificationsBinding implements ViewBinding {
       @NonNull LinearLayout addMenu, @NonNull ConstraintLayout bottomNavContainer,
       @NonNull Button btnAddNotif, @NonNull ImageButton btnBack, @NonNull Button btnFilterAllMonth,
       @NonNull Button btnFilterToday, @NonNull Button btnFilterUpcoming,
-      @NonNull HorizontalScrollView calendarScrollView,
-      @NonNull HorizontalScrollView categoryScrollview, @NonNull Chip chipMedication,
-      @NonNull LinearLayout currentWeekLayout, @NonNull LinearLayout dayLayoutFriday,
+      @NonNull ImageButton btnNextMonth, @NonNull ImageButton btnPrevMonth,
+      @NonNull CalendarView calendarMonthly, @NonNull HorizontalScrollView calendarScrollView,
+      @NonNull TextView calendarTitle, @NonNull HorizontalScrollView categoryScrollview,
+      @NonNull Chip chipMedication, @NonNull LinearLayout dayLayoutFriday,
       @NonNull LinearLayout dayLayoutMonday, @NonNull LinearLayout dayLayoutSaturday,
       @NonNull LinearLayout dayLayoutSunday, @NonNull LinearLayout dayLayoutThursday,
       @NonNull LinearLayout dayLayoutTuesday, @NonNull LinearLayout dayLayoutWednesday,
@@ -136,9 +165,12 @@ public final class ActivityNotificationsBinding implements ViewBinding {
       @NonNull TextView dayTextSaturday, @NonNull TextView dayTextSunday,
       @NonNull TextView dayTextThursday, @NonNull TextView dayTextTuesday,
       @NonNull TextView dayTextWednesday, @NonNull FloatingActionButton fabAdd,
-      @NonNull HorizontalScrollView filterScrollview, @NonNull Button navHome,
-      @NonNull RecyclerView rvNotifications, @NonNull ConstraintLayout topBar,
-      @NonNull TextView tvSortBy, @NonNull LinearLayout weeksContainer) {
+      @NonNull HorizontalScrollView filterScrollview, @NonNull LinearLayout layoutMonthly,
+      @NonNull LinearLayout monthNavigation, @NonNull Button navHome,
+      @NonNull ConstraintLayout notifCalendarMonthView, @NonNull RecyclerView rvNotifications,
+      @NonNull ConstraintLayout topBar, @NonNull TextView tvCurrentMonth,
+      @NonNull TextView tvSelectedDays, @NonNull TextView tvSortBy,
+      @NonNull LinearLayout weekLayout, @NonNull LinearLayout weeksContainer) {
     this.rootView = rootView;
     this.addMenu = addMenu;
     this.bottomNavContainer = bottomNavContainer;
@@ -147,10 +179,13 @@ public final class ActivityNotificationsBinding implements ViewBinding {
     this.btnFilterAllMonth = btnFilterAllMonth;
     this.btnFilterToday = btnFilterToday;
     this.btnFilterUpcoming = btnFilterUpcoming;
+    this.btnNextMonth = btnNextMonth;
+    this.btnPrevMonth = btnPrevMonth;
+    this.calendarMonthly = calendarMonthly;
     this.calendarScrollView = calendarScrollView;
+    this.calendarTitle = calendarTitle;
     this.categoryScrollview = categoryScrollview;
     this.chipMedication = chipMedication;
-    this.currentWeekLayout = currentWeekLayout;
     this.dayLayoutFriday = dayLayoutFriday;
     this.dayLayoutMonday = dayLayoutMonday;
     this.dayLayoutSaturday = dayLayoutSaturday;
@@ -167,10 +202,16 @@ public final class ActivityNotificationsBinding implements ViewBinding {
     this.dayTextWednesday = dayTextWednesday;
     this.fabAdd = fabAdd;
     this.filterScrollview = filterScrollview;
+    this.layoutMonthly = layoutMonthly;
+    this.monthNavigation = monthNavigation;
     this.navHome = navHome;
+    this.notifCalendarMonthView = notifCalendarMonthView;
     this.rvNotifications = rvNotifications;
     this.topBar = topBar;
+    this.tvCurrentMonth = tvCurrentMonth;
+    this.tvSelectedDays = tvSelectedDays;
     this.tvSortBy = tvSortBy;
+    this.weekLayout = weekLayout;
     this.weeksContainer = weeksContainer;
   }
 
@@ -243,9 +284,33 @@ public final class ActivityNotificationsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_next_month;
+      ImageButton btnNextMonth = ViewBindings.findChildViewById(rootView, id);
+      if (btnNextMonth == null) {
+        break missingId;
+      }
+
+      id = R.id.btn_prev_month;
+      ImageButton btnPrevMonth = ViewBindings.findChildViewById(rootView, id);
+      if (btnPrevMonth == null) {
+        break missingId;
+      }
+
+      id = R.id.calendar_monthly;
+      CalendarView calendarMonthly = ViewBindings.findChildViewById(rootView, id);
+      if (calendarMonthly == null) {
+        break missingId;
+      }
+
       id = R.id.calendar_scroll_view;
       HorizontalScrollView calendarScrollView = ViewBindings.findChildViewById(rootView, id);
       if (calendarScrollView == null) {
+        break missingId;
+      }
+
+      id = R.id.calendar_title;
+      TextView calendarTitle = ViewBindings.findChildViewById(rootView, id);
+      if (calendarTitle == null) {
         break missingId;
       }
 
@@ -258,12 +323,6 @@ public final class ActivityNotificationsBinding implements ViewBinding {
       id = R.id.chip_medication;
       Chip chipMedication = ViewBindings.findChildViewById(rootView, id);
       if (chipMedication == null) {
-        break missingId;
-      }
-
-      id = R.id.current_week_layout;
-      LinearLayout currentWeekLayout = ViewBindings.findChildViewById(rootView, id);
-      if (currentWeekLayout == null) {
         break missingId;
       }
 
@@ -363,9 +422,27 @@ public final class ActivityNotificationsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.layout_monthly;
+      LinearLayout layoutMonthly = ViewBindings.findChildViewById(rootView, id);
+      if (layoutMonthly == null) {
+        break missingId;
+      }
+
+      id = R.id.month_navigation;
+      LinearLayout monthNavigation = ViewBindings.findChildViewById(rootView, id);
+      if (monthNavigation == null) {
+        break missingId;
+      }
+
       id = R.id.nav_home;
       Button navHome = ViewBindings.findChildViewById(rootView, id);
       if (navHome == null) {
+        break missingId;
+      }
+
+      id = R.id.notif_calendar_month_view;
+      ConstraintLayout notifCalendarMonthView = ViewBindings.findChildViewById(rootView, id);
+      if (notifCalendarMonthView == null) {
         break missingId;
       }
 
@@ -381,9 +458,27 @@ public final class ActivityNotificationsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.tv_current_month;
+      TextView tvCurrentMonth = ViewBindings.findChildViewById(rootView, id);
+      if (tvCurrentMonth == null) {
+        break missingId;
+      }
+
+      id = R.id.tv_selected_days;
+      TextView tvSelectedDays = ViewBindings.findChildViewById(rootView, id);
+      if (tvSelectedDays == null) {
+        break missingId;
+      }
+
       id = R.id.tv_sort_by;
       TextView tvSortBy = ViewBindings.findChildViewById(rootView, id);
       if (tvSortBy == null) {
+        break missingId;
+      }
+
+      id = R.id.week_layout;
+      LinearLayout weekLayout = ViewBindings.findChildViewById(rootView, id);
+      if (weekLayout == null) {
         break missingId;
       }
 
@@ -395,11 +490,13 @@ public final class ActivityNotificationsBinding implements ViewBinding {
 
       return new ActivityNotificationsBinding((ConstraintLayout) rootView, addMenu,
           bottomNavContainer, btnAddNotif, btnBack, btnFilterAllMonth, btnFilterToday,
-          btnFilterUpcoming, calendarScrollView, categoryScrollview, chipMedication,
-          currentWeekLayout, dayLayoutFriday, dayLayoutMonday, dayLayoutSaturday, dayLayoutSunday,
-          dayLayoutThursday, dayLayoutTuesday, dayLayoutWednesday, dayTextFriday, dayTextMonday,
-          dayTextSaturday, dayTextSunday, dayTextThursday, dayTextTuesday, dayTextWednesday, fabAdd,
-          filterScrollview, navHome, rvNotifications, topBar, tvSortBy, weeksContainer);
+          btnFilterUpcoming, btnNextMonth, btnPrevMonth, calendarMonthly, calendarScrollView,
+          calendarTitle, categoryScrollview, chipMedication, dayLayoutFriday, dayLayoutMonday,
+          dayLayoutSaturday, dayLayoutSunday, dayLayoutThursday, dayLayoutTuesday,
+          dayLayoutWednesday, dayTextFriday, dayTextMonday, dayTextSaturday, dayTextSunday,
+          dayTextThursday, dayTextTuesday, dayTextWednesday, fabAdd, filterScrollview,
+          layoutMonthly, monthNavigation, navHome, notifCalendarMonthView, rvNotifications, topBar,
+          tvCurrentMonth, tvSelectedDays, tvSortBy, weekLayout, weeksContainer);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

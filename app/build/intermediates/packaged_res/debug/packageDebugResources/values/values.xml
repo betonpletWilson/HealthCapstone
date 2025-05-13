@@ -22,6 +22,8 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="white">#FFFFFF</color>
+    <dimen name="recycler_margin_all_month">300dp</dimen>
+    <dimen name="recycler_margin_default">16dp</dimen>
     <string name="add_breakfast_text">Add breakfast</string>
     <string name="add_dinner_text">Add dinner</string>
     <string name="add_lunch_text">Add lunch</string>
@@ -40,9 +42,11 @@
     <string name="delete_food_item">Delete food item</string>
     <string name="dinner_text">Dinner</string>
     <string name="done_text">Done</string>
+    <string name="edit_tags">Edit Tags</string>
     <string name="emotion_text">Emotion</string>
     <string name="enter_servings">Enter servings</string>
     <string name="enter_tag_name">Enter tag name:</string>
+    <string name="entry_details">Entry Details</string>
     <string name="fats_text">Fats</string>
     <string name="food_details">Calories: %1$d, Protein: %2$dg</string>
     <string name="food_name">Food Name</string>
@@ -58,8 +62,11 @@
     <string name="meal_logging_text">Meal Logging</string>
     <string name="meal_type">Meal Type</string>
     <string name="meh">Meh</string>
+    <string name="mood_icon">Mood</string>
+    <string name="mood_image">Mood Image</string>
     <string name="mood_log_text">Mood Log</string>
     <string name="new_notif_text">New Notification</string>
+    <string name="no_foods_added">no meals added</string>
     <string name="notif_text">Notifications</string>
     <string name="number_of_servings">Number of servings:</string>
     <string name="nutrients_indicator">Nutrients Indicator</string>
@@ -79,6 +86,7 @@
     <string name="today_text">Today</string>
     <string name="water_intake_text">Water Intake</string>
     <string name="water_text">Water</string>
+    <string name="your_journals">Your Journals</string>
     <style name="Theme.FitWizard" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         
         <item name="colorPrimary">@color/purple_500</item>

@@ -5,6 +5,8 @@ import Medication.Medication;
 
 import com.google.gson.Gson;
 import android.util.Log;
+
+import okhttp3.HttpUrl;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Call;
@@ -59,12 +61,8 @@ public class ApiService {
             Log.e("TLS‑DBG", "connectFailed " + addr + "  " + ioe);
 
             if (ioe instanceof SSLException) {
-                /* one‑shot raw peek */
                 try (Socket s = new Socket()) {
                     s.connect(addr, 2000);
-                /* send an SSLv2 ClientHello with no cipher suites
-                   (just 2 bytes “00 00”) – every TLS server will
-                   immediately reply with an alert ‑or‑ handshake */
                     s.getOutputStream().write(new byte[]{0, 0});
                     byte[] buf = new byte[32];
                     int n = s.getInputStream().read(buf);
@@ -97,7 +95,7 @@ public class ApiService {
                 .build();
 
 
-        client = new OkHttpClient.Builder().proxy(Proxy.NO_PROXY).connectionSpecs(Collections.singletonList(tlsOnly))
+        client = new OkHttpClient.Builder().connectionSpecs(Collections.singletonList(tlsOnly))
                 .eventListener(new TlsDebugListener()).build();
         ;
     }
@@ -234,11 +232,13 @@ public class ApiService {
             String query,
             ApiCallback<List<FoodData>> cb) {
 
-        String url = "https://api.nal.usda.gov/fdc/v1/foods/search"
-                + "?api_key=Y1zHeXGbhmfI0h82H8ymfGgCGnjeCW84DjHTaCra"
-                + "&query=" + encode(query)
-                + "&pageSize=20";
-
+        HttpUrl url = HttpUrl.get("https://api.nal.usda.gov")
+                .newBuilder()
+                .addPathSegments("fdc/v1/foods/search")
+                .addQueryParameter("api_key", "Y1zHeXGbhmfI0h82H8ymfGgCGnjeCW84DjHTaCra")
+                .addQueryParameter("query", encode(query))
+                .addQueryParameter("pageSize","20")
+                .build();
         Request req = new Request.Builder().url(url).build();
 
         client.newCall(req).enqueue(new Callback() {
@@ -393,7 +393,7 @@ public class ApiService {
     }
 
     public interface AuthCallback {
-        void onSuccess(String jwt, int userId);
+        void onSuccess(String jwt, int userId, String username);
 
         void onFailure(String error);
     }
@@ -433,7 +433,7 @@ public class ApiService {
                 JsonObject root = gson.fromJson(r.body().string(), JsonObject.class);
                 String jwt    = root.get("token").getAsString();
                 int    userId = root.get("userId").getAsInt();
-                cb.onSuccess(jwt, userId);
+                cb.onSuccess(jwt, userId, username);
             }
         });
     }
@@ -470,7 +470,8 @@ public class ApiService {
                 JsonObject root = gson.fromJson(r.body().string(), JsonObject.class);
                 String jwt   = root.get("token").getAsString();
                 int userId= root.get("userId").getAsInt();
-                cb.onSuccess(jwt, userId);
+                String username = root.get("username").getAsString();
+                cb.onSuccess(jwt, userId, username);
             }
         });
     }
@@ -498,7 +499,8 @@ public class ApiService {
                 }
                 JsonObject root = gson.fromJson(r.body().string(), JsonObject.class);
                 int userId = root.get("userId").getAsInt();
-                cb.onSuccess(jwt, userId);
+                String username = root.get("username").getAsString();
+                cb.onSuccess(jwt, userId, username);
             }
         });
     }

@@ -4,6 +4,7 @@ package com.fitwizard.fitwizard.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -41,10 +42,13 @@ public final class ActivityMoodBinding implements ViewBinding {
   @NonNull
   public final ImageButton faceSad;
 
+  @NonNull
+  public final Button openCalendarButton;
+
   private ActivityMoodBinding(@NonNull LinearLayout rootView, @NonNull ImageButton backButton,
       @NonNull TextView dateTimeTextView, @NonNull ImageButton faceAmazing,
       @NonNull ImageButton faceAwful, @NonNull ImageButton faceGood, @NonNull ImageButton faceMeh,
-      @NonNull ImageButton faceSad) {
+      @NonNull ImageButton faceSad, @NonNull Button openCalendarButton) {
     this.rootView = rootView;
     this.backButton = backButton;
     this.dateTimeTextView = dateTimeTextView;
@@ -53,6 +57,7 @@ public final class ActivityMoodBinding implements ViewBinding {
     this.faceGood = faceGood;
     this.faceMeh = faceMeh;
     this.faceSad = faceSad;
+    this.openCalendarButton = openCalendarButton;
   }
 
   @Override
@@ -124,8 +129,14 @@ public final class ActivityMoodBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.open_calendar_button;
+      Button openCalendarButton = ViewBindings.findChildViewById(rootView, id);
+      if (openCalendarButton == null) {
+        break missingId;
+      }
+
       return new ActivityMoodBinding((LinearLayout) rootView, backButton, dateTimeTextView,
-          faceAmazing, faceAwful, faceGood, faceMeh, faceSad);
+          faceAmazing, faceAwful, faceGood, faceMeh, faceSad, openCalendarButton);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

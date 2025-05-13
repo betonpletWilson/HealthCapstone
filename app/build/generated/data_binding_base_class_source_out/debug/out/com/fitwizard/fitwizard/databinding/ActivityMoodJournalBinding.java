@@ -27,6 +27,9 @@ public final class ActivityMoodJournalBinding implements ViewBinding {
   public final ImageButton addTagButton;
 
   @NonNull
+  public final ImageButton editTagsButton;
+
+  @NonNull
   public final ChipGroup emotionTagsChipGroup;
 
   @NonNull
@@ -51,13 +54,14 @@ public final class ActivityMoodJournalBinding implements ViewBinding {
   public final ChipGroup socialTagsChipGroup;
 
   private ActivityMoodJournalBinding(@NonNull LinearLayout rootView,
-      @NonNull ImageButton addTagButton, @NonNull ChipGroup emotionTagsChipGroup,
-      @NonNull ChipGroup hobbiesTagsChipGroup, @NonNull ImageButton journalBackButton,
-      @NonNull EditText journalEntryEditText, @NonNull Button saveJournalButton,
-      @NonNull ImageView selectedMoodImageView, @NonNull ChipGroup sleepTagsChipGroup,
-      @NonNull ChipGroup socialTagsChipGroup) {
+      @NonNull ImageButton addTagButton, @NonNull ImageButton editTagsButton,
+      @NonNull ChipGroup emotionTagsChipGroup, @NonNull ChipGroup hobbiesTagsChipGroup,
+      @NonNull ImageButton journalBackButton, @NonNull EditText journalEntryEditText,
+      @NonNull Button saveJournalButton, @NonNull ImageView selectedMoodImageView,
+      @NonNull ChipGroup sleepTagsChipGroup, @NonNull ChipGroup socialTagsChipGroup) {
     this.rootView = rootView;
     this.addTagButton = addTagButton;
+    this.editTagsButton = editTagsButton;
     this.emotionTagsChipGroup = emotionTagsChipGroup;
     this.hobbiesTagsChipGroup = hobbiesTagsChipGroup;
     this.journalBackButton = journalBackButton;
@@ -98,6 +102,12 @@ public final class ActivityMoodJournalBinding implements ViewBinding {
       id = R.id.addTagButton;
       ImageButton addTagButton = ViewBindings.findChildViewById(rootView, id);
       if (addTagButton == null) {
+        break missingId;
+      }
+
+      id = R.id.editTagsButton;
+      ImageButton editTagsButton = ViewBindings.findChildViewById(rootView, id);
+      if (editTagsButton == null) {
         break missingId;
       }
 
@@ -149,7 +159,7 @@ public final class ActivityMoodJournalBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityMoodJournalBinding((LinearLayout) rootView, addTagButton,
+      return new ActivityMoodJournalBinding((LinearLayout) rootView, addTagButton, editTagsButton,
           emotionTagsChipGroup, hobbiesTagsChipGroup, journalBackButton, journalEntryEditText,
           saveJournalButton, selectedMoodImageView, sleepTagsChipGroup, socialTagsChipGroup);
     }

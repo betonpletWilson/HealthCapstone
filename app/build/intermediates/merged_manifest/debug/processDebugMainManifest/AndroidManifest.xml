@@ -10,6 +10,8 @@
 
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <permission
         android:name="com.fitwizard.fitwizard.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
@@ -43,6 +45,9 @@
         <activity android:name="Login_Register.RegisterActivity" />
         <activity android:name="com.fitwizard.fitwizard.HomeActivity" />
         <activity android:name="com.fitwizard.fitwizard.ProfileActivity" />
+        <activity android:name="Exercise_Logging.ExerciseHistoryActivity" />
+        <activity android:name="Exercise_Logging.ExerciseLogActivity" />
+        <activity android:name="com.fitwizard.fitwizard.SettingsActivity" />
         <activity android:name="Goals.GoalsActivity" />
         <activity android:name="Goals.AddEditGoalActivity" />
         <activity android:name="Medication.AddEditMedicationActivity" />
@@ -52,6 +57,7 @@
         <activity android:name="Recipe_Logging.FoodLogActivity" />
         <activity android:name="Recipe_Logging.FoodSearchActivity" />
         <activity android:name="Mood.MoodActivity" />
+        <activity android:name="Mood.MoodLogsActivity" />
         <activity android:name="Mood.MoodJournalActivity" />
         <activity android:name="Reminders.NotificationsActivity" />
         <activity android:name="Reminders.NotifCreationActivity" />
@@ -59,6 +65,9 @@
         <receiver
             android:name="Goals.GoalReminderReceiver"
             android:exported="true" />
+        <receiver
+            android:name="com.fitwizard.fitwizard.NotificationUtils"
+            android:enabled="true" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"

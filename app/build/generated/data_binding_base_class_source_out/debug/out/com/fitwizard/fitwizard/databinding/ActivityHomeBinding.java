@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
@@ -30,6 +31,9 @@ public final class ActivityHomeBinding implements ViewBinding {
   public final LinearLayout addMenu;
 
   @NonNull
+  public final ConstraintLayout bottomNavContainer;
+
+  @NonNull
   public final Button btnAddMeal;
 
   @NonNull
@@ -45,16 +49,19 @@ public final class ActivityHomeBinding implements ViewBinding {
   public final Button btnMedications;
 
   @NonNull
-  public final ImageView calendarIcon;
+  public final Button btnNewNotif;
 
   @NonNull
   public final ProgressBar caloriesProgress;
 
   @NonNull
+  public final TextView caloriesValue;
+
+  @NonNull
   public final ProgressBar carbsProgress;
 
   @NonNull
-  public final TextView dateText;
+  public final TextView carbsValue;
 
   @NonNull
   public final FloatingActionButton fabAdd;
@@ -63,10 +70,25 @@ public final class ActivityHomeBinding implements ViewBinding {
   public final ProgressBar fatsProgress;
 
   @NonNull
-  public final TextView navHome;
+  public final TextView fatsValue;
 
   @NonNull
-  public final TextView navReports;
+  public final CardView moodCard;
+
+  @NonNull
+  public final TextView moodDescription;
+
+  @NonNull
+  public final ImageView moodIcon;
+
+  @NonNull
+  public final TextView moodTags;
+
+  @NonNull
+  public final TextView moodTitle;
+
+  @NonNull
+  public final LinearLayout moodWidgetContainer;
 
   @NonNull
   public final CardView nutrientsCard;
@@ -82,6 +104,12 @@ public final class ActivityHomeBinding implements ViewBinding {
 
   @NonNull
   public final ProgressBar proteinsProgress;
+
+  @NonNull
+  public final TextView proteinsValue;
+
+  @NonNull
+  public final ImageButton settingsButton;
 
   @NonNull
   public final TextView usernameText;
@@ -111,38 +139,51 @@ public final class ActivityHomeBinding implements ViewBinding {
   public final TextView waterTitle;
 
   private ActivityHomeBinding(@NonNull ConstraintLayout rootView, @NonNull LinearLayout addMenu,
-      @NonNull Button btnAddMeal, @NonNull Button btnGoals, @NonNull Button btnLogExercise,
-      @NonNull Button btnLogMood, @NonNull Button btnMedications, @NonNull ImageView calendarIcon,
-      @NonNull ProgressBar caloriesProgress, @NonNull ProgressBar carbsProgress,
-      @NonNull TextView dateText, @NonNull FloatingActionButton fabAdd,
-      @NonNull ProgressBar fatsProgress, @NonNull TextView navHome, @NonNull TextView navReports,
-      @NonNull CardView nutrientsCard, @NonNull TextView nutrientsTitle,
-      @NonNull CardView profileCard, @NonNull ImageView profileImage,
-      @NonNull ProgressBar proteinsProgress, @NonNull TextView usernameText,
-      @NonNull FloatingActionButton waterAdd, @NonNull TextView waterAmount,
-      @NonNull CardView waterCard, @NonNull LinearLayout waterInfo,
+      @NonNull ConstraintLayout bottomNavContainer, @NonNull Button btnAddMeal,
+      @NonNull Button btnGoals, @NonNull Button btnLogExercise, @NonNull Button btnLogMood,
+      @NonNull Button btnMedications, @NonNull Button btnNewNotif,
+      @NonNull ProgressBar caloriesProgress, @NonNull TextView caloriesValue,
+      @NonNull ProgressBar carbsProgress, @NonNull TextView carbsValue,
+      @NonNull FloatingActionButton fabAdd, @NonNull ProgressBar fatsProgress,
+      @NonNull TextView fatsValue, @NonNull CardView moodCard, @NonNull TextView moodDescription,
+      @NonNull ImageView moodIcon, @NonNull TextView moodTags, @NonNull TextView moodTitle,
+      @NonNull LinearLayout moodWidgetContainer, @NonNull CardView nutrientsCard,
+      @NonNull TextView nutrientsTitle, @NonNull CardView profileCard,
+      @NonNull ImageView profileImage, @NonNull ProgressBar proteinsProgress,
+      @NonNull TextView proteinsValue, @NonNull ImageButton settingsButton,
+      @NonNull TextView usernameText, @NonNull FloatingActionButton waterAdd,
+      @NonNull TextView waterAmount, @NonNull CardView waterCard, @NonNull LinearLayout waterInfo,
       @NonNull WaterLevelView waterLevel, @NonNull FloatingActionButton waterSubtract,
       @NonNull TextView waterTime, @NonNull TextView waterTitle) {
     this.rootView = rootView;
     this.addMenu = addMenu;
+    this.bottomNavContainer = bottomNavContainer;
     this.btnAddMeal = btnAddMeal;
     this.btnGoals = btnGoals;
     this.btnLogExercise = btnLogExercise;
     this.btnLogMood = btnLogMood;
     this.btnMedications = btnMedications;
-    this.calendarIcon = calendarIcon;
+    this.btnNewNotif = btnNewNotif;
     this.caloriesProgress = caloriesProgress;
+    this.caloriesValue = caloriesValue;
     this.carbsProgress = carbsProgress;
-    this.dateText = dateText;
+    this.carbsValue = carbsValue;
     this.fabAdd = fabAdd;
     this.fatsProgress = fatsProgress;
-    this.navHome = navHome;
-    this.navReports = navReports;
+    this.fatsValue = fatsValue;
+    this.moodCard = moodCard;
+    this.moodDescription = moodDescription;
+    this.moodIcon = moodIcon;
+    this.moodTags = moodTags;
+    this.moodTitle = moodTitle;
+    this.moodWidgetContainer = moodWidgetContainer;
     this.nutrientsCard = nutrientsCard;
     this.nutrientsTitle = nutrientsTitle;
     this.profileCard = profileCard;
     this.profileImage = profileImage;
     this.proteinsProgress = proteinsProgress;
+    this.proteinsValue = proteinsValue;
+    this.settingsButton = settingsButton;
     this.usernameText = usernameText;
     this.waterAdd = waterAdd;
     this.waterAmount = waterAmount;
@@ -187,6 +228,12 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.bottom_nav_container;
+      ConstraintLayout bottomNavContainer = ViewBindings.findChildViewById(rootView, id);
+      if (bottomNavContainer == null) {
+        break missingId;
+      }
+
       id = R.id.btn_add_meal;
       Button btnAddMeal = ViewBindings.findChildViewById(rootView, id);
       if (btnAddMeal == null) {
@@ -217,9 +264,9 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.calendar_icon;
-      ImageView calendarIcon = ViewBindings.findChildViewById(rootView, id);
-      if (calendarIcon == null) {
+      id = R.id.btn_new_notif;
+      Button btnNewNotif = ViewBindings.findChildViewById(rootView, id);
+      if (btnNewNotif == null) {
         break missingId;
       }
 
@@ -229,15 +276,21 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.calories_value;
+      TextView caloriesValue = ViewBindings.findChildViewById(rootView, id);
+      if (caloriesValue == null) {
+        break missingId;
+      }
+
       id = R.id.carbs_progress;
       ProgressBar carbsProgress = ViewBindings.findChildViewById(rootView, id);
       if (carbsProgress == null) {
         break missingId;
       }
 
-      id = R.id.date_text;
-      TextView dateText = ViewBindings.findChildViewById(rootView, id);
-      if (dateText == null) {
+      id = R.id.carbs_value;
+      TextView carbsValue = ViewBindings.findChildViewById(rootView, id);
+      if (carbsValue == null) {
         break missingId;
       }
 
@@ -253,15 +306,45 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.nav_home;
-      TextView navHome = ViewBindings.findChildViewById(rootView, id);
-      if (navHome == null) {
+      id = R.id.fats_value;
+      TextView fatsValue = ViewBindings.findChildViewById(rootView, id);
+      if (fatsValue == null) {
         break missingId;
       }
 
-      id = R.id.nav_reports;
-      TextView navReports = ViewBindings.findChildViewById(rootView, id);
-      if (navReports == null) {
+      id = R.id.mood_card;
+      CardView moodCard = ViewBindings.findChildViewById(rootView, id);
+      if (moodCard == null) {
+        break missingId;
+      }
+
+      id = R.id.mood_description;
+      TextView moodDescription = ViewBindings.findChildViewById(rootView, id);
+      if (moodDescription == null) {
+        break missingId;
+      }
+
+      id = R.id.mood_icon;
+      ImageView moodIcon = ViewBindings.findChildViewById(rootView, id);
+      if (moodIcon == null) {
+        break missingId;
+      }
+
+      id = R.id.mood_tags;
+      TextView moodTags = ViewBindings.findChildViewById(rootView, id);
+      if (moodTags == null) {
+        break missingId;
+      }
+
+      id = R.id.mood_title;
+      TextView moodTitle = ViewBindings.findChildViewById(rootView, id);
+      if (moodTitle == null) {
+        break missingId;
+      }
+
+      id = R.id.mood_widget_container;
+      LinearLayout moodWidgetContainer = ViewBindings.findChildViewById(rootView, id);
+      if (moodWidgetContainer == null) {
         break missingId;
       }
 
@@ -292,6 +375,18 @@ public final class ActivityHomeBinding implements ViewBinding {
       id = R.id.proteins_progress;
       ProgressBar proteinsProgress = ViewBindings.findChildViewById(rootView, id);
       if (proteinsProgress == null) {
+        break missingId;
+      }
+
+      id = R.id.proteins_value;
+      TextView proteinsValue = ViewBindings.findChildViewById(rootView, id);
+      if (proteinsValue == null) {
+        break missingId;
+      }
+
+      id = R.id.settingsButton;
+      ImageButton settingsButton = ViewBindings.findChildViewById(rootView, id);
+      if (settingsButton == null) {
         break missingId;
       }
 
@@ -349,11 +444,13 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityHomeBinding((ConstraintLayout) rootView, addMenu, btnAddMeal, btnGoals,
-          btnLogExercise, btnLogMood, btnMedications, calendarIcon, caloriesProgress, carbsProgress,
-          dateText, fabAdd, fatsProgress, navHome, navReports, nutrientsCard, nutrientsTitle,
-          profileCard, profileImage, proteinsProgress, usernameText, waterAdd, waterAmount,
-          waterCard, waterInfo, waterLevel, waterSubtract, waterTime, waterTitle);
+      return new ActivityHomeBinding((ConstraintLayout) rootView, addMenu, bottomNavContainer,
+          btnAddMeal, btnGoals, btnLogExercise, btnLogMood, btnMedications, btnNewNotif,
+          caloriesProgress, caloriesValue, carbsProgress, carbsValue, fabAdd, fatsProgress,
+          fatsValue, moodCard, moodDescription, moodIcon, moodTags, moodTitle, moodWidgetContainer,
+          nutrientsCard, nutrientsTitle, profileCard, profileImage, proteinsProgress, proteinsValue,
+          settingsButton, usernameText, waterAdd, waterAmount, waterCard, waterInfo, waterLevel,
+          waterSubtract, waterTime, waterTitle);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

@@ -4,8 +4,10 @@ package com.fitwizard.fitwizard.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.viewbinding.ViewBinding;
@@ -17,7 +19,7 @@ import java.lang.String;
 
 public final class ActivityFoodLogBinding implements ViewBinding {
   @NonNull
-  private final LinearLayout rootView;
+  private final RelativeLayout rootView;
 
   @NonNull
   public final ImageButton backButton;
@@ -29,10 +31,16 @@ public final class ActivityFoodLogBinding implements ViewBinding {
   public final LinearLayout breakfastContainer;
 
   @NonNull
+  public final Button btnDone;
+
+  @NonNull
   public final ImageButton dinnerAddButton;
 
   @NonNull
   public final LinearLayout dinnerContainer;
+
+  @NonNull
+  public final LinearLayout layoutButtons;
 
   @NonNull
   public final ImageButton lunchAddButton;
@@ -40,23 +48,31 @@ public final class ActivityFoodLogBinding implements ViewBinding {
   @NonNull
   public final LinearLayout lunchContainer;
 
-  private ActivityFoodLogBinding(@NonNull LinearLayout rootView, @NonNull ImageButton backButton,
+  @NonNull
+  public final RelativeLayout toolbar;
+
+  private ActivityFoodLogBinding(@NonNull RelativeLayout rootView, @NonNull ImageButton backButton,
       @NonNull ImageButton breakfastAddButton, @NonNull LinearLayout breakfastContainer,
-      @NonNull ImageButton dinnerAddButton, @NonNull LinearLayout dinnerContainer,
-      @NonNull ImageButton lunchAddButton, @NonNull LinearLayout lunchContainer) {
+      @NonNull Button btnDone, @NonNull ImageButton dinnerAddButton,
+      @NonNull LinearLayout dinnerContainer, @NonNull LinearLayout layoutButtons,
+      @NonNull ImageButton lunchAddButton, @NonNull LinearLayout lunchContainer,
+      @NonNull RelativeLayout toolbar) {
     this.rootView = rootView;
     this.backButton = backButton;
     this.breakfastAddButton = breakfastAddButton;
     this.breakfastContainer = breakfastContainer;
+    this.btnDone = btnDone;
     this.dinnerAddButton = dinnerAddButton;
     this.dinnerContainer = dinnerContainer;
+    this.layoutButtons = layoutButtons;
     this.lunchAddButton = lunchAddButton;
     this.lunchContainer = lunchContainer;
+    this.toolbar = toolbar;
   }
 
   @Override
   @NonNull
-  public LinearLayout getRoot() {
+  public RelativeLayout getRoot() {
     return rootView;
   }
 
@@ -99,6 +115,12 @@ public final class ActivityFoodLogBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.btn_done;
+      Button btnDone = ViewBindings.findChildViewById(rootView, id);
+      if (btnDone == null) {
+        break missingId;
+      }
+
       id = R.id.dinnerAddButton;
       ImageButton dinnerAddButton = ViewBindings.findChildViewById(rootView, id);
       if (dinnerAddButton == null) {
@@ -108,6 +130,12 @@ public final class ActivityFoodLogBinding implements ViewBinding {
       id = R.id.dinnerContainer;
       LinearLayout dinnerContainer = ViewBindings.findChildViewById(rootView, id);
       if (dinnerContainer == null) {
+        break missingId;
+      }
+
+      id = R.id.layout_buttons;
+      LinearLayout layoutButtons = ViewBindings.findChildViewById(rootView, id);
+      if (layoutButtons == null) {
         break missingId;
       }
 
@@ -123,8 +151,15 @@ public final class ActivityFoodLogBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityFoodLogBinding((LinearLayout) rootView, backButton, breakfastAddButton,
-          breakfastContainer, dinnerAddButton, dinnerContainer, lunchAddButton, lunchContainer);
+      id = R.id.toolbar;
+      RelativeLayout toolbar = ViewBindings.findChildViewById(rootView, id);
+      if (toolbar == null) {
+        break missingId;
+      }
+
+      return new ActivityFoodLogBinding((RelativeLayout) rootView, backButton, breakfastAddButton,
+          breakfastContainer, btnDone, dinnerAddButton, dinnerContainer, layoutButtons,
+          lunchAddButton, lunchContainer, toolbar);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

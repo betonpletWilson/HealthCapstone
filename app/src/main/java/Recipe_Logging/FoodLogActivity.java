@@ -177,8 +177,10 @@ public class FoodLogActivity extends AppCompatActivity {
             foodNameTextView.setText(food.getName());
             servingTextView.setText(food.getServingSize());
             caloriesTextView.setText(String.format(Locale.ENGLISH, "%d kcal", food.getCalories()));
-            macrosTextView.setText(String.format(Locale.ENGLISH, "P: %dg, F: %dg, C: %dg",
-                    food.getProtein(), food.getFats(), food.getCarbs()));
+            macrosTextView.setText(String.format(Locale.ENGLISH,
+                    "%s: %d cal  |  %.0f g protein  |  %.0f g fats  |  %.0f g carbs",
+                    food.getName(), food.getCalories(), food.getProtein(), food.getFats(), food.getCarbs()
+            ));
 
             // Add delete functionality
             ImageButton deleteButton = foodItemView.findViewById(R.id.deleteButton);

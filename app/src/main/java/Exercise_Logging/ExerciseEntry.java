@@ -7,7 +7,6 @@ public class ExerciseEntry {
     private final String details;
     private final String date;
 
-    // ← remove 'final' so Gson can write into it
     @SerializedName(value="calories",
             alternate={"total_calories","calories_per_hour"})
     private float calories;

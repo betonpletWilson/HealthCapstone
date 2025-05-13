@@ -70,12 +70,12 @@ public class FoodData {
     }
 
     @Override
-    public float hashCode() {
-        float result = name.hashCode();
-        result = 31 * result + calories;
-        result = 31 * result + protein;
-        result = 31 * result + fats;
-        result = 31 * result + carbs;
+    public int hashCode() {
+        int result = name.hashCode();
+        result = 31 * result + Float.hashCode(calories);
+        result = 31 * result + Float.hashCode(protein);
+        result = 31 * result + Float.hashCode(fats);
+        result = 31 * result + Float.hashCode(carbs);
         result = 31 * result + servingSize.hashCode();
         return result;
     }

@@ -541,7 +541,6 @@
                 android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/green"
                 android:src="@drawable/ic_add"
-                android:layout_marginBottom="10dp"
                 app:borderWidth="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

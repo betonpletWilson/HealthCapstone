@@ -28,19 +28,21 @@
             android:id="@+id/instructionsTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/medicationTextView"
             android:text="Instructions" />
 
         <TextView
             android:id="@+id/frequencyTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@id/instructionsTextView"
             android:text="Frequency" />
 
         <TextView
             android:id="@+id/reminderTimeTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/medicationTextView"
+            android:layout_below="@id/frequencyTextView"
             android:layout_marginTop="8dp"
             android:text="Reminder: 9:00 AM"
             android:textSize="14sp"

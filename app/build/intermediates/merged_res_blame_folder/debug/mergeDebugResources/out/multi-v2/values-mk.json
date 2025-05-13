@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.fitwizard.fitwizard.app-mergeDebugResources-29:/values-mk/values-mk.xml",
+            "outputFile": "com.fitwizard.fitwizard.app-mergeDebugResources-30:/values-mk/values-mk.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Miles Wilson\\.gradle\\caches\\8.10.2\\transforms\\3f579c4942d363bb80f992bffe8fb32b\\transformed\\core-1.13.0\\res\\values-mk\\values-mk.xml",
