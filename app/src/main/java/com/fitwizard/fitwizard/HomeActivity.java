@@ -382,9 +382,10 @@ public class HomeActivity extends AppCompatActivity {
 
     // 👇 Load user's name from shared preferences
     private void loadUserData() {
-        SharedPreferences preferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-        String userName = preferences.getString("user_name", "GetName");
-        usernameText.setText(userName);
+        SharedPreferences preferences = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        String userName = preferences.getString("user_name", "Guest");
+        usernameText.setText("Welcome, " + userName + "!");
+
         SharedPreferences prefs = getSharedPreferences(PREFS_NAME, MODE_PRIVATE);
         SharedPreferences.Editor editor = prefs.edit();
 
