@@ -91,7 +91,7 @@ public class ExerciseHistoryActivity extends AppCompatActivity {
     private void saveExerciseLogs() {
         Set<String> set = new HashSet<>();
         for (ExerciseEntry entry : exerciseList) {
-            set.add(entry.toPrefString());
+            set.add(entry.toPrefString()); // ✅ Serialize to string
         }
         prefs.edit().putStringSet(EXERCISE_KEY, set).apply();
     }

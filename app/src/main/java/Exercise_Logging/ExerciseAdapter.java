@@ -14,9 +14,6 @@ import com.fitwizard.fitwizard.R;
 
 import java.util.ArrayList;
 
-/**
- * Shows each ExerciseEntry (name, details, date, calories) in a colored CardView.
- */
 public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.ExerciseViewHolder> {
 
     private Context context;
@@ -59,6 +56,7 @@ public class ExerciseAdapter extends RecyclerView.Adapter<ExerciseAdapter.Exerci
         holder.cardView.setCardBackgroundColor(
                 context.getResources().getColor(color)
         );
+        holder.cardView.setCardBackgroundColor(context.getResources().getColor(color));
     }
 
     @Override

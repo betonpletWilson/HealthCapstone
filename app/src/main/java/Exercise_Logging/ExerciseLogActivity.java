@@ -4,6 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
 import android.widget.*;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,7 +24,6 @@ import java.util.List;
 public class ExerciseLogActivity extends AppCompatActivity {
 
     private EditText nameInput, durationInput;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

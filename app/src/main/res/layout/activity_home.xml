@@ -41,26 +41,17 @@
         app:layout_constraintStart_toEndOf="@id/profile_card"
         app:layout_constraintTop_toTopOf="@id/profile_card" />
 
-    <TextView
-        android:id="@+id/date_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:contentDescription="@string/today_text"
-        android:textColor="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@id/profile_card"
-        app:layout_constraintEnd_toStartOf="@id/calendar_icon"
-        app:layout_constraintTop_toTopOf="@id/profile_card" />
 
-    <ImageView
-        android:id="@+id/calendar_icon"
-        android:layout_width="24dp"
-        android:layout_height="24dp"
-        android:layout_marginEnd="16dp"
-        android:src="@drawable/ic_calendar"
-        app:tint="@color/green"
-        app:layout_constraintBottom_toBottomOf="@id/profile_card"
+    <!-- Nutrients Section -->
+    <ImageButton
+        android:id="@+id/settingsButton"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="Settings"
+        android:src="@drawable/ic_settings"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@id/profile_card" />
 
@@ -121,9 +112,10 @@
                         android:progressTint="@color/red" />
 
                     <TextView
+                        android:id="@+id/proteins_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="150 / 225"
+                        android:text="0 / 225"
                         android:textAlignment="center"
                         android:textColor="@color/black" />
 
@@ -152,9 +144,10 @@
                         android:progressTint="@color/orange" />
 
                     <TextView
+                        android:id="@+id/fats_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="30 / 118"
+                        android:text="0 / 118"
                         android:textAlignment="center"
                         android:textColor="@color/black" />
 
@@ -183,9 +176,10 @@
                         android:progressTint="@color/green" />
 
                     <TextView
+                        android:id="@+id/carbs_value"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="319 / 340"
+                        android:text="0 / 340"
                         android:textAlignment="center"
                         android:textColor="@color/black" />
 
@@ -210,13 +204,15 @@
                     style="?android:attr/progressBarStyleHorizontal"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:progress="72"
+                    android:progress="0"
+                    android:max="3400"
                     android:progressTint="@color/green" />
 
                 <TextView
+                    android:id="@+id/calories_value"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2456 / 3400"
+                    android:text="0 / 3400"
                     android:textAlignment="center"
                     android:textColor="@color/black" />
 
@@ -272,7 +268,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
+            <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/water_text"
@@ -340,10 +336,189 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 
-    <!-- Bottom Navigation -->
+    <!-- Water Intake Section -->
+    <TextView
+        android:id="@+id/mood_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/mood_log_text"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/water_card" />
+
     <androidx.cardview.widget.CardView
+        android:id="@+id/mood_card"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        app:cardBackgroundColor="#F5F5F5"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mood_title">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:id="@+id/mood_widget_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:background="@drawable/mood_widget_background"
+                android:gravity="center_vertical">
+
+                <!-- face_amazing is used as placeholder-->
+                <ImageView
+                    android:id="@+id/mood_icon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/face_amazing"
+                    android:contentDescription="@string/mood_icon" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp">
+
+                    <TextView
+                        android:id="@+id/mood_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Feeling great!"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/mood_tags"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="#happy #energized"
+                        android:textSize="14sp"
+                        android:textColor="@android:color/darker_gray" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- pop nav section, this is behind the bottom navigation bar and pops up when add_fab clicked -->
+    <!-- sets height of popup background -->
+    <LinearLayout
+        android:id="@+id/add_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:background="@drawable/popup_background"
+        android:padding="16dp"
+        android:layout_marginBottom="8dp"
+        android:paddingBottom="88dp"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Horizontal LinearLayout for the first row with two buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btn_add_meal"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/add_meal"
+                android:backgroundTint="@color/green"
+                android:textColor="@color/white"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btn_log_mood"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="@string/log_mood"
+                android:backgroundTint="@color/green"
+                android:textColor="@color/white"
+                android:layout_marginStart="8dp"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="16dp">
+
+            <Button
+                android:id="@+id/btn_medications"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Medications"
+                android:backgroundTint="@color/green"
+                android:textColor="@color/white"
+                android:layout_marginEnd="8dp"/>
+
+            <Button
+                android:id="@+id/btn_log_exercise"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:text="Log Exercise"
+                android:backgroundTint="@color/green"
+                android:textColor="@color/white"
+                android:layout_marginStart="8dp"/>
+
+        </LinearLayout>
+
+        <!-- Goals button in its own row with full width -->
+        <Button
+            android:id="@+id/btn_goals"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Goals"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Medications button in its own row with full width -->
+
+
+        <!-- New Notification button in its own row with full width -->
+        <Button
+            android:id="@+id/btn_new_notif"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/new_notif_text"
+            android:backgroundTint="@color/green"
+            android:textColor="@color/white"
+            android:layout_marginBottom="80dp"/>
+
+    </LinearLayout>
+
+    <!-- Bottom Navigation card  -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="352dp"
+        android:layout_height="85dp"
         android:layout_margin="16dp"
         app:cardBackgroundColor="#E8F8F0"
         app:cardCornerRadius="24dp"
@@ -353,27 +528,20 @@
         app:layout_constraintStart_toStartOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_nav_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp">
 
-            <TextView
-                android:id="@+id/nav_home"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="Home"
-                android:textColor="@color/green"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/fab_add"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/fab_add"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:backgroundTint="@color/green"
                 android:src="@drawable/ic_add"
+                android:layout_marginBottom="10dp"
                 app:borderWidth="0dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -381,77 +549,6 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:tint="@color/white" />
 
-            <TextView
-                android:id="@+id/nav_reports"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="8dp"
-                android:text="Reports"
-                android:textColor="@color/green"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@id/fab_add"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <LinearLayout
-                android:id="@+id/add_menu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:visibility="gone"
-                android:background="@drawable/popup_background"
-                android:padding="20dp"
-                android:layout_marginBottom="0dp"
-                app:layout_constraintBottom_toTopOf="@id/fab_add"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent">
-
-                <Button
-                    android:id="@+id/btn_medications"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Medications"
-                    android:backgroundTint="@color/green"
-                    android:textColor="@color/white" />
-
-
-                <Button
-                    android:id="@+id/btn_goals"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Goals"
-                    android:backgroundTint="@color/green"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="8dp"/>
-
-                <Button
-                    android:id="@+id/btn_log_exercise"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Log Exercise"
-                    android:backgroundTint="@color/green"
-                    android:textColor="@color/white"
-                    android:layout_marginTop="8dp"/>
-
-
-                <Button
-                    android:id="@+id/btn_add_meal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/add_meal"
-                    android:backgroundTint="@color/green"
-                    android:textColor="@color/white"
-                    android:layout_marginBottom="8dp"/>
-
-                <Button
-                    android:id="@+id/btn_log_mood"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/log_mood"
-                    android:backgroundTint="@color/green"
-                    android:textColor="@color/white"/>
-
-            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
