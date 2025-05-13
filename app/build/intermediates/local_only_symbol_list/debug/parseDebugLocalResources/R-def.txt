@@ -91,6 +91,7 @@ id cardView
 id cardioTimeInput
 id category_scrollview
 id checkBoxDailyReminder
+id checkRemember
 id chip_medication
 id container
 id current_week_layout

@@ -18,14 +18,12 @@ import okhttp3.EventListener;
 import okhttp3.Protocol;
 import okhttp3.Handshake;
 import okhttp3.ConnectionSpec;
-import okhttp3.TlsVersion;
 
 import java.util.Collections;
 import java.net.URLEncoder;
 import java.util.List;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.io.EOFException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.Proxy;
@@ -38,22 +36,26 @@ import com.google.gson.JsonElement;
 public class ApiService {
     private static final OkHttpClient client;
 
-    /* ─── TLS‑debug listener (OkHttp 4.x) ──────────────────────────────── */
     static final class TlsDebugListener extends EventListener {
 
-        @Override public void secureConnectEnd(Call call, Handshake hs) {
+        @Override
+        public void secureConnectEnd(Call call, Handshake hs) {
             Log.d("TLS‑DBG", "OK  "
                     + hs.tlsVersion() + ' ' + hs.cipherSuite()
                     + "  " + call.request().url());
         }
 
-        @Override public void connectFailed(
+        @Override
+        public void connectFailed(
                 Call call,
                 InetSocketAddress addr,
                 Proxy proxy,
                 Protocol proto,
                 IOException ioe) {
-
+            Log.i("FW‑PROXY",
+                    "client‑proxy=" + client.proxy()
+                            + " sys‑proxy=" + android.net.Proxy.getDefaultHost()
+                            + ":" + android.net.Proxy.getDefaultPort());
             Log.e("TLS‑DBG", "connectFailed " + addr + "  " + ioe);
 
             if (ioe instanceof SSLException) {
@@ -63,16 +65,17 @@ public class ApiService {
                 /* send an SSLv2 ClientHello with no cipher suites
                    (just 2 bytes “00 00”) – every TLS server will
                    immediately reply with an alert ‑or‑ handshake */
-                    s.getOutputStream().write(new byte[] {0,0});
+                    s.getOutputStream().write(new byte[]{0, 0});
                     byte[] buf = new byte[32];
                     int n = s.getInputStream().read(buf);
                     Log.e("TLS‑RAW", n + " bytes : " + hex(buf, n));
-                } catch (Exception ignore) {}
+                } catch (Exception ignore) {
+                }
             }
         }
 
         private static String hex(byte[] b, int n) {
-            StringBuilder sb = new StringBuilder(3*n);
+            StringBuilder sb = new StringBuilder(3 * n);
             for (int i = 0; i < n; i++) sb.append(String.format("%02x ", b[i]));
             return sb.toString();
         }
@@ -94,16 +97,18 @@ public class ApiService {
                 .build();
 
 
-        client = new OkHttpClient.Builder().build();;
+        client = new OkHttpClient.Builder().proxy(Proxy.NO_PROXY).connectionSpecs(Collections.singletonList(tlsOnly))
+                .eventListener(new TlsDebugListener()).build();
+        ;
     }
+
     private static final Gson gson = new Gson();
     private static final String TAG = "ApiService";
 
 
-
-
     public interface ApiCallback<T> {
         void onSuccess(T data);
+
         void onFailure(String errorMessage);
     }
 
@@ -116,7 +121,7 @@ public class ApiService {
     ) {
 
         String url = baseUrl() + "/getSimple"
-                + "?tableName="  + tableName
+                + "?tableName=" + tableName
                 + "&columnName=" + columnName
                 + "&queryValue=" + queryValue;
 
@@ -135,7 +140,7 @@ public class ApiService {
                                     ApiCallback<List<T>> cb) {
 
         String url = baseUrl() + "/searchSimple"
-                + "?tableName="  + table
+                + "?tableName=" + table
                 + "&columnName=" + col
                 + "&queryValue=" + encode(val);
 
@@ -159,23 +164,27 @@ public class ApiService {
                             public void onSuccess(List<T> extRows) {
                                 // remove any that already exist in DB (by name, case‑insensitive)
                                 java.util.Set<String> names = new java.util.HashSet<>();
-                                for (T o : dbRows) names.add(((FoodData)o).getName().toLowerCase());
+                                for (T o : dbRows)
+                                    names.add(((FoodData) o).getName().toLowerCase());
 
                                 java.util.List<T> merged = new java.util.ArrayList<>(dbRows);
                                 for (T o : extRows) {
-                                    if (!names.contains(((FoodData)o).getName().toLowerCase()))
+                                    if (!names.contains(((FoodData) o).getName().toLowerCase()))
                                         merged.add(o);
                                 }
                                 cb.onSuccess(merged);      // DB rows first, then extras
                             }
-                            @Override public void onFailure(String e) {
+
+                            @Override
+                            public void onFailure(String e) {
                                 // external failed → just give DB rows
                                 cb.onSuccess(dbRows);
                             }
                         });
                     }
 
-                    @Override public void onFailure(String e) {
+                    @Override
+                    public void onFailure(String e) {
                         // no DB rows – fall back like before
                         fallbackSearch(table, val, arrayClazz, cb);
                     }
@@ -190,7 +199,6 @@ public class ApiService {
                 externalUSDA(query, arrayClazz, cb);
                 break;
             case "medication":
-                externalOpenFDA(query, arrayClazz, cb);
                 break;
             case "workout":
                 externalNinjaWorkout(query, arrayClazz, cb);
@@ -208,12 +216,17 @@ public class ApiService {
 
         // Delegate to the concrete 2‑arg version that returns List<FoodData>
         externalUSDA(query, new ApiCallback<List<FoodData>>() {
-            @Override public void onSuccess(List<FoodData> foods) {
+            @Override
+            public void onSuccess(List<FoodData> foods) {
                 @SuppressWarnings("unchecked")           // safe: only called for FoodData
-                List<T> cast = (List<T>)(List<?>) foods;
+                List<T> cast = (List<T>) (List<?>) foods;
                 cb.onSuccess(cast);
             }
-            @Override public void onFailure(String err) { cb.onFailure(err); }
+
+            @Override
+            public void onFailure(String err) {
+                cb.onFailure(err);
+            }
         });
     }
 
@@ -223,27 +236,37 @@ public class ApiService {
 
         String url = "https://api.nal.usda.gov/fdc/v1/foods/search"
                 + "?api_key=Y1zHeXGbhmfI0h82H8ymfGgCGnjeCW84DjHTaCra"
-                + "&query="   + encode(query)
+                + "&query=" + encode(query)
                 + "&pageSize=20";
 
         Request req = new Request.Builder().url(url).build();
 
         client.newCall(req).enqueue(new Callback() {
-            @Override public void onFailure(Call c, IOException e) {
+            @Override
+            public void onFailure(Call c, IOException e) {
                 cb.onFailure("USDA fail: " + e.getMessage());
             }
-            @Override public void onResponse(Call c, Response r) {
-                if (!r.isSuccessful()) { cb.onFailure("USDA HTTP " + r.code()); return; }
+
+            @Override
+            public void onResponse(Call c, Response r) {
+                if (!r.isSuccessful()) {
+                    cb.onFailure("USDA HTTP " + r.code());
+                    return;
+                }
 
                 String json;
                 try (ResponseBody b = r.body()) {
                     json = (b != null) ? b.string() : null;
-                } catch (IOException io) { cb.onFailure(io.getMessage()); return; }
+                } catch (IOException io) {
+                    cb.onFailure(io.getMessage());
+                    return;
+                }
 
                 JsonArray arr = gson.fromJson(json, JsonObject.class)
                         .getAsJsonArray("foods");
                 if (arr == null || arr.size() == 0) {
-                    cb.onFailure("No USDA hits"); return;
+                    cb.onFailure("No USDA hits");
+                    return;
                 }
 
                 List<FoodData> list = new java.util.ArrayList<>();
@@ -256,77 +279,6 @@ public class ApiService {
         });
     }
 
-
-    private static <T> void externalOpenFDA(
-            String query,
-            Class<T[]> arrClazz,
-            ApiCallback<List<T>> cb
-    ) {
-        String term = "\"" + query + "\"";
-        String searchParam =
-                "openfda.brand_name:"  + encode(term)
-                        + "+OR+openfda.generic_name:" + encode(term);
-
-        String url = "https://api.fda.gov/drug/label.json"
-                + "?api_key=zL0hMetU7UXn8LUTLLa1iJuUQsgZNg1M0O1EzGb9"
-                + "&search="   + searchParam
-                + "&limit=20";
-
-        Request req = new Request.Builder()
-                .url(url)
-                .build();
-
-        client.newCall(req).enqueue(new Callback() {
-            @Override public void onFailure(Call call, IOException e) {
-                cb.onFailure("OpenFDA error: " + e.getMessage());
-            }
-
-            @Override public void onResponse(Call call, Response resp) throws IOException {
-                if (!resp.isSuccessful()) {
-                    Log.e("HTTP‑BAD",
-                            resp.code() + " body = " + resp.peekBody(Long.MAX_VALUE).string());
-                    cb.onFailure("HTTP " + resp.code());
-                    return;
-                }
-                String json = resp.body().string();
-                JsonObject root = gson.fromJson(json, JsonObject.class);
-                if (!root.has("results") || !root.get("results").isJsonArray()) {
-                    cb.onFailure("No results from OpenFDA");
-                    return;
-                }
-
-                JsonArray arr = root.getAsJsonArray("results");
-                List<Medication> meds = new ArrayList<>();
-                for (JsonElement el : arr) {
-                    if (!el.isJsonObject()) continue;
-                    JsonObject obj = el.getAsJsonObject()
-                            .getAsJsonObject("openfda");
-                    String name = null;
-                    if (obj != null && obj.has("brand_name")) {
-                        JsonArray b = obj.getAsJsonArray("brand_name");
-                        if (b.size() > 0 && !b.get(0).isJsonNull())
-                            name = b.get(0).getAsString();
-                    }
-                    if (name == null && obj != null && obj.has("generic_name")) {
-                        JsonArray g = obj.getAsJsonArray("generic_name");
-                        if (g.size() > 0 && !g.get(0).isJsonNull())
-                            name = g.get(0).getAsString();
-                    }
-                    if (name != null) {
-                        meds.add(new Medication(name, "", "", 0L));
-                    }
-                }
-
-                if (meds.isEmpty()) {
-                    cb.onFailure("No OpenFDA matches");
-                } else {
-                    @SuppressWarnings("unchecked")
-                    List<T> cast = (List<T>)(List<?>)meds;
-                    cb.onSuccess(cast);
-                }
-            }
-        });
-    }
     private static <T> void externalNinjaWorkout(String q, Class<T[]> arr,
                                                  ApiCallback<List<T>> cb) {
         String api = "https://api.api-ninjas.com/v1/caloriesburned?activity="
@@ -340,35 +292,48 @@ public class ApiService {
     }
 
     private static <T> void callExternal(String url, Class<T[]> arr,
-                                         ApiCallback<List<T>> cb, String table){
+                                         ApiCallback<List<T>> cb, String table) {
         Request req = new Request.Builder().url(url).build();
         enqueueExternal(req, arr, cb, table);
     }
 
     private static <T> void enqueueExternal(Request req, Class<T[]> arr,
-                                            ApiCallback<List<T>> cb, String table){
+                                            ApiCallback<List<T>> cb, String table) {
         client.newCall(req).enqueue(
                 CallbackFactory.createListCallback(arr, new ApiCallback<List<T>>() {
-                    @Override public void onSuccess(List<T> list) {
-                        if (list.isEmpty()) { cb.onFailure("No match in ext API"); return; }
+                    @Override
+                    public void onSuccess(List<T> list) {
+                        if (list.isEmpty()) {
+                            cb.onFailure("No match in ext API");
+                            return;
+                        }
                         cb.onSuccess(list);
                     }
-                    @Override public void onFailure(String e) { cb.onFailure(e); }
+
+                    @Override
+                    public void onFailure(String e) {
+                        cb.onFailure(e);
+                    }
                 }));
     }
 
-    private static String encode(String s){
-        try { return URLEncoder.encode(s,"UTF-8"); } catch(Exception e){ return s;}
+    private static String encode(String s) {
+        try {
+            return URLEncoder.encode(s, "UTF-8");
+        } catch (Exception e) {
+            return s;
+        }
     }
+
     private static String baseUrl() {
         return BuildConfig.SERVER_BASE_URL;
     }
 
     private static FoodData mapFdcToFoodData(JsonObject jo) {
 
-        String name  = jo.has("description") ? jo.get("description").getAsString()
+        String name = jo.has("description") ? jo.get("description").getAsString()
                 : "Unknown food";
-        String brand = jo.has("brandOwner")  ? jo.get("brandOwner").getAsString()
+        String brand = jo.has("brandOwner") ? jo.get("brandOwner").getAsString()
                 : "";
 
         /* serving string */
@@ -382,7 +347,7 @@ public class ApiService {
         }
 
         float protein = 0, fat = 0, carbs = 0;
-        int   calories = 0;
+        int calories = 0;
 
         if (jo.has("foodNutrients") && jo.get("foodNutrients").isJsonArray()) {
             for (JsonElement el : jo.getAsJsonArray("foodNutrients")) {
@@ -390,17 +355,25 @@ public class ApiService {
                 JsonObject n = el.getAsJsonObject();
 
                 if (!n.has("nutrientId") || n.get("nutrientId").isJsonNull()
-                        || !n.has("value")   || n.get("value").isJsonNull())
+                        || !n.has("value") || n.get("value").isJsonNull())
                     continue;
 
-                int   id  = n.get("nutrientId").getAsInt();
+                int id = n.get("nutrientId").getAsInt();
                 float val = n.get("value").getAsFloat();
 
                 switch (id) {
-                    case 1003: protein  = val; break;              // protein
-                    case 1004: fat      = val; break;              // fat
-                    case 1005: carbs    = val; break;              // carbs
-                    case 1008: calories = Math.round(val); break;  // kcal
+                    case 1003:
+                        protein = val;
+                        break;              // protein
+                    case 1004:
+                        fat = val;
+                        break;              // fat
+                    case 1005:
+                        carbs = val;
+                        break;              // carbs
+                    case 1008:
+                        calories = Math.round(val);
+                        break;  // kcal
                 }
             }
         }
@@ -420,7 +393,8 @@ public class ApiService {
     }
 
     public interface AuthCallback {
-        void onSuccess(String jwt);
+        void onSuccess(String jwt, int userId);
+
         void onFailure(String error);
     }
 
@@ -432,7 +406,7 @@ public class ApiService {
 
         JsonObject body = new JsonObject();
         body.addProperty("username", username);
-        body.addProperty("email",    email);
+        body.addProperty("email", email);
         body.addProperty("password", password);
 
         Request req = new Request.Builder()
@@ -443,19 +417,23 @@ public class ApiService {
                 .build();
 
 
-        client.newCall(req).enqueue(new Callback(){
-            @Override public void onFailure(Call c, IOException e) {
+        client.newCall(req).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call c, IOException e) {
                 cb.onFailure(e.getMessage());
             }
-            @Override public void onResponse(Call c, Response r) throws IOException {
+
+            @Override
+            public void onResponse(Call c, Response r) throws IOException {
                 if (!r.isSuccessful()) {
                     Log.e("HTTP‑BAD", "failed body = " + r.peekBody(Long.MAX_VALUE).string());
                     cb.onFailure("HTTP " + r.code());
                     return;
                 }
-                String jwt = gson.fromJson(r.body().string(), JsonObject.class)
-                        .get("token").getAsString();
-                cb.onSuccess(jwt);
+                JsonObject root = gson.fromJson(r.body().string(), JsonObject.class);
+                String jwt    = root.get("token").getAsString();
+                int    userId = root.get("userId").getAsInt();
+                cb.onSuccess(jwt, userId);
             }
         });
     }
@@ -467,7 +445,7 @@ public class ApiService {
 
         JsonObject body = new JsonObject();
         body.addProperty("identifier", identifier);
-        body.addProperty("password",   password);
+        body.addProperty("password", password);
 
         Request req = new Request.Builder()
                 .url(baseUrl() + "/login")
@@ -477,20 +455,102 @@ public class ApiService {
                 .build();
 
         client.newCall(req).enqueue(new Callback() {
-            @Override public void onFailure(Call c, IOException e) {
+            @Override
+            public void onFailure(Call c, IOException e) {
                 cb.onFailure(e.getMessage());
             }
-            @Override public void onResponse(Call c, Response r) throws IOException {
+
+            @Override
+            public void onResponse(Call c, Response r) throws IOException {
                 if (!r.isSuccessful()) {
                     Log.e("HTTP‑BAD", "login failed body = " + r.peekBody(Long.MAX_VALUE).string());
                     cb.onFailure("HTTP " + r.code());
                     return;
                 }
-                String jwt = gson.fromJson(
-                                r.body().string(), JsonObject.class)
-                        .get("token").getAsString();
-                cb.onSuccess(jwt);
+                JsonObject root = gson.fromJson(r.body().string(), JsonObject.class);
+                String jwt   = root.get("token").getAsString();
+                int userId= root.get("userId").getAsInt();
+                cb.onSuccess(jwt, userId);
             }
         });
     }
+
+    public static void validate(String jwt, AuthCallback cb) {
+
+        Request req = new Request.Builder()
+                .url(baseUrl() + "/auth/validate")
+                .header("Authorization", "Bearer " + jwt)
+                .get()
+                .build();
+
+        client.newCall(req).enqueue(new Callback() {
+            @Override public void onFailure(Call call, IOException e) {
+                Log.e("JWT-VALIDATE", "network fail", e);
+                cb.onFailure(e.getMessage());
+            }
+            @Override public void onResponse(Call c, Response r) throws IOException {
+                Log.d("JWT-VALIDATE", "code=" + r.code());
+                String body = r.peekBody(Long.MAX_VALUE).string();
+                Log.d("JWT-VALIDATE", "body=" + body);
+                if (!r.isSuccessful()) {
+                    cb.onFailure("HTTP " + r.code());
+                    return;
+                }
+                JsonObject root = gson.fromJson(r.body().string(), JsonObject.class);
+                int userId = root.get("userId").getAsInt();
+                cb.onSuccess(jwt, userId);
+            }
+        });
+    }
+    public static void addMedication(
+            int userId,
+            String name,
+            String instructions,
+            String frequency,
+            long reminderTime,
+            ApiCallback<Void> cb) {
+        JsonObject body = new JsonObject();
+        body.addProperty("userId", userId);
+        body.addProperty("name", name);
+        body.addProperty("instructions", instructions);
+        body.addProperty("frequency", frequency);
+        body.addProperty("reminderTime", reminderTime);
+        Request req = new Request.Builder()
+                .url(baseUrl() + "/medications")
+                .post(RequestBody.create(
+                        gson.toJson(body),
+                        MediaType.parse("application/json")))
+                .build();
+        client.newCall(req)
+                .enqueue(CallbackFactory.createVoidCallback(cb));
+    }
+
+    public static void getMedications(
+            int userId,
+            ApiCallback<List<Medication>> cb) {
+        String url = baseUrl() + "/medications?userId=" + userId;
+        Request req = new Request.Builder().url(url).build();
+        client.newCall(req)
+                .enqueue(CallbackFactory.createListCallback(
+                        Medication[].class, cb));
+    }
+
+    public static void deleteMedication(int userId,
+                                        int medId,
+                                        ApiCallback<Void> cb) {
+        JsonObject body = new JsonObject();
+        body.addProperty("userId", userId);
+        body.addProperty("medId", medId);
+
+        Request req = new Request.Builder()
+                .url(baseUrl() + "/medications")
+                .delete(RequestBody.create(
+                        gson.toJson(body),
+                        MediaType.parse("application/json")))
+                .build();
+
+        client.newCall(req)
+                .enqueue(CallbackFactory.createVoidCallback(cb));
+    }
 }
+

@@ -10,5 +10,5 @@ public final class BuildConfig {
   public static final int VERSION_CODE = 1;
   public static final String VERSION_NAME = "1.0";
   // Field from default config.
-  public static final String SERVER_BASE_URL = "http://18.116.28.93:3000";
+  public static final String SERVER_BASE_URL = "https://healthy.publicvm.com";
 }

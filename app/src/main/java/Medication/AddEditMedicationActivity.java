@@ -69,72 +69,10 @@ public class AddEditMedicationActivity extends AppCompatActivity {
             editingPosition = intent.getIntExtra("position", -1);
         }
 
-        // When medication name loses focus, fetch suggestions
-        medicationEditText.setOnFocusChangeListener((view, hasFocus) -> {
-            if (!hasFocus) {
-                String rawName = medicationEditText.getText().toString().trim();
-                if (!rawName.isEmpty()) {
-                    ApiService.DBSearch(
-                            "medication",
-                            "name",
-                            rawName,
-                            Medication[].class,
-                            new ApiCallback<List<Medication>>() {
-                                @Override
-                                public void onSuccess(List<Medication> meds) {
-                                    runOnUiThread(() -> {
-                                        if (!meds.isEmpty()) {
-                                            showMedicationDialog(meds);
-                                        }
-                                    });
-                                }
-                                @Override
-                                public void onFailure(String err) {
-                                    // ignore failures silently
-                                }
-                            }
-                    );
-                }
-            }
-        });
-
         // Save button just commits whatever is in the fields
         saveButton.setOnClickListener(v -> saveMedication());
     }
 
-    /**
-     * Show a simple ListView dialog allowing the user to pick
-     * one of the Medication suggestions.  On pick, we fill the
-     * name field and leave the rest as the user entered.
-     */
-    private void showMedicationDialog(List<Medication> meds) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        View dialogView = getLayoutInflater()
-                .inflate(R.layout.dialog_medication_search, null);
-        builder.setView(dialogView);
-        AlertDialog dialog = builder.create();
-
-        ListView lv = dialogView.findViewById(R.id.medSearchListView);
-        List<String> names = new ArrayList<>();
-        for (Medication m : meds) {
-            names.add(m.getName());
-        }
-        ArrayAdapter<String> aa = new ArrayAdapter<>(
-                this, android.R.layout.simple_list_item_1, names
-        );
-        lv.setAdapter(aa);
-
-        lv.setOnItemClickListener((parent, view, pos, id) -> {
-            dialog.dismiss();
-            Medication picked = meds.get(pos);
-            medicationEditText.setText(picked.getName());
-            // instructions and frequency remain as the user entered
-        });
-
-        dialog.show();
-    }
-
-    /** Show Android’s time picker dialog to set reminderTimeCalendar */
     private void showTimePicker() {
         new TimePickerDialog(
                 this,
@@ -157,20 +95,35 @@ public class AddEditMedicationActivity extends AppCompatActivity {
      * Name, instructions, frequency, reminderTime, and editingPosition.
      */
     private void saveMedication() {
-        String name        = medicationEditText.getText().toString().trim();
-        String instr       = instructionsEditText.getText().toString().trim();
-        String freq        = frequencyEditText.getText().toString().trim();
-        long   reminderMs  = dailyReminderCheckBox.isChecked()
+        String name  = medicationEditText.getText().toString().trim();
+        String instr = instructionsEditText.getText().toString().trim();
+        String freq  = frequencyEditText.getText().toString().trim();
+        long reminderMs = dailyReminderCheckBox.isChecked()
                 ? reminderTimeCalendar.getTimeInMillis()
                 : 0L;
 
-        Intent data = new Intent();
-        data.putExtra("name",         name);
-        data.putExtra("instructions", instr);
-        data.putExtra("frequency",    freq);
-        data.putExtra("reminderTime", reminderMs);
-        data.putExtra("position",     editingPosition);
-        setResult(RESULT_OK, data);
-        finish();
+        int userId =
+                getSharedPreferences("UserPrefs", MODE_PRIVATE)
+                        .getInt("userId", -1);
+
+        ApiService.addMedication(userId, name, instr, freq, reminderMs,
+                new ApiService.ApiCallback<Void>() {
+                    @Override public void onSuccess(Void v) {
+                        runOnUiThread(() -> {
+                            setResult(RESULT_OK);
+                            finish();
+                        });
+                    }
+                    @Override public void onFailure(String err) {
+                        runOnUiThread(() ->
+                                Toast.makeText(
+                                        AddEditMedicationActivity.this,
+                                        "Error: " + err,
+                                        Toast.LENGTH_SHORT
+                                ).show()
+                        );
+                    }
+                }
+        );
     }
 }

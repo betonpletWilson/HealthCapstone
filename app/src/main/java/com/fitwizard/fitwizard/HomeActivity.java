@@ -17,6 +17,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.fitwizard.fitwizard.network.ApiService;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.text.SimpleDateFormat;
@@ -199,8 +200,32 @@ public class HomeActivity extends AppCompatActivity {
 
     // 👇 Load user's name from shared preferences
     private void loadUserData() {
-        SharedPreferences preferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-        String userName = preferences.getString("user_name", "GetName");
-        usernameText.setText(userName);
+        // 1) grab current userId
+        SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+        int userId = prefs.getInt("userId", -1);
+        if (userId < 0) {
+            usernameText.setText("Guest");
+            return;
+        }
+
+        // 2) call /getSimple to fetch the username
+        ApiService.DBRequest(
+                "users",
+                "username",
+                String.valueOf(userId),
+                String.class,
+                new ApiService.ApiCallback<String>() {
+                    @Override public void onSuccess(String username) {
+                        runOnUiThread(() ->
+                                usernameText.setText(username)
+                        );
+                    }
+                    @Override public void onFailure(String error) {
+                        runOnUiThread(() ->
+                                usernameText.setText("Error")
+                        );
+                    }
+                }
+        );
     }
 }

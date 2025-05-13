@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,6 +29,9 @@ public final class ActivityLoginBinding implements ViewBinding {
   public final Button buttonRegister;
 
   @NonNull
+  public final CheckBox checkRemember;
+
+  @NonNull
   public final EditText editTextIdentifier;
 
   @NonNull
@@ -37,11 +41,13 @@ public final class ActivityLoginBinding implements ViewBinding {
   public final ImageView logoImage;
 
   private ActivityLoginBinding(@NonNull LinearLayout rootView, @NonNull Button buttonLogin,
-      @NonNull Button buttonRegister, @NonNull EditText editTextIdentifier,
-      @NonNull EditText editTextPassword, @NonNull ImageView logoImage) {
+      @NonNull Button buttonRegister, @NonNull CheckBox checkRemember,
+      @NonNull EditText editTextIdentifier, @NonNull EditText editTextPassword,
+      @NonNull ImageView logoImage) {
     this.rootView = rootView;
     this.buttonLogin = buttonLogin;
     this.buttonRegister = buttonRegister;
+    this.checkRemember = checkRemember;
     this.editTextIdentifier = editTextIdentifier;
     this.editTextPassword = editTextPassword;
     this.logoImage = logoImage;
@@ -86,6 +92,12 @@ public final class ActivityLoginBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.checkRemember;
+      CheckBox checkRemember = ViewBindings.findChildViewById(rootView, id);
+      if (checkRemember == null) {
+        break missingId;
+      }
+
       id = R.id.editTextIdentifier;
       EditText editTextIdentifier = ViewBindings.findChildViewById(rootView, id);
       if (editTextIdentifier == null) {
@@ -105,7 +117,7 @@ public final class ActivityLoginBinding implements ViewBinding {
       }
 
       return new ActivityLoginBinding((LinearLayout) rootView, buttonLogin, buttonRegister,
-          editTextIdentifier, editTextPassword, logoImage);
+          checkRemember, editTextIdentifier, editTextPassword, logoImage);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

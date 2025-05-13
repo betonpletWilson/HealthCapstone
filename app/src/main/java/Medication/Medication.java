@@ -1,27 +1,38 @@
 package Medication;
 
+import static java.sql.Types.NULL;
+
+import com.google.gson.annotations.SerializedName;
+
 public class Medication {
+    private int    id;
     private String name;
-    private String instructions;       // ← new
-    private String frequency;          // ← new
+    private String instructions;
+    private String frequency;
+    @SerializedName("reminderTime")
     private long reminderTimeMillis;
 
-    public Medication(String name,
+    public Medication(int id,
+                      String name,
                       String instructions,
                       String frequency,
                       long reminderTimeMillis) {
-        this.name               = name;
-        this.instructions       = instructions;
-        this.frequency          = frequency;
+        this.id = id;
+        this.name = name;
+        this.instructions = instructions;
+        this.frequency = frequency;
+
         this.reminderTimeMillis = reminderTimeMillis;
     }
 
     // getters & setters for all four
+    public int getId()                    { return id; }
     public String getName()            { return name; }
     public String getInstructions()    { return instructions; }
     public String getFrequency()       { return frequency; }
     public long   getReminderTimeMillis() { return reminderTimeMillis; }
 
+    public void setId(int id)             { this.id = id; }
     public void setName(String name)                     { this.name = name; }
     public void setInstructions(String instructions)     { this.instructions = instructions; }
     public void setFrequency(String frequency)           { this.frequency = frequency; }
@@ -39,7 +50,7 @@ public class Medication {
     // rehydrate, defensively defaulting to empty strings
     public static Medication fromString(String saved) {
         if (saved == null || !saved.contains(";")) {
-            return new Medication("Unnamed", "", "", System.currentTimeMillis());
+            return new Medication(NULL, "Unnamed", "", "", System.currentTimeMillis());
         }
         String[] parts = saved.split(";", 4);
         String nm   = parts[0];
@@ -48,6 +59,6 @@ public class Medication {
         long   t    = parts.length>3
                 ? Long.parseLong(parts[3])
                 : System.currentTimeMillis();
-        return new Medication(nm, instr, freq, t);
+        return new Medication(NULL, nm, instr, freq, t);
     }
 }

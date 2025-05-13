@@ -39,7 +39,11 @@
         android:padding="12dp"
         android:layout_marginBottom="24dp" />
 
+
     <!-- Login Button -->
+
+
+
     <Button
         android:id="@+id/buttonLogin"
         android:layout_width="match_parent"
@@ -57,5 +61,13 @@
         android:text="Create Account"
         android:backgroundTint="@android:color/darker_gray"
         android:textColor="@android:color/white" />
+
+    <CheckBox
+        android:id="@+id/checkRemember"
+        android:layout_width="358dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:checked="true"
+        android:text="Remember me" />
 
 </LinearLayout>

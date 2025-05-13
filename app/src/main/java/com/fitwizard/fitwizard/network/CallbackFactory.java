@@ -112,4 +112,29 @@ public class CallbackFactory {
             @Override public void onResponse(Call c, Response r)   { r.close(); }
         };
     }
+
+    public static Callback createVoidCallback(final ApiService.ApiCallback<Void> cb) {
+        return new Callback() {
+            @Override public void onFailure(Call c, IOException e) {
+                if (cb != null) {
+                    cb.onFailure("Request failed: " + e.getMessage());
+                }
+            }
+            @Override public void onResponse(Call c, Response r) {
+                try {
+                    if (!r.isSuccessful()) {
+                        if (cb != null) {
+                            cb.onFailure("HTTP error code: " + r.code());
+                        }
+                    } else {
+                        if (cb != null) {
+                            cb.onSuccess(null);
+                        }
+                    }
+                } finally {
+                    r.close();
+                }
+            }
+        };
+    }
 }

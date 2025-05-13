@@ -44,13 +44,13 @@ public class RegisterActivity extends AppCompatActivity {
 
             // Call remote register
             ApiService.register(name, email, pass, new ApiService.AuthCallback() {
-                @Override
-                public void onSuccess(String jwt) {
-                    // save JWT
+                public void onSuccess(String jwt, int userId) {
+                    // save JWT and userId
                     SharedPreferences prefs = getSharedPreferences(
                             "UserPrefs", MODE_PRIVATE);
                     prefs.edit()
                             .putString("jwt", jwt)
+                            .putInt("userId", userId)
                             .apply();
 
                     runOnUiThread(() -> {
